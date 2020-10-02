@@ -1,0 +1,1133 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8x]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=Blue,
+            urlcolor=blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{35,38,41}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.58,0.85,0.30}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.25,0.50,0.35}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.48,0.49,0.49}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.99,0.74,0.29}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.64,0.20,0.25}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.60,1.00}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.56,0.27,0.68}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.77,0.36,0.00}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.96,0.31,0.31}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{h}
+\makeatother
+
+
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{MaxMatrixCols}{20}
+\usepackage{cancel}
+\usepackage{calc}
+\usepackage{eso-pic}
+\newlength{\PageFrameTopMargin}
+\newlength{\PageFrameBottomMargin}
+\newlength{\PageFrameLeftMargin}
+\newlength{\PageFrameRightMargin}
+
+\setlength{\PageFrameTopMargin}{1.5cm}
+\setlength{\PageFrameBottomMargin}{1cm}
+\setlength{\PageFrameLeftMargin}{1cm}
+\setlength{\PageFrameRightMargin}{1cm}
+
+\makeatletter
+
+\newlength{\Page@FrameHeight}
+\newlength{\Page@FrameWidth}
+
+\AddToShipoutPicture{
+  \thinlines
+  \setlength{\Page@FrameHeight}{\paperheight-\PageFrameTopMargin-\PageFrameBottomMargin}
+  \setlength{\Page@FrameWidth}{\paperwidth-\PageFrameLeftMargin-\PageFrameRightMargin}
+  \put(\strip@pt\PageFrameLeftMargin,\strip@pt\PageFrameTopMargin){
+    \framebox(\strip@pt\Page@FrameWidth, \strip@pt\Page@FrameHeight){}}}
+
+\makeatother
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+
+\usepackage{graphicx}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\geometry{hmargin=2cm,vmargin=2cm}
+
+\usepackage{sectsty}
+
+\sectionfont{\centering\Huge}
+\subsectionfont{\Large}
+\subsubsectionfont{\large}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{40}{48} \bfseries Bootcamp}\\[0.6cm]
+    \textsc{\fontsize{39}{48} \bfseries { %bootcamp_title
+Python
+    }}\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\begin{center}
+\includegraphics[width=200pt]{assets/logo-42-ai.png}{\centering}
+\end{center}
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{32}{48} \bfseries %day_number
+Day01    
+    }\\[0.6cm]
+    \textsc{\fontsize{32}{48} \bfseries %day_title
+Basics 2    
+    }\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\pagenumbering{gobble}
+\newpage
+
+%%% >>>>> Page de garde
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\hypertarget{bootcamp-python}{%
+\section{Bootcamp Python}\label{bootcamp-python}}
+
+\hypertarget{day01---basics-2}{%
+\section{Day01 - Basics 2}\label{day01---basics-2}}
+
+The goal of the day is to get familiar with object-oriented programming
+and much more.
+
+\hypertarget{notions-of-the-day}{%
+\subsection{Notions of the day}\label{notions-of-the-day}}
+
+Objects, cast, class, inheritance, built-in functions, magic methods,
+generator, constructor, iterator, \ldots{}
+
+\hypertarget{general-rules}{%
+\subsection{General rules}\label{general-rules}}
+
+\begin{itemize}
+\item
+  The version of Python to use is 3.7, you can check the version of
+  Python with the following command: \texttt{python\ -V}
+\item
+  The norm: during this bootcamp you will follow the
+  \href{https://www.python.org/dev/peps/pep-0008/}{PEP 8 standards}. You
+  can install \href{https://pypi.org/project/pycodestyle}{pycodestyle}
+  which is a tool to check your Python code.
+\item
+  The function eval is never allowed.
+\item
+  The exercises are ordered from the easiest to the hardest.
+\item
+  Your exercises are going to be evaluated by someone else, so make sure
+  that your variable names and function names are appropriate and civil.
+\item
+  Your manual is the internet.
+\item
+  You can also ask questions in the dedicated channel in the 42 AI
+  Slack: 42-ai.slack.com.
+\item
+  If you find any issue or mistakes in the subject please create an
+  issue on our
+  \href{https://github.com/42-AI/bootcamp_python/issues}{dedicated
+  repository on Github}.
+\end{itemize}
+
+\hypertarget{helper}{%
+\subsection{Helper}\label{helper}}
+
+Ensure that you have the right Python version.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{> which python}
+\NormalTok{/goinfre/miniconda/bin/python}
+\NormalTok{> python -V}
+\NormalTok{Python 3.7.*}
+\NormalTok{> which pip}
+\NormalTok{/goinfre/miniconda/bin/pip}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-00---the-book}{%
+\subsubsection{Exercise 00 - The Book}\label{exercise-00---the-book}}
+
+\hypertarget{exercise-01---family-tree}{%
+\subsubsection{Exercise 01 - Family
+tree}\label{exercise-01---family-tree}}
+
+\hypertarget{exercise-02---the-vector}{%
+\subsubsection{Exercise 02 - The
+Vector}\label{exercise-02---the-vector}}
+
+\hypertarget{exercise-03---the-matrix}{%
+\subsubsection{Exercise 03 - The
+Matrix}\label{exercise-03---the-matrix}}
+
+\hypertarget{exercise-04---generator}{%
+\subsubsection{Exercise 04 - Generator!}\label{exercise-04---generator}}
+
+\hypertarget{exercise-05---working-with-lists}{%
+\subsubsection{Exercise 05 - Working with
+lists}\label{exercise-05---working-with-lists}}
+
+\hypertarget{exercise-06---bank-account}{%
+\subsubsection{Exercise 06 - Bank
+account}\label{exercise-06---bank-account}}
+
+\clearpage
+
+\hypertarget{exercise-00---the-book-1}{%
+\section{Exercise 00 - The Book}\label{exercise-00---the-book-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex00\tabularnewline
+Files to turn in : & book.py, recipe.py, test.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+You will provide a test.py file to test your classes and prove that they
+are working the right way.\\
+You can import all the classes into your test.py file by adding these
+lines at the top of the test.py file:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ book }\ImportTok{import}\NormalTok{ Book}
+\ImportTok{from}\NormalTok{ recipe }\ImportTok{import}\NormalTok{ Recipe}
+\end{Highlighting}
+\end{Shaded}
+
+You will have to make a class \texttt{Book} and a class \texttt{Recipe}
+
+Let's describe the \texttt{Recipe} class. It has some attributes:
+
+\begin{itemize}
+\item
+  \texttt{name} (str)
+\item
+  \texttt{cooking\_lvl} (int) : range 1 to 5
+\item
+  \texttt{cooking\_time} (int) : in minutes (no negative numbers)
+\item
+  \texttt{ingredients} (list) : list of all ingredients each represented
+  by a string
+\item
+  \texttt{description} (str) : description of the recipe
+\item
+  \texttt{recipe\_type} (str) : can be ``starter'', ``lunch'' or
+  ``dessert''.
+\end{itemize}
+
+You have to initialize the object \texttt{Recipe} and check all its
+values, only the description can be empty.\\
+In case of input errors, you should print what they are and exit
+properly.
+
+You will have to implement the built-in method \texttt{\_\_str\_\_}.\\
+It's the method called when you execute this code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tourte }\OperatorTok{=}\NormalTok{ Recipe(...)}
+\NormalTok{to_print }\OperatorTok{=} \BuiltInTok{str}\NormalTok{(tourte)}
+\BuiltInTok{print}\NormalTok{(to_print)}
+\end{Highlighting}
+\end{Shaded}
+
+It's implemented this way:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def} \FunctionTok{__str__}\NormalTok{(}\VariableTok{self}\NormalTok{):}
+    \CommentTok{"""Return the string to print with the recipe info"""}
+\NormalTok{    txt }\OperatorTok{=} \StringTok{""}
+    \CommentTok{"""Your code goes here"""}
+    \ControlFlowTok{return}\NormalTok{ txt}
+\end{Highlighting}
+\end{Shaded}
+
+The \texttt{Book} class also has some attributes:
+
+\begin{itemize}
+\item
+  \texttt{name} (str)
+\item
+  \texttt{last\_update}
+  (\href{https://docs.python.org/3/library/datetime.html}{datetime})
+\item
+  \texttt{creation\_date}
+  (\href{https://docs.python.org/3/library/datetime.html}{datetime})
+\item
+  \texttt{recipes\_list} (dict) : a dictionnary why 3 keys: ``starter'',
+  ``lunch'', ``dessert''.
+\end{itemize}
+
+You will have to implement some methods in \texttt{Book}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ get_recipe_by_name(}\VariableTok{self}\NormalTok{, name):}
+    \CommentTok{"""Print a recipe with the name `name` and return the instance"""}
+    \ControlFlowTok{pass}
+
+\KeywordTok{def}\NormalTok{ get_recipes_by_types(}\VariableTok{self}\NormalTok{, recipe_type):}
+    \CommentTok{"""Get all recipe names for a given recipe_type """}
+    \ControlFlowTok{pass}
+
+\KeywordTok{def}\NormalTok{ add_recipe(}\VariableTok{self}\NormalTok{, recipe):}
+    \CommentTok{"""Add a recipe to the book and update last_update"""}
+    \ControlFlowTok{pass}
+\end{Highlighting}
+\end{Shaded}
+
+You will have to handle the error if the arg passed in add\_recipe is
+not a \texttt{Recipe}.
+
+\clearpage
+
+\hypertarget{exercise-01---family-tree-1}{%
+\section{Exercise 01 - Family tree}\label{exercise-01---family-tree-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex01\tabularnewline
+Files to turn in : & game.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+You will have to make a class and its children.
+
+Create a \texttt{GotCharacter} class and initialize it with the
+following attributes:
+
+\begin{itemize}
+\item
+  \texttt{first\_name}
+\item
+  \texttt{is\_alive} (by default is \texttt{True})
+\end{itemize}
+
+Pick up a GoT House (e.g., Stark, Lannister\ldots{}). Create a child
+class that inherits from \texttt{GotCharacter} and define the following
+attributes:
+
+\begin{itemize}
+\item
+  \texttt{family\_name} (by default should be the same as the Class)
+\item
+  \texttt{house\_words} (e.g., the House words for the Stark House is:
+  ``Winter is Coming'')
+\end{itemize}
+
+Example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Stark(GotCharacter):}
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{, first_name}\OperatorTok{=}\VariableTok{None}\NormalTok{, is_alive}\OperatorTok{=}\VariableTok{True}\NormalTok{):}
+        \BuiltInTok{super}\NormalTok{().}\FunctionTok{__init__}\NormalTok{(first_name}\OperatorTok{=}\NormalTok{first_name, is_alive}\OperatorTok{=}\NormalTok{is_alive)}
+        \VariableTok{self}\NormalTok{.family_name }\OperatorTok{=} \StringTok{"Stark"}
+        \VariableTok{self}\NormalTok{.house_words }\OperatorTok{=} \StringTok{"Winter is Coming"}
+\end{Highlighting}
+\end{Shaded}
+
+Add two methods to your child class:
+
+\begin{itemize}
+\item
+  \texttt{print\_house\_words}: prints to screen the House words
+\item
+  \texttt{die}: changes the value of \texttt{is\_alive} to
+  \texttt{False}
+\end{itemize}
+
+Running commands in the Python console, an example of what you should
+get:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{> python}
+\NormalTok{>>> from game import GotCharacter, Stark}
+\NormalTok{>>> arya = Stark("Arya")}
+\NormalTok{>>> print(arya.__dict__)}
+\NormalTok{\{'first_name': 'Arya', 'is_alive': True, 'family_name': 'Stark', 'house_words': 'Winter is Coming'\}}
+\NormalTok{>>> arya.print_house_words()}
+\NormalTok{Winter is Coming}
+\NormalTok{>>> print(arya.is_alive)}
+\NormalTok{True}
+\NormalTok{>>> arya.die()}
+\NormalTok{>>> print(arya.is_alive)}
+\NormalTok{False}
+\end{Highlighting}
+\end{Shaded}
+
+You can add any attribute or method you need to your class and format
+the docstring the way you want to.\\
+Feel free to create other children of \texttt{GotCharacter}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{>>> print(arya.__doc__)}
+\NormalTok{A class representing the Stark family. Or when bad things happen to good people.}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-02---the-vector-1}{%
+\section{Exercise 02 - The Vector}\label{exercise-02---the-vector-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex02\tabularnewline
+Files to turn in : & vector.pytest.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Forbidden libraries : & NumPy\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+You will provide a testing file to prove that your class works as
+expected.\\
+You will have to create a helpful class, with more options and providing
+enhanced ease of use for the user.
+
+In this exercise, you have to create a \texttt{Vector} class. The goal
+is to have vectors and be able to perform mathematical operations with
+them.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>}\NormalTok{ v1 }\OperatorTok{=}\NormalTok{ Vector([}\FloatTok{0.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{, }\FloatTok{2.0}\NormalTok{, }\FloatTok{3.0}\NormalTok{])}
+\OperatorTok{>>}\NormalTok{ v2 }\OperatorTok{=}\NormalTok{ v1 }\OperatorTok{*} \DecValTok{5}
+\OperatorTok{>>} \BuiltInTok{print}\NormalTok{(v2)}
+\NormalTok{(Vector [}\FloatTok{0.0}\NormalTok{, }\FloatTok{5.0}\NormalTok{, }\FloatTok{10.0}\NormalTok{, }\FloatTok{15.0}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+It has 2 attributes:
+
+\begin{itemize}
+\item
+  \texttt{values} : list of float
+\item
+  \texttt{size} : size of the vector -\textgreater{}
+  \texttt{Vector({[}0.0,\ 1.0,\ 2.0,\ 3.0{]}).size\ ==\ 4}
+\end{itemize}
+
+You should be able to initialize the object with:
+
+\begin{itemize}
+\item
+  a list of floats: \texttt{Vector({[}0.0,\ 1.0,\ 2.0,\ 3.0{]})}
+\item
+  a size \texttt{Vector(3)} -\textgreater{} the vector will have
+  \texttt{values\ =\ {[}0.0,\ 1.0,\ 2.0{]}}
+\item
+  a range or \texttt{Vector((10,15))} -\textgreater{} the vector will
+  have \texttt{values\ =\ {[}10.0,\ 11.0,\ 12.0,\ 13.0,\ 14.0{]}}
+\end{itemize}
+
+You will implement all the following built-in functions (called `magic
+methods') for your \texttt{Vector} class:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \FunctionTok{__add__}
+    \FunctionTok{__radd__}
+    \CommentTok{# add : scalars and vectors, can have errors with vectors.}
+    \FunctionTok{__sub__}
+    \FunctionTok{__rsub__}
+    \CommentTok{# sub : scalars and vectors, can have errors with vectors.}
+    \FunctionTok{__truediv__}
+    \FunctionTok{__rtruediv__}
+    \CommentTok{# div : only scalars.}
+    \FunctionTok{__mul__}
+    \FunctionTok{__rmul__}
+    \CommentTok{# mul : scalars and vectors, can have errors with vectors, }
+    \CommentTok{# return a scalar if we perform Vector * Vector (dot product)}
+    \FunctionTok{__str__}
+    \FunctionTok{__repr__}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{vectors-authorized-operations-are}{%
+\subsection{Vectors authorized operations
+are:}\label{vectors-authorized-operations-are}}
+
+​
+
+\begin{itemize}
+\tightlist
+\item
+  Addition between two vectors of same dimension (m * 1)
+\end{itemize}
+
+\large
+
+\[
+x + y = 
+\begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} + 
+\begin{bmatrix} y_1 \\ \vdots \\ y_m\end{bmatrix} 
+= \begin{bmatrix} x_1 + y_1 \\ \vdots \\ x_m + y_m \end{bmatrix}
+\] \normalsize ​
+
+\begin{itemize}
+\tightlist
+\item
+  Substraction between two vectors of same dimension (m * 1)
+\end{itemize}
+
+\large
+
+\[
+x - y = 
+\begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} - 
+\begin{bmatrix} y_1 \\ \vdots \\ y_m\end{bmatrix} 
+= \begin{bmatrix} x_1 - y_1 \\ \vdots \\ x_m - y_m \end{bmatrix}
+\] \normalsize ​
+
+\begin{itemize}
+\tightlist
+\item
+  Multiplication and division between one vector (m * 1) and one scalar
+  (1 * 1)
+\end{itemize}
+
+\large
+
+\[
+x \cdot a = \begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} 
+\cdot a = 
+\begin{bmatrix} x_1 \cdot a \\ \vdots \\ x_m \cdot a \end{bmatrix}
+\] \normalsize ​
+
+\begin{itemize}
+\tightlist
+\item
+  Mutiplication between two vectors of same dimensons (m * 1)
+\end{itemize}
+
+\large
+
+\[
+x \cdot y = \begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} 
+\cdot 
+\begin{bmatrix} y_1 \\ \vdots \\ y_m\end{bmatrix} = 
+\sum_{i = 1}^{m} x_i \cdot y_i =  x_1 \cdot y_1 + \dots + x_m \cdot y_m 
+\] \normalsize
+
+Don't forget to handle all kind of errors properly!
+
+\clearpage
+
+\hypertarget{exercise-03---the-matrix-1}{%
+\section{Exercise 03 - The Matrix}\label{exercise-03---the-matrix-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex03\tabularnewline
+Files to turn in : & matrix.py, test.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Forbidden libraries : & NumPy\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+You will provide a testing file to prove that your class works as
+expected.\\
+You will have to create a helpful class, with more options and providing
+enhanced ease of use for the user.
+
+In this exercise, you have to create a \texttt{Matrix} class. The goal
+is to have matrices and be able to perform both matrix-matrix operation
+and matrix-vector operations with them.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>}\NormalTok{ m1 }\OperatorTok{=}\NormalTok{ Matrix([[}\FloatTok{0.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{, }\FloatTok{2.0}\NormalTok{, }\FloatTok{3.0}\NormalTok{], }
+\NormalTok{                [}\FloatTok{0.0}\NormalTok{, }\FloatTok{2.0}\NormalTok{, }\FloatTok{4.0}\NormalTok{, }\FloatTok{6.0}\NormalTok{]])}
+
+\OperatorTok{>>}\NormalTok{ m2 }\OperatorTok{=}\NormalTok{ Matrix([[}\FloatTok{0.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{],}
+\NormalTok{                [}\FloatTok{2.0}\NormalTok{, }\FloatTok{3.0}\NormalTok{],}
+\NormalTok{                [}\FloatTok{4.0}\NormalTok{, }\FloatTok{5.0}\NormalTok{],}
+\NormalTok{                [}\FloatTok{6.0}\NormalTok{, }\FloatTok{7.0}\NormalTok{]])}
+\OperatorTok{>>} \BuiltInTok{print}\NormalTok{(m1 }\OperatorTok{*}\NormalTok{ m2)}
+\NormalTok{(Matrix [[}\FloatTok{28.}\NormalTok{, }\FloatTok{34.}\NormalTok{], [}\FloatTok{56.}\NormalTok{, }\FloatTok{68.}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+It has 2 attributes:
+
+\begin{itemize}
+\item
+  \texttt{data} : list of lists -\textgreater{} the elements stored in
+  the matrix
+\item
+  \texttt{shape} : by shape we means the dimensions of the matrix as a
+  tuple (rows, columns) -\textgreater{}
+  \texttt{Matrix({[}{[}0.0,\ 1.0{]},\ {[}2.0,\ 3.0{]},\ {[}4.0,\ 5.0{]}{]}).shape\ ==\ (3,\ 2)}
+\end{itemize}
+
+You should be able to initialize the object with:
+
+\begin{itemize}
+\item
+  the elements of the matrix as a list of lists:
+  \texttt{Matrix({[}{[}0.0,\ 1.0,\ 2.0,\ 3.0{]},\ {[}4.0,\ 5.0,\ 6.0,\ 7.0{]}{]})}
+  -\textgreater{} the dimensions of this matrix are then (2, 4)
+\item
+  a shape \texttt{Matrix((3,\ 3))} -\textgreater{} the matrix will be
+  filled by default with zeroes
+\item
+  the expected elements and shape
+  \texttt{Matrix({[}{[}0.0,\ 1.0,\ 2.0{]},\ {[}3.0,\ 4.0,\ 5.0{]},\ {[}6.0,\ 7.0,\ 8.0{]}{]},\ (3,\ 3))}
+\end{itemize}
+
+You will implement all the following built-in functions (called `magic
+methods') for your \texttt{Matrix} class:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \FunctionTok{__add__}
+    \FunctionTok{__radd__}
+    \CommentTok{# add : vectors and matrices, can have errors with vectors and matrices.}
+    \FunctionTok{__sub__}
+    \FunctionTok{__rsub__}
+    \CommentTok{# sub : vectors and matrices, can have errors with vectors and matrices.}
+    \FunctionTok{__truediv__}
+    \FunctionTok{__rtruediv__}
+    \CommentTok{# div : only scalars.}
+    \FunctionTok{__mul__}
+    \FunctionTok{__rmul__}
+    \CommentTok{# mul : scalars, vectors and matrices , can have errors with vectors and matrices, }
+    \CommentTok{# return a Vector if we perform Matrix * Vector (dot product)}
+    \FunctionTok{__str__}
+    \FunctionTok{__repr__}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{matrix---vector-authorized-operations-are}{%
+\subsection{Matrix - vector authorized operations
+are:}\label{matrix---vector-authorized-operations-are}}
+
+​
+
+\begin{itemize}
+\tightlist
+\item
+  Multiplication between a (m * n) matrix and a (n * 1) vector
+\end{itemize}
+
+\large
+
+\[
+X \cdot y = 
+\begin{bmatrix} x^{(1)}_1 & \dots& x^{(1)}_n \\ 
+\vdots & \ddots & \vdots \\ 
+x^{(m)}_1 & \dots & x^{(m)}_n
+\end{bmatrix} 
+\cdot 
+\begin{bmatrix} 
+y_1 \\
+\vdots \\ 
+y_n 
+\end{bmatrix} 
+= 
+\begin{bmatrix} x^{(1)} \cdot y \\ \vdots  \\ x^{(m)} \cdot y \end{bmatrix}
+\] \normalsize ​ In other words:
+
+\large
+
+\[
+X \cdot y = \begin{bmatrix} \sum_{i = 1}^{n} x_{i}^{(1)} \cdot y_i \\ \vdots \\ \sum_{i = 1}^{n} x_{i}^{(m)} \cdot y_i \end{bmatrix}
+\] \normalsize ​
+
+\hypertarget{matrix---matrix-authorized-operations-are}{%
+\subsection{Matrix - matrix authorized operations
+are:}\label{matrix---matrix-authorized-operations-are}}
+
+​
+
+\begin{itemize}
+\tightlist
+\item
+  Addition between two matrices of same dimension (m * n)
+\end{itemize}
+
+\large
+
+\[
+X + Y = 
+\begin{bmatrix} 
+x_{1}^{(1)} & \dots & x_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} & \dots & x_{n}^{(m)} 
+\end{bmatrix} +  
+\begin{bmatrix} 
+y_{1}^{(1)} & \dots & y_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+y_{1}^{(m)} & \dots & y_{n}^{(m)} 
+\end{bmatrix} = 
+\begin{bmatrix} 
+x_{1}^{(1)} + y_{1}^{(1)}  & \dots & x_{n}^{(1)} + y_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} + y_{1}^{(m)} & \dots & x_{n}^{(m)} + y_{n}^{(m)}
+\end{bmatrix}
+\] \normalsize ​
+
+\begin{itemize}
+\tightlist
+\item
+  Substraction between two matrices of same dimension (m * n)
+\end{itemize}
+
+\large
+
+\[
+X - Y = 
+\begin{bmatrix} 
+x_{1}^{(1)} & \dots & x_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} & \dots & x_{n}^{(m)} 
+\end{bmatrix} - 
+\begin{bmatrix} 
+y_{1}^{(1)} & \dots & y_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+y_{1}^{(m)} & \dots & y_{n}^{(m)} 
+\end{bmatrix} = 
+\begin{bmatrix} 
+x_{1}^{(1)} - y_{1}^{(1)}  & \dots & x_{n}^{(1)} - y_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} - y_{1}^{(m)} & \dots & x_{n}^{(m)} - y_{n}^{(m)}
+\end{bmatrix}
+\] \normalsize
+
+​
+
+\begin{itemize}
+\tightlist
+\item
+  Multiplication or division between one matrix (m * n) and one scalar
+  (1 * 1)
+\end{itemize}
+
+\large
+
+\[
+Xa = 
+\begin{bmatrix} 
+x_{1}^{(1)} & \dots & x_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} & \dots & x_{n}^{(m)} 
+\end{bmatrix} 
+\cdot a
+= 
+\begin{bmatrix} 
+x_{1}^{(1)} a  & \dots & x_{n}^{(1)} a  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} a & \dots & x_{n}^{(m)} a
+\end{bmatrix}
+\] \normalsize
+
+​
+
+\begin{itemize}
+\tightlist
+\item
+  Mutiplication between two matrices of compatible dimension: (m * n)
+  and (n * p)
+\end{itemize}
+
+\large
+
+\[
+X  Y = 
+\begin{bmatrix} 
+x_{1}^{(1)} & \dots & x_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} & \dots & x_{n}^{(m)} 
+\end{bmatrix}  
+\begin{bmatrix} 
+y_{1}^{(1)} & \dots & y_{p}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+y_{1}^{(n)} & \dots & y_{p}^{(n)} 
+\end{bmatrix} = 
+\begin{bmatrix} 
+x^{(1)} \cdot y_1  & \dots & x^{(1)} \cdot y_{p} \\ 
+\vdots & \ddots & \vdots \\ 
+x^{(m)} \cdot y_1 & \dots & x^{(m)} \cdot y_{p}
+\end{bmatrix}
+\] \normalsize
+
+In other words: ​ \large \[
+X \cdot Y = 
+\begin{bmatrix} 
+\sum_{i = 1}^{n} x_{i}^{(1)} \cdot y_{1}^{(i)} & \dots & \sum_{i=1}^{n} x_{i}^{(1)} \cdot y_{p}^{(i)} \\
+\vdots & \ddots & \vdots \\ 
+\sum_{i = 1}^{n} x_{i}^{(m)} \cdot y_{1}^{(i)} & \dots & \sum_{i=1}^{n} x_{i}^{(m)} \cdot y_{p}^{(i)} \\
+\end{bmatrix}
+\] \normalsize
+
+Don't forget to handle all kind of errors properly!
+
+\clearpage
+
+\hypertarget{exercise-04---generator-1}{%
+\section{Exercise 04 - Generator!}\label{exercise-04---generator-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex04\tabularnewline
+Files to turn in : & generator.py\tabularnewline
+Forbidden functions : & random\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+Code a function called \texttt{generator} that takes a text as input,
+uses the string \texttt{sep} as a splitting parameter, and
+\texttt{yield}s the resulting substrings.
+
+The function can take an optional argument.\\
+The options are:
+
+\begin{itemize}
+\item
+  ``shuffle'': shuffle the list of words.
+\item
+  ``unique'': return a list where each word appears only once.
+\item
+  ``ordered'': alphabetically sort the words.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# function prototype}
+\KeywordTok{def}\NormalTok{ generator(text, sep}\OperatorTok{=}\StringTok{" "}\NormalTok{, option}\OperatorTok{=}\VariableTok{None}\NormalTok{):}
+    \CommentTok{'''Option is an optional arg, sep is mandatory'''}
+\end{Highlighting}
+\end{Shaded}
+
+You can only call one option at a time.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>}\NormalTok{ text }\OperatorTok{=} \StringTok{"Le Lorem Ipsum est simplement du faux texte."}
+\OperatorTok{>>} \ControlFlowTok{for}\NormalTok{ word }\KeywordTok{in}\NormalTok{ generator(text, sep}\OperatorTok{=}\StringTok{" "}\NormalTok{):}
+\NormalTok{...     }\BuiltInTok{print}\NormalTok{(word)}
+\NormalTok{...}
+\NormalTok{Le}
+\NormalTok{Lorem}
+\NormalTok{Ipsum}
+\NormalTok{est}
+\NormalTok{simplement}
+\NormalTok{du}
+\NormalTok{faux}
+\NormalTok{texte.}
+\OperatorTok{>>} \ControlFlowTok{for}\NormalTok{ word }\KeywordTok{in}\NormalTok{ generator(text, sep}\OperatorTok{=}\StringTok{" "}\NormalTok{, option}\OperatorTok{=}\StringTok{"shuffle"}\NormalTok{):}
+\NormalTok{...     }\BuiltInTok{print}\NormalTok{(word)}
+\NormalTok{...}
+\NormalTok{simplement}
+\NormalTok{texte.}
+\NormalTok{est}
+\NormalTok{faux}
+\NormalTok{Le}
+\NormalTok{Lorem}
+\NormalTok{Ipsum}
+\NormalTok{du}
+\OperatorTok{>>} \ControlFlowTok{for}\NormalTok{ word }\KeywordTok{in}\NormalTok{ generator(text, sep}\OperatorTok{=}\StringTok{" "}\NormalTok{, option}\OperatorTok{=}\StringTok{"ordered"}\NormalTok{):}
+\NormalTok{...     }\BuiltInTok{print}\NormalTok{(word)}
+\NormalTok{...}
+\NormalTok{Ipsum}
+\NormalTok{Le}
+\NormalTok{Lorem}
+\NormalTok{du}
+\NormalTok{est}
+\NormalTok{faux}
+\NormalTok{simplement}
+\NormalTok{texte.}
+\end{Highlighting}
+\end{Shaded}
+
+The function should return ``ERROR'' one time if the \texttt{text}
+argument is not a string, or if the \texttt{option} argument is not
+valid.
+
+\clearpage
+
+\hypertarget{exercise-05---working-with-lists-1}{%
+\section{Exercise 05 - Working with
+lists}\label{exercise-05---working-with-lists-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex05\tabularnewline
+Files to turn in : & eval.py\tabularnewline
+Forbidden functions : & while\tabularnewline
+Remarks : & use zip \& enumerate\tabularnewline
+\bottomrule
+\end{longtable}
+
+Code a class \texttt{Evaluator}, that has two static functions named:
+\texttt{zip\_evaluate} and \texttt{enumerate\_evaluate}.
+
+The goal of these 2 functions is to compute the sum of the lengths of
+every \texttt{words} of a given list weighted by a list a
+\texttt{coefs}.
+
+The lists \texttt{coefs} and \texttt{words} have to be the same length.
+If this is not the case, the function should return -1.
+
+You have to obtain the desired result using \texttt{zip} in the
+\texttt{zip\_evaluate} function, and with \texttt{enumerate} in the
+\texttt{enumerate\_evaluate} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>} \ImportTok{from} \BuiltInTok{eval} \ImportTok{import}\NormalTok{ Evaluator}
+\OperatorTok{>>} 
+\OperatorTok{>>}\NormalTok{ words }\OperatorTok{=}\NormalTok{ [}\StringTok{"Le"}\NormalTok{, }\StringTok{"Lorem"}\NormalTok{, }\StringTok{"Ipsum"}\NormalTok{, }\StringTok{"est"}\NormalTok{, }\StringTok{"simple"}\NormalTok{]}
+\OperatorTok{>>}\NormalTok{ coefs }\OperatorTok{=}\NormalTok{ [}\FloatTok{1.0}\NormalTok{, }\FloatTok{2.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{, }\FloatTok{4.0}\NormalTok{, }\FloatTok{0.5}\NormalTok{]}
+\OperatorTok{>>}\NormalTok{ Evaluator.zip_evaluate(coefs, words)}
+\FloatTok{32.0}
+\OperatorTok{>>}\NormalTok{ words }\OperatorTok{=}\NormalTok{ [}\StringTok{"Le"}\NormalTok{, }\StringTok{"Lorem"}\NormalTok{, }\StringTok{"Ipsum"}\NormalTok{, }\StringTok{"n'"}\NormalTok{, }\StringTok{"est"}\NormalTok{, }\StringTok{"pas"}\NormalTok{, }\StringTok{"simple"}\NormalTok{]}
+\OperatorTok{>>}\NormalTok{ coefs }\OperatorTok{=}\NormalTok{ [}\FloatTok{0.0}\NormalTok{, }\FloatTok{-1.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{, }\FloatTok{-12.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{, }\FloatTok{42.42}\NormalTok{]}
+\OperatorTok{>>}\NormalTok{ Evaluator.enumerate_evaluate(coefs, words)}
+\DecValTok{-1}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-06---bank-account-1}{%
+\section{Exercise 06 - Bank
+Account}\label{exercise-06---bank-account-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex06\tabularnewline
+Files to turn in : & the\_bank.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+It's all about security.\\
+Have a look at the class named \texttt{Account} in the snippet of code
+below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# in the_bank.py}
+\KeywordTok{class}\NormalTok{ Account(}\BuiltInTok{object}\NormalTok{):}
+
+\NormalTok{    ID_COUNT }\OperatorTok{=} \DecValTok{1}
+
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{, name, }\OperatorTok{**}\NormalTok{kwargs):}
+        \VariableTok{self}\NormalTok{.}\BuiltInTok{id} \OperatorTok{=} \VariableTok{self}\NormalTok{.ID_COUNT}
+        \VariableTok{self}\NormalTok{.name }\OperatorTok{=}\NormalTok{ name}
+        \VariableTok{self}\NormalTok{.__dict__.update(kwargs)}
+        \ControlFlowTok{if} \BuiltInTok{hasattr}\NormalTok{(}\VariableTok{self}\NormalTok{, }\StringTok{'value'}\NormalTok{):}
+            \VariableTok{self}\NormalTok{.value }\OperatorTok{=} \DecValTok{0}
+\NormalTok{        Account.ID_COUNT }\OperatorTok{+=} \DecValTok{1}
+    
+    \KeywordTok{def}\NormalTok{ transfer(}\VariableTok{self}\NormalTok{, amount):}
+        \VariableTok{self}\NormalTok{.value }\OperatorTok{+=}\NormalTok{ amount}
+\end{Highlighting}
+\end{Shaded}
+
+Now, it is your turn to code a class named \texttt{Bank}!\\
+Its purpose will be to handle the security part of each transfer
+attempt.\\
+Security means checking if the \texttt{Account} is:
+
+\begin{itemize}
+\item
+  the right object
+\item
+  that it is not corrupted
+\item
+  and that it has enough money
+\end{itemize}
+
+How do we define if a bank account is corrupted?
+
+\begin{itemize}
+\item
+  It has an even number of attributes.
+\item
+  It has an attribute starting with \texttt{b}.
+\item
+  It has no attribute starting with \texttt{zip} or \texttt{addr}.
+\item
+  It has no attribute \texttt{name}, \texttt{id} and \texttt{value}.
+\end{itemize}
+
+A transaction is invalid if \texttt{amount\ \textless{}\ 0} or if the
+amount is larger than the funds the first account has available for
+transfer.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# in the_bank.py}
+\KeywordTok{class}\NormalTok{ Bank(}\BuiltInTok{object}\NormalTok{):}
+    \CommentTok{"""The bank"""}
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{):}
+        \VariableTok{self}\NormalTok{.account }\OperatorTok{=}\NormalTok{ []}
+
+    \KeywordTok{def}\NormalTok{ add(}\VariableTok{self}\NormalTok{, account):}
+        \VariableTok{self}\NormalTok{.account.append(account)}
+
+    \KeywordTok{def}\NormalTok{ transfer(}\VariableTok{self}\NormalTok{, origin, dest, amount):}
+        \CommentTok{"""}
+\CommentTok{            @origin:  int(id) or str(name) of the first account}
+\CommentTok{            @dest:    int(id) or str(name) of the destination account}
+\CommentTok{            @amount:  float(amount) amount to transfer}
+\CommentTok{            @return         True if success, False if an error occured}
+\CommentTok{        """}
+
+    \KeywordTok{def}\NormalTok{ fix_account(}\VariableTok{self}\NormalTok{, account):}
+        \CommentTok{"""}
+\CommentTok{            fix the corrupted account}
+\CommentTok{            @account: int(id) or str(name) of the account}
+\CommentTok{            @return         True if success, False if an error occured}
+\CommentTok{        """}
+\end{Highlighting}
+\end{Shaded}
+
+Check out the \texttt{dir} function.
+
+WARNING: YOU WILL HAVE TO MODIFY THE INSTANCES' ATTRIBUTES IN ORDER TO
+FIX THEM.
+
+\clearpage
+
+\end{document}

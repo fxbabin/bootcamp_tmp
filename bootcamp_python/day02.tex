@@ -1,0 +1,751 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8x]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=Blue,
+            urlcolor=blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{35,38,41}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.58,0.85,0.30}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.25,0.50,0.35}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.48,0.49,0.49}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.99,0.74,0.29}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.64,0.20,0.25}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.60,1.00}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.56,0.27,0.68}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.77,0.36,0.00}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.96,0.31,0.31}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{h}
+\makeatother
+
+
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{MaxMatrixCols}{20}
+\usepackage{cancel}
+\usepackage{calc}
+\usepackage{eso-pic}
+\newlength{\PageFrameTopMargin}
+\newlength{\PageFrameBottomMargin}
+\newlength{\PageFrameLeftMargin}
+\newlength{\PageFrameRightMargin}
+
+\setlength{\PageFrameTopMargin}{1.5cm}
+\setlength{\PageFrameBottomMargin}{1cm}
+\setlength{\PageFrameLeftMargin}{1cm}
+\setlength{\PageFrameRightMargin}{1cm}
+
+\makeatletter
+
+\newlength{\Page@FrameHeight}
+\newlength{\Page@FrameWidth}
+
+\AddToShipoutPicture{
+  \thinlines
+  \setlength{\Page@FrameHeight}{\paperheight-\PageFrameTopMargin-\PageFrameBottomMargin}
+  \setlength{\Page@FrameWidth}{\paperwidth-\PageFrameLeftMargin-\PageFrameRightMargin}
+  \put(\strip@pt\PageFrameLeftMargin,\strip@pt\PageFrameTopMargin){
+    \framebox(\strip@pt\Page@FrameWidth, \strip@pt\Page@FrameHeight){}}}
+
+\makeatother
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+
+\usepackage{graphicx}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\geometry{hmargin=2cm,vmargin=2cm}
+
+\usepackage{sectsty}
+
+\sectionfont{\centering\Huge}
+\subsectionfont{\Large}
+\subsubsectionfont{\large}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{40}{48} \bfseries Bootcamp}\\[0.6cm]
+    \textsc{\fontsize{39}{48} \bfseries { %bootcamp_title
+Python
+    }}\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\begin{center}
+\includegraphics[width=200pt]{assets/logo-42-ai.png}{\centering}
+\end{center}
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{32}{48} \bfseries %day_number
+Day02    
+    }\\[0.6cm]
+    \textsc{\fontsize{32}{48} \bfseries %day_title
+Basics 3    
+    }\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\pagenumbering{gobble}
+\newpage
+
+%%% >>>>> Page de garde
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\hypertarget{bootcamp-python}{%
+\section{Bootcamp Python}\label{bootcamp-python}}
+
+\hypertarget{day02---basics-3}{%
+\section{Day02 - Basics 3}\label{day02---basics-3}}
+
+Let's continue practicing with more advanced Python programming
+exercises.
+
+\hypertarget{notions-of-the-day}{%
+\subsection{Notions of the day}\label{notions-of-the-day}}
+
+Decorators, multiprocessing, lambda, build package, \ldots{}
+
+\hypertarget{general-rules}{%
+\subsection{General rules}\label{general-rules}}
+
+\begin{itemize}
+\item
+  The version of Python to use is 3.7, you can check the version of
+  Python with the following command: \texttt{python\ -V}
+\item
+  The norm: during this bootcamp you will follow the
+  \href{https://www.python.org/dev/peps/pep-0008/}{PEP 8 standards}. You
+  can install \href{https://pypi.org/project/pycodestyle}{pycodestyle}
+  which is a tool to check your Python code.
+\item
+  The function eval is never allowed.
+\item
+  The exercises are ordered from the easiest to the hardest.
+\item
+  Your exercises are going to be evaluated by someone else, so make sure
+  that your variable names and function names are appropriate and civil.
+\item
+  Your manual is the internet.
+\item
+  You can also ask questions in the dedicated channel in the 42 AI
+  Slack: 42-ai.slack.com.
+\item
+  If you find any issue or mistakes in the subject please create an
+  issue on our
+  \href{https://github.com/42-AI/bootcamp_python/issues}{dedicated
+  repository on Github}.
+\end{itemize}
+
+\hypertarget{helper}{%
+\subsection{Helper}\label{helper}}
+
+Ensure that you have the right Python version.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{> which python}
+\NormalTok{/goinfre/miniconda/bin/python}
+\NormalTok{> python -V}
+\NormalTok{Python 3.7.*}
+\NormalTok{> which pip}
+\NormalTok{/goinfre/miniconda/bin/pip}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-00---map-filter-reduce}{%
+\subsubsection{Exercise 00 - Map, filter,
+reduce}\label{exercise-00---map-filter-reduce}}
+
+\hypertarget{exercise-01---args-and-kwargs}{%
+\subsubsection{Exercise 01 - args and
+kwargs?}\label{exercise-01---args-and-kwargs}}
+
+\hypertarget{exercise-02---the-logger}{%
+\subsubsection{Exercise 02 - The
+logger}\label{exercise-02---the-logger}}
+
+\hypertarget{exercise-03---json-issues}{%
+\subsubsection{Exercise 03 - Json
+issues}\label{exercise-03---json-issues}}
+
+\hypertarget{exercise-04---minipack}{%
+\subsubsection{Exercise 04 - MiniPack}\label{exercise-04---minipack}}
+
+\hypertarget{exercise-05---tinystatistician}{%
+\subsubsection{Exercise 05 -
+TinyStatistician}\label{exercise-05---tinystatistician}}
+
+\clearpage
+
+\hypertarget{exercise-00---map-filter-reduce-1}{%
+\section{Exercise 00 - Map, filter,
+reduce}\label{exercise-00---map-filter-reduce-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex00\tabularnewline
+Files to turn in : & ft\_map.py, ft\_filter.py,
+ft\_reduce.py\tabularnewline
+Forbidden functions : & map, filter, reduce\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+Implement the higher order functions \texttt{map()}, \texttt{filter()}
+and \texttt{reduce()}. Take the time to understand the use cases of
+these three built-in functions.
+
+How they should be prototyped:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ ft_map(function_to_apply, list_of_inputs):}
+    \ControlFlowTok{pass}
+
+\KeywordTok{def}\NormalTok{ ft_filter(function_to_apply, list_of_inputs):}
+    \ControlFlowTok{pass}
+
+\KeywordTok{def}\NormalTok{ ft_reduce(function_to_apply, list_of_inputs):}
+    \ControlFlowTok{pass}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-01---args-and-kwargs-1}{%
+\section{Exercise 01 - args and
+kwargs?}\label{exercise-01---args-and-kwargs-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex01\tabularnewline
+Files to turn in : & main.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+Implement the \texttt{what\_are\_the\_vars} function that returns an
+object with the right attributes.\\
+You will have to modify the ``instance'' \texttt{ObjectC}, NOT THE
+CLASS.\\
+Have a look to \texttt{getattr}, \texttt{setattr}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ what_are_the_vars(...):}
+    \CommentTok{"""Your code"""}
+    \ControlFlowTok{pass}
+
+\KeywordTok{class}\NormalTok{ ObjectC(}\BuiltInTok{object}\NormalTok{):}
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{):}
+        \ControlFlowTok{pass}
+
+\KeywordTok{def}\NormalTok{ doom_printer(obj):}
+    \ControlFlowTok{if}\NormalTok{ obj }\KeywordTok{is} \VariableTok{None}\NormalTok{:}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{"ERROR"}\NormalTok{)}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{"end"}\NormalTok{)}
+        \ControlFlowTok{return}
+    \ControlFlowTok{for}\NormalTok{ attr }\KeywordTok{in} \BuiltInTok{dir}\NormalTok{(obj):}
+        \ControlFlowTok{if}\NormalTok{ attr[}\DecValTok{0}\NormalTok{] }\OperatorTok{!=} \StringTok{'_'}\NormalTok{:}
+\NormalTok{            value }\OperatorTok{=} \BuiltInTok{getattr}\NormalTok{(obj, attr)}
+            \BuiltInTok{print}\NormalTok{(}\StringTok{"}\SpecialCharTok{\{\}}\StringTok{: }\SpecialCharTok{\{\}}\StringTok{"}\NormalTok{.}\BuiltInTok{format}\NormalTok{(attr, value))}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"end"}\NormalTok{)}
+
+\ControlFlowTok{if} \VariableTok{__name__} \OperatorTok{==} \StringTok{"__main__"}\NormalTok{:}
+\NormalTok{    obj }\OperatorTok{=}\NormalTok{ what_are_the_vars(}\DecValTok{7}\NormalTok{)}
+\NormalTok{    doom_printer(obj)}
+\NormalTok{    obj }\OperatorTok{=}\NormalTok{ what_are_the_vars(}\StringTok{"ft_lol"}\NormalTok{, }\StringTok{"Hi"}\NormalTok{)}
+\NormalTok{    doom_printer(obj)}
+\NormalTok{    obj }\OperatorTok{=}\NormalTok{ what_are_the_vars()}
+\NormalTok{    doom_printer(obj)}
+\NormalTok{    obj }\OperatorTok{=}\NormalTok{ what_are_the_vars(}\DecValTok{12}\NormalTok{, }\StringTok{"Yes"}\NormalTok{, [}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{], a}\OperatorTok{=}\DecValTok{10}\NormalTok{, hello}\OperatorTok{=}\StringTok{"world"}\NormalTok{)}
+\NormalTok{    doom_printer(obj)}
+\NormalTok{    obj }\OperatorTok{=}\NormalTok{ what_are_the_vars(}\DecValTok{42}\NormalTok{, a}\OperatorTok{=}\DecValTok{10}\NormalTok{, var_0}\OperatorTok{=}\StringTok{"world"}\NormalTok{)}
+\NormalTok{    doom_printer(obj)}
+\end{Highlighting}
+\end{Shaded}
+
+output
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{>> python main.py}
+\NormalTok{var_0: 7}
+\NormalTok{end}
+\NormalTok{var_0: ft_lol}
+\NormalTok{var_1: Hi}
+\NormalTok{end}
+\NormalTok{end}
+\NormalTok{a: 10}
+\NormalTok{hello: world}
+\NormalTok{var_0: 12}
+\NormalTok{var_1: Yes}
+\NormalTok{var_2: [0, 0, 0]}
+\NormalTok{end}
+\NormalTok{ERROR}
+\NormalTok{end}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-02---the-logger-1}{%
+\section{Exercise 02 - The logger}\label{exercise-02---the-logger-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex02\tabularnewline
+Files to turn in : & logger.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+You are going to learn some more advanced features of Python!\\
+In this exercise, we want you to learn about decorators, and we are not
+talking about the decoration of your room.\\
+The \texttt{@log} will write info about the decorated function in a
+\texttt{machine.log} file.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ time}
+\ImportTok{from}\NormalTok{ random }\ImportTok{import}\NormalTok{ randint}
+
+\KeywordTok{class}\NormalTok{ CoffeeMachine():}
+
+\NormalTok{    water_level }\OperatorTok{=} \DecValTok{100}
+
+    \AttributeTok{@log}
+    \KeywordTok{def}\NormalTok{ start_machine(}\VariableTok{self}\NormalTok{):}
+      \ControlFlowTok{if} \VariableTok{self}\NormalTok{.water_level }\OperatorTok{>} \DecValTok{20}\NormalTok{:}
+          \ControlFlowTok{return} \VariableTok{True}
+      \ControlFlowTok{else}\NormalTok{:}
+          \BuiltInTok{print}\NormalTok{(}\StringTok{"Please add water!"}\NormalTok{)}
+          \ControlFlowTok{return} \VariableTok{False}
+    
+    \AttributeTok{@log}
+    \KeywordTok{def}\NormalTok{ boil_water(}\VariableTok{self}\NormalTok{):}
+        \ControlFlowTok{return} \StringTok{"boiling..."}
+    
+    \AttributeTok{@log}
+    \KeywordTok{def}\NormalTok{ make_coffee(}\VariableTok{self}\NormalTok{):}
+        \ControlFlowTok{if} \VariableTok{self}\NormalTok{.start_machine():}
+            \ControlFlowTok{for}\NormalTok{ _ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{20}\NormalTok{):}
+\NormalTok{                time.sleep(}\FloatTok{0.1}\NormalTok{)}
+                \VariableTok{self}\NormalTok{.water_level }\OperatorTok{-=} \DecValTok{1}
+            \BuiltInTok{print}\NormalTok{(}\VariableTok{self}\NormalTok{.boil_water())}
+            \BuiltInTok{print}\NormalTok{(}\StringTok{"Coffee is ready!"}\NormalTok{)}
+    
+    \AttributeTok{@log}
+    \KeywordTok{def}\NormalTok{ add_water(}\VariableTok{self}\NormalTok{, water_level):}
+\NormalTok{        time.sleep(randint(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+        \VariableTok{self}\NormalTok{.water_level }\OperatorTok{+=}\NormalTok{ water_level}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{"Blub blub blub..."}\NormalTok{)}
+
+
+\ControlFlowTok{if} \VariableTok{__name__} \OperatorTok{==} \StringTok{"__main__"}\NormalTok{:}
+    
+\NormalTok{    machine }\OperatorTok{=}\NormalTok{ CoffeeMachine()}
+    \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{5}\NormalTok{):}
+\NormalTok{        machine.make_coffee()}
+
+\NormalTok{    machine.make_coffee()}
+\NormalTok{    machine.add_water(}\DecValTok{70}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Terminal
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boiling...}
+\NormalTok{Coffee is ready!}
+\NormalTok{boiling...}
+\NormalTok{Coffee is ready!}
+\NormalTok{boiling...}
+\NormalTok{Coffee is ready!}
+\NormalTok{boiling...}
+\NormalTok{Coffee is ready!}
+\NormalTok{Please add water!}
+\NormalTok{Please add water!}
+\NormalTok{Blub blub blub...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{> cat machine.log}
+\NormalTok{(cmaxime)Running: Start Machine     [ exec-time = 0.001 ms ]}
+\NormalTok{(cmaxime)Running: Boil Water        [ exec-time = 0.005 ms ]}
+\NormalTok{(cmaxime)Running: Make Coffee       [ exec-time = 2.499 s  ]}
+\NormalTok{(cmaxime)Running: Start Machine     [ exec-time = 0.002 ms ]}
+\NormalTok{(cmaxime)Running: Boil Water        [ exec-time = 0.005 ms ]}
+\NormalTok{(cmaxime)Running: Make Coffee       [ exec-time = 2.618 s  ]}
+\NormalTok{(cmaxime)Running: Start Machine     [ exec-time = 0.003 ms ]}
+\NormalTok{(cmaxime)Running: Boil Water        [ exec-time = 0.004 ms ]}
+\NormalTok{(cmaxime)Running: Make Coffee       [ exec-time = 2.676 s  ]}
+\NormalTok{(cmaxime)Running: Start Machine     [ exec-time = 0.003 ms ]}
+\NormalTok{(cmaxime)Running: Boil Water        [ exec-time = 0.004 ms ]}
+\NormalTok{(cmaxime)Running: Make Coffee       [ exec-time = 2.648 s  ]}
+\NormalTok{(cmaxime)Running: Start Machine     [ exec-time = 0.011 ms ]}
+\NormalTok{(cmaxime)Running: Make Coffee       [ exec-time = 0.029 ms ]}
+\NormalTok{(cmaxime)Running: Start Machine     [ exec-time = 0.009 ms ]}
+\NormalTok{(cmaxime)Running: Make Coffee       [ exec-time = 0.024 ms ]}
+\NormalTok{(cmaxime)Running: Add Water         [ exec-time = 5.026 s  ]}
+\NormalTok{>}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-03---json-issues-1}{%
+\section{Exercise 03 - Json issues}\label{exercise-03---json-issues-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex03\tabularnewline
+Files to turn in : & csvreader.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & Context Manager\tabularnewline
+\bottomrule
+\end{longtable}
+
+The context manager will help you handle this task.
+
+Implement a \texttt{CsvReader} class that opens, reads, and parses a CSV
+file.\\
+In order to create a context manager, your class will require a few
+built-in methods: \texttt{\_\_init\_\_}, \texttt{\_\_enter\_\_} and
+\texttt{\_\_exit\_\_}.\\
+It's mandatory to close the file once the process has completed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ CsvReader():}
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{, filename}\OperatorTok{=}\VariableTok{None}\NormalTok{, sep}\OperatorTok{=}\StringTok{','}\NormalTok{, header}\OperatorTok{=}\VariableTok{False}\NormalTok{, skip_top}\OperatorTok{=}\DecValTok{0}\NormalTok{, skip_bottom}\OperatorTok{=}\DecValTok{0}\NormalTok{):}
+        \ControlFlowTok{pass}
+\end{Highlighting}
+\end{Shaded}
+
+Short for Comma-Separated Values, a CSV file is a delimited text file
+which uses a comma to separate values. Therefore, the field separator
+(or delimiter) is usually a comma \texttt{,}, but we aim to be able to
+change this parameter.\\
+You can make the class skip lines at the top and the bottom of the file,
+and also keep the first line as a header if \texttt{header} is
+\texttt{True}.
+
+The file shouldn't be corrupted (either a line with too many values or a
+line with too few values), otherwise return None. You have to handle the
+case \texttt{file\ not\ found}.
+
+You will have to also implement two methods: \texttt{getdata()} and
+\texttt{getheader()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ csvreader }\ImportTok{import}\NormalTok{ CsvReader}
+
+\ControlFlowTok{if} \VariableTok{__name__} \OperatorTok{==} \StringTok{"__main__"}\NormalTok{:}
+    \ControlFlowTok{with}\NormalTok{ CsvReader(}\StringTok{'good.csv'}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
+\NormalTok{        data }\OperatorTok{=} \BuiltInTok{file}\NormalTok{.getdata()}
+\NormalTok{        header }\OperatorTok{=} \BuiltInTok{file}\NormalTok{.getheader()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ csvreader }\ImportTok{import}\NormalTok{ CsvReader}
+
+\ControlFlowTok{if} \VariableTok{__name__} \OperatorTok{==} \StringTok{"__main__"}\NormalTok{:}
+    \ControlFlowTok{with}\NormalTok{ CsvReader(}\StringTok{'bad.csv'}\NormalTok{) }\ImportTok{as} \BuiltInTok{file}\NormalTok{:}
+        \ControlFlowTok{if} \BuiltInTok{file} \OperatorTok{==} \VariableTok{None}\NormalTok{:}
+            \BuiltInTok{print}\NormalTok{(}\StringTok{"File is corrupted"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-04---minipack-1}{%
+\section{Exercise 04 - MiniPack}\label{exercise-04---minipack-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex04\tabularnewline
+Files to turn in : & build.sh, *.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+You have to create a package called \texttt{ai42}.\\
+It will have 2 functionalities:
+
+\begin{itemize}
+\item
+  the progress bar (day00 ex10), that can be imported via
+  \texttt{import\ ai42.progressbar},
+\item
+  the logger (day02 ex02) \texttt{import\ ai42.logging.log},\\
+  You may have to rename the functions and change the architecture of
+  the package.
+\end{itemize}
+
+The package will be installed via pip using the following command:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bash build.sh && pip install ./dist/ai42-1.0.0.tar.gz}
+\end{Highlighting}
+\end{Shaded}
+
+The build.sh script has to create the \texttt{ai42-1.0.0.tar.gz} file.
+
+You can verify whether the package was properly installed by running the
+command \texttt{pip\ list} that displays the list of installed packages.
+
+\clearpage
+
+\hypertarget{exercise-05---tinystatistician-1}{%
+\section{Exercise 05 -
+TinyStatistician}\label{exercise-05---tinystatistician-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+\begin{minipage}[t]{0.54\columnwidth}\raggedleft
+Turn-in directory :\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+ex05\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.54\columnwidth}\raggedleft
+Files to turn in :\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+TinyStatistician.py\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.54\columnwidth}\raggedleft
+Forbidden functions :\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+Any function that calculates mean, median, quartiles, variance or
+standard deviation for you\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.54\columnwidth}\raggedleft
+Forbidden libraries :\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+NumPy\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.54\columnwidth}\raggedleft
+Remarks :\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+n/a\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Create a class named \texttt{TinyStatistician} which implements the
+following methods.\\
+All methods take in an array and return a new modified one.\\
+We are assuming that all inputs are correct, i.e.~you don't have to
+protect your functions against input errors.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{mean(x)} : computes the mean of a given non-empty array
+  \texttt{x}, using a for-loop and returns the mean as a float,
+  otherwise None if \texttt{x} is an empty array. This method should not
+  raise any Exception.
+\end{itemize}
+
+Given a vector \(x\) of dimension m * 1, the mathematical formula of its
+mean is: \large \[
+\mu = \cfrac{\sum_{i = 1}^{m}{x_i}}{m}
+\] \normalsize
+
+\begin{itemize}
+\item
+  \texttt{median(x)} : computes the median, also called the 50th
+  percentile, of a given non-empty darray \texttt{x}, using a for-loop
+  and returns the median as a float, otherwise None if \texttt{x} is an
+  empty array. This method should not raise any Exception.
+\item
+  \texttt{quartiles(x,\ percentile)} : computes the 1st and 3rd
+  quartiles, also called the 25th percentile and the 75th percentile, of
+  a given non-empty array \texttt{x}, using a for-loop and returns the
+  quartile as a float, otherwise None if \texttt{x} is an empty array.
+  The first parameter is the array and the second parameter is the
+  expected percentile. This method should not raise any Exception.
+\item
+  \texttt{var(x)} : computes the variance of a given non-empty array
+  \texttt{x}, using a for-loop and returns the variance as a float,
+  otherwise None if \texttt{x} is an empty array. This method should not
+  raise any Exception.
+\end{itemize}
+
+Given a vector \(x\) of dimension m * 1, the mathematical formula of its
+variance is: \large \[
+\sigma^2 = \cfrac{\sum_{i = 1}^{m}{(x_i - \mu)^2}}{m} = \cfrac{\sum_{i = 1}^{m}{[x_i - (\cfrac{1}{m}\sum_{j = 1}^{m}{x_j}})]^2}{m}
+\] \normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{std(x)} : computes the standard deviation of a given non-empty
+  array \texttt{x}, using a for-loop and returns the standard deviation
+  as a float, otherwise None if \texttt{x} is an empty array. This
+  method should not raise any Exception.
+\end{itemize}
+
+Given a vector \(x\) of dimension m * 1, the mathematical formula of its
+standard deviation is: \large \[
+\sigma = \sqrt{\cfrac{\sum_{i = 1}^{m}{(x_i - \mu)^2}}{m}} = \sqrt{\cfrac{\sum_{i = 1}^{m}{[x_i - (\cfrac{1}{m}\sum_{j = 1}^{m}{x_j}})]^2}{m}}
+\] \normalsize
+
+\textbf{Examples}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>>} \ImportTok{from}\NormalTok{ TinyStatistician }\ImportTok{import}\NormalTok{ TinyStatistician}
+\OperatorTok{>>>}\NormalTok{ tstat }\OperatorTok{=}\NormalTok{ TinyStatistician()}
+\OperatorTok{>>>}\NormalTok{ a }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{59}\NormalTok{]}
+
+\OperatorTok{>>>}\NormalTok{ tstat.mean(a)}
+\DecValTok{82}\NormalTok{,}\DecValTok{4}
+
+\OperatorTok{>>>}\NormalTok{ tstat.median(a)}
+\FloatTok{42.0}
+
+\OperatorTok{>>>}\NormalTok{ tstat.quartile(a, }\DecValTok{25}\NormalTok{)}
+\FloatTok{10.0}
+
+\OperatorTok{>>>}\NormalTok{ tstat.quartile(a, }\DecValTok{75}\NormalTok{)}
+\FloatTok{59.0}
+
+\OperatorTok{>>>}\NormalTok{ tstat.var(a)}
+\FloatTok{12279.439999999999}
+
+\OperatorTok{>>>}\NormalTok{ tstat.std(a)}
+\FloatTok{110.81263465868862}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\end{document}

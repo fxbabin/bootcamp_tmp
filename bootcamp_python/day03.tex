@@ -1,0 +1,847 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8x]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=Blue,
+            urlcolor=blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{35,38,41}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.58,0.85,0.30}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.25,0.50,0.35}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.48,0.49,0.49}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.99,0.74,0.29}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.64,0.20,0.25}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.60,1.00}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.56,0.27,0.68}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.77,0.36,0.00}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.96,0.31,0.31}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{h}
+\makeatother
+
+
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{MaxMatrixCols}{20}
+\usepackage{cancel}
+\usepackage{calc}
+\usepackage{eso-pic}
+\newlength{\PageFrameTopMargin}
+\newlength{\PageFrameBottomMargin}
+\newlength{\PageFrameLeftMargin}
+\newlength{\PageFrameRightMargin}
+
+\setlength{\PageFrameTopMargin}{1.5cm}
+\setlength{\PageFrameBottomMargin}{1cm}
+\setlength{\PageFrameLeftMargin}{1cm}
+\setlength{\PageFrameRightMargin}{1cm}
+
+\makeatletter
+
+\newlength{\Page@FrameHeight}
+\newlength{\Page@FrameWidth}
+
+\AddToShipoutPicture{
+  \thinlines
+  \setlength{\Page@FrameHeight}{\paperheight-\PageFrameTopMargin-\PageFrameBottomMargin}
+  \setlength{\Page@FrameWidth}{\paperwidth-\PageFrameLeftMargin-\PageFrameRightMargin}
+  \put(\strip@pt\PageFrameLeftMargin,\strip@pt\PageFrameTopMargin){
+    \framebox(\strip@pt\Page@FrameWidth, \strip@pt\Page@FrameHeight){}}}
+
+\makeatother
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+
+\usepackage{graphicx}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\geometry{hmargin=2cm,vmargin=2cm}
+
+\usepackage{sectsty}
+
+\sectionfont{\centering\Huge}
+\subsectionfont{\Large}
+\subsubsectionfont{\large}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{40}{48} \bfseries Bootcamp}\\[0.6cm]
+    \textsc{\fontsize{39}{48} \bfseries { %bootcamp_title
+Python
+    }}\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\begin{center}
+\includegraphics[width=200pt]{assets/logo-42-ai.png}{\centering}
+\end{center}
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{32}{48} \bfseries %day_number
+Day03    
+    }\\[0.6cm]
+    \textsc{\fontsize{32}{48} \bfseries %day_title
+NumPy    
+    }\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\pagenumbering{gobble}
+\newpage
+
+%%% >>>>> Page de garde
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\hypertarget{bootcamp-python}{%
+\section{Bootcamp Python}\label{bootcamp-python}}
+
+\hypertarget{day03---numpy}{%
+\section{Day03 - NumPy}\label{day03---numpy}}
+
+Today you will learn how to use the Python library that will allow you
+to manipulate multidimensional arrays (vectors, matrices,
+tensors\ldots{}) and perform complex mathematical operations on them.
+
+\hypertarget{notions-of-the-day}{%
+\subsection{Notions of the day}\label{notions-of-the-day}}
+
+NumPy array, slicing, stacking, dimensions, broadcasting, normalization,
+etc\ldots{}
+
+\hypertarget{general-rules}{%
+\subsection{General rules}\label{general-rules}}
+
+\begin{itemize}
+\item
+  Use the NumPy Library: use NumPy's built-in functions as much as
+  possible. Here you will be given no credit for reinventing the wheel.
+\item
+  The version of Python to use is 3.7, you can check the version of
+  Python with the following command: \texttt{python\ -V}
+\item
+  The norm: during this bootcamp you will follow the
+  \href{https://www.python.org/dev/peps/pep-0008/}{PEP 8 standards}. You
+  can install \href{https://pypi.org/project/pycodestyle}{pycodestyle}
+  which is a tool to check your Python code.
+\item
+  The function eval is never allowed.
+\item
+  The exercises are ordered from the easiest to the hardest.
+\item
+  Your exercises are going to be evaluated by someone else, so make sure
+  that your variable names and function names are appropriate and civil.
+\item
+  Your manual is the internet.
+\item
+  You can also ask questions in the dedicated channel in the 42 AI
+  Slack: 42-ai.slack.com.
+\item
+  If you find any issue or mistakes in the subject please create an
+  issue on our
+  \href{https://github.com/42-AI/bootcamp_python/issues}{dedicated
+  repository on Github}.
+\end{itemize}
+
+\hypertarget{helper}{%
+\subsection{Helper}\label{helper}}
+
+For this day you will use the image provided in the \texttt{resources}
+folder
+
+Ensure that you have the right Python version.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{> which python}
+\NormalTok{/goinfre/miniconda/bin/python}
+\NormalTok{> python -V}
+\NormalTok{Python 3.7.*}
+\NormalTok{> which pip}
+\NormalTok{/goinfre/miniconda/bin/pip}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-00---numpycreator}{%
+\subsubsection{Exercise 00 -
+NumPyCreator}\label{exercise-00---numpycreator}}
+
+\hypertarget{exercise-01---imageprocessor}{%
+\subsubsection{Exercise 01 -
+ImageProcessor}\label{exercise-01---imageprocessor}}
+
+\hypertarget{exercise-02---scrapbooker}{%
+\subsubsection{Exercise 02 -
+ScrapBooker}\label{exercise-02---scrapbooker}}
+
+\hypertarget{exercise-03---colorfilter}{%
+\subsubsection{Exercise 03 -
+ColorFilter}\label{exercise-03---colorfilter}}
+
+\hypertarget{exercise-04---k-means-clustering}{%
+\subsubsection{Exercise 04 - K-means
+Clustering}\label{exercise-04---k-means-clustering}}
+
+\clearpage
+
+\hypertarget{exercise-00---numpycreator-1}{%
+\section{Exercise 00 -
+NumPyCreator}\label{exercise-00---numpycreator-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex00\tabularnewline
+Files to turn in : & NumPyCreator.py\tabularnewline
+Allowed libraries : & NumPy\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+Write a class named NumPyCreator, which will implement all of the
+following methods.\\
+Each method receives as an argument a different type of data structure
+and transforms it into a NumPy array:
+
+\begin{itemize}
+\item
+  \texttt{from\_list(lst)} : takes in a list and returns its
+  corresponding NumPy array.
+\item
+  \texttt{from\_tuple(tpl)} : takes in a tuple and returns its
+  corresponding NumPy array.
+\item
+  \texttt{from\_iterable(itr)} : takes in an iterable and returns an
+  array which contains all of its elements.
+\item
+  \texttt{from\_shape(shape,\ value)} : returns an array filled with the
+  same value.\\
+  The first argument is a tuple which specifies the shape of the array,
+  and the second argument specifies the value of all the elements. This
+  value must be 0 by default.
+\item
+  \texttt{random(shape)} : returns an array filled with random values.\\
+  It takes as an argument a tuple which specifies the shape of the
+  array.
+\item
+  \texttt{identity(n)} : returns an array representing the identity
+  matrix of size n.
+\end{itemize}
+
+\texttt{BONUS} : Add to those methods an optional argument which
+specifies the datatype (dtype) of the array (e.g.~if you want its
+elements to be represented as integers, floats, \ldots{})
+
+\texttt{NOTE} : All those methods can be implemented in one line. You
+only need to find the right NumPy functions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>>} \ImportTok{from}\NormalTok{ NumPyCreator }\ImportTok{import}\NormalTok{ NumPyCreator}
+\OperatorTok{>>>}\NormalTok{ npc }\OperatorTok{=}\NormalTok{ NumPyCreator()}
+
+\OperatorTok{>>>}\NormalTok{ npc.from_list([[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{],[}\DecValTok{6}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{]])}
+\NormalTok{array([[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{],}
+\NormalTok{       [}\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{]])}
+
+\OperatorTok{>>>}\NormalTok{ npc.from_tuple((}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{))}
+\NormalTok{array([}\StringTok{'a'}\NormalTok{, }\StringTok{'b'}\NormalTok{, }\StringTok{'c'}\NormalTok{])}
+
+\OperatorTok{>>>}\NormalTok{ npc.from_iterable(}\BuiltInTok{range}\NormalTok{(}\DecValTok{5}\NormalTok{))}
+\NormalTok{array([}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{])}
+
+\OperatorTok{>>>}\NormalTok{ shape}\OperatorTok{=}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{)}
+\OperatorTok{>>>}\NormalTok{ npc.from_shape(shape)}
+\NormalTok{array([[}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{],}
+\NormalTok{       [}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{],}
+\NormalTok{       [}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{]])}
+
+\OperatorTok{>>>}\NormalTok{ npc.random(shape)}
+\NormalTok{array([[}\FloatTok{0.57055863}\NormalTok{, }\FloatTok{0.23519999}\NormalTok{, }\FloatTok{0.56209311}\NormalTok{, }\FloatTok{0.79231567}\NormalTok{, }\FloatTok{0.213768}\NormalTok{  ],}
+\NormalTok{      [}\FloatTok{0.39608366}\NormalTok{, }\FloatTok{0.18632147}\NormalTok{, }\FloatTok{0.80054602}\NormalTok{, }\FloatTok{0.44905766}\NormalTok{, }\FloatTok{0.81313615}\NormalTok{],}
+\NormalTok{      [}\FloatTok{0.79585328}\NormalTok{, }\FloatTok{0.00660962}\NormalTok{, }\FloatTok{0.92910958}\NormalTok{, }\FloatTok{0.9905421}\NormalTok{ , }\FloatTok{0.05244791}\NormalTok{]])}
+
+\OperatorTok{>>>}\NormalTok{ npc.identity(}\DecValTok{4}\NormalTok{)}
+\NormalTok{array([[}\FloatTok{1.}\NormalTok{, }\FloatTok{0.}\NormalTok{, }\FloatTok{0.}\NormalTok{, }\FloatTok{0.}\NormalTok{],}
+\NormalTok{       [}\FloatTok{0.}\NormalTok{, }\FloatTok{1.}\NormalTok{, }\FloatTok{0.}\NormalTok{, }\FloatTok{0.}\NormalTok{],}
+\NormalTok{       [}\FloatTok{0.}\NormalTok{, }\FloatTok{0.}\NormalTok{, }\FloatTok{1.}\NormalTok{, }\FloatTok{0.}\NormalTok{],}
+\NormalTok{       [}\FloatTok{0.}\NormalTok{, }\FloatTok{0.}\NormalTok{, }\FloatTok{0.}\NormalTok{, }\FloatTok{1.}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-01---imageprocessor-1}{%
+\section{Exercise 01 -
+ImageProcessor}\label{exercise-01---imageprocessor-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex01\tabularnewline
+Files to turn in : & ImageProcessor.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Helpful libraries : & Matplotlib\tabularnewline
+\bottomrule
+\end{longtable}
+
+Build a tool that will be helpful to load and display images in the
+upcoming exercises.
+
+Write a class named \texttt{ImageProcessor} that implements the
+following methods:
+
+\begin{itemize}
+\item
+  \texttt{load(path)} : opens the .png file specified by the
+  \texttt{path} argument and returns an array with the RGB values of the
+  image pixels.\\
+  It must display a message specifying the dimensions of the image
+  (e.g.~340 x 500).
+\item
+  \texttt{display(array)} : takes a NumPy array as an argument and
+  displays the corresponding RGB image.
+\end{itemize}
+
+\texttt{NOTE} : You can use the library of your choice for this
+exercise, but converting the image to a NumPy array is mandatory. The
+goal of this exercise is to dispense with the technicality of loading
+and displaying images, so that you can focus on array manipulation in
+the upcoming exercises.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>>} \ImportTok{from}\NormalTok{ ImageProcessor }\ImportTok{import}\NormalTok{ ImageProcessor}
+\OperatorTok{>>>}\NormalTok{ imp }\OperatorTok{=}\NormalTok{ ImageProcessor()}
+\OperatorTok{>>>}\NormalTok{ arr }\OperatorTok{=}\NormalTok{ imp.load(}\StringTok{"../resources/42AI.png"}\NormalTok{)}
+\NormalTok{Loading image of dimensions }\DecValTok{200}\NormalTok{ x }\DecValTok{200}
+\OperatorTok{>>>}\NormalTok{ arr}
+\NormalTok{array([[[}\FloatTok{0.03529412}\NormalTok{, }\FloatTok{0.12156863}\NormalTok{, }\FloatTok{0.3137255}\NormalTok{ ],}
+\NormalTok{        [}\FloatTok{0.03921569}\NormalTok{, }\FloatTok{0.1254902}\NormalTok{ , }\FloatTok{0.31764707}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.04313726}\NormalTok{, }\FloatTok{0.12941177}\NormalTok{, }\FloatTok{0.3254902}\NormalTok{ ],}
+\NormalTok{        ...,}
+\NormalTok{        [}\FloatTok{0.02745098}\NormalTok{, }\FloatTok{0.07450981}\NormalTok{, }\FloatTok{0.22745098}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.02745098}\NormalTok{, }\FloatTok{0.07450981}\NormalTok{, }\FloatTok{0.22745098}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.02352941}\NormalTok{, }\FloatTok{0.07058824}\NormalTok{, }\FloatTok{0.22352941}\NormalTok{]],}
+
+\NormalTok{       [[}\FloatTok{0.03921569}\NormalTok{, }\FloatTok{0.11764706}\NormalTok{, }\FloatTok{0.30588236}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03529412}\NormalTok{, }\FloatTok{0.11764706}\NormalTok{, }\FloatTok{0.30980393}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03921569}\NormalTok{, }\FloatTok{0.12156863}\NormalTok{, }\FloatTok{0.30980393}\NormalTok{],}
+\NormalTok{        ...,}
+\NormalTok{        [}\FloatTok{0.02352941}\NormalTok{, }\FloatTok{0.07450981}\NormalTok{, }\FloatTok{0.22745098}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.02352941}\NormalTok{, }\FloatTok{0.07450981}\NormalTok{, }\FloatTok{0.22745098}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.02352941}\NormalTok{, }\FloatTok{0.07450981}\NormalTok{, }\FloatTok{0.22745098}\NormalTok{]],}
+
+\NormalTok{       [[}\FloatTok{0.03137255}\NormalTok{, }\FloatTok{0.10980392}\NormalTok{, }\FloatTok{0.2901961}\NormalTok{ ],}
+\NormalTok{        [}\FloatTok{0.03137255}\NormalTok{, }\FloatTok{0.11372549}\NormalTok{, }\FloatTok{0.29803923}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03529412}\NormalTok{, }\FloatTok{0.11764706}\NormalTok{, }\FloatTok{0.30588236}\NormalTok{],}
+\NormalTok{        ...,}
+\NormalTok{        [}\FloatTok{0.02745098}\NormalTok{, }\FloatTok{0.07450981}\NormalTok{, }\FloatTok{0.23137255}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.02352941}\NormalTok{, }\FloatTok{0.07450981}\NormalTok{, }\FloatTok{0.22745098}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.02352941}\NormalTok{, }\FloatTok{0.07450981}\NormalTok{, }\FloatTok{0.22745098}\NormalTok{]],}
+
+\NormalTok{       ...,}
+
+\NormalTok{       [[}\FloatTok{0.03137255}\NormalTok{, }\FloatTok{0.07450981}\NormalTok{, }\FloatTok{0.21960784}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03137255}\NormalTok{, }\FloatTok{0.07058824}\NormalTok{, }\FloatTok{0.21568628}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03137255}\NormalTok{, }\FloatTok{0.07058824}\NormalTok{, }\FloatTok{0.21960784}\NormalTok{],}
+\NormalTok{        ...,}
+\NormalTok{        [}\FloatTok{0.03921569}\NormalTok{, }\FloatTok{0.10980392}\NormalTok{, }\FloatTok{0.2784314}\NormalTok{ ],}
+\NormalTok{        [}\FloatTok{0.03921569}\NormalTok{, }\FloatTok{0.10980392}\NormalTok{, }\FloatTok{0.27450982}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03921569}\NormalTok{, }\FloatTok{0.10980392}\NormalTok{, }\FloatTok{0.27450982}\NormalTok{]],}
+
+\NormalTok{       [[}\FloatTok{0.03137255}\NormalTok{, }\FloatTok{0.07058824}\NormalTok{, }\FloatTok{0.21960784}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03137255}\NormalTok{, }\FloatTok{0.07058824}\NormalTok{, }\FloatTok{0.21568628}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03137255}\NormalTok{, }\FloatTok{0.07058824}\NormalTok{, }\FloatTok{0.21568628}\NormalTok{],}
+\NormalTok{        ...,}
+\NormalTok{        [}\FloatTok{0.03921569}\NormalTok{, }\FloatTok{0.10588235}\NormalTok{, }\FloatTok{0.27058825}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03921569}\NormalTok{, }\FloatTok{0.10588235}\NormalTok{, }\FloatTok{0.27058825}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03921569}\NormalTok{, }\FloatTok{0.10588235}\NormalTok{, }\FloatTok{0.27058825}\NormalTok{]],}
+
+\NormalTok{       [[}\FloatTok{0.03137255}\NormalTok{, }\FloatTok{0.07058824}\NormalTok{, }\FloatTok{0.21960784}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03137255}\NormalTok{, }\FloatTok{0.07058824}\NormalTok{, }\FloatTok{0.21176471}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03137255}\NormalTok{, }\FloatTok{0.07058824}\NormalTok{, }\FloatTok{0.21568628}\NormalTok{],}
+\NormalTok{        ...,}
+\NormalTok{        [}\FloatTok{0.03921569}\NormalTok{, }\FloatTok{0.10588235}\NormalTok{, }\FloatTok{0.26666668}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03921569}\NormalTok{, }\FloatTok{0.10588235}\NormalTok{, }\FloatTok{0.26666668}\NormalTok{],}
+\NormalTok{        [}\FloatTok{0.03921569}\NormalTok{, }\FloatTok{0.10588235}\NormalTok{, }\FloatTok{0.26666668}\NormalTok{]]], dtype}\OperatorTok{=}\NormalTok{float32)}
+\OperatorTok{>>>}\NormalTok{ imp.display(arr)}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-02---scrapbooker-1}{%
+\section{Exercise 02 - ScrapBooker}\label{exercise-02---scrapbooker-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex02\tabularnewline
+Files to turn in : & ScrapBooker.py\tabularnewline
+Allowed libraries : & NumPy\tabularnewline
+Notions : & Slicing\tabularnewline
+\bottomrule
+\end{longtable}
+
+Write a class named \texttt{ScrapBooker} which implements the following
+methods.\\
+All methods take in a NumPy array and return a new modified one.\\
+We are assuming that all inputs are correct, i.e.~you don't have to
+protect your functions against input errors.
+
+\begin{itemize}
+\item
+  \texttt{crop(array,\ dimensions,\ position)} : crops the image as a
+  rectangle with the given \texttt{dimensions} (meaning, the new height
+  and width for the image), whose top left corner is given by the
+  \texttt{position} argument. The position should be (0,0) by default.
+  You have to consider it an error (and handle said error) if
+  \texttt{dimensions} is larger than the current image size.
+\item
+  \texttt{thin(array,\ n,\ axis)} : deletes every n-th pixel row along
+  the specified axis (0 vertical, 1 horizontal), example below.
+\item
+  \texttt{juxtapose(array,\ n,\ axis)} : juxtaposes \texttt{n} copies of
+  the image along the specified axis (0 vertical, 1 horizontal).
+\item
+  \texttt{mosaic(array,\ dimensions)} : makes a grid with multiple
+  copies of the array. The \texttt{dimensions} argument specifies the
+  dimensions (meaning the height and width) of the grid (e.g.~2x3).
+\end{itemize}
+
+\texttt{NOTE} : In this exercise, when specifying positions or
+dimensions, we will assume that the first coordinate is counted along
+the vertical axis starting from the TOP, and that the second coordinate
+is counted along the horizontal axis starting from the left. Indexing
+starts from 0.
+
+e.g.:\\
+(1,3)\\
+\ldots{}..\\
+\ldots{}x.\\
+\ldots{}..
+
+example for thin:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{perform thin with n=3 and axis=0:}
+\NormalTok{ABCDEFGHIJQL        ABDEGHJQ}
+\NormalTok{ABCDEFGHIJQL        ABDEGHJQ}
+\NormalTok{ABCDEFGHIJQL        ABDEGHJQ}
+\NormalTok{ABCDEFGHIJQL        ABDEGHJQ}
+\NormalTok{ABCDEFGHIJQL        ABDEGHJQ}
+\NormalTok{ABCDEFGHIJQL  ==>   ABDEGHJQ}
+\NormalTok{ABCDEFGHIJQL        ABDEGHJQ}
+\NormalTok{ABCDEFGHIJQL        ABDEGHJQ}
+\NormalTok{ABCDEFGHIJQL        ABDEGHJQ}
+\NormalTok{ABCDEFGHIJQL        ABDEGHJQ}
+\NormalTok{ABCDEFGHIJQL        ABDEGHJQ}
+
+\NormalTok{perform thin with n=4 and axis=1:}
+\NormalTok{AAAAAAAAAAAA        }
+\NormalTok{BBBBBBBBBBBB        AAAAAAAAAAAA}
+\NormalTok{CCCCCCCCCCCC        BBBBBBBBBBBB}
+\NormalTok{DDDDDDDDDDDD        CCCCCCCCCCCC}
+\NormalTok{EEEEEEEEEEEE        EEEEEEEEEEEE}
+\NormalTok{FFFFFFFFFFFF  ==>   FFFFFFFFFFFF}
+\NormalTok{GGGGGGGGGGGG        GGGGGGGGGGGG}
+\NormalTok{HHHHHHHHHHHH        IIIIIIIIIIII}
+\NormalTok{IIIIIIIIIIII        JJJJJJJJJJJJ}
+\NormalTok{JJJJJJJJJJJJ        KKKKKKKKKKKK}
+\NormalTok{KKKKKKKKKKKK        }
+\NormalTok{LLLLLLLLLLLL        }
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-03---colorfilter-1}{%
+\section{Exercise 03 - ColorFilter}\label{exercise-03---colorfilter-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex03\tabularnewline
+Files to turn in : & ColorFilter.py\tabularnewline
+Forbidden functions : & See each method\tabularnewline
+Notions : & Broadcasting\tabularnewline
+\bottomrule
+\end{longtable}
+
+Now you will build a tool that can apply a variety of color filters on
+images. For this exercise, the authorized functions and operators are
+specified for each methods. You are not allowed to use anything else.
+
+Write a class named \texttt{ColorFilter} which implements the following
+methods:
+
+\begin{itemize}
+\item
+  \texttt{invert(array)} : Takes a NumPy array of an image as an
+  argument and returns an array with inverted color.\\
+  Authorized functions: None\\
+  Authorized operator: -
+\item
+  \texttt{to\_blue(array)} : Takes a NumPy array of an image as an
+  argument and returns an array with a blue filter.\\
+  Authorized functions: .zeros, .shape\\
+  Authorized operator: None
+\item
+  \texttt{to\_green(array)} : Takes a NumPy array of an image as an
+  argument and returns an array with a green filter.\\
+  Authorized functions: None\\
+  Authorized operator: *
+\item
+  \texttt{to\_red(array)} : Takes a NumPy array of an image as an
+  argument and returns an array with a red filter.\\
+  Authorized functions : green, blue\\
+  Authorized operator: -, +
+\item
+  \texttt{celluloid(array)} : Takes a NumPy array of an image as an
+  argument, and returns an array with a celluloid shade filter. The
+  celluloid filter must display at least four thresholds of shades. Be
+  careful! You are not asked to apply black contour on the object here
+  (you will have to, but later\ldots{}), you only have to work on the
+  shades of your images.\\
+  Authorized functions: .arange, linspace
+\end{itemize}
+
+\texttt{Bonus}: add an argument to your method to let the user choose
+the number of thresholds.\\
+Authorized functions: .vectorize, .arange\\
+Authorized operator: None
+
+\begin{itemize}
+\item
+  \texttt{to\_grayscale(array,\ filter)} : Takes a NumPy array of an
+  image as an argument and returns an array in grayscale. The method
+  takes another argument to select between two possible grayscale
+  filters. Each filter has specific authorized functions and operators.
+
+  \begin{itemize}
+  \item
+    `mean' or `m' : Takes a NumPy array of an image as an argument and
+    returns an array in grayscale created from the mean of the RBG
+    channels.\\
+    Authorized functions: .sum, .shape, reshape, broadcast\_to,
+    as\_type\\
+    Authorized operator: /
+  \item
+    `weighted' or `w' : Takes a NumPy array of an image as an argument
+    and returns an array in weighted grayscale. This argument should be
+    selected by default if not given.\\
+    The usual weighted grayscale is calculated as : 0.299 * R\_channel +
+    0.587 * G\_channel + 0.114 * B\_channel.\\
+    Authorized functions: .sum, .shape, .tile\\
+    Authorized operator: *
+  \end{itemize}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>>} \ImportTok{from}\NormalTok{ ImageProcessor }\ImportTok{import}\NormalTok{ ImageProcessor}
+\OperatorTok{>>>}\NormalTok{ imp }\OperatorTok{=}\NormalTok{ ImageProcessor()}
+\OperatorTok{>>>}\NormalTok{ arr }\OperatorTok{=}\NormalTok{ imp.load(}\StringTok{"../42AI.png"}\NormalTok{)}
+\NormalTok{Loading image of dimensions }\DecValTok{200}\NormalTok{ x }\DecValTok{200}
+\OperatorTok{>>>} \ImportTok{from}\NormalTok{ ColorFilter }\ImportTok{import}\NormalTok{ ColorFilter}
+\OperatorTok{>>>}\NormalTok{ cf }\OperatorTok{=}\NormalTok{ ColorFilter()}
+\OperatorTok{>>>}\NormalTok{ cf.invert(arr)}
+\OperatorTok{>>>}
+\OperatorTok{>>>}\NormalTok{ cf.to_green(arr)}
+\OperatorTok{>>>}
+\OperatorTok{>>>}\NormalTok{ cf.to_red(arr)}
+\OperatorTok{>>>}
+\OperatorTok{>>>}\NormalTok{ cf.to_blue(arr)}
+\OperatorTok{>>>}
+\OperatorTok{>>>}\NormalTok{ cf.to_celluloid(arr)}
+\OperatorTok{>>>}
+\OperatorTok{>>>}\NormalTok{ cf.to_grayscale(arr, }\StringTok{'m'}\NormalTok{)}
+\OperatorTok{>>>}
+\OperatorTok{>>>}\NormalTok{ cf.to_grayscale(arr, }\StringTok{'weigthed'}\NormalTok{)}
+\OperatorTok{>>>}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Examples}
+
+From this base image:
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/img.png}
+\caption{Elon Musk}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/inv.png}
+\caption{invert}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/blue.png}
+\caption{to\_blue}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/green.png}
+\caption{to\_green}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/red.png}
+\caption{to\_red}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/cell.png}
+\caption{celluloid}
+\end{figure}
+
+\clearpage
+
+\hypertarget{exercise-04---k-means-clustering-1}{%
+\section{Exercise 04 - K-means
+Clustering}\label{exercise-04---k-means-clustering-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex04\tabularnewline
+Files to turn in : & Kmeans.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+ALERT! DATA CORRUPTED
+
+\textbf{Objective:}
+
+The solar system census dataset is corrupted! The citizens' homelands
+are missing!\\
+You must implement the K-means clustering algorithm in order to recover
+the citizens' origins.
+
+On this web-page you can find good explanations on how K-means is
+working:\\
+\href{https://bigdata-madesimple.com/possibly-the-simplest-way-to-explain-k-means-algorithm/}{Possibly
+the simplest way to explain K-Means algorithm}
+
+The missing part is how to compute the distance between 2 data points
+(cluster centroid or a row in the data).\\
+In our case the data we have to process is composed of 3 values (height,
+weight and bone\_density). Thus, each data point is a vector of 3
+values.\\
+Now that we have mathematically defined our data points (vector of 3
+values), it is then very easy to compute the distance between two points
+using vector properties. You can use L1 distance, L2 distance, cosine
+similarity, and so forth\ldots{} Choosing the distance to use is called
+hyperparameter tuning. I would suggest you to try with the easiest
+setting (L1 distance) first.\\
+What you will notice is that the final result of the
+``training''/``fitting'' will depend a lot on the random initialization.
+Commonly, in machine-learning libraries, K-means is run multiple times
+(with different random initializations) and the best result is saved.
+
+NB: To implement the fit function, keep in mind that a centroid can be
+considered as the gravity center of a set of points.
+
+\textbf{Instructions:}
+
+Create the class \texttt{KmeansClustering} with the following methods:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ KmeansClustering:}
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{, max_iter}\OperatorTok{=}\DecValTok{20}\NormalTok{, ncentroid}\OperatorTok{=}\DecValTok{5}\NormalTok{):}
+        \VariableTok{self}\NormalTok{.ncentroid }\OperatorTok{=}\NormalTok{ ncentroid }\CommentTok{# number of centroids}
+        \VariableTok{self}\NormalTok{.max_iter }\OperatorTok{=}\NormalTok{ max_iter }\CommentTok{# number of max iterations to update the centroids}
+        \VariableTok{self}\NormalTok{.centroids }\OperatorTok{=}\NormalTok{ [] }\CommentTok{# values of the centroids}
+        
+    \KeywordTok{def}\NormalTok{ fit(}\VariableTok{self}\NormalTok{, X):}
+        \CommentTok{"""}
+\CommentTok{        Run the K-means clustering algorithm.}
+\CommentTok{        For the location of the initial centroids, random pick ncentroids from the dataset.}
+\CommentTok{        Args:}
+\CommentTok{          X: has to be an numpy.ndarray, a matrice of dimension m * n.}
+\CommentTok{        Returns:}
+\CommentTok{          None.}
+\CommentTok{        Raises:}
+\CommentTok{          This function should not raise any Exception.}
+\CommentTok{        """}
+
+    \KeywordTok{def}\NormalTok{ predict(}\VariableTok{self}\NormalTok{, X):}
+        \CommentTok{"""}
+\CommentTok{        Predict from wich cluster each datapoint belongs to.}
+\CommentTok{        Args:}
+\CommentTok{          X: has to be an numpy.ndarray, a matrice of dimension m * n.}
+\CommentTok{        Returns:}
+\CommentTok{          the prediction has a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{        Raises:}
+\CommentTok{          This function should not raise any Exception.}
+\CommentTok{        """}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Dataset:}
+
+The dataset, named \textbf{solar\_system\_census} can be found in the
+resources folder.\\
+It is a part of the solar system census dataset, and contains biometric
+informations such as the height, weight, and bone density of solar
+system citizens.
+
+As you should know solar citizens come from four registered areas: The
+flying cities of Venus, United Nations of Earth, Mars Republic, and the
+Asteroids' Belt colonies.
+
+Unfortunately the data about the planets of origin was lost\ldots{}\\
+Use your K-means algorithm to recover it!\\
+Once your clusters are found, try to find matches between clusters and
+the citizens' homelands.
+
+\textbf{\emph{Hints:}}
+
+\begin{itemize}
+\item
+  People are slender on Venus than on Earth.
+\item
+  People of the Martian Republic are taller than on Earth.
+\item
+  Citizens of the Belt are the tallest of the solar system and have the
+  lowest bone density due to the lack of gravity.
+\end{itemize}
+
+\textbf{Example:}
+
+Here is an exemple of the algorithm in action:\\
+\href{https://i.ibb.co/bKFVVx2/ezgif-com-gif-maker.gif}{K-means
+animation}
+
+\clearpage
+
+\end{document}
