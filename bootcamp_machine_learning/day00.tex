@@ -1,0 +1,2404 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8x]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=Blue,
+            urlcolor=blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{35,38,41}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.58,0.85,0.30}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.25,0.50,0.35}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.48,0.49,0.49}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.99,0.74,0.29}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.64,0.20,0.25}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.60,1.00}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.56,0.27,0.68}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.77,0.36,0.00}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.96,0.31,0.31}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{h}
+\makeatother
+
+
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{MaxMatrixCols}{20}
+\usepackage{cancel}
+\usepackage{calc}
+\usepackage{eso-pic}
+\newlength{\PageFrameTopMargin}
+\newlength{\PageFrameBottomMargin}
+\newlength{\PageFrameLeftMargin}
+\newlength{\PageFrameRightMargin}
+
+\setlength{\PageFrameTopMargin}{1.5cm}
+\setlength{\PageFrameBottomMargin}{1cm}
+\setlength{\PageFrameLeftMargin}{1cm}
+\setlength{\PageFrameRightMargin}{1cm}
+
+\makeatletter
+
+\newlength{\Page@FrameHeight}
+\newlength{\Page@FrameWidth}
+
+\AddToShipoutPicture{
+  \thinlines
+  \setlength{\Page@FrameHeight}{\paperheight-\PageFrameTopMargin-\PageFrameBottomMargin}
+  \setlength{\Page@FrameWidth}{\paperwidth-\PageFrameLeftMargin-\PageFrameRightMargin}
+  \put(\strip@pt\PageFrameLeftMargin,\strip@pt\PageFrameTopMargin){
+    \framebox(\strip@pt\Page@FrameWidth, \strip@pt\Page@FrameHeight){}}}
+
+\makeatother
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+
+\usepackage{graphicx}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\geometry{hmargin=2cm,vmargin=2cm}
+
+\usepackage{sectsty}
+
+\sectionfont{\centering\Huge}
+\subsectionfont{\Large}
+\subsubsectionfont{\large}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{40}{48} \bfseries Bootcamp}\\[0.6cm]
+    \textsc{\fontsize{39}{48} \bfseries { %bootcamp_title
+Machine Learning
+    }}\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\begin{center}
+\includegraphics[width=200pt]{assets/logo-42-ai.png}{\centering}
+\end{center}
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{32}{48} \bfseries %day_number
+Day00    
+    }\\[0.6cm]
+    \textsc{\fontsize{32}{48} \bfseries %day_title
+Stepping Into Machine Learning    
+    }\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\pagenumbering{gobble}
+\newpage
+
+%%% >>>>> Page de garde
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\hypertarget{day00---stepping-into-machine-learning}{%
+\section{Day00 - Stepping Into Machine
+Learning}\label{day00---stepping-into-machine-learning}}
+
+You will start by reviewing some linear algebra and statistics. Then you
+will implement your first model and learn how to evaluate its
+performances.
+
+\hypertarget{notions-of-the-day}{%
+\subsection{Notions of the Day}\label{notions-of-the-day}}
+
+Sum, mean, variance, standard deviation, vectors and matrices
+operations.\\
+Hypothesis, model, regression, cost function.
+
+\hypertarget{useful-ressources}{%
+\subsection{Useful Ressources}\label{useful-ressources}}
+
+We strongly advise you to use the following resource:
+\href{https://www.coursera.org/learn/machine-learning/home/week/1}{Machine
+Learning MOOC - Stanford}\\
+Here are the sections of the MOOC that are relevant for today's
+exercises:
+
+\hypertarget{week-1}{%
+\subsubsection{Week 1:}\label{week-1}}
+
+\textbf{Introduction:}
+
+\begin{itemize}
+\item
+  What is Machine Learning? (Video + Reading)
+\item
+  Supervised Learning (Video + Reading)
+\item
+  Unsupervised Learning (Video + Reading)
+\item
+  Review (Reading + Quiz)
+\end{itemize}
+
+\textbf{Linear Regression with One Variable:}
+
+\begin{itemize}
+\item
+  Model Representation (Video + Reading)
+\item
+  Cost Function (Video + Reading)
+\item
+  Cost Function - Intuition I (Video + Reading)
+\item
+  Cost Function - Intuition II (Video + Reading)
+\item
+  \emph{Keep what remains for tomorow ;)}
+\end{itemize}
+
+\textbf{Linear Algebra Review:}
+
+\begin{itemize}
+\item
+  Matrices and Vectors (Video + Reading)
+\item
+  Addition and Scalar Multiplication (Video + Reading)
+\item
+  Matrix Vector Multiplication (Video + Reading)
+\item
+  Matrix Matrix Multiplication (Video + Reading)
+\item
+  Matrix Multiplication Properties (Video + Reading)
+\item
+  Inverse and Transpose (Video + Reading)
+\item
+  Review (Reading + Quiz)
+\end{itemize}
+
+\hypertarget{general-rules}{%
+\subsection{General rules}\label{general-rules}}
+
+\begin{itemize}
+\item
+  The Python version to use is 3.7, you can check with the following
+  command: \texttt{python\ -V}
+\item
+  The norm: during this bootcamp you will follow the
+  \href{https://www.python.org/dev/peps/pep-0008/}{Pep8 standards}
+\item
+  The function \texttt{eval} is never allowed.
+\item
+  The exercises are ordered from the easiest to the hardest.
+\item
+  Your exercises are going to be evaluated by someone else, so make sure
+  that your variable names and function names are appropriate and civil.
+\item
+  Your manual is the internet.
+\item
+  You can also ask questions in the \texttt{\#bootcamps} channel in
+  \href{https://42-ai.slack.com}{42AI's Slack workspace}.
+\item
+  If you find any issues or mistakes in this document, please create an
+  issue on our
+  \href{https://github.com/42-AI/bootcamp_machine-learning/issues}{dedicated
+  Github repository}.
+\end{itemize}
+
+\hypertarget{helper}{%
+\subsection{Helper}\label{helper}}
+
+Ensure that you have the right Python version.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{> which python}
+\NormalTok{/goinfre/miniconda/bin/python}
+\NormalTok{> python -V}
+\NormalTok{Python 3.7.*}
+\NormalTok{> which pip}
+\NormalTok{/goinfre/miniconda/bin/pip}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-00---the-vector}{%
+\subsubsection{Exercise 00 - The
+Vector}\label{exercise-00---the-vector}}
+
+\hypertarget{exercise-01---the-matrix}{%
+\subsubsection{Exercise 01 - The
+Matrix}\label{exercise-01---the-matrix}}
+
+\hypertarget{exercise-02---tinystatistician}{%
+\subsubsection{Exercise 02 -
+TinyStatistician}\label{exercise-02---tinystatistician}}
+
+\hypertarget{interlude---predict-evaluate-improve}{%
+\subsubsection{Interlude - Predict, Evaluate,
+Improve}\label{interlude---predict-evaluate-improve}}
+
+\hypertarget{interlude---predict}{%
+\subsubsection{Interlude - Predict}\label{interlude---predict}}
+
+\hypertarget{exercise-03---simple-prediction}{%
+\subsubsection{Exercise 03 - Simple
+Prediction}\label{exercise-03---simple-prediction}}
+
+\hypertarget{interlude---a-simple-linear-algebra-trick}{%
+\subsubsection{Interlude - A Simple Linear Algebra
+Trick}\label{interlude---a-simple-linear-algebra-trick}}
+
+\hypertarget{exercise-04---add-intercept}{%
+\subsubsection{Exercise 04 - Add
+Intercept}\label{exercise-04---add-intercept}}
+
+\hypertarget{exercise-05---prediction}{%
+\subsubsection{Exercise 05 -
+Prediction}\label{exercise-05---prediction}}
+
+\hypertarget{exercise-06---lets-make-nice-plots}{%
+\subsubsection{Exercise 06 - Let's Make Nice
+Plots}\label{exercise-06---lets-make-nice-plots}}
+
+\hypertarget{interlude---evaluate}{%
+\subsubsection{Interlude - Evaluate}\label{interlude---evaluate}}
+
+\hypertarget{exercise-07---cost-function}{%
+\subsubsection{Exercise 07 - Cost
+Function}\label{exercise-07---cost-function}}
+
+\hypertarget{interlude---fifty-shades-of-linear-algebra}{%
+\subsubsection{Interlude - Fifty Shades of Linear
+Algebra}\label{interlude---fifty-shades-of-linear-algebra}}
+
+\hypertarget{exercise-08---vectorized-cost-function}{%
+\subsubsection{Exercise 08 - Vectorized Cost
+Function}\label{exercise-08---vectorized-cost-function}}
+
+\hypertarget{exercise-09---lets-make-nice-plots-again}{%
+\subsubsection{Exercise 09 - Lets Make Nice Plots
+Again}\label{exercise-09---lets-make-nice-plots-again}}
+
+\hypertarget{exercise-10---question-time}{%
+\subsubsection{Exercise 10 - Question
+time!}\label{exercise-10---question-time}}
+
+\hypertarget{exercise-11---other-cost-runctions}{%
+\subsubsection{Exercise 11 - Other Cost
+Runctions}\label{exercise-11---other-cost-runctions}}
+
+\clearpage
+
+\hypertarget{exercise-00---the-vector.}{%
+\section{Exercise 00 - The Vector.}\label{exercise-00---the-vector.}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex00\tabularnewline
+Files to turn in : & vector.py, test.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Forbidden libraries : & Numpy\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{AI Classics:}\\
+\emph{These exercises are key assignments from the last bootcamp. If you
+haven't completed them yet, you should finish them first before you
+continue with today's exercises.}
+
+You will provide a testing file to prove that your class works as
+expected.\\
+You will have to create a helpful class, with more options and providing
+enhanced ease of use for the user.
+
+In this exercise, you have to create a \texttt{Vector} class. The goal
+is to create vectors and be able to perform mathematical operations with
+them.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>}\NormalTok{ v1 }\OperatorTok{=}\NormalTok{ Vector([}\FloatTok{0.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{, }\FloatTok{2.0}\NormalTok{, }\FloatTok{3.0}\NormalTok{])}
+\OperatorTok{>>}\NormalTok{ v2 }\OperatorTok{=}\NormalTok{ v1 }\OperatorTok{*} \DecValTok{5}
+\OperatorTok{>>} \BuiltInTok{print}\NormalTok{(v2)}
+\NormalTok{(Vector [}\FloatTok{0.0}\NormalTok{, }\FloatTok{5.0}\NormalTok{, }\FloatTok{10.0}\NormalTok{, }\FloatTok{15.0}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+It has 2 attributes:
+
+\begin{itemize}
+\item
+  \texttt{values} : list of floats
+\item
+  \texttt{size} : size of the vector -\textgreater{}
+  \texttt{Vector({[}0.0,\ 1.0,\ 2.0,\ 3.0{]}).size\ ==\ 4}
+\end{itemize}
+
+You should be able to initialize the object with:
+
+\begin{itemize}
+\item
+  a list of floats: \texttt{Vector({[}0.0,\ 1.0,\ 2.0,\ 3.0{]})}
+\item
+  a size: \texttt{Vector(3)} -\textgreater{} the vector will have
+  \texttt{values\ =\ {[}0.0,\ 1.0,\ 2.0{]}}
+\item
+  a range: \texttt{Vector((10,15))} -\textgreater{} the vector will have
+  \texttt{values\ =\ {[}10.0,\ 11.0,\ 12.0,\ 13.0,\ 14.0{]}}
+\end{itemize}
+
+You will implement all the following built-in functions (called `magic
+methods') for your \texttt{Vector} class:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \FunctionTok{__add__}
+    \FunctionTok{__radd__}
+    \CommentTok{# add : scalars and vectors, can have errors with vectors.}
+    \FunctionTok{__sub__}
+    \FunctionTok{__rsub__}
+    \CommentTok{# sub : scalars and vectors, can have errors with vectors.}
+    \FunctionTok{__truediv__}
+    \FunctionTok{__rtruediv__}
+    \CommentTok{# div : only scalars.}
+    \FunctionTok{__mul__}
+    \FunctionTok{__rmul__}
+    \CommentTok{# mul : scalars and vectors, can have errors with vectors, }
+    \CommentTok{# return a scalar if we perform Vector * Vector (dot product)}
+    \FunctionTok{__str__}
+    \FunctionTok{__repr__}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{authorized-vector-operations-are}{%
+\subsection{Authorized vector operations
+are:}\label{authorized-vector-operations-are}}
+
+\begin{itemize}
+\tightlist
+\item
+  Addition between two vectors of same dimension (m * 1)
+\end{itemize}
+
+\large
+
+\[
+x + y = 
+\begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} + 
+\begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} 
+= \begin{bmatrix} x_1 + y_1 \\ \vdots \\ x_m + y_m \end{bmatrix}
+\] \normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  Subtraction between two vectors of same dimension (m * 1)
+\end{itemize}
+
+\large
+
+\[
+x - y = 
+\begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} - 
+\begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} 
+= \begin{bmatrix} x_1 - y_1 \\ \vdots \\ x_m - y_m \end{bmatrix}
+\] \normalsize ​
+
+\begin{itemize}
+\tightlist
+\item
+  Multiplication and division between one vector (m * 1) and one scalar
+  (1 * 1)
+\end{itemize}
+
+\large
+
+\[
+x \cdot a = \begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} 
+\cdot a = 
+\begin{bmatrix} x_1 \cdot a \\ \vdots \\ x_m \cdot a \end{bmatrix}
+\] \normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  Dot product between two vectors of same dimension (m * 1)
+\end{itemize}
+
+\large
+
+\[
+x \cdot y = \begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} 
+\cdot 
+\begin{bmatrix} y_1 \\ \vdots \\ y_m\end{bmatrix} = 
+\sum_{i = 1}^{m} x_i \cdot y_i =  x_1 \cdot y_1 + \dots + x_m \cdot y_m 
+\] \normalsize
+
+Don't forget to handle all types of error properly!
+
+\clearpage
+
+\hypertarget{exercise-01---the-matrix.}{%
+\section{Exercise 01 - The Matrix.}\label{exercise-01---the-matrix.}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex01\tabularnewline
+Files to turn in : & matrix.py, test.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Forbidden libraries : & Numpy\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{AI Classics:}\\
+\emph{These exercises are key assignments from the last bootcamp. If you
+haven't completed them yet, you should finish them first before you
+continue with today's exercises.}
+
+You will provide a testing file to prove that your class works as
+expected.\\
+You will have to create a helpful class, with more options and providing
+enhanced ease of use for the user.
+
+In this exercise, you have to create a \texttt{Matrix} class. The goal
+is to have matrices and be able to perform both matrix-matrix operation
+and matrix-vector operations with them.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>}\NormalTok{ m1 }\OperatorTok{=}\NormalTok{ Matrix([[}\FloatTok{0.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{, }\FloatTok{2.0}\NormalTok{, }\FloatTok{3.0}\NormalTok{], }
+\NormalTok{                [}\FloatTok{0.0}\NormalTok{, }\FloatTok{2.0}\NormalTok{, }\FloatTok{4.0}\NormalTok{, }\FloatTok{6.0}\NormalTok{]])}
+
+\OperatorTok{>>}\NormalTok{ m2 }\OperatorTok{=}\NormalTok{ Matrix([[}\FloatTok{0.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{],}
+\NormalTok{                [}\FloatTok{2.0}\NormalTok{, }\FloatTok{3.0}\NormalTok{],}
+\NormalTok{                [}\FloatTok{4.0}\NormalTok{, }\FloatTok{5.0}\NormalTok{],}
+\NormalTok{                [}\FloatTok{6.0}\NormalTok{, }\FloatTok{7.0}\NormalTok{]])}
+\OperatorTok{>>} \BuiltInTok{print}\NormalTok{(m1 }\OperatorTok{*}\NormalTok{ m2)}
+\NormalTok{(Matrix [[}\FloatTok{28.}\NormalTok{, }\FloatTok{34.}\NormalTok{], [}\FloatTok{56.}\NormalTok{, }\FloatTok{68.}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+It has 2 attributes:
+
+\begin{itemize}
+\item
+  \texttt{data} : list of lists → the elements stored in the matrix
+\item
+  \texttt{shape} : by shape we mean the dimensions of the matrix as a
+  tuple (rows, columns) →
+  \texttt{Matrix({[}{[}0.0,\ 1.0{]},\ {[}2.0,\ 3.0{]},\ {[}4.0,\ 5.0{]}{]}).shape\ ==\ (3,\ 2)}
+\end{itemize}
+
+You should be able to initialize the object with:
+
+\begin{itemize}
+\item
+  the elements of the matrix as a list of lists:
+  \texttt{Matrix({[}{[}0.0,\ 1.0,\ 2.0,\ 3.0{]},\ {[}4.0,\ 5.0,\ 6.0,\ 7.0{]}{]})}
+  → the dimensions of this matrix are then (2, 4)
+\item
+  a shape \texttt{Matrix((3,\ 3))} → the matrix will be filled by
+  default with zeroes
+\item
+  the expected elements and shape
+  \texttt{Matrix({[}{[}0.0,\ 1.0,\ 2.0{]},\ {[}3.0,\ 4.0,\ 5.0{]},\ {[}6.0,\ 7.0,\ 8.0{]}{]},\ (3,\ 3))}
+\end{itemize}
+
+You will implement all the following built-in functions (called `magic
+methods') for your \texttt{Matrix} class:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \FunctionTok{__add__}
+    \FunctionTok{__radd__}
+    \CommentTok{# add : vectors and matrices, can have errors with vectors and matrices.}
+    \FunctionTok{__sub__}
+    \FunctionTok{__rsub__}
+    \CommentTok{# sub : vectors and matrices, can have errors with vectors and matrices.}
+    \FunctionTok{__truediv__}
+    \FunctionTok{__rtruediv__}
+    \CommentTok{# div : only scalars.}
+    \FunctionTok{__mul__}
+    \FunctionTok{__rmul__}
+    \CommentTok{# mul : scalars, vectors and matrices , can have errors with vectors and matrices, }
+    \CommentTok{# return a Vector if we perform Matrix * Vector (dot product)}
+    \FunctionTok{__str__}
+    \FunctionTok{__repr__}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{matrix---vector-authorized-operations-are}{%
+\subsection{Matrix - vector authorized operations
+are:}\label{matrix---vector-authorized-operations-are}}
+
+​
+
+\begin{itemize}
+\tightlist
+\item
+  Multiplication between a (m * n) matrix and a (n * 1) vector
+\end{itemize}
+
+\large
+
+\[
+X \cdot y = 
+\begin{bmatrix} x^{(1)}_1 & \dots& x^{(1)}_n \\ 
+\vdots & \ddots & \vdots \\ 
+x^{(m)}_1 & \dots & x^{(m)}_n
+\end{bmatrix} 
+\cdot 
+\begin{bmatrix} 
+y_1 \\
+\vdots \\ 
+y_n 
+\end{bmatrix} 
+= 
+\begin{bmatrix} x^{(1)} \cdot y \\ \vdots  \\ x^{(m)} \cdot y \end{bmatrix}
+\] \normalsize ​ In other words:
+
+\large
+
+\[
+X \cdot y = \begin{bmatrix} \sum_{i = 1}^{n} x_{i}^{(1)} \cdot y_i \\ \vdots \\ \sum_{i = 1}^{n} x_{i}^{(m)} \cdot y_i \end{bmatrix}
+\] \normalsize ​
+
+\hypertarget{matrix---matrix-authorized-operations-are}{%
+\subsection{Matrix - matrix authorized operations
+are:}\label{matrix---matrix-authorized-operations-are}}
+
+​
+
+\begin{itemize}
+\tightlist
+\item
+  Addition between two matrices of same dimension (m * n)
+\end{itemize}
+
+\large
+
+\[
+X + Y = 
+\begin{bmatrix} 
+x_{1}^{(1)} & \dots & x_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} & \dots & x_{n}^{(m)} 
+\end{bmatrix} +  
+\begin{bmatrix} 
+y_{1}^{(1)} & \dots & y_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+y_{1}^{(m)} & \dots & y_{n}^{(m)} 
+\end{bmatrix} = 
+\begin{bmatrix} 
+x_{1}^{(1)} + y_{1}^{(1)}  & \dots & x_{n}^{(1)} + y_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} + y_{1}^{(m)} & \dots & x_{n}^{(m)} + y_{n}^{(m)}
+\end{bmatrix}
+\] \normalsize ​
+
+\begin{itemize}
+\tightlist
+\item
+  Substraction between two matrices of same dimension (m * n)
+\end{itemize}
+
+\large
+
+\[
+X - Y = 
+\begin{bmatrix} 
+x_{1}^{(1)} & \dots & x_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} & \dots & x_{n}^{(m)} 
+\end{bmatrix} - 
+\begin{bmatrix} 
+y_{1}^{(1)} & \dots & y_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+y_{1}^{(m)} & \dots & y_{n}^{(m)} 
+\end{bmatrix} = 
+\begin{bmatrix} 
+x_{1}^{(1)} - y_{1}^{(1)}  & \dots & x_{n}^{(1)} - y_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} - y_{1}^{(m)} & \dots & x_{n}^{(m)} - y_{n}^{(m)}
+\end{bmatrix}
+\] \normalsize
+
+​
+
+\begin{itemize}
+\tightlist
+\item
+  Multiplication or division between one matrix (m * n) and one scalar
+  (1 * 1)
+\end{itemize}
+
+\large
+
+\[
+Xa = 
+\begin{bmatrix} 
+x_{1}^{(1)} & \dots & x_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} & \dots & x_{n}^{(m)} 
+\end{bmatrix} 
+\cdot a
+= 
+\begin{bmatrix} 
+x_{1}^{(1)} a  & \dots & x_{n}^{(1)} a  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} a & \dots & x_{n}^{(m)} a
+\end{bmatrix}
+\] \normalsize
+
+​
+
+\begin{itemize}
+\tightlist
+\item
+  Mutiplication between two matrices of compatible dimension: (m * n)
+  and (n * p)
+\end{itemize}
+
+\large
+
+\[
+X  Y = 
+\begin{bmatrix} 
+x_{1}^{(1)} & \dots & x_{n}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+x_{1}^{(m)} & \dots & x_{n}^{(m)} 
+\end{bmatrix}  
+\begin{bmatrix} 
+y_{1}^{(1)} & \dots & y_{p}^{(1)}  \\ 
+\vdots & \ddots & \vdots \\ 
+y_{1}^{(n)} & \dots & y_{p}^{(n)} 
+\end{bmatrix} = 
+\begin{bmatrix} 
+x^{(1)} \cdot y_1  & \dots & x^{(1)} \cdot y_{p} \\ 
+\vdots & \ddots & \vdots \\ 
+x^{(m)} \cdot y_1 & \dots & x^{(m)} \cdot y_{p}
+\end{bmatrix}
+\] \normalsize
+
+In other words: ​ \large \[
+X \cdot Y = 
+\begin{bmatrix} 
+\sum_{i = 1}^{n} x_{i}^{(1)} \cdot y_{1}^{(i)} & \dots & \sum_{i=1}^{n} x_{i}^{(1)} \cdot y_{p}^{(i)} \\
+\vdots & \ddots & \vdots \\ 
+\sum_{i = 1}^{n} x_{i}^{(m)} \cdot y_{1}^{(i)} & \dots & \sum_{i=1}^{n} x_{i}^{(m)} \cdot y_{p}^{(i)} \\
+\end{bmatrix}
+\] \normalsize
+
+Don't forget to handle all kind of errors properly!
+
+\clearpage
+
+\hypertarget{exercise-02---tinystatistician-1}{%
+\section{Exercise 02 -
+TinyStatistician}\label{exercise-02---tinystatistician-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+\begin{minipage}[t]{0.54\columnwidth}\raggedleft
+Turn-in directory :\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+ex02\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.54\columnwidth}\raggedleft
+Files to turn in :\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+TinyStatistician.py\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.54\columnwidth}\raggedleft
+Forbidden function :\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+any function that calculates mean, median, quartiles, variance or
+standard deviation at your place\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.54\columnwidth}\raggedleft
+Forbidden library :\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+Numpy\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.54\columnwidth}\raggedleft
+Remarks :\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+n/a\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{AI Classics:}\\
+\emph{These exercises are key assignments from the last bootcamp. If you
+haven't completed them yet, you should finish them first before you
+continue with today's exercises.}
+
+Create a class named \texttt{TinyStatistician} which implements the
+following methods.\\
+All methods take in an array and return a new modified one.\\
+We are assuming that all inputs are correct, i.e.~you don't have to
+protect your functions against input errors.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{mean(x)} : computes the mean of a given non-empty array
+  \texttt{x}, using a for-loop and returns the mean as a float,
+  otherwise None if \texttt{x} is an empty array. This method should not
+  raise any Exception.
+\end{itemize}
+
+Given a vector \(x\) of dimension m * 1, the mathematical formula of its
+mean is:
+
+\large
+
+\[
+\mu = \cfrac{\sum_{i = 1}^{m}{x_i}}{m}
+\] \normalsize
+
+\begin{itemize}
+\item
+  \texttt{median(x)} : computes the median, also called the 50th
+  percentile, of a given non-empty darray \texttt{x}, using a for-loop
+  and returns the median as a float, otherwise None if \texttt{x} is an
+  empty array. This method should not raise any Exception.
+\item
+  \texttt{quartiles(x,\ percentile)} : computes the 1st and 3rd
+  quartiles, also called the 25th percentile and the 75th percentile, of
+  a given non-empty array \texttt{x}, using a for-loop and returns the
+  quartile as a float, otherwise None if \texttt{x} is an empty array.
+  The first parameter is the array and the second parameter is the
+  expected percentile. This method should not raise any Exception.
+\item
+  \texttt{var(x)} : computes the variance of a given non-empty array
+  \texttt{x}, using a for-loop and returns the variance as a float,
+  otherwise None if \texttt{x} is an empty array. This method should not
+  raise any Exception.
+\end{itemize}
+
+Given a vector \(x\) of dimension m * 1, the mathematical formula of its
+variance is:
+
+\large
+
+\[
+\sigma^2 = \cfrac{\sum_{i = 1}^{m}{(x_i - \mu)^2}}{m} = \cfrac{\sum_{i = 1}^{m}{[x_i - (\cfrac{1}{m}\sum_{j = 1}^{m}{x_j}})]^2}{m}
+\] \normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{std(x)} : computes the standard deviation of a given non-empty
+  array \texttt{x}, using a for-loop and returns the standard deviation
+  as a float, otherwise None if \texttt{x} is an empty array. This
+  method should not raise any Exception.
+\end{itemize}
+
+Given a vector \(x\) of dimension m * 1, the mathematical formula of its
+standard deviation is:
+
+\large
+
+\[
+\sigma = \sqrt{\cfrac{\sum_{i = 1}^{m}{(x_i - \mu)^2}}{m}} = \sqrt{\cfrac{\sum_{i = 1}^{m}{[x_i - (\cfrac{1}{m}\sum_{j = 1}^{m}{x_j}})]^2}{m}}
+\] \normalsize
+
+\hypertarget{examples}{%
+\subsection{Examples}\label{examples}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>>} \ImportTok{from}\NormalTok{ TinyStatistician }\ImportTok{import}\NormalTok{ TinyStatistician}
+\OperatorTok{>>>}\NormalTok{ tstat }\OperatorTok{=}\NormalTok{ TinyStatistician()}
+\OperatorTok{>>>}\NormalTok{ a }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{59}\NormalTok{]}
+
+\OperatorTok{>>>}\NormalTok{ tstat.mean(a)}
+\DecValTok{82}\NormalTok{,}\DecValTok{4}
+
+\OperatorTok{>>>}\NormalTok{ tstat.median(a)}
+\FloatTok{42.0}
+
+\OperatorTok{>>>}\NormalTok{ tstat.quartile(a, }\DecValTok{25}\NormalTok{)}
+\FloatTok{10.0}
+
+\OperatorTok{>>>}\NormalTok{ tstat.quartile(a, }\DecValTok{75}\NormalTok{)}
+\FloatTok{59.0}
+
+\OperatorTok{>>>}\NormalTok{ tstat.var(a)}
+\FloatTok{12279.439999999999}
+
+\OperatorTok{>>>}\NormalTok{ tstat.std(a)}
+\FloatTok{110.81263465868862}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{interlude---predict-evaluate-improve-1}{%
+\section{Interlude - Predict, Evaluate,
+Improve}\label{interlude---predict-evaluate-improve-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{'''}
+\CommentTok{'A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.' }
+\CommentTok{                            - Tom Mitchell, Machine Learning, 1997}
+\CommentTok{'''}
+\end{Highlighting}
+\end{Shaded}
+
+To be said to learn you have to improve.\\
+To improve you have to evaluate your performance.\\
+To evaluate your performance you need to start performing on the task
+you want to be good at.
+
+One of the most common tasks in Machine Learning is
+\textbf{prediction}.\\
+This will be your algorithm's task. This will be your task.
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/Default.png}
+\caption{cycle\_neutral}
+\end{figure}
+
+\clearpage
+
+\hypertarget{predict}{%
+\section{Predict}\label{predict}}
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/Predict.png}
+\caption{cycle\_predict}
+\end{figure}
+
+\hypertarget{a-very-simple-model}{%
+\subsection{A very simple model}\label{a-very-simple-model}}
+
+We have some data. We want to model it.
+
+\begin{itemize}
+\item
+  First we need to \emph{make an assumption}, or hypothesis, \emph{about
+  the structure of the data and the relationship between the variables}.
+\item
+  Then we can \emph{apply that hypothesis to our data to make
+  predictions}.
+\end{itemize}
+
+\large
+
+\[
+hypothesis(data) = predictions
+\] \normalsize
+
+\hypertarget{hypothesis}{%
+\subsubsection{Hypothesis}\label{hypothesis}}
+
+Let's start with a very simple and intuitive \textbf{hypothesis} on how
+the price of a spaceship can be predicted based on the power of its
+engines.\\
+We will consider that \emph{the more powerful the engines are, the more
+expensive the spaceship is}.\\
+Furthermore, we will assume that the price increase is
+\textbf{proportional} to the power increase. In other words, we will
+look for a \textbf{linear relationship} between the two variables.
+
+This means that we will formulate the price prediction with a
+\textbf{linear equation}, that you might be already familiar with :
+
+\large
+
+\[
+\hat{y} = ax + b
+\] \normalsize
+
+We add the `\^{}' symbol over the \(y\) to specify that \(\hat{y}\)
+\emph{(pronounced y-hat)} is a \textbf{prediction} (or estimation) of
+the real value of \(y\). The prediction is calculated with the
+\textbf{parameters} \(a\) and \(b\) and the input value \(x\).
+
+For example, if \(a = 5\) and \(b = 33\), then \(\hat{y} = 5x + 33\).
+
+But in Machine Learning, we don't like using the letters \(a\) and
+\(b\). Instead we will use the following notation: \large \$\$
+
+So if \(\theta_0 = 33\) and \(\theta_1 = 5\), then \(\hat{y} = 33+ 5x\).
+
+To recap, this linear equation is our \textbf{hypothesis}. Then, all we
+will need to do is find the right values for our parameters \(\theta_0\)
+and \(\theta_1\) and we will get a fully-functional prediction
+\textbf{model}.
+
+\hypertarget{predictions}{%
+\subsubsection{Predictions}\label{predictions}}
+
+Now, how can we generate a set of predictions on an entire dataset?
+Let's consider a dataset containing \(m\) data points (or space ships),
+called \textbf{examples}.
+
+What we do is stack the \(x\) and \(\hat{y}\) values of all examples in
+vectors of length \(m\). The relation between the elements in our
+vectors can then be represented with the following formula:
+
+\[
+\normalsize
+\begin{matrix}
+\hat{y}^{(i)} = \theta_0 + \theta_1 x^{(i)} & & \text{ for i = 1, ..., m}
+\end{matrix}
+\large
+\]
+
+Where: - \(\hat{y}^{(i)}\) is the \(i^{th}\) component of vector \(y\) -
+\(x^{(i)}\) is the \(i^{th}\) component of vector \(x\)
+
+Which can be experessed as:
+
+\[
+\normalsize
+\hat{y} = \begin{bmatrix}\theta_0 + \theta_1 \times x^{(1)} \\ \vdots \\  \theta_0 + \theta_1 \times x^{(m)}\ \end{bmatrix}
+\large
+\]
+
+For example,
+
+\[
+\normalsize
+\text{given } \theta = \begin{bmatrix}33 \\ 5 \end{bmatrix} \text{ and } x = \begin{bmatrix}1 \\ 3 \end{bmatrix} \text{: }\]
+\large \[
+\] \normalsize
+
+\hypertarget{more-information}{%
+\subsection{More information}\label{more-information}}
+
+\hypertarget{why-the-theta-notation}{%
+\subsubsection{\texorpdfstring{Why the \(\theta\)
+notation?}{Why the \textbackslash{}theta notation?}}\label{why-the-theta-notation}}
+
+You might have two questions at the moment:
+
+\begin{itemize}
+\item
+  \textbf{WTF is that weird symbol?}\\
+  This strange symbol, \(\theta\), is called ``theta''.
+\item
+  \textbf{Why use this notation instead of \(a\) and \(b\), like we're
+  used to?}\\
+  Despite its seeming more complicated at first, the theta notation is
+  actually meant to simplify your equations later on. Why?\\
+  \(a\) and \(b\) are good for a model with two parameters, but you will
+  soon need to build more complex models that take into account more
+  variables than just \(x\).\\
+  You could add more letters like this:
+  \(\hat{y} = ax_1 + bx_2 + cx_3 + ... + yx_{25} + z\)\\
+  But how do you go beyond 26 parameters? And how easily can you tell
+  what parameter is associated with, let's say, \(x_{19}\)? That's why
+  it becomes more handy to describe all your parameters using the theta
+  notation and indices. With \(\theta\), you just have to increment the
+  number to name the parameter:\\
+  \(\hat{y} = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_{2468} x_{2468}\)
+  \ldots{} Easy right?
+\end{itemize}
+
+\hypertarget{another-common-notation}{%
+\subsubsection{Another common notation:}\label{another-common-notation}}
+
+\large
+
+\[
+\begin{matrix} & & \hat{y} & = & h_{\theta}(x)\end{matrix}
+\] \normalsize
+
+Because \(\hat{y}\) is calculated with our linear hypothesis using
+\(\theta\) and \(x\), it is sometimes written as \(h_{\theta}(x)\). The
+\(h\) stands for \emph{hypothesis}, and can be read as \emph{``the
+result of our hypothesis h given x and theta''}.
+
+Then if \(x = 7\), we can calculate:\\
+\(\hat{y} = h_{\theta}(x) = 33 + 5 \times 7 = 68\)\\
+We can now say that according to our linear model, the \textbf{predicted
+value} of \(y\) given (\(x = 7\)) is 68. \clearpage
+
+\hypertarget{exercise-03---simple-prediction-1}{%
+\section{Exercise 03 - Simple
+Prediction}\label{exercise-03---simple-prediction-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex03\tabularnewline
+Files to turn in : & prediction.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objective}{%
+\subsection{Objective:}\label{objective}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\begin{matrix}
+\hat{y}^{(i)} = \theta_0 + \theta_1 x^{(i)} & &\text{ for i = 1, ..., m}
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(x\) is a vector of dimension m * 1, the vector of examples (without
+  the \(y\) values)
+\item
+  \(\hat{y}\) is a vector of dimension m * 1, the vector of predicted
+  values
+\item
+  \(\theta\) is a vector of dimension 2 * 1, the vector of parameters
+\item
+  \(y^{(i)}\) is the \(i^{th}\) component of vector \(y\)
+\item
+  \(x^{(i)}\) is the \(i^{th}\) component of vector \(x\)
+\end{itemize}
+
+\hypertarget{instructions}{%
+\subsection{Instructions:}\label{instructions}}
+
+In the prediction.py file, write the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ simple_predict(x, theta):}
+    \CommentTok{"""Computes the vector of prediction y_hat from two non-empty numpy.ndarray.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      theta: has to be an numpy.ndarray, a vector of dimension 2 * 1.}
+\CommentTok{    Returns:}
+\CommentTok{      y_hat as a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      None if x or theta are empty numpy.ndarray.}
+\CommentTok{      None if x or theta dimensions are not appropriate.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-1}{%
+\subsection{Examples:}\label{examples-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+
+\CommentTok{#Example 1:}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{])}
+\NormalTok{simple_predict(x, theta1)}
+\CommentTok{# Ouput:}
+\NormalTok{array([}\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{])}
+\CommentTok{# Do you understand why y_hat contains only 5's here?  }
+
+
+\CommentTok{#Example 2:}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\NormalTok{simple_predict(x, theta2)}
+\CommentTok{# Output:}
+\NormalTok{array([}\FloatTok{1.}\NormalTok{, }\FloatTok{2.}\NormalTok{, }\FloatTok{3.}\NormalTok{, }\FloatTok{4.}\NormalTok{, }\FloatTok{5.}\NormalTok{])}
+\CommentTok{# Do you understand why y_hat == x here?  }
+
+
+\CommentTok{#Example 3:}
+\NormalTok{theta3 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\NormalTok{simple_predict(X, theta3)}
+\CommentTok{# Output:}
+\NormalTok{array([ }\FloatTok{8.}\NormalTok{, }\FloatTok{11.}\NormalTok{, }\FloatTok{14.}\NormalTok{, }\FloatTok{17.}\NormalTok{, }\FloatTok{20.}\NormalTok{])}
+
+
+\CommentTok{#Example 4:}
+\NormalTok{theta4 }\OperatorTok{=}\NormalTok{ np.array([}\OperatorTok{-}\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\NormalTok{simple_predict(x, theta4)}
+\CommentTok{# Output:}
+\NormalTok{array([}\OperatorTok{-}\FloatTok{2.}\NormalTok{, }\FloatTok{-1.}\NormalTok{,  }\FloatTok{0.}\NormalTok{,  }\FloatTok{1.}\NormalTok{,  }\FloatTok{2.}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{interlude---a-simple-linear-algebra-trick-1}{%
+\section{Interlude - A Simple Linear Algebra
+Trick}\label{interlude---a-simple-linear-algebra-trick-1}}
+
+As you know, vectors and matrices can be multiplied to perform linear
+combinations.\\
+Let's do a little linear algebra trick to optimize our calculation and
+use matrix multiplication.\\
+If we add a column full of \(1\)'s to our vector of examples \(x\), we
+can create the following matrix:
+
+\large
+
+\[
+X' = \begin{bmatrix} 1 & x^{(1)} \\ \vdots & \vdots \\ 1 & x^{(m)}\end{bmatrix}
+\] \normalsize
+
+We can then rewrite our hypothesis as:
+
+\large
+
+\[
+\hat{y}^{(i)} = \theta \cdot x'^{(i)} = \begin{bmatrix}\theta_0 \\ \theta_1 \end{bmatrix}  \cdot \begin{bmatrix} 1 & x^{(i)} \end{bmatrix} = \theta_0 + \theta_1 x^{(i)}
+\] \normalsize
+
+Therefore, the calculation of each \(\hat{y}^{(i)}\)can be done with
+only one vector multiplication.
+
+But we can even go further, by calculating the whole \(\hat{y}\) vector
+in one operation:
+
+\large
+
+\[
+\hat{y} = X' \cdot \theta = \begin{bmatrix} 1 & x^{(1)} \\ \vdots & \vdots \\ 1 & x^{(m)}\end{bmatrix}\cdot\begin{bmatrix}\theta_0 \\ \theta_1 \end{bmatrix} = \begin{bmatrix} \theta_0 + \theta_1 x^{(1)} \\ \vdots \\ \theta_0 + \theta_1 x^{(m)} \end{bmatrix}
+\] \normalsize
+
+We can now get to the same result as in the previous exercise with just
+a single multiplication between our brand new \(X'\) matrix and the
+\(\theta\) vector!
+
+\hypertarget{a-note-on-notation}{%
+\subsection{A Note on Notation:}\label{a-note-on-notation}}
+
+In further Interludes, we will use the following convention:
+
+\begin{itemize}
+\item
+  Capital letters represent matrices (e.g.: \(X'\))
+\item
+  Lower case letters represent vectors and scalars (e.g.: \(x^{(i)}\),
+  \(y\)) \clearpage
+\end{itemize}
+
+\hypertarget{exercise-04---add-intercept-1}{%
+\section{Exercise 04 - Add
+Intercept}\label{exercise-04---add-intercept-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex04\tabularnewline
+Files to turn in : & tools.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objective-1}{%
+\subsection{Objective:}\label{objective-1}}
+
+You must implement a function which adds an extra column of \(1\)'s on
+the left side of a given vector or matrix.
+
+\hypertarget{instructions-1}{%
+\subsection{Instructions:}\label{instructions-1}}
+
+In the tools.py file create the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ add_intercept(x):}
+    \CommentTok{"""Adds a column of 1's to the non-empty numpy.ndarray x.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{    Returns:}
+\CommentTok{      X as a numpy.ndarray, a vector of dimension m * 2.}
+\CommentTok{      None if x is not a numpy.ndarray.}
+\CommentTok{      None if x is a empty numpy.ndarray.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-2}{%
+\subsection{Examples:}\label{examples-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+
+\CommentTok{# Example 1:}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\NormalTok{add_intercept(x)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{1.}\NormalTok{, }\FloatTok{1.}\NormalTok{],}
+\NormalTok{       [}\FloatTok{1.}\NormalTok{, }\FloatTok{2.}\NormalTok{],}
+\NormalTok{       [}\FloatTok{1.}\NormalTok{, }\FloatTok{3.}\NormalTok{],}
+\NormalTok{       [}\FloatTok{1.}\NormalTok{, }\FloatTok{4.}\NormalTok{],}
+\NormalTok{       [}\FloatTok{1.}\NormalTok{, }\FloatTok{5.}\NormalTok{]])}
+
+
+\CommentTok{# Example 2:}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{10}\NormalTok{).reshape((}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\NormalTok{add_intercept(y)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{1.}\NormalTok{, }\FloatTok{1.}\NormalTok{, }\FloatTok{2.}\NormalTok{, }\FloatTok{3.}\NormalTok{],}
+\NormalTok{       [}\FloatTok{1.}\NormalTok{, }\FloatTok{4.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{6.}\NormalTok{],}
+\NormalTok{       [}\FloatTok{1.}\NormalTok{, }\FloatTok{7.}\NormalTok{, }\FloatTok{8.}\NormalTok{, }\FloatTok{9.}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-05---prediction-1}{%
+\section{Exercise 05 - Prediction}\label{exercise-05---prediction-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex05\tabularnewline
+Files to turn in : & prediction.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objective-2}{%
+\subsection{Objective:}\label{objective-2}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\begin{matrix}
+\hat{y}^{(i)} = \theta_0 + \theta_1 x^{(i)} & &\text{ for i = 1, ..., m}
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\hat{y}^{(i)}\) is the \(i^{th}\) component of vector \(\hat{y}\)
+\item
+  \(\hat{y}\) is a vector of dimension \(m * 1\), the vector of
+  predicted values
+\item
+  \(\theta\) is a vector of dimension \(2 * 1\), the vector of
+  parameters
+\item
+  \(x^{(i)}\) is the \(i^{th}\) component of vector \(x\)
+\item
+  \(x\) is a vector of dimension \(m * 1\), the vector of examples
+\end{itemize}
+
+But this time you have to do it with the linear algebra trick!
+
+\large
+
+\[
+\hat{y} = X' \cdot \theta = 
+\begin{bmatrix} 
+1 & x^{(1)} \\ 
+\vdots & \vdots \\ 
+1 & x^{(m)} 
+\end{bmatrix} 
+\cdot
+\begin{bmatrix}
+\theta_0 \\ 
+\theta_1 
+\end{bmatrix} 
+ = \begin{bmatrix} 
+\theta_0 + \theta_1x^{(1)} \\ 
+\vdots \\ 
+\theta_0 + \theta_1x^{(m)} 
+\end{bmatrix} 
+\] \normalsize
+
+\textbf{Be careful:}
+
+\begin{itemize}
+\item
+  the \(x\) you will get as an input is an \(m * 1\) vector
+\item
+  \(\theta\) is a \(2 * 1\) vector.
+\end{itemize}
+
+You have to transform \(x\) into \(X'\) to fit the dimension of
+\(\theta\) !
+
+\hypertarget{instructions-2}{%
+\subsection{Instructions:}\label{instructions-2}}
+
+In the prediction.py file create the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ predict_(x, theta):}
+    \CommentTok{"""Computes the vector of prediction y_hat from two non-empty numpy.ndarray.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      theta: has to be an numpy.ndarray, a vector of dimension 2 * 1.}
+\CommentTok{    Returns:}
+\CommentTok{      y_hat as a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      None if x or theta are empty numpy.ndarray.}
+\CommentTok{      None if x or theta dimensions are not appropriate.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exceptions.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-3}{%
+\subsection{Examples:}\label{examples-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+
+\CommentTok{#Example 1:}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{])}
+\NormalTok{predict_(x, theta1)}
+\CommentTok{# Ouput:}
+\NormalTok{array([}\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{])}
+\CommentTok{# Do you remember why y_hat contains only 5's here?  }
+
+
+\CommentTok{#Example 2:}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\NormalTok{predict_(x, theta2)}
+\CommentTok{# Output:}
+\NormalTok{array([}\FloatTok{1.}\NormalTok{, }\FloatTok{2.}\NormalTok{, }\FloatTok{3.}\NormalTok{, }\FloatTok{4.}\NormalTok{, }\FloatTok{5.}\NormalTok{])}
+\CommentTok{# Do you remember why y_hat == x here?  }
+
+
+\CommentTok{#Example 3:}
+\NormalTok{theta3 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\NormalTok{predict_(X, theta3)}
+\CommentTok{# Output:}
+\NormalTok{array([ }\FloatTok{8.}\NormalTok{, }\FloatTok{11.}\NormalTok{, }\FloatTok{14.}\NormalTok{, }\FloatTok{17.}\NormalTok{, }\FloatTok{20.}\NormalTok{])}
+
+
+\CommentTok{#Example 4:}
+\NormalTok{theta4 }\OperatorTok{=}\NormalTok{ np.array([}\OperatorTok{-}\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\NormalTok{predict_(x, theta4)}
+\CommentTok{# Output:}
+\NormalTok{array([}\OperatorTok{-}\FloatTok{2.}\NormalTok{, }\FloatTok{-1.}\NormalTok{,  }\FloatTok{0.}\NormalTok{,  }\FloatTok{1.}\NormalTok{,  }\FloatTok{2.}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-06---lets-make-nice-plots-1}{%
+\section{Exercise 06 - Let's Make Nice
+Plots}\label{exercise-06---lets-make-nice-plots-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex06\tabularnewline
+Files to turn in : & plot.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & Matplotlib is your friend\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{It is plot time!}
+
+For you rinformation, the task we are performing here is called
+\textbf{regression}. It means that we are trying to predict a continuous
+numerical attribute for all examples (like a price, for instance). Later
+in the bootcamp, you will see that we can predict other things such as
+categories.
+
+\hypertarget{objective-3}{%
+\subsection{Objective:}\label{objective-3}}
+
+You must implement a function to plot the data and the prediction line
+(or regression line).\\
+You will plot the data points (with their x and y values), and the
+prediction line that represents your hypothesis (\(h_{\theta}\)).
+
+\hypertarget{instructions-3}{%
+\subsection{Instructions:}\label{instructions-3}}
+
+In the plot.py file, create the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ plot(x, y, theta):}
+    \CommentTok{"""Plot the data and prediction line from three non-empty numpy.ndarray.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      y: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      theta: has to be an numpy.ndarray, a vector of dimension 2 * 1.}
+\CommentTok{    Returns:}
+\CommentTok{        Nothing.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exceptions.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\newpage
+
+\hypertarget{examples-4}{%
+\subsection{Examples:}\label{examples-4}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\FloatTok{3.74013816}\NormalTok{, }\FloatTok{3.61473236}\NormalTok{, }\FloatTok{4.57655287}\NormalTok{, }\FloatTok{4.66793434}\NormalTok{, }\FloatTok{5.95585554}\NormalTok{])}
+
+\CommentTok{#Example 1:}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([}\FloatTok{4.5}\NormalTok{, }\FloatTok{-0.2}\NormalTok{])}
+\NormalTok{plot(x, y, theta1)}
+\CommentTok{# Output:}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/plot1.png}
+\caption{plot1}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Example 2:}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([}\OperatorTok{-}\FloatTok{1.5}\NormalTok{, }\DecValTok{2}\NormalTok{])}
+\NormalTok{plot(x, y, theta2)}
+\CommentTok{# Output:}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/plot2.png}
+\caption{plot2}
+\end{figure}
+
+\newpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Example 3:}
+\NormalTok{theta3 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{3}\NormalTok{, }\FloatTok{0.3}\NormalTok{])}
+\NormalTok{plot(x, y, theta3)}
+\CommentTok{# Output:}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/plot3.png}
+\caption{plot3}
+\end{figure}
+
+\clearpage
+
+\hypertarget{interlude---evaluate-1}{%
+\section{Interlude - Evaluate}\label{interlude---evaluate-1}}
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/Evaluate.png}
+\caption{cycle\_evaluate}
+\end{figure}
+
+\hypertarget{introducing-the-cost-function}{%
+\subsection{Introducing the cost
+function}\label{introducing-the-cost-function}}
+
+How good is our model ?\\
+It is hard to say just by looking at the plot. We can clearly observe
+that certain regression lines seem to fit the data better than others,
+but it would be convenient to find a way to measure it.
+
+\begin{figure}
+\centering
+\includegraphics[width=6.25in,height=\textheight]{tmp/assets/bad_prediction.png}
+\caption{plot\_bad\_prediction}
+\end{figure}
+
+To evaluate our model, we are going to use a \textbf{metric} called
+\textbf{cost function} (sometimes called \textbf{loss function}). The
+cost function tells us how bad our model is, how much it \emph{costs} us
+to use it, how much information we \emph{lose} when we use it. If the
+model is good, we won't lose that much, if it's terrible it will cost us
+a lot!
+
+The metric you choose will deeply impact the evaluation (and therefore
+also the training) of your model.
+
+A frequent way to evaluate the performance of a regression model is to
+measure the distance between each predicted value (\(\hat{y}^{(i)}\))
+and the real value it tries to predict (\({y}^{(i)}\)). The distances
+are then squared, and averaged to get one single metric, denoted \(J\):
+
+\large
+
+\[
+J(\theta) = \cfrac{1}{2m}\sum_{i=1}^{m}(\hat{y}^{(i)} - y^{(i)})^2
+\] \normalsize
+
+The smaller, the better!
+
+\begin{figure}
+\centering
+\includegraphics[width=6.25in,height=\textheight]{tmp/assets/bad_pred_with_distance.png}
+\caption{plot\_bad\_pred\_with\_distance}
+\end{figure}
+
+\clearpage
+
+\hypertarget{exercise-07---cost-function-1}{%
+\section{Exercise 07 - Cost
+Function}\label{exercise-07---cost-function-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex07\tabularnewline
+Files to turn in : & cost.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objective-4}{%
+\subsection{Objective:}\label{objective-4}}
+
+You must implement the following formula as a function (and another one
+very close to it):
+
+\large
+
+\[
+J(\theta) = \cfrac{1}{2m}\sum_{i=1}^{m}(\hat{y}^{(i)} - y^{(i)})^2
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\hat{y}\) is a vector of dimension \(m * 1\), the vector of
+  predicted values
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values
+\item
+  \(\hat{y}^{(i)}\) is the ith component of vector \(\hat{y}\),
+\item
+  \(y^{(i)}\) is the ith component of vector \(y\),
+\end{itemize}
+
+\hypertarget{instructions-4}{%
+\subsection{Instructions:}\label{instructions-4}}
+
+The implementation of the cost function has been split in two functions:
+
+\begin{itemize}
+\item
+  \emph{cost\_elem\_( )}, which computes the squared distances for all
+  examples
+\item
+  \emph{cost\_( )}, which averages the distances across all examples
+\end{itemize}
+
+In the cost.py file create the following functions as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ cost_elem_(y, y_hat):}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        Calculates all the elements (1/2*M)*(y_pred - y)^2 of the cost function.}
+\CommentTok{    Args:}
+\CommentTok{      y: has to be an numpy.ndarray, a vector.}
+\CommentTok{      y_hat: has to be an numpy.ndarray, a vector.}
+\CommentTok{    Returns:}
+\CommentTok{        J_elem: numpy.ndarray, a vector of dimension (number of the training examples,1).}
+\CommentTok{        None if there is a dimension matching problem between X, Y or theta.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exception.}
+\CommentTok{    """}
+\NormalTok{        ... your code here ...}
+
+\KeywordTok{def}\NormalTok{ cost_(y, y_hat):}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        Calculates the value of cost function.}
+\CommentTok{    Args:}
+\CommentTok{      y: has to be an numpy.ndarray, a vector.}
+\CommentTok{      y_hat: has to be an numpy.ndarray, a vector.}
+\CommentTok{    Returns:}
+\CommentTok{        J_value : has to be a float.}
+\CommentTok{        None if there is a dimension matching problem between X, Y or theta.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exception.}
+\CommentTok{    """}
+\NormalTok{        ... your code here ...}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-5}{%
+\subsection{Examples:}\label{examples-5}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+
+\NormalTok{x1 }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{0.}\NormalTok{], [}\FloatTok{1.}\NormalTok{], [}\FloatTok{2.}\NormalTok{], [}\FloatTok{3.}\NormalTok{], [}\FloatTok{4.}\NormalTok{]])}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{2.}\NormalTok{], [}\FloatTok{4.}\NormalTok{]])}
+\NormalTok{y_hat1 }\OperatorTok{=}\NormalTok{ predict(x1, theta1)}
+\NormalTok{y1 }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{2.}\NormalTok{], [}\FloatTok{7.}\NormalTok{], [}\FloatTok{12.}\NormalTok{], [}\FloatTok{17.}\NormalTok{], [}\FloatTok{22.}\NormalTok{]])}
+
+\CommentTok{# Example 1:}
+\NormalTok{cost_elem_(y1, y_hat1)}
+
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{0.}\NormalTok{], [}\FloatTok{0.1}\NormalTok{], [}\FloatTok{0.4}\NormalTok{], [}\FloatTok{0.9}\NormalTok{], [}\FloatTok{1.6}\NormalTok{]])}
+
+\CommentTok{# Example 2:}
+\NormalTok{cost_(y1, y_hat1)}
+
+\CommentTok{# Output:}
+\FloatTok{3.0}
+
+\NormalTok{x2 }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{0.2}\NormalTok{, }\FloatTok{2.}\NormalTok{, }\FloatTok{20.}\NormalTok{], [}\FloatTok{0.4}\NormalTok{, }\FloatTok{4.}\NormalTok{, }\FloatTok{40.}\NormalTok{], [}\FloatTok{0.6}\NormalTok{, }\FloatTok{6.}\NormalTok{, }\FloatTok{60.}\NormalTok{], [}\FloatTok{0.8}\NormalTok{, }\FloatTok{8.}\NormalTok{, }\FloatTok{80.}\NormalTok{]])}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{0.05}\NormalTok{], [}\FloatTok{1.}\NormalTok{], [}\FloatTok{1.}\NormalTok{], [}\FloatTok{1.}\NormalTok{]])}
+\NormalTok{y_hat2 }\OperatorTok{=}\NormalTok{ predict_(x2, theta2)}
+\NormalTok{y2 }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{19.}\NormalTok{], [}\FloatTok{42.}\NormalTok{], [}\FloatTok{67.}\NormalTok{], [}\FloatTok{93.}\NormalTok{]])}
+
+\CommentTok{# Example 3:}
+\NormalTok{cost_elem_(y2, y_hat2)}
+
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{1.3203125}\NormalTok{], [}\FloatTok{0.7503125}\NormalTok{], [}\FloatTok{0.0153125}\NormalTok{], [}\FloatTok{2.1528125}\NormalTok{]])}
+
+\CommentTok{# Example 4:}
+\NormalTok{cost_(y2, y_hat2)}
+
+\CommentTok{# Output:}
+\FloatTok{4.238750000000004}
+
+\NormalTok{x3 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{-9}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{-21}\NormalTok{])}
+\NormalTok{theta3 }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{0.}\NormalTok{], [}\FloatTok{1.}\NormalTok{]])}
+\NormalTok{y_hat3 }\OperatorTok{=}\NormalTok{ predict_(x3, theta3)}
+\NormalTok{y3 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{2}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{-13}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{-19}\NormalTok{])}
+
+\CommentTok{# Example 5:}
+\NormalTok{cost_(y3, y_hat3)}
+
+\CommentTok{# Output:}
+\FloatTok{4.285714285714286}
+
+\CommentTok{# Example 6:}
+\NormalTok{cost_(y3, y3)}
+
+\CommentTok{# Output:}
+\FloatTok{0.0}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{more-information-1}{%
+\subsection{More Information:}\label{more-information-1}}
+
+This cost function is very close to the one called \textbf{``Mean
+Squared Error''}, which is frequently mentioned in Machine Learning
+resources. The difference is in the denominator as you can see in the
+formula of the
+\(MSE = \cfrac{1}{m}\sum_{i=1}^{m}(\hat{y}^{(i)} - y^{(i)})^2\).
+
+Except the division by \(2m\) instead of \(m\), these functions are
+rigourously identical: \(J(\theta) = \cfrac{MSE}{2}\).
+
+MSE is called like that because it represents the mean of the errors
+(i.e.: the differences between the predicted values and the true
+values), squared.
+
+You might wonder why we choose to divide by two instead of simply using
+the MSE?\\
+\emph{(It's a good question, by the way.)}
+
+\begin{itemize}
+\item
+  First, it does not change the overall model evaluation: if all
+  performance measures are divided by two, we can still compare
+  different models and their performance ranking will remain the same.
+\item
+  Second, it will be convenient when we will calculate the gradient
+  tomorow. Be patient, and trust us ;)
+\end{itemize}
+
+\clearpage
+
+\hypertarget{interlude---fifty-shades-of-linear-algebra-1}{%
+\section{Interlude - Fifty Shades of Linear
+Algebra}\label{interlude---fifty-shades-of-linear-algebra-1}}
+
+In the last exercise, we implemented the cost function in two
+subfunctions. It worked, but it's not very pretty. What if we could do
+it all in one step, with linear algebra?
+
+As we did with the hypothesis, we can use a vectorized equation to
+improve the calculations of the cost function.
+
+So now let's look at how squaring and averaging can be performed (more
+or less) in a single matrix multiplication !
+
+\large
+
+\[
+J(\theta) = \cfrac{1}{2m}\sum_{i=1}^{m}(\hat{y}^{(i)} - y^{(i)})^2
+\] \normalsize \large \[
+J(\theta) = \cfrac{1}{2m}\sum_{i=1}^{m}[(\hat{y}^{(i)} - y^{(i)}) (\hat{y}^{(i)} - y^{(i)})]
+\] \normalsize
+
+Now, if we apply the definition of the dot product:
+
+\large
+
+\[
+J(\theta) = \cfrac{1}{2m}(\hat{y} - y) \cdot(\hat{y}- y)
+\] \normalsize \clearpage
+
+\hypertarget{exercise-08---vectorized-cost-function-1}{%
+\section{Exercise 08 - Vectorized Cost
+Function}\label{exercise-08---vectorized-cost-function-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex08\tabularnewline
+Files to turn in : & vec\_cost.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objective-5}{%
+\subsection{Objective:}\label{objective-5}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\begin{matrix}
+J(\theta) &  = & \cfrac{1}{2m}(\hat{y} - y) \cdot(\hat{y}- y)
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\hat{y}\) is a vector of dimension \(m * 1\), the vector of
+  predicted values
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values
+\end{itemize}
+
+\hypertarget{instructions-5}{%
+\subsection{Instructions:}\label{instructions-5}}
+
+In the cost.py file, create the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ cost_(y, y_hat):}
+    \CommentTok{"""Computes the mean squared error of two non-empty numpy.ndarray, without any for loop. The two arrays must have the same dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      y: has to be an numpy.ndarray, a vector.}
+\CommentTok{      y_hat: has to be an numpy.ndarray, a vector.}
+\CommentTok{    Returns:}
+\CommentTok{      The mean squared error of the two vectors as a float.}
+\CommentTok{      None if y or y_hat are empty numpy.ndarray.}
+\CommentTok{      None if y and y_hat does not share the same dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exceptions.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-6}{%
+\subsection{Examples:}\label{examples-6}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{-9}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{-21}\NormalTok{])}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{2}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{-13}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{-19}\NormalTok{])}
+
+\CommentTok{# Example 1:}
+\NormalTok{cost_(X, Y)}
+\CommentTok{# Output:}
+\FloatTok{4.285714285714286}
+
+\CommentTok{# Example 2:}
+\NormalTok{cost_(X, X)}
+\CommentTok{# Output:}
+\FloatTok{0.0}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-09---lets-make-nice-plots-again-1}{%
+\section{Exercise 09 - Lets Make Nice Plots
+Again}\label{exercise-09---lets-make-nice-plots-again-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex09\tabularnewline
+Files to turn in : & plot.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & Matplotlib is your friend\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{It's plot time again!}
+
+\hypertarget{objective-6}{%
+\subsection{Objective:}\label{objective-6}}
+
+You must implement a function which plots the data, the prediction line,
+and the cost.\\
+You will plot the \(x\) and \(y\) coordinates of all data points as well
+as the prediction line generated by your theta parameters. Your function
+must also display the overall cost (\(J\)) in the title, and draw small
+lines marking the distance between each data point and its predicted
+value.
+
+\hypertarget{instructions-6}{%
+\subsection{Instructions:}\label{instructions-6}}
+
+In the plot.py file create the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ plot_with_cost(x, y, theta):}
+    \CommentTok{"""Plot the data and prediction line from three non-empty numpy.ndarray.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      y: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      theta: has to be an numpy.ndarray, a vector of dimension 2 * 1.}
+\CommentTok{    Returns:}
+\CommentTok{        Nothing.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\newpage
+
+\hypertarget{examples-7}{%
+\subsection{Examples:}\label{examples-7}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\FloatTok{11.52434424}\NormalTok{, }\FloatTok{10.62589482}\NormalTok{, }\FloatTok{13.14755699}\NormalTok{, }\FloatTok{18.60682298}\NormalTok{, }\FloatTok{14.14329568}\NormalTok{])}
+
+\CommentTok{#Example 1:}
+\NormalTok{theta1}\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{18}\NormalTok{,}\OperatorTok{-}\DecValTok{1}\NormalTok{])}
+\NormalTok{plot_with_cost(x, y, theta1)}
+\CommentTok{# Output:}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/plotcost1.png}
+\caption{plot\_cost1}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Example 2:}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{14}\NormalTok{, }\DecValTok{0}\NormalTok{])}
+\NormalTok{plot_with_cost(x, y, theta2)}
+\CommentTok{# Output:}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/plotcost2.png}
+\caption{plot\_cost2}
+\end{figure}
+
+\newpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Example 3:}
+\NormalTok{theta3 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{12}\NormalTok{, }\FloatTok{0.8}\NormalTok{])}
+\NormalTok{plot_with_cost(x, y, theta3)}
+\CommentTok{# Output:}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/plotcost3.png}
+\caption{plot\_cost3}
+\end{figure}
+
+\clearpage
+
+\hypertarget{exercise-10---question-time-1}{%
+\section{Exercise 10 - Question
+time!}\label{exercise-10---question-time-1}}
+
+\hypertarget{are-you-able-to-clearly-and-simply-explain}{%
+\subsection{Are you able to clearly and simply
+explain:}\label{are-you-able-to-clearly-and-simply-explain}}
+
+1 - Why do we concatenate a column of ones to the left of the \(x\)
+vector when we use the linear algebra trick?
+
+2 - Why does the cost function square the distances between the data
+points and their predicted values?
+
+3 - What does the cost function's output represent?
+
+4 - Toward which value do we want the cost function to tend? What would
+that mean?
+
+5 - Do you understand why are matrix multiplications are not
+commutative?
+
+\clearpage
+
+\hypertarget{exercise-11---other-cost-functions}{%
+\section{Exercise 11 - Other Cost
+Functions}\label{exercise-11---other-cost-functions}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex11\tabularnewline
+Files to turn in : & other\_costs.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+You certainly had a lot of fun implementing your cost function. Remember
+we told you it was \textbf{one among many possible ways of measuring the
+cost}. Now, you will get to implement other metrics. You already know
+about one of them: \textbf{MSE}.\\
+There are several more which are quite common: \textbf{RMSE},
+\textbf{MAE} and \textbf{R2score}.
+
+\hypertarget{objective-7}{%
+\subsection{Objective:}\label{objective-7}}
+
+You must implement the following formulas as functions:
+
+\large
+
+\[
+MSE(y, \hat{y}) = \cfrac{1}{m}\sum_{i=1}^{m}(\hat{y}^{(i)} - y^{(i)})^2
+\] \normalsize
+
+\large
+
+\[
+RMSE(y, \hat{y}) = \sqrt{\cfrac{1}{m}\sum_{i=1}^{m}(\hat{y}^{(i)} - y^{(i)})^2}
+\] \normalsize
+
+\large
+
+\[
+MAE(y, \hat{y}) = \cfrac{1}{m}\sum_{i=1}^{m}|{\hat{y}^{(i)} - y^{(i)}}|
+\] \normalsize
+
+\large
+
+\[
+R^2(y, \hat{y}) = 1 - \cfrac{\sum_{i=1}^{m}(\hat{y}^{(i)} - y^{(i)})^2}{\sum_{i=1}^{m}(\hat{y}^{(i)} - \bar{y})^2}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(y\) is a vector of dimension \(m * 1\),
+\item
+  \(\hat{y}\) is a vector of dimension \(m * 1\),
+\item
+  \(y^{(i)}\) is the \(i^{th}\) component of vector \(y\),
+\item
+  \(\hat{y}^{(i)}\) is the \(i^{th}\) component of \(\hat{y}\),
+\item
+  \(\bar{y}\) is the mean of the \(y\) vector
+\end{itemize}
+
+\hypertarget{instructions-7}{%
+\subsection{Instructions:}\label{instructions-7}}
+
+In the \texttt{other\_costs.py} file, create the following functions:
+RMSE, MAE, R2score, as per the instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ mse_(y, y_hat):}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        Calculate the MSE between the predicted output and the real output.}
+\CommentTok{    Args:}
+\CommentTok{        y: has to be a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{        y_hat: has to be a numpy.ndarray, a vector of dimension m * 1.      }
+\CommentTok{    Returns:}
+\CommentTok{        mse: has to be a float.}
+\CommentTok{        None if there is a matching dimension problem.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exceptions.}
+\CommentTok{    """}
+\NormalTok{        ... your code here ...}
+
+\KeywordTok{def}\NormalTok{ rmse_(y, y_hat):}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        Calculate the RMSE between the predicted output and the real output.}
+\CommentTok{    Args:}
+\CommentTok{            y: has to be a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{        y_hat: has to be a numpy.ndarray, a vector of dimension m * 1.      }
+\CommentTok{    Returns:}
+\CommentTok{        rmse: has to be a float.}
+\CommentTok{        None if there is a matching dimension problem.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exceptions.}
+\CommentTok{    """}
+\NormalTok{        ... your code here ...}
+
+\KeywordTok{def}\NormalTok{ mae_(y, y_hat):}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        Calculate the MAE between the predicted output and the real output.}
+\CommentTok{    Args:}
+\CommentTok{        y: has to be a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{        y_hat: has to be a numpy.ndarray, a vector of dimension m * 1.      }
+\CommentTok{    Returns:}
+\CommentTok{        mae: has to be a float.}
+\CommentTok{        None if there is a matching dimension problem.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exceptions.}
+\CommentTok{    """}
+\NormalTok{        ... your code here ...}
+    
+\KeywordTok{def}\NormalTok{ r2score_(y, y_hat):}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        Calculate the R2score between the predicted output and the output.}
+\CommentTok{    Args:}
+\CommentTok{        y: has to be a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{        y_hat: has to be a numpy.ndarray, a vector of dimension m * 1.      }
+\CommentTok{    Returns:}
+\CommentTok{        r2score: has to be a float.}
+\CommentTok{        None if there is a matching dimension problem.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exceptions.}
+\CommentTok{    """}
+\NormalTok{        ... your code here ...}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{remarks}{%
+\subsection{Remarks:}\label{remarks}}
+
+You might consider implementing four more methods, similar to what you
+did for the cost function in exercise 07:
+
+\begin{itemize}
+\item
+  \texttt{mse\_elem()}
+\item
+  \texttt{rmse\_elem\_()}
+\item
+  \texttt{mae\_elem()}
+\item
+  \texttt{r2score\_elem()} .
+\end{itemize}
+
+\hypertarget{examples-8}{%
+\subsection{Examples}\label{examples-8}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{from}\NormalTok{ sklearn.metrics }\ImportTok{import}\NormalTok{ mean_squared_error, mean_absolute_error, r2_score}
+\ImportTok{from}\NormalTok{ math }\ImportTok{import}\NormalTok{ sqrt}
+
+\CommentTok{# Example 1:}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{-9}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{-21}\NormalTok{])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{2}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{-13}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{-19}\NormalTok{])}
+
+\CommentTok{# Mean squared error}
+\CommentTok{## your implementation}
+\NormalTok{mse_(x,y)}
+\CommentTok{## Output:}
+\FloatTok{4.285714285714286}
+\CommentTok{## sklearn implementation}
+\NormalTok{mean_squared_error(x,y)}
+\CommentTok{## Output:}
+\FloatTok{4.285714285714286}
+
+\CommentTok{# Root mean squared error}
+\CommentTok{## your implementation}
+\NormalTok{rmse_(x,y)}
+\CommentTok{## Output:}
+\FloatTok{2.0701966780270626}
+\CommentTok{## sklearn implementation not available: take the square root of MSE}
+\NormalTok{sqrt(mean_squared_error(x,y))}
+\CommentTok{## Output:}
+\FloatTok{2.0701966780270626}
+
+\CommentTok{# Mean absolute error}
+\CommentTok{## your implementation}
+\NormalTok{mae(x,y)}
+\CommentTok{# Output:}
+\FloatTok{1.7142857142857142}
+\CommentTok{## sklearn implementation}
+\NormalTok{mean_absolute_error(x,y)}
+\CommentTok{# Output:}
+\FloatTok{1.7142857142857142}
+
+\CommentTok{# R2-score}
+\CommentTok{## your implementation}
+\NormalTok{r2score_(x,y)}
+\CommentTok{## Output:}
+\FloatTok{0.9681721733858745}
+\CommentTok{## sklearn implementation}
+\NormalTok{r2_score(x,y)}
+\CommentTok{## Output:}
+\FloatTok{0.9681721733858745}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-12---linear-gradient---vectorized-version}{%
+\section{Exercise 12 - Linear Gradient - vectorized
+version}\label{exercise-12---linear-gradient---vectorized-version}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex12\tabularnewline
+Files to turn in : & vec\_gradient.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives}{%
+\subsection{Objectives:}\label{objectives}}
+
+You must implement the following formula as a function:\\
+\large \[
+\nabla(J) = \cfrac{1}{m} x^T(x\theta - y)
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)\) is a vector of dimension (n, 1),
+\item
+  \(x\) is a matrix of dimension (m, n),
+\item
+  \(y\) is a vector of dimension (m, 1),
+\item
+  \(\theta\) is a vector of dimension (n, 1).
+\end{itemize}
+
+\hypertarget{instructions-8}{%
+\subsection{Instructions:}\label{instructions-8}}
+
+In the vec\_gradient.py file create the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ vec_gradient(x, y, theta):}
+    \CommentTok{"""Computes a gradient vector from three non-empty numpy.ndarray, without any for-loop. The three arrays must have the compatible dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a matrice of dimension (m, n).}
+\CommentTok{      y: has to be an numpy.ndarray, a vector of dimension (m, 1).}
+\CommentTok{      theta: has to be an numpy.ndarray, a vector of dimension (n, 1).}
+\CommentTok{    Returns:}
+\CommentTok{      The gradient as a numpy.ndarray, a vector of dimensions (n, 1), containg the result of the formula for all j.}
+\CommentTok{      None if x, y, or theta are empty numpy.ndarray.}
+\CommentTok{      None if x, y and theta do not have compatible dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-9}{%
+\subsection{Examples:}\label{examples-9}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array([}
+\NormalTok{    [ }\DecValTok{-6}\NormalTok{,  }\DecValTok{-7}\NormalTok{,  }\DecValTok{-9}\NormalTok{],}
+\NormalTok{        [ }\DecValTok{13}\NormalTok{,  }\DecValTok{-2}\NormalTok{,  }\DecValTok{14}\NormalTok{],}
+\NormalTok{        [ }\DecValTok{-7}\NormalTok{,  }\DecValTok{14}\NormalTok{,  }\DecValTok{-1}\NormalTok{],}
+\NormalTok{        [ }\DecValTok{-8}\NormalTok{,  }\DecValTok{-4}\NormalTok{,   }\DecValTok{6}\NormalTok{],}
+\NormalTok{        [ }\DecValTok{-5}\NormalTok{,  }\DecValTok{-9}\NormalTok{,   }\DecValTok{6}\NormalTok{],}
+\NormalTok{        [  }\DecValTok{1}\NormalTok{,  }\DecValTok{-5}\NormalTok{,  }\DecValTok{11}\NormalTok{],}
+\NormalTok{        [  }\DecValTok{9}\NormalTok{, }\DecValTok{-11}\NormalTok{,   }\DecValTok{8}\NormalTok{]])}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{2}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{-13}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{-19}\NormalTok{])}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\DecValTok{-6}\NormalTok{])}
+\NormalTok{vec_gradient(X, Y, theta)}
+\CommentTok{# array([ -37.35714286, 183.14285714, -393.])}
+
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{])}
+\NormalTok{vec_gradient(X, Y, theta)}
+\CommentTok{# array([  0.85714286, 23.28571429, -26.42857143])}
+
+\NormalTok{vec_gradient(X, X.dot(theta), theta)}
+\CommentTok{# array([0., 0., 0.])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\end{document}

@@ -1,0 +1,2179 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8x]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=Blue,
+            urlcolor=blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{35,38,41}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.58,0.85,0.30}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.25,0.50,0.35}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.48,0.49,0.49}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.99,0.74,0.29}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.64,0.20,0.25}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.60,1.00}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.56,0.27,0.68}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.77,0.36,0.00}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.96,0.31,0.31}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{h}
+\makeatother
+
+
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{MaxMatrixCols}{20}
+\usepackage{cancel}
+\usepackage{calc}
+\usepackage{eso-pic}
+\newlength{\PageFrameTopMargin}
+\newlength{\PageFrameBottomMargin}
+\newlength{\PageFrameLeftMargin}
+\newlength{\PageFrameRightMargin}
+
+\setlength{\PageFrameTopMargin}{1.5cm}
+\setlength{\PageFrameBottomMargin}{1cm}
+\setlength{\PageFrameLeftMargin}{1cm}
+\setlength{\PageFrameRightMargin}{1cm}
+
+\makeatletter
+
+\newlength{\Page@FrameHeight}
+\newlength{\Page@FrameWidth}
+
+\AddToShipoutPicture{
+  \thinlines
+  \setlength{\Page@FrameHeight}{\paperheight-\PageFrameTopMargin-\PageFrameBottomMargin}
+  \setlength{\Page@FrameWidth}{\paperwidth-\PageFrameLeftMargin-\PageFrameRightMargin}
+  \put(\strip@pt\PageFrameLeftMargin,\strip@pt\PageFrameTopMargin){
+    \framebox(\strip@pt\Page@FrameWidth, \strip@pt\Page@FrameHeight){}}}
+
+\makeatother
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+
+\usepackage{graphicx}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\geometry{hmargin=2cm,vmargin=2cm}
+
+\usepackage{sectsty}
+
+\sectionfont{\centering\Huge}
+\subsectionfont{\Large}
+\subsubsectionfont{\large}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{40}{48} \bfseries Bootcamp}\\[0.6cm]
+    \textsc{\fontsize{39}{48} \bfseries { %bootcamp_title
+Machine Learning
+    }}\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\begin{center}
+\includegraphics[width=200pt]{assets/logo-42-ai.png}{\centering}
+\end{center}
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{32}{48} \bfseries %day_number
+Day04    
+    }\\[0.6cm]
+    \textsc{\fontsize{32}{48} \bfseries %day_title
+Regularization    
+    }\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\pagenumbering{gobble}
+\newpage
+
+%%% >>>>> Page de garde
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\hypertarget{day04---regularization}{%
+\section{Day04 - Regularization}\label{day04---regularization}}
+
+Today you will fight overfitting!\\
+You will discover the concepts of regularization and how to implement it
+into the algortihms you already saw until now.
+
+\hypertarget{notions-of-the-day}{%
+\subsection{Notions of the Day}\label{notions-of-the-day}}
+
+Regularization, overfitting. Regularized cost function, regularized
+gradient descent.\\
+Regularized linear regression. Regularized logistic regression.
+
+\hypertarget{useful-ressources}{%
+\subsection{Useful Ressources}\label{useful-ressources}}
+
+We strongly advise you to use the following resource:
+\href{https://www.coursera.org/learn/machine-learning/home/week/3}{Machine
+Learning MOOC - Stanford}\\
+Here are the sections of the MOOC that are relevant for today's
+exercises:
+
+\hypertarget{week-3}{%
+\subsubsection{Week 3:}\label{week-3}}
+
+\textbf{Solving the Problem of Overfitting:}
+
+\begin{itemize}
+\item
+  Classification (Video + Reading)
+\item
+  Hypothesis Representation (Video + Reading)
+\item
+  Decision Boundary (Video + Reading)
+\end{itemize}
+
+\textbf{Logistic Regression Model:}
+
+\begin{itemize}
+\item
+  Cost Function (Video + Reading)
+\item
+  Simplified Cost Function and Gradient Descent (Video + Reading)
+\end{itemize}
+
+\textbf{Multiclass Classification:}
+
+\begin{itemize}
+\item
+  Mutliclass Classification: One-vs-all (Video + Reading)
+\item
+  Review (Reading + Quiz)
+\end{itemize}
+
+\hypertarget{general-rules}{%
+\subsection{General rules}\label{general-rules}}
+
+\begin{itemize}
+\item
+  The Python version to use is 3.7, you can check with the following
+  command: \texttt{python\ -V}
+\item
+  The norm: during this bootcamp you will follow the
+  \href{https://www.python.org/dev/peps/pep-0008/}{Pep8 standards}
+\item
+  The function \texttt{eval} is never allowed.
+\item
+  The exercises are ordered from the easiest to the hardest.
+\item
+  Your exercises are going to be evaluated by someone else, so make sure
+  that your variable names and function names are appropriate and civil.
+\item
+  Your manual is the internet.
+\item
+  You can also ask questions in the \texttt{\#bootcamps} channel in
+  \href{https://42-ai.slack.com}{42AI's Slack workspace}.
+\item
+  If you find any issues or mistakes in this document, please create an
+  issue on our
+  \href{https://github.com/42-AI/bootcamp_machine-learning/issues}{dedicated
+  Github repository}.
+\end{itemize}
+
+\hypertarget{helper}{%
+\subsection{Helper}\label{helper}}
+
+Ensure that you have the right Python version.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{> which python}
+\NormalTok{/goinfre/miniconda/bin/python}
+\NormalTok{> python -V}
+\NormalTok{Python 3.7.*}
+\NormalTok{> which pip}
+\NormalTok{/goinfre/miniconda/bin/pip}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-00---logistic-regression}{%
+\subsubsection{Exercise 00 - Logistic
+Regression}\label{exercise-00---logistic-regression}}
+
+\hypertarget{exercise-01---polynomial-models}{%
+\subsubsection{Exercise 01 - Polynomial
+models}\label{exercise-01---polynomial-models}}
+
+\hypertarget{exercise-02---ai-key-notions}{%
+\subsubsection{Exercise 02 - Ai Key
+Notions}\label{exercise-02---ai-key-notions}}
+
+\hypertarget{exercise-03---polynomial-models-ii}{%
+\subsubsection{Exercise 03 - Polynomial models
+II}\label{exercise-03---polynomial-models-ii}}
+
+\hypertarget{interlude---fighting-overfitting-enter-regularization}{%
+\subsubsection{Interlude - Fighting overfitting\ldots{} enter
+Regularization}\label{interlude---fighting-overfitting-enter-regularization}}
+
+\hypertarget{interlude---answers-to-the-vectorization-problem}{%
+\subsubsection{Interlude - Answers to the vectorization
+problem}\label{interlude---answers-to-the-vectorization-problem}}
+
+\hypertarget{exercise-04---l2-regularization}{%
+\subsubsection{Exercise 04 - L2
+Regularization}\label{exercise-04---l2-regularization}}
+
+\hypertarget{interlude---predict-ii-hypothesis}{%
+\subsubsection{Interlude - Predict II:
+Hypothesis}\label{interlude---predict-ii-hypothesis}}
+
+\hypertarget{exercise-05---regularized-linear-cost-function}{%
+\subsubsection{Exercise 05 - Regularized Linear Cost
+Function}\label{exercise-05---regularized-linear-cost-function}}
+
+\hypertarget{exercise-06---regularized-logistic-cost-function}{%
+\subsubsection{Exercise 06 - Regularized Logistic Cost
+Function}\label{exercise-06---regularized-logistic-cost-function}}
+
+\hypertarget{interlude---regularized-gradient}{%
+\subsubsection{Interlude - Regularized
+Gradient}\label{interlude---regularized-gradient}}
+
+\hypertarget{exercise-07---regularized-linear-gradient}{%
+\subsubsection{Exercise 07 - Regularized Linear
+Gradient}\label{exercise-07---regularized-linear-gradient}}
+
+\hypertarget{exercise-08---regularized-logistic-gradient}{%
+\subsubsection{Exercise 08 - Regularized Logistic
+Gradient}\label{exercise-08---regularized-logistic-gradient}}
+
+\hypertarget{interlude---linear-regression-to-the-next-level-ridge-regression}{%
+\subsubsection{Interlude - Linear Regression to the next level: Ridge
+Regression}\label{interlude---linear-regression-to-the-next-level-ridge-regression}}
+
+\hypertarget{exercise-09---ridge-regression}{%
+\subsubsection{Exercise 09 - Ridge
+Regression}\label{exercise-09---ridge-regression}}
+
+\hypertarget{exercise-10---practicing-ridge-regression}{%
+\subsubsection{Exercise 10 - Practicing Ridge
+Regression}\label{exercise-10---practicing-ridge-regression}}
+
+\hypertarget{interlude---regularized-logistic-regression-is-still-logistic-regression}{%
+\subsubsection{Interlude - Regularized Logistic Regression is still
+Logistic
+Regression}\label{interlude---regularized-logistic-regression-is-still-logistic-regression}}
+
+\hypertarget{exercise-11---regularized-logistic-regression}{%
+\subsubsection{Exercise 11 - Regularized Logistic
+Regression}\label{exercise-11---regularized-logistic-regression}}
+
+\hypertarget{exercise-12---practicing-regularized-logistic-regression}{%
+\subsubsection{Exercise 12 - Practicing Regularized Logistic
+Regression}\label{exercise-12---practicing-regularized-logistic-regression}}
+
+\clearpage
+
+\hypertarget{exercise-00---logistic-regression-1}{%
+\section{Exercise 00 - Logistic
+Regression}\label{exercise-00---logistic-regression-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex00\tabularnewline
+Files to turn in : & my\_logistic\_regression.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{AI Classics:}\\
+\emph{These exercises are key assignments from the previous day. If you
+haven't completed them yet, you should finish them first before you
+continue with today's exercises.}
+
+\hypertarget{objectives}{%
+\subsection{Objectives:}\label{objectives}}
+
+The time to use everything you built so far has come! Demonstrate your
+knowledge by implementing a logistic regression classifier using the
+gradient descent algorithm. You must have seen the power of
+\texttt{NumPy} for vectorized operations. Well let's make something more
+concrete with that.
+
+You may have had a look at Scikit-Learn's implementation of logistic
+regression and noticed that the
+\texttt{sklearn.linear\_model.LogisticRegression} class offers a lot of
+options.
+
+The goal of this exercise is to make a simplified but nonetheless useful
+and powerful version, with fewer options.
+
+\hypertarget{instructions}{%
+\subsection{Instructions:}\label{instructions}}
+
+In the \texttt{my\_logistic\_regression.py} file, write a
+\texttt{MyLogisticRegression} class as in the instructions below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ MyLogisticRegression():}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        My personnal logistic regression to classify things.}
+\CommentTok{    """}
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{, thetas, alpha}\OperatorTok{=}\FloatTok{0.001}\NormalTok{, n_cycle}\OperatorTok{=}\DecValTok{1000}\NormalTok{):}
+        \VariableTok{self}\NormalTok{.alpha }\OperatorTok{=}\NormalTok{ alpha}
+        \VariableTok{self}\NormalTok{.max_iter }\OperatorTok{=}\NormalTok{ max_iter}
+        \VariableTok{self}\NormalTok{.thetas }\OperatorTok{=}\NormalTok{ thetas}
+        \CommentTok{# Your code here}
+
+    \CommentTok{#... other methods ...}
+\end{Highlighting}
+\end{Shaded}
+
+You will add the following methods:
+
+\begin{itemize}
+\item
+  \texttt{fit\_(self,\ x,\ y)}
+\item
+  \texttt{predict\_(self,\ x)}
+\item
+  \texttt{cost\_(self,\ x,\ y)}
+\end{itemize}
+
+You have already written these functions, you will just need a few
+adjustments so that they all work well within your
+\texttt{MyLogisticRegression} class.
+
+\hypertarget{examples}{%
+\subsection{Examples:}\label{examples}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{from}\NormalTok{ my_logistic_regression }\ImportTok{import}\NormalTok{ MyLogisticRegression }\ImportTok{as}\NormalTok{ MyLR}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{1.}\NormalTok{, }\FloatTok{1.}\NormalTok{, }\FloatTok{2.}\NormalTok{, }\FloatTok{3.}\NormalTok{], [}\FloatTok{5.}\NormalTok{, }\FloatTok{8.}\NormalTok{, }\FloatTok{13.}\NormalTok{, }\FloatTok{21.}\NormalTok{], [}\FloatTok{3.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{9.}\NormalTok{, }\FloatTok{14.}\NormalTok{]])}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{1}\NormalTok{], [}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{]])}
+\NormalTok{mylr }\OperatorTok{=}\NormalTok{ MyLR([}\DecValTok{2}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{-4.3}\NormalTok{, }\FloatTok{2.09}\NormalTok{])}
+
+\CommentTok{# Example 0:}
+\NormalTok{mylr.predict_(X)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{0.99930437}\NormalTok{],}
+\NormalTok{       [}\FloatTok{1.}\NormalTok{        ],}
+\NormalTok{       [}\FloatTok{1.}\NormalTok{        ]])}
+
+\CommentTok{# Example 1:}
+\NormalTok{mylr.cost_(X,Y)}
+\CommentTok{# Output:}
+\FloatTok{11.513157421577004}
+
+\CommentTok{# Example 2:}
+\NormalTok{mylr.fit_(X, Y)}
+\NormalTok{mylr.thetas}
+\CommentTok{# Output:}
+\NormalTok{array([[ }\FloatTok{1.04565272}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{0.62555148}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{0.38387466}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{0.15622435}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{0.45990099}\NormalTok{]])}
+
+\CommentTok{# Example 3:}
+\NormalTok{mylr.predict_(X)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{0.72865802}\NormalTok{],}
+\NormalTok{       [}\FloatTok{0.40550072}\NormalTok{],}
+\NormalTok{       [}\FloatTok{0.45241588}\NormalTok{]])}
+
+\CommentTok{# Example 4:}
+\NormalTok{mylr.cost_(X,Y)}
+\CommentTok{# Output:}
+\FloatTok{0.5432466580663214}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-01---polynomial-models-1}{%
+\section{Exercise 01 - Polynomial
+models}\label{exercise-01---polynomial-models-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex01\tabularnewline
+Files to turn in : & polynomial\_model.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{AI Classics:}\\
+\emph{These exercises are key assignments from the previous day. If you
+haven't completed them yet, you should finish them first before you
+continue with today's exercises.}
+
+\hypertarget{objectives-1}{%
+\subsection{Objectives:}\label{objectives-1}}
+
+Create a function that takes a vector \(x\) of dimension \(m * 1\) and
+an integer \(n\) as input, and returns a matrix of dimension
+\(m * n\).\\
+Each column of the matrix contains \(x\) raised to the power of \(j\),
+for \(j = 1, 2, ..., n\):
+
+\large
+
+\[
+\begin{matrix}
+x &|& x^2 &|& x^3 &|& \ldots &|& x^n
+\end{matrix}
+\] \normalsize
+
+\hypertarget{instructions-1}{%
+\subsection{Instructions:}\label{instructions-1}}
+
+In the \texttt{polynomial\_model.py\ file}, write the following function
+as per the instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ add_polynomial_features(x, power):}
+    \CommentTok{"""Add polynomial features to vector x by raising its values up to the power given in argument.  }
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      power: has to be an int, the power up to which the components of vector x are going to be raised.}
+\CommentTok{    Returns:}
+\CommentTok{      The matrix of polynomial features as a numpy.ndarray, of dimension m * n, containg he polynomial feature values for all training examples.}
+\CommentTok{      None if x is an empty numpy.ndarray.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-1}{%
+\subsection{Examples:}\label{examples-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{).reshape(}\OperatorTok{-}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+
+\CommentTok{# Example 1:}
+\NormalTok{add_polynomial_features(x, }\DecValTok{3}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[  }\DecValTok{1}\NormalTok{,   }\DecValTok{1}\NormalTok{,   }\DecValTok{1}\NormalTok{],}
+\NormalTok{       [  }\DecValTok{2}\NormalTok{,   }\DecValTok{4}\NormalTok{,   }\DecValTok{8}\NormalTok{],}
+\NormalTok{       [  }\DecValTok{3}\NormalTok{,   }\DecValTok{9}\NormalTok{,  }\DecValTok{27}\NormalTok{],}
+\NormalTok{       [  }\DecValTok{4}\NormalTok{,  }\DecValTok{16}\NormalTok{,  }\DecValTok{64}\NormalTok{],}
+\NormalTok{       [  }\DecValTok{5}\NormalTok{,  }\DecValTok{25}\NormalTok{, }\DecValTok{125}\NormalTok{]])}
+
+
+\CommentTok{# Example 2:}
+\NormalTok{add_polynomial_features(x, }\DecValTok{6}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[    }\DecValTok{1}\NormalTok{,     }\DecValTok{1}\NormalTok{,     }\DecValTok{1}\NormalTok{,     }\DecValTok{1}\NormalTok{,     }\DecValTok{1}\NormalTok{,     }\DecValTok{1}\NormalTok{],}
+\NormalTok{       [    }\DecValTok{2}\NormalTok{,     }\DecValTok{4}\NormalTok{,     }\DecValTok{8}\NormalTok{,    }\DecValTok{16}\NormalTok{,    }\DecValTok{32}\NormalTok{,    }\DecValTok{64}\NormalTok{],}
+\NormalTok{       [    }\DecValTok{3}\NormalTok{,     }\DecValTok{9}\NormalTok{,    }\DecValTok{27}\NormalTok{,    }\DecValTok{81}\NormalTok{,   }\DecValTok{243}\NormalTok{,   }\DecValTok{729}\NormalTok{],}
+\NormalTok{       [    }\DecValTok{4}\NormalTok{,    }\DecValTok{16}\NormalTok{,    }\DecValTok{64}\NormalTok{,   }\DecValTok{256}\NormalTok{,  }\DecValTok{1024}\NormalTok{,  }\DecValTok{4096}\NormalTok{],}
+\NormalTok{       [    }\DecValTok{5}\NormalTok{,    }\DecValTok{25}\NormalTok{,   }\DecValTok{125}\NormalTok{,   }\DecValTok{625}\NormalTok{,  }\DecValTok{3125}\NormalTok{, }\DecValTok{15625}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-02---ai-key-notions-1}{%
+\section{Exercise 02 - AI Key
+Notions:}\label{exercise-02---ai-key-notions-1}}
+
+\emph{These questions are about key notions from the previous days.
+Making sure you can formulate a clear answer to each of them is
+necessary before you keep going. Discuss them with a fellow student if
+you can.}
+
+\hypertarget{are-you-able-to-clearly-and-simply-explain}{%
+\subsection{Are you able to clearly and simply
+explain:}\label{are-you-able-to-clearly-and-simply-explain}}
+
+1 - What is overfitting?
+
+2 - What do you think underfitting might be?
+
+3 - Why is it important to split the data set in a training and a test
+set?
+
+4 - If a model overfits, what will happen when you compare its
+performance on the training set vs.~its performance on the test set?
+
+5 - If a model underfits, what do you think will happen when you compare
+its performance on the training set vs.~its performance on the test set?
+
+\clearpage
+
+\hypertarget{exercise-03---polynomial-models-ii-1}{%
+\section{Exercise 03 - Polynomial models
+II}\label{exercise-03---polynomial-models-ii-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex03\tabularnewline
+Files to turn in : & polynomial\_model\_extended.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-2}{%
+\subsection{Objectives:}\label{objectives-2}}
+
+Create a function that takes a matrix \(X\) of dimension \(m * n\) and
+an integer \(p\) as input, and returns a matrix of dimension
+\(m * (np)\).\\
+For each column \(x_j\) of the matrix \(X\), the new matrix contains
+\(x_j\) raised to the power of \(k\), for \(k = 1, 2, ..., p\) :
+
+\large
+
+\[
+\begin{matrix}
+x_1 &|& \dots &|& x_n &|& x_1^2 &|& \dots &|& x_n^2 &|& \dots &|& x_1^p &|& \dots &|& x_n^p
+\end{matrix}
+\] \normalsize
+
+\hypertarget{instructions-2}{%
+\subsection{Instructions:}\label{instructions-2}}
+
+In the \texttt{polynomial\_model\_extended.py} file, write the following
+function as per the instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ add_polynomial_features(x, power):}
+    \CommentTok{"""Add polynomial features to matrix x by raising its columns to every power in the range of 1 up to the power given in argument.  }
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a matrix of dimension m * n.}
+\CommentTok{      power: has to be an int, the power up to which the columns of matrix x are going to be raised.}
+\CommentTok{    Returns:}
+\CommentTok{      The matrix of polynomial features as a numpy.ndarray, of dimension m * (np), containg the polynomial feature values for all training examples.}
+\CommentTok{      None if x is an empty numpy.ndarray.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-2}{%
+\subsection{Examples:}\label{examples-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{11}\NormalTok{).reshape(}\DecValTok{5}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{# Example 1:}
+\NormalTok{add_polynomial_features(x, }\DecValTok{3}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[   }\DecValTok{1}\NormalTok{,    }\DecValTok{2}\NormalTok{,    }\DecValTok{1}\NormalTok{,    }\DecValTok{4}\NormalTok{,    }\DecValTok{1}\NormalTok{,    }\DecValTok{8}\NormalTok{],}
+\NormalTok{       [   }\DecValTok{3}\NormalTok{,    }\DecValTok{4}\NormalTok{,    }\DecValTok{9}\NormalTok{,   }\DecValTok{16}\NormalTok{,   }\DecValTok{27}\NormalTok{,   }\DecValTok{64}\NormalTok{],}
+\NormalTok{       [   }\DecValTok{5}\NormalTok{,    }\DecValTok{6}\NormalTok{,   }\DecValTok{25}\NormalTok{,   }\DecValTok{36}\NormalTok{,  }\DecValTok{125}\NormalTok{,  }\DecValTok{216}\NormalTok{],}
+\NormalTok{       [   }\DecValTok{7}\NormalTok{,    }\DecValTok{8}\NormalTok{,   }\DecValTok{49}\NormalTok{,   }\DecValTok{64}\NormalTok{,  }\DecValTok{343}\NormalTok{,  }\DecValTok{512}\NormalTok{],}
+\NormalTok{       [   }\DecValTok{9}\NormalTok{,   }\DecValTok{10}\NormalTok{,   }\DecValTok{81}\NormalTok{,  }\DecValTok{100}\NormalTok{,  }\DecValTok{729}\NormalTok{, }\DecValTok{1000}\NormalTok{]])}
+
+\CommentTok{# Example 2:}
+\NormalTok{add_polynomial_features(x, }\DecValTok{5}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[    }\DecValTok{1}\NormalTok{,     }\DecValTok{2}\NormalTok{,     }\DecValTok{1}\NormalTok{,     }\DecValTok{4}\NormalTok{,     }\DecValTok{1}\NormalTok{,     }\DecValTok{8}\NormalTok{,     }\DecValTok{1}\NormalTok{,    }\DecValTok{16}\NormalTok{],}
+\NormalTok{       [    }\DecValTok{3}\NormalTok{,     }\DecValTok{4}\NormalTok{,     }\DecValTok{9}\NormalTok{,    }\DecValTok{16}\NormalTok{,    }\DecValTok{27}\NormalTok{,    }\DecValTok{64}\NormalTok{,    }\DecValTok{81}\NormalTok{,   }\DecValTok{256}\NormalTok{],}
+\NormalTok{       [    }\DecValTok{5}\NormalTok{,     }\DecValTok{6}\NormalTok{,    }\DecValTok{25}\NormalTok{,    }\DecValTok{36}\NormalTok{,   }\DecValTok{125}\NormalTok{,   }\DecValTok{216}\NormalTok{,   }\DecValTok{625}\NormalTok{,  }\DecValTok{1296}\NormalTok{],}
+\NormalTok{       [    }\DecValTok{7}\NormalTok{,     }\DecValTok{8}\NormalTok{,    }\DecValTok{49}\NormalTok{,    }\DecValTok{64}\NormalTok{,   }\DecValTok{343}\NormalTok{,   }\DecValTok{512}\NormalTok{,  }\DecValTok{2401}\NormalTok{,  }\DecValTok{4096}\NormalTok{],}
+\NormalTok{       [    }\DecValTok{9}\NormalTok{,    }\DecValTok{10}\NormalTok{,    }\DecValTok{81}\NormalTok{,   }\DecValTok{100}\NormalTok{,   }\DecValTok{729}\NormalTok{,  }\DecValTok{1000}\NormalTok{,  }\DecValTok{6561}\NormalTok{, }\DecValTok{10000}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{interlude---fighting-overfitting-with-regularization}{%
+\section{Interlude - Fighting Overfitting\ldots{} With
+Regularization}\label{interlude---fighting-overfitting-with-regularization}}
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/Evaluate.png}
+\caption{The Learning Cycle - Evaluate}
+\end{figure}
+
+In the \textbf{day02}, we talked about the problem of
+\textbf{overfitting} and the necessity of splitting the dataset into a
+\textbf{training set} and a \textbf{test set} in order to spot it.
+
+However, being able to detect overfitting does not mean being able to
+avoid it.
+
+To address this important issue, it is time to introduce you to a new
+technique: \textbf{regularization}.
+
+If you remember well, overfitting happens because the model takes
+advantage of irrelevant signals in the training data. The basic idea
+beahind regularization is to \textbf{penalize the model for putting too
+much weight on certain} (usually heavy polynomial) \textbf{features}. We
+do this by adding an extra term in the cost function:
+
+\large
+
+\[
+\text{regularized cost function} = \text{cost function} + \cfrac{\lambda}{2m} \sum_{j = 1}^n \theta_j^2
+\] \normalsize
+
+By doing so, \textbf{we are encouraging the model to keep its}
+\(\theta\) \textbf{values as small as possible}. Indeed, the values of
+\(\theta\) \emph{themselves} are now taken into account when calculating
+the cost.
+
+\(\lambda\) (called \emph{lambda}) is the parameter through which you
+can modulate how reglarization should impact the model's construction.
+
+\begin{itemize}
+\item
+  If \(\lambda = 0\), there is no regularization (as we did until now)
+\item
+  If \(\lambda\) is very large, it will drive all the \(\theta\)
+  parameters to \(0\).
+\end{itemize}
+
+\textbf{Please notice:} in the regularization term, the sum starts at
+\(j = 1\) because we do NOT want to penalize the value of \(\theta_0\)
+(the y-intercept, which doesn't depend on a feature).
+
+\hypertarget{be-carefull}{%
+\subsection{Be carefull!}\label{be-carefull}}
+
+Machine Learning was essentially developed by computer scientists (not
+mathematicians). This can cause problems when we try to represent things
+mathematically.\\
+For example: using the \(\theta_0\) notation to represent the
+y-intercept makes things easy when we apply the linear algebra trick,
+\textbf{but} it completly messes up the overall matrix notation!
+
+According to that notation, the \(X'\) matrix has the following
+properties:
+
+\begin{itemize}
+\item
+  its rows, \(x'^{(i)}\), follow the mathematical indexing: starting at
+  1.
+\item
+  its columns, \(x'_j\), follow the computer science indexing: starting
+  at 0.
+\end{itemize}
+
+\large
+
+\[
+X' =
+\underbrace{
+\begin{bmatrix}
+1 & x_1^{(1)} & \dots & x_n^{(1)} \\
+\vdots & \vdots & \ddots & \vdots \\ 
+1 & x_1^{(m)} & \dots & x_n^{(m)} \\ 
+\end{bmatrix}  
+}_{\begin{matrix}
+    j = 0, \dots, n
+\end{matrix}}
+=     
+\left .
+\begin{bmatrix}
+x_0^{(1)} & x_1^{(1)} & \dots & x_n^{(1)} \\
+\vdots & \vdots & \ddots & \vdots \\ 
+x_0^{(m)} & x_1^{(m)} & \dots & x_n^{(m)} \\ 
+\end{bmatrix}
+\right \} i = 1, \dots, m
+\] \normalsize
+
+It's precisely for this reason that you keep seeing that \(X'\) is of
+dimension \(m * (n+1)\)
+
+\hypertarget{terminology}{%
+\subsection{Terminology:}\label{terminology}}
+
+The regularization technique we are introducing here is named
+\textbf{\(L_2 \text{ regularization}\)}, because it adds the squared
+\(L_2 \text{ norm}\) of the \(\theta\) vector to the cost function.\\
+The \(L_2 \text{ norm}\) of a given vector \(x\), written
+
+\large
+
+\[
+L_2(x) = ||x||_2 = \sqrt{\sum_i x_i^2 } \\
+L_2(x)^2 = ||x||_2^2 = \sum_i x_i^2  \\
+\] \normalsize
+
+is its \textbf{euclidean norm} (i.e.~the sum of the components squared).
+
+There is an infinite variety of norms that could be used as
+regularization terms, depending on the desired regularization effect.
+Here, we will only use \(L_2\), the most common one.
+
+\textbf{Note:}
+
+\large
+
+\[
+\text{the notation }\sum_i \\ \text{ means: "the sum for all } i"
+\] \normalsize
+
+There is no need to give explicitly the start and the end of the
+summation index if we want to sum over all the values of \(i\).\\
+However, it is better to do it anyway because it forces us to be sure of
+what we are doing. And in our case, we do not want to sum over
+\(\theta_0\)\ldots{}
+
+\hypertarget{our-old-friend-vectorization}{%
+\subsection{Our old friend vectorization
+\ldots{}}\label{our-old-friend-vectorization}}
+
+It is not a surprise, we can use vectorization to calculate
+\(\sum_{j = 1}^n \theta_j^2\) more efficiently. It could be a good
+exercise for you to try to figure it out by yourself. We suggest you
+give it a try and then check the answer on the next page. \clearpage
+
+\hypertarget{interlude---answers-to-the-vectorization-problem-1}{%
+\section{Interlude - Answers to the Vectorization
+Problem}\label{interlude---answers-to-the-vectorization-problem-1}}
+
+So, how do you vectorize the following?
+
+\large
+
+\[
+\sum_{i = j}^n \theta_j^2
+\] \normalsize
+
+It's very similar to a \textbf{dot product} of \(\theta\) with itself.\\
+The only problem here is to find a way to not take \(\theta_0\) into
+account.
+
+Let's construct a vector \(\theta'\) with the following rules : \large
+\[
+\begin{matrix}
+\theta'_0 & = 0 &\\
+\theta'_j & =  \theta_j & \text{ for } j = 1, \dots, n\\    
+\end{matrix}
+\] \normalsize
+
+In other words: \large \[
+\\
+\theta' = \begin{bmatrix}
+  0 \\
+  \theta_1 \\
+  \vdots \\
+  \theta_n
+\end{bmatrix}
+\] \normalsize
+
+This way, we can perform the dot product without having \(\theta_0\)
+interfering in our calculations:
+
+\large
+
+\[
+\begin{matrix}
+\theta' \cdot \theta' & = & 
+\begin{bmatrix}
+  0 \\
+  \theta_1 \\
+  \vdots \\
+  \theta_n
+\end{bmatrix} \cdot \begin{bmatrix}
+  0 \\
+  \theta_1 \\
+  \vdots \\
+  \theta_n
+\end{bmatrix} \\ 
+\\
+& = & 0 \cdot 0 + \theta_1 \cdot \theta_1 + \dots + \theta_n \cdot \theta_n \\ 
+\\
+& = & \sum_{j= 1}^n \theta_j^2
+\end{matrix}
+\] \normalsize \clearpage
+
+\hypertarget{exercise-04---l2-regularization-1}{%
+\section{Exercise 04 - L2
+Regularization}\label{exercise-04---l2-regularization-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex04\tabularnewline
+Files to turn in : & l2\_reg.py\tabularnewline
+Authorized modules : & Numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-3}{%
+\subsection{Objectives:}\label{objectives-3}}
+
+You must implement the following formulas as functions:
+
+\hypertarget{i--iterative}{%
+\subsubsection{I- Iterative:}\label{i--iterative}}
+
+\large
+
+\[
+L_2(\theta)^2 = \sum_{j = 1}^n \theta_j^2
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\theta\) is a vector of dimension n * 1.
+\end{itemize}
+
+\hypertarget{ii---vectorized}{%
+\subsubsection{II - Vectorized:}\label{ii---vectorized}}
+
+\large
+
+\[
+L_2(\theta)^2 = \theta' \cdot \theta'
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\theta'\) is a vector of dimension \(n * 1\), constructed using the
+  following rules:
+\end{itemize}
+
+\large
+
+\[
+\begin{matrix}
+\theta'_0 & =  0 \\
+\theta'_j & =  \theta_j & \text{ for } j = 1, \dots, n\\    
+\end{matrix}
+\] \normalsize
+
+\hypertarget{instructions-3}{%
+\subsection{Instructions:}\label{instructions-3}}
+
+In the \texttt{l2\_reg.py} file, write the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ iterative_l2(theta):}
+    \CommentTok{"""Computes the L2 regularization of a non-empty numpy.ndarray, with a for-loop.}
+\CommentTok{    Args:}
+\CommentTok{      theta: has to be a numpy.ndarray, a vector of dimension n * 1.}
+\CommentTok{    Returns:}
+\CommentTok{      The L2 regularization as a float.}
+\CommentTok{      None if theta in an empty numpy.ndarray.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+
+\KeywordTok{def}\NormalTok{ l2(theta):}
+    \CommentTok{"""Computes the L2 regularization of a non-empty numpy.ndarray, without any for-loop.}
+\CommentTok{    Args:}
+\CommentTok{      theta: has to be a numpy.ndarray, a vector of dimension n * 1.}
+\CommentTok{    Returns:}
+\CommentTok{      The L2 regularization as a float.}
+\CommentTok{      None if theta in an empty numpy.ndarray.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}  
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-3}{%
+\subsection{Examples}\label{examples-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{2}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{-13}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{-19}\NormalTok{])}
+
+\CommentTok{# Example 1: }
+\NormalTok{iterative_l2(x)}
+\CommentTok{# Output:}
+\FloatTok{911.0}
+
+\CommentTok{# Example 2: }
+\NormalTok{l2(x)}
+\CommentTok{# Output:}
+\FloatTok{911.0}
+
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{3}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\OperatorTok{-}\DecValTok{6}\NormalTok{])}
+\CommentTok{# Example 3: }
+\NormalTok{iterative_l2(y)}
+\CommentTok{# Output:}
+\FloatTok{36.25}
+
+\CommentTok{# Example 4: }
+\NormalTok{l2(y)}
+\CommentTok{# Output:}
+\FloatTok{36.25}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-05---regularized-linear-cost-function-1}{%
+\section{Exercise 05 - Regularized Linear Cost
+Function}\label{exercise-05---regularized-linear-cost-function-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex05\tabularnewline
+Files to turn in : & linear\_cost\_reg.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-4}{%
+\subsection{Objectives:}\label{objectives-4}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+J(\theta)  =  \cfrac{1}{2m}[(\hat{y} - y)\cdot(\hat{y}- y) + \lambda (\theta' \cdot \theta')]
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(y\) is a vector of dimension \(m * 1\), the expected values,
+\item
+  \(\hat{y}\) is a vector of dimension \(m * 1\), the predicted values,
+\item
+  \(\lambda\) is a constant, the regularization hyperparameter,
+\item
+  \(\theta'\) is a vector of dimension \(n * 1\), constructed using the
+  following rules:
+\end{itemize}
+
+\large
+
+\[
+\begin{matrix}
+\theta'_0 & =  0 \\
+\theta'_j & =  \theta_j & \text{ for } j = 1, \dots, n\\    
+\end{matrix}
+\] \normalsize
+
+\hypertarget{instructions-4}{%
+\subsection{Instructions:}\label{instructions-4}}
+
+In the \texttt{linear\_cost\_reg.py} file, write the following function
+as per the instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ reg_cost_(y, y_hat, theta, lambda_):}
+    \CommentTok{"""Computes the regularized cost of a linear regression model from two non-empty numpy.ndarray, without any for loop. The two arrays must have the same dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      y: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      y_hat: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      theta: has to be a numpy.ndarray, a vector of dimension n * 1.}
+\CommentTok{      lambda_: has to be a float.}
+\CommentTok{    Returns:}
+\CommentTok{      The regularized cost as a float.}
+\CommentTok{      None if y, y_hat, or theta are empty numpy.ndarray.}
+\CommentTok{      None if y and y_hat do not share the same dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Hint:} such situation is a good use case of decorators\ldots{}
+
+\hypertarget{examples-4}{%
+\subsection{Examples}\label{examples-4}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{2}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{-13}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{-19}\NormalTok{])}
+\NormalTok{y_hat }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{3}\NormalTok{, }\DecValTok{13}\NormalTok{, }\FloatTok{-11.5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{-20}\NormalTok{])}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\FloatTok{2.5}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\FloatTok{-0.9}\NormalTok{])}
+
+\CommentTok{# Example :}
+\NormalTok{reg_cost_(y, y_hat, theta, }\FloatTok{.5}\NormalTok{)}
+\CommentTok{# Output:}
+\FloatTok{0.8503571428571429}
+
+\CommentTok{# Example :}
+\NormalTok{reg_cost_(y, y_hat, theta, }\FloatTok{.05}\NormalTok{)}
+\CommentTok{# Output:}
+\FloatTok{0.5511071428571429}
+
+\CommentTok{# Example :}
+\NormalTok{reg_cost_(y, y_hat, theta, }\FloatTok{.9}\NormalTok{)}
+\CommentTok{# Output:}
+\FloatTok{1.116357142857143}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-06---regularized-logistic-cost-function-1}{%
+\section{Exercise 06 - Regularized Logistic Cost
+Function}\label{exercise-06---regularized-logistic-cost-function-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex06\tabularnewline
+Files to turn in : & logistic\_cost\_reg.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-5}{%
+\subsection{Objectives:}\label{objectives-5}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+J( \theta) = -\cfrac{1} {m} \lbrack y \cdot \log(\hat{y}) + (\vec{1} - y) \cdot \log(\vec{1} - \hat{y})\rbrack + \cfrac{\lambda}{2m} (\theta' \cdot \theta')
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\hat{y}\) is a vector of dimension \(m * 1\), the vector of
+  predicted values,
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values,
+\item
+  \(\vec{1}\) is a vector of dimension \(m * 1\), a vector full of ones,
+\item
+  \(\lambda\) is a constant, the regularization hyperparameter,
+\item
+  \(\theta'\) is a vector of dimension \(n * 1\), constructed using the
+  following rules: \large \[
+  \begin{matrix}
+  \theta'_0 & =  0 \\
+  \theta'_j & =  \theta_j & \text{ for } j = 1, \dots, n\\    
+  \end{matrix}
+  \] \normalsize
+\end{itemize}
+
+\hypertarget{instructions-5}{%
+\subsection{Instructions:}\label{instructions-5}}
+
+In the \texttt{logistic\_cost\_reg.py} file, write the following
+function as per the instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ reg_log_cost_(y, y_hat, theta, lambda_):}
+    \CommentTok{"""Computes the regularized cost of a logistic regression model from two non-empty numpy.ndarray, without any for loop. The two arrays must have the same dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      y: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      y_hat: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      theta: has to be a numpy.ndarray, a vector of dimension n * 1.}
+\CommentTok{      lambda_: has to be a float.}
+\CommentTok{    Returns:}
+\CommentTok{      The regularized cost as a float.}
+\CommentTok{      None if y, y_hat, or theta is empty numpy.ndarray.}
+\CommentTok{      None if y and y_hat do not share the same dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Hint:} this is a great occasion to practice using
+decorators\ldots{}
+
+\hypertarget{examples-5}{%
+\subsection{Examples}\label{examples-5}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{])}
+\NormalTok{y_hat }\OperatorTok{=}\NormalTok{ np.array([.}\DecValTok{9}\NormalTok{, }\FloatTok{.79}\NormalTok{, }\FloatTok{.12}\NormalTok{, }\FloatTok{.04}\NormalTok{, }\FloatTok{.89}\NormalTok{, }\FloatTok{.93}\NormalTok{, }\FloatTok{.01}\NormalTok{])}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\FloatTok{2.5}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\FloatTok{-0.9}\NormalTok{])}
+
+\CommentTok{# Example :}
+\NormalTok{reg_log_cost_(y, y_hat, theta, }\FloatTok{.5}\NormalTok{)}
+\CommentTok{# Output:}
+\FloatTok{0.43377043716475955}
+
+\CommentTok{# Example :}
+\NormalTok{reg_log_cost_(y, y_hat, theta, }\FloatTok{.05}\NormalTok{)}
+\CommentTok{# Output:}
+\FloatTok{0.13452043716475953}
+
+\CommentTok{# Example :}
+\NormalTok{reg_log_cost_(y, y_hat, theta, }\FloatTok{.9}\NormalTok{)}
+\CommentTok{# Output:}
+\FloatTok{0.6997704371647596}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{interlude---regularized-gradient-1}{%
+\section{Interlude - Regularized
+Gradient}\label{interlude---regularized-gradient-1}}
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/Improve.png}
+\caption{The Learning Cycle - Improve}
+\end{figure}
+
+To derive the gradient of the regularized cost function, \(\nabla(J)\)
+you have to change a bit the formula of the unregularized gradient.\\
+Given the fact that we are not penalizing \(\theta_0\), the formula will
+remain the same as before for this parameter. For the other parameters
+(\(\theta_1, \dots, \theta_n\)), we must add the partial derivative of
+the regularization term: \(\lambda \theta_j\).
+
+Therefore, we get: \large \[
+\nabla(J)_0 = \cfrac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)}) - y^{(i)})
+\] \normalsize \large \[
+\nabla(J)_j = \cfrac{1}{m}\left(\sum_{i=1}^{m}(h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} + \lambda \theta_j\right) \text{ for j = 1, ..., n}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)_j\) is the \(j^{th}\) component of the gradient vector
+  \(\nabla(J)\),
+\item
+  \(m\) is the number of training examples used,
+\item
+  \(h_\theta(x^{(i)})\) is the model's prediction for the \(i^{th}\)
+  training example,
+\item
+  \(x^{(i)}\) is the feature vector of the \(i^{th}\) training example,
+\item
+  \(y^{(i)}\) is the expected target value for the \(i^{th}\) example,
+\item
+  \(\lambda\) is a constant, the regularization hyperparameter
+\item
+  \(\theta_j\) is the \(j^{th}\) parameter of the \(\theta\) vector,
+\end{itemize}
+
+Which can be vectorized as: \large \[
+\nabla(J) = \cfrac{1}{m} [X'^T(h_\theta(X) - y) + \lambda \theta']
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)\) is a vector of dimension \((n + 1) * 1,\) the gradient
+  vector,
+\item
+  \(m\) is the number of training examples used,
+\item
+  \(X\) is a matrix of dimension \(m * n\), the design matrix,
+\item
+  \(X'\) is a matrix of dimension \(m * (n + 1)\), the design matrix
+  onto which a column of ones is added as a first column,
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values,
+\item
+  \(h_\theta(X)\) is a vector of dimension \(m * 1\), the vector of
+  predicted values,
+\item
+  \(\lambda\) is a constant,
+\item
+  \(\theta\) is a vector of dimension \((n + 1) * 1\), the parameter
+  vector,
+\item
+  \(\theta'\) is a vector of dimension \(n * 1\), constructed using the
+  following rules:
+\end{itemize}
+
+\large
+
+\[
+\begin{matrix}
+\theta'_0 & =  0 \\
+\theta'_j & =  \theta_j & \text{ for } j = 1, \dots, n\\    
+\end{matrix}
+\] \normalsize
+
+\hypertarget{linear-gradient-vs-logistic-gradient}{%
+\subsection{Linear Gradient vs Logistic
+Gradient}\label{linear-gradient-vs-logistic-gradient}}
+
+As before, we draw your attention on the only difference between linear
+regression and logistic regression's gradient equations: \textbf{the
+hypothesis function} \(h_\theta(X)\).
+
+\begin{itemize}
+\item
+  In the linear regression: \(h_\theta(X) = X'\theta\)
+\item
+  In the logistic regression: \(h_\theta(X) = \text{sigmoid}(X'\theta)\)
+  \clearpage
+\end{itemize}
+
+\hypertarget{exercise-07---regularized-linear-gradient-1}{%
+\section{Exercise 07 - Regularized Linear
+Gradient}\label{exercise-07---regularized-linear-gradient-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex07\tabularnewline
+Files to turn in : & reg\_linear\_grad.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-6}{%
+\subsection{Objectives}\label{objectives-6}}
+
+You must implement the following formulas as a functions for the
+\textbf{linear regression hypothesis}:
+
+\hypertarget{i---iterative}{%
+\subsubsection{I - Iterative:}\label{i---iterative}}
+
+\large
+
+\[
+\nabla(J)_0 = \cfrac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)}) - y^{(i)})
+\] \normalsize \large \[
+\nabla(J)_j = \cfrac{1}{m}\left(\sum_{i=1}^{m}(h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} + \lambda \theta_j\right) \text{ for j = 1, ..., n}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)_j\) is the \(j^{th}\) component of \(\nabla(J)\),
+\item
+  \(\nabla(J)\) is a vector of dimension \((n + 1) * 1\), the gradient
+  vector,
+\item
+  \(m\) is a constant, the number of training examples used,
+\item
+  \(h_\theta(x^{(i)})\) is the model's prediction for the \(i^{th}\)
+  training example,
+\item
+  \(x^{(i)}\) is the feature vector (of dimension \(n * 1\)) of the
+  \(i^{th}\) training example, found in the \(i^{th}\) row of the \(X\)
+  matrix,
+\item
+  \(X\) is a matrix of dimension \(m * n\), the design matrix,
+\item
+  \(y^{(i)}\) is the \(i^{th}\) component of the \(y\) vector,
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values,
+\item
+  \(\lambda\) is a constant, the regularization hyperparameter,
+\item
+  \(\theta_j\) is the \(j^{th}\) parameter of the \(\theta\) vector,
+\item
+  \(\theta\) is a vector of dimension \((n + 1) * 1\), the parameter
+  vector,
+\end{itemize}
+
+\hypertarget{ii---vectorized-1}{%
+\subsubsection{II - Vectorized:}\label{ii---vectorized-1}}
+
+\large
+
+\[
+\nabla(J) = \cfrac{1}{m} [X'^T(h_\theta(X) - y) + \lambda \theta']
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)\) is a vector of dimension \((n + 1) * 1\), the gradient
+  vector,
+\item
+  \(m\) is a constant, the number of training examples used,
+\item
+  \(X\) is a matrix of dimension \(m * n\), the design matrix,
+\item
+  \(X'\) is a matrix of dimension \(m * (n + 1)\), the design matrix
+  onto which a column of ones is added as a first column,
+\item
+  \(X'^T\) is the transpose of tha matrix, with dimensions
+  \((n + 1) * m\),
+\item
+  \(h_\theta(X)\) is a vector of dimension \(m * 1\), the vector of
+  predicted values,
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values,
+\item
+  \(\lambda\) is a constant, the regularization hyperparameter,
+\item
+  \(\theta\) is a vector of dimension \((n + 1) * 1\), the parameter
+  vector,
+\item
+  \(\theta'\) is a vector of dimension \(n * 1\), constructed using the
+  following rules:
+\end{itemize}
+
+\large
+
+\[
+\begin{matrix}
+\theta'_0 & =  0 \\
+\theta'_j & =  \theta_j & \text{ for } j = 1, \dots, n\\    
+\end{matrix}
+\] \normalsize
+
+\hypertarget{instructions-6}{%
+\subsection{Instructions:}\label{instructions-6}}
+
+In the \texttt{reg\_linear\_grad.py} file, write the following functions
+as per the instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ reg_linear_grad(y, x, theta, lambda_):}
+    \CommentTok{"""Computes the regularized linear gradient of three non-empty numpy.ndarray, with two for-loop. The three arrays must have compatible dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      y: has to be a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      x: has to be a numpy.ndarray, a matrix of dimesion m * n.}
+\CommentTok{      theta: has to be a numpy.ndarray, a vector of dimension n * 1.}
+\CommentTok{      lambda_: has to be a float.}
+\CommentTok{    Returns:}
+\CommentTok{      A numpy.ndarray, a vector of dimension n * 1, containing the results of the formula for all j.}
+\CommentTok{      None if y, x, or theta are empty numpy.ndarray.}
+\CommentTok{      None if y, x or theta does not share compatibles dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+
+\KeywordTok{def}\NormalTok{ vec_reg_linear_grad(y, x, theta, lambda_):}
+    \CommentTok{"""Computes the regularized linear gradient of three non-empty numpy.ndarray, without any for-loop. The three arrays must have compatible dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      y: has to be a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      x: has to be a numpy.ndarray, a matrix of dimesion m * n.}
+\CommentTok{      theta: has to be a numpy.ndarray, a vector of dimension n * 1.}
+\CommentTok{      lambda_: has to be a float.}
+\CommentTok{    Returns:}
+\CommentTok{      A numpy.ndarray, a vector of dimension n * 1, containing the results of the formula for all j.}
+\CommentTok{      None if y, x, or theta are empty numpy.ndarray.}
+\CommentTok{      None if y, x or theta does not share compatibles dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Hint:} this is a great occasion to practice using
+decorators\ldots{}
+
+\hypertarget{examples-6}{%
+\subsection{Examples}\label{examples-6}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array([}
+\NormalTok{      [ }\DecValTok{-6}\NormalTok{,  }\DecValTok{-7}\NormalTok{,  }\DecValTok{-9}\NormalTok{],}
+\NormalTok{      [ }\DecValTok{13}\NormalTok{,  }\DecValTok{-2}\NormalTok{,  }\DecValTok{14}\NormalTok{],}
+\NormalTok{      [ }\DecValTok{-7}\NormalTok{,  }\DecValTok{14}\NormalTok{,  }\DecValTok{-1}\NormalTok{],}
+\NormalTok{      [ }\DecValTok{-8}\NormalTok{,  }\DecValTok{-4}\NormalTok{,   }\DecValTok{6}\NormalTok{],}
+\NormalTok{      [ }\DecValTok{-5}\NormalTok{,  }\DecValTok{-9}\NormalTok{,   }\DecValTok{6}\NormalTok{],}
+\NormalTok{      [  }\DecValTok{1}\NormalTok{,  }\DecValTok{-5}\NormalTok{,  }\DecValTok{11}\NormalTok{],}
+\NormalTok{      [  }\DecValTok{9}\NormalTok{, }\DecValTok{-11}\NormalTok{,   }\DecValTok{8}\NormalTok{]])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{2}\NormalTok{], [}\DecValTok{14}\NormalTok{], [}\OperatorTok{-}\DecValTok{13}\NormalTok{], [}\DecValTok{5}\NormalTok{], [}\DecValTok{12}\NormalTok{], [}\DecValTok{4}\NormalTok{], [}\OperatorTok{-}\DecValTok{19}\NormalTok{]])}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{7.01}\NormalTok{], [}\DecValTok{3}\NormalTok{], [}\FloatTok{10.5}\NormalTok{], [}\OperatorTok{-}\DecValTok{6}\NormalTok{]])}
+
+\CommentTok{# Example 1.1:}
+\NormalTok{reg_linear_grad(y, x, theta, }\DecValTok{1}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[ }\FloatTok{-60.99}\NormalTok{      ],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{195.64714286}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{863.46571429}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{644.52142857}\NormalTok{]])}
+
+\CommentTok{# Example 1.2:}
+\NormalTok{vec_reg_linear_grad(y, x, theta, }\DecValTok{1}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[ }\FloatTok{-60.99}\NormalTok{      ],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{195.64714286}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{863.46571429}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{644.52142857}\NormalTok{]])}
+
+\CommentTok{# Example 2.1:}
+\NormalTok{reg_linear_grad(y, x, theta, }\FloatTok{0.5}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[ }\FloatTok{-60.99}\NormalTok{      ],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{195.86142857}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{862.71571429}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{644.09285714}\NormalTok{]])}
+
+\CommentTok{# Example 2.2:}
+\NormalTok{vec_reg_linear_grad(y, x, theta, }\FloatTok{0.5}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[ }\FloatTok{-60.99}\NormalTok{      ],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{195.86142857}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{862.71571429}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{644.09285714}\NormalTok{]])}
+
+\CommentTok{# Example 3.1:}
+\NormalTok{reg_linear_grad(y, x, theta, }\FloatTok{0.0}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[ }\FloatTok{-60.99}\NormalTok{      ],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{196.07571429}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{861.96571429}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{643.66428571}\NormalTok{]])}
+
+\CommentTok{# Example 3.2:}
+\NormalTok{vec_reg_linear_grad(y, x, theta, }\FloatTok{0.0}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[ }\FloatTok{-60.99}\NormalTok{      ],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{196.07571429}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{861.96571429}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{643.66428571}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-08---regularized-logistic-gradient-1}{%
+\section{Exercise 08 - Regularized Logistic
+Gradient}\label{exercise-08---regularized-logistic-gradient-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex08\tabularnewline
+Files to turn in : & reg\_logistic\_grad.py\tabularnewline
+Authorized modules : & Numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-7}{%
+\subsection{Objectives}\label{objectives-7}}
+
+You must implement the following formulas as a functions for the
+\textbf{logistic regression hypothesis}:
+
+\hypertarget{i---iterative-1}{%
+\subsubsection{I - Iterative:}\label{i---iterative-1}}
+
+\large
+
+\[
+\nabla(J)_0 = \cfrac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)}) - y^{(i)})
+\] \normalsize \large \[
+\nabla(J)_j = \cfrac{1}{m}\left(\sum_{i=1}^{m}(h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} + \lambda \theta_j\right) \text{ for j = 1, ..., n}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)_j\) is the \(j^{th}\) component of \(\nabla(J)\),
+\item
+  \(\nabla(J)\) is a vector of dimension \((n + 1) * 1\), the gradient
+  vector,
+\item
+  \(m\) is a constant, the number of training examples used,
+\item
+  \(h_\theta(x^{(i)})\) is the model's prediction for the \(i^{th}\)
+  training example,
+\item
+  \(x^{(i)}\) is the feature vector (of dimension \(n * 1\)) of the
+  \(i^{th}\) training example, found in the \(i^{th}\) row of the \(X\)
+  matrix,
+\item
+  \(X\) is a matrix of dimension \(m * n\), the design matrix,
+\item
+  \(y^{(i)}\) is the \(i^{th}\) component of the \(y\) vector,
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values,
+\item
+  \(\lambda\) is a constant, the regularization hyperparameter,
+\item
+  \(\theta_j\) is the \(j^{th}\) parameter of the \(\theta\) vector,
+\item
+  \(\theta\) is a vector of dimension \((n + 1) * 1\), the parameter
+  vector,
+\end{itemize}
+
+\hypertarget{ii---vectorized-2}{%
+\subsubsection{II - Vectorized:}\label{ii---vectorized-2}}
+
+\large
+
+\[
+\nabla(J) = \cfrac{1}{m} [X'^T(h_\theta(X) - y) + \lambda \theta']
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)\) is a vector of dimension \((n + 1) * 1\), the gradient
+  vector,
+\item
+  \(m\) is a constant, the number of training examples used,
+\item
+  \(X\) is a matrix of dimension \(m * n\), the design matrix,
+\item
+  \(X'\) is a matrix of dimension \(m * (n + 1)\), the design matrix
+  onto which a column of ones is added as a first column,
+\item
+  \(X'^T\) is the transpose of tha matrix, with dimensions
+  \((n + 1) * m\),
+\item
+  \(h_\theta(X)\) is a vector of dimension \(m * 1\), the vector of
+  predicted values,
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values,
+\item
+  \(\lambda\) is a constant, the regularization hyperparameter,
+\item
+  \(\theta\) is a vector of dimension \((n + 1) * 1\), the parameter
+  vector,
+\item
+  \(\theta'\) is a vector of dimension \(n * 1\), constructed using the
+  following rules:
+\end{itemize}
+
+\large
+
+\[
+\begin{matrix}
+\theta'_0 & =  0 \\
+\theta'_j & =  \theta_j & \text{ for } j = 1, \dots, n\\    
+\end{matrix}
+\] \normalsize
+
+\hypertarget{instructions-7}{%
+\subsection{Instructions:}\label{instructions-7}}
+
+In the \texttt{reg\_logistic\_grad.py} file, create the following
+function as per the instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ reg_logistic_grad(y, x, theta, lambda_):}
+    \CommentTok{"""Computes the regularized logistic gradient of three non-empty numpy.ndarray, with two for-loops. The three arrays must have compatible dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      y: has to be a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      x: has to be a numpy.ndarray, a matrix of dimesion m * n.}
+\CommentTok{      theta: has to be a numpy.ndarray, a vector of dimension n * 1.}
+\CommentTok{      lambda_: has to be a float.}
+\CommentTok{    Returns:}
+\CommentTok{      A numpy.ndarray, a vector of dimension n * 1, containing the results of the formula for all j.}
+\CommentTok{      None if y, x, or theta are empty numpy.ndarray.}
+\CommentTok{      None if y, x or theta does not share compatibles dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+
+\KeywordTok{def}\NormalTok{ vec_reg_logistic_grad(y, x, theta, lambda_):}
+    \CommentTok{"""Computes the regularized logistic gradient of three non-empty numpy.ndarray, without any for-loop. The three arrays must have compatible dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      y: has to be a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      x: has to be a numpy.ndarray, a matrix of dimesion m * n.}
+\CommentTok{      theta: has to be a numpy.ndarray, a vector of dimension n * 1.}
+\CommentTok{      lambda_: has to be a float.}
+\CommentTok{    Returns:}
+\CommentTok{      A numpy.ndarray, a vector of dimension n * 1, containing the results of the formula for all j.}
+\CommentTok{      None if y, x, or theta are empty numpy.ndarray.}
+\CommentTok{      None if y, x or theta does not share compatibles dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Hint:} this is a great occasion to practice using
+decorators\ldots{}
+
+\hypertarget{examples-7}{%
+\subsection{Examples}\label{examples-7}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{], }
+\NormalTok{              [}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{], }
+\NormalTok{              [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{]])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{], [}\DecValTok{1}\NormalTok{]])}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ np.array([[}\OperatorTok{-}\FloatTok{2.4}\NormalTok{], [}\OperatorTok{-}\FloatTok{1.5}\NormalTok{], [}\FloatTok{0.3}\NormalTok{], [}\OperatorTok{-}\FloatTok{1.4}\NormalTok{], [}\FloatTok{0.7}\NormalTok{]])}
+
+\CommentTok{# Example 1.1:}
+\NormalTok{reg_logistic_grad(y, x, theta, }\DecValTok{1}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\OperatorTok{-}\FloatTok{0.55711039}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{1.40334809}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{1.91756886}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.56737958}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{3.03924017}\NormalTok{]])}
+
+\CommentTok{# Example 1.2:}
+\NormalTok{vec_reg_logistic_grad(y, x, theta, }\DecValTok{1}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\OperatorTok{-}\FloatTok{0.55711039}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{1.40334809}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{1.91756886}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.56737958}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{3.03924017}\NormalTok{]])}
+
+\CommentTok{# Example 2.1:}
+\NormalTok{reg_logistic_grad(y, x, theta, }\FloatTok{0.5}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\OperatorTok{-}\FloatTok{0.55711039}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{1.15334809}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{1.96756886}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.33404624}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{3.15590684}\NormalTok{]])}
+
+\CommentTok{# Example 2.2:}
+\NormalTok{vec_reg_logistic_grad(y, x, theta, }\FloatTok{0.5}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\OperatorTok{-}\FloatTok{0.55711039}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{1.15334809}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{1.96756886}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.33404624}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{3.15590684}\NormalTok{]])}
+
+\CommentTok{# Example 3.1:}
+\NormalTok{reg_logistic_grad(y, x, theta, }\FloatTok{0.0}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\OperatorTok{-}\FloatTok{0.55711039}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{0.90334809}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.01756886}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.10071291}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{3.27257351}\NormalTok{]])}
+
+\CommentTok{# Example 3.2:}
+\NormalTok{vec_reg_logistic_grad(y, x, theta, }\FloatTok{0.0}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\OperatorTok{-}\FloatTok{0.55711039}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{0.90334809}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.01756886}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.10071291}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{3.27257351}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{interlude---linear-regression-to-the-next-level-ridge-regression-1}{%
+\section{Interlude - Linear Regression to the Next Level: Ridge
+Regression}\label{interlude---linear-regression-to-the-next-level-ridge-regression-1}}
+
+Until now we only talked about L2 regularization and its implication on
+the calculation of the cost function and gradient for both linear and
+logistic regression.
+
+Now it's time to use proper terminology:\\
+When we apply L2 regularization on a linear regression model, the new
+model is called a \textbf{Ridge Regression} model.\\
+Besides that brand-new name, Ridge regression is nothing more than that:
+linear regression regularized with L2.
+
+We suggest that you watch this nice explanation
+\href{https://www.youtube.com/watch?v=Q81RR3yKn30}{very nice explanation
+of Ridge Regularization}.\\
+By the way, this Youtube channel, \textbf{StatQuest}, is very good to
+help you understand the gist of a lot of machine learning concepts.\\
+You will not waste your time watching its statistics and machine
+learning playlists! \clearpage
+
+\hypertarget{exercise-09---ridge-regression-1}{%
+\section{Exercise 09 - Ridge
+Regression}\label{exercise-09---ridge-regression-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex09\tabularnewline
+Files to turn in : & ridge.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-8}{%
+\subsection{Objectives:}\label{objectives-8}}
+
+Now it's time to implement your \texttt{MyRidge} class, similar to the
+class of the same name in \texttt{sklearn.linear\_model}.
+
+\hypertarget{instructions-8}{%
+\subsection{Instructions:}\label{instructions-8}}
+
+In the \texttt{ridge.py} file, create the following class as per the
+instructions given below:
+
+Your \texttt{MyRidge} class will have several methods:
+
+\begin{itemize}
+\item
+  \texttt{\_\_init\_\_} , special method, identical to the one you wrote
+  in \texttt{MyLinearRegression} (Day01),
+\item
+  \texttt{get\_params\_} , which get the parameters of the estimator,
+\item
+  \texttt{set\_params\_} , which set the parameters of the estimator,
+\item
+  \texttt{predict\_} , which generates predictions using a linear model,
+\item
+  \texttt{fit\_} , which fits Ridge regression model to a training
+  dataset.
+\end{itemize}
+
+Except for \texttt{fit\_}, the methods are identical to the ones in your
+\texttt{MyLinearRegression} class.\\
+\textbf{\emph{You should consider inheritance}}
+
+The difference between \texttt{MyRidge}'s \texttt{fit\_} method and the
+\texttt{fit\_} method you implemented for your
+\texttt{MyLinearRegression} class is the use of a regularization term.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ MyRidge(ParentClass):}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        My personnal ridge regression class to fit like a boss.}
+\CommentTok{    """}
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{,  thetas, alpha}\OperatorTok{=}\FloatTok{0.001}\NormalTok{, n_cycle}\OperatorTok{=}\DecValTok{1000}\NormalTok{, lambda_}\OperatorTok{=}\FloatTok{0.5}\NormalTok{):}
+              \VariableTok{self}\NormalTok{.alpha }\OperatorTok{=}\NormalTok{ alpha}
+              \VariableTok{self}\NormalTok{.max_iter }\OperatorTok{=}\NormalTok{ max_iter}
+              \VariableTok{self}\NormalTok{.thetas }\OperatorTok{=}\NormalTok{ thetas}
+              \VariableTok{self}\NormalTok{.lambda_ }\OperatorTok{=}\NormalTok{ lambda_}
+              \CommentTok{# Your code here}
+
+    \CommentTok{#... other methods ...}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Hint:} again, this is a great occasion for you to try using
+decorators\ldots{} \clearpage
+
+\hypertarget{exercise-10---practicing-ridge-regression-1}{%
+\section{Exercise 10 - Practicing Ridge
+Regression}\label{exercise-10---practicing-ridge-regression-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex10\tabularnewline
+Files to turn in : & polynomial\_ridge.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-9}{%
+\subsection{Objectives:}\label{objectives-9}}
+
+It's training time!\\
+Let's practice our brand new Ridge Regression with a polynomial model.
+
+\hypertarget{instructions-9}{%
+\subsection{Instructions:}\label{instructions-9}}
+
+\hypertarget{part-1-data-splitting}{%
+\subsubsection{Part 1: Data Splitting}\label{part-1-data-splitting}}
+
+Take your \texttt{spacecraft\_data.csv} dataset and split it in a
+\textbf{training} and a \textbf{test} set.
+
+\hypertarget{part-2-training}{%
+\subsubsection{Part 2: Training}\label{part-2-training}}
+
+\begin{itemize}
+\item
+  You will train 10 different models on the training set: \textbf{one}
+  Linear Regression model and \textbf{nine} Ridge Regression models. All
+  10 models will use a polynomial hypothesis of \textbf{degree 3}. The
+  Ridge Regression models will be trained with different \(\lambda\)
+  values, ranging from 0.1 up to 1 (with increments of 0.1).
+\item
+  Score the performance of each of the 10 models on the \textbf{test
+  set} with the \textbf{Mean Squared Error} metric. You can use the
+  \texttt{mse} function that you implemented in the \texttt{ex11} of
+  \texttt{day00}.
+\item
+  To properly visualize your results, make a bar plot showing the MSE
+  score of the models given their \(\lambda\) value.
+\end{itemize}
+
+According to your evaluations, what is the best hypothesis (or model)
+you can get?
+
+\hypertarget{part-3-plots}{%
+\subsubsection{Part 3: Plots}\label{part-3-plots}}
+
+\begin{itemize}
+\tightlist
+\item
+  For each model you built in Part 2, plot its hypothesis function
+  \(h(\theta)\) on top of a scatter plot of the original data points
+  \((x,y)\). \clearpage
+\end{itemize}
+
+\hypertarget{interlude---regularized-logistic-regression-is-still-logistic-regression-1}{%
+\section{Interlude - Regularized Logistic Regression is still Logistic
+Regression}\label{interlude---regularized-logistic-regression-is-still-logistic-regression-1}}
+
+As opposed to linear regression, \textbf{regularized logistic regression
+is still called logistic regression}.
+
+Working without regularization parameters can be considered simply as a
+special case where \(\lambda = 0\).
+
+\large
+
+\[
+\begin{matrix}
+\text{if } \lambda = 0 \text{: }\\
+\nabla(J) & = & \cfrac{1}{m} [X'^T(h_\theta(X) - y) + \lambda \theta'] \\
+\\
+& = & \cfrac{1}{m} [X'^T(h_\theta(X) - y) + 0 \cdot \theta'] \\
+\\
+& = & \cfrac{1}{m} [X'^T(h_\theta(X) - y)]    
+\end{matrix}
+\] \normalsize \clearpage
+
+\hypertarget{exercise-11---regularized-logistic-regression-1}{%
+\section{Exercise 11 - Regularized Logistic
+Regression}\label{exercise-11---regularized-logistic-regression-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex11\tabularnewline
+Files to turn in : & my\_logistic\_regression.py\tabularnewline
+Authorized modules : & Numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-10}{%
+\subsection{Objectives:}\label{objectives-10}}
+
+In the last exercice, you implemented of a regularized version of the
+linear regression algorithm, called Ridge regression. Now it's time to
+update your logistic regression classifier as well!
+
+In the \texttt{scikit-learn} library, the logistic regression
+implementation offers a few regularization techniques, which can be
+selected using the parameter \texttt{penalty} (L2 is default).
+
+The goal of this exercice is to update your old
+\texttt{MyLogisticRegression} class to take that into account.
+
+\hypertarget{instructions-10}{%
+\subsection{Instructions:}\label{instructions-10}}
+
+In the my\_logistic\_regression.py file, update your
+\texttt{MyLogisticRegression} class according to the following :
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{add} a \texttt{penalty} parameter wich can take the following
+  values:\\
+  \texttt{\{\textquotesingle{}l2\textquotesingle{},\ \textquotesingle{}none\textquotesingle{}\},\ default\ =\ \textquotesingle{}l2\textquotesingle{}}.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ MyLogisticRegression():}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        My personnal logistic regression to classify things.}
+\CommentTok{    """}
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{, theta, alpha}\OperatorTok{=}\FloatTok{0.001}\NormalTok{, n_cycle}\OperatorTok{=}\DecValTok{1000}\NormalTok{, penalty}\OperatorTok{=}\StringTok{'l2'}\NormalTok{):}
+        \VariableTok{self}\NormalTok{.alpha }\OperatorTok{=}\NormalTok{ alpha}
+        \VariableTok{self}\NormalTok{.max_iter }\OperatorTok{=}\NormalTok{ max_iter}
+        \VariableTok{self}\NormalTok{.theta }\OperatorTok{=}\NormalTok{ theta}
+        \VariableTok{self}\NormalTok{.penalty}\OperatorTok{=}\NormalTok{penalty}
+        \CommentTok{# Your code here}
+
+    \CommentTok{#... other methods ...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \textbf{update} the \texttt{fit\_(self,\ x,\ y)} method:
+
+  \begin{itemize}
+  \item
+    \texttt{if\ penalty\ ==\ \textquotesingle{}l2\textquotesingle{}}:\\
+    use a \textbf{regularized version} of the gradient descent.
+  \item
+    \texttt{if\ penalty\ =\ \textquotesingle{}none\textquotesingle{}}:\\
+    use the \textbf{unregularized version} of the gradient descent from
+    day03.
+  \end{itemize}
+\end{itemize}
+
+\textbf{Hint:} this is also a great use case for decorators\ldots{}
+
+\clearpage
+
+\hypertarget{exercise-12---practicing-regularized-logistic-regression-1}{%
+\section{Exercise 12 - Practicing Regularized Logistic
+Regression}\label{exercise-12---practicing-regularized-logistic-regression-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex12\tabularnewline
+Files to turn in : & polynomial\_log\_reg.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-11}{%
+\subsection{Objectives:}\label{objectives-11}}
+
+It's training time!\\
+Let's practice our updated Logistic Regression with polynomial models.
+
+\hypertarget{instructions-11}{%
+\subsection{Instructions:}\label{instructions-11}}
+
+\hypertarget{part-1-split-the-data}{%
+\subsubsection{Part 1: Split the Data}\label{part-1-split-the-data}}
+
+Take your \texttt{solar\_system\_census.csv} dataset and split it in a
+\textbf{training set} and a \textbf{test set}.
+
+\hypertarget{part-2-train-different-models}{%
+\subsubsection{Part 2: Train different
+models}\label{part-2-train-different-models}}
+
+\begin{itemize}
+\item
+  Train \textbf{ten} different Logistic Regression models with a
+  polynomial hypothesis of \textbf{degree 3}. The models will be trained
+  with different \(\lambda\) values, ranging from 0 to 1. Use one-vs-all
+  method.
+\item
+  Evaluate the \textbf{f1 score} of each of the ten models on the test
+  set. You can use the \texttt{f1\_score\_} function that you wrote in
+  the \texttt{ex11} of \texttt{day03}.
+\item
+  To properly visualize your results, make a bar plot showing the score
+  of the models given their \(\lambda\) value.
+\end{itemize}
+
+According to your evaluations, what is the best hypothesis (or model)
+you can get? \clearpage
+
+\hypertarget{one-last-word---its-just-a-beginning}{%
+\section{One Last Word - It's Just a
+Beginning\ldots{}}\label{one-last-word---its-just-a-beginning}}
+
+\hypertarget{congratulation}{%
+\subsection{Congratulation!!}\label{congratulation}}
+
+You have finished this bootcamp and you can be proud of yourself!\\
+We hope you liked it and that the material were understandable.
+
+We tried our best to make it as accessible as possible to anyone, even
+for someone with little mathematical background. It was quite a
+challenge, and we hope we succeed to that difficult mission.
+
+Equiped with your brand-new knowledge you are now able to tackle more
+challenging algorithm like \textbf{ensemble methods (random forest,
+gradient boosting)}, \textbf{support vector machine} or even
+\textbf{artificial neural networks !!}
+
+An because we know that \textbf{a lot of you have neural networks in
+mind} when you started this journey into machine learning, let's talk a
+bit more about why you are now able to deep dive into it\ldots{}
+fearlessly!
+
+\textbf{Neural networks} are based on the same blocks you should now be
+familiar with. Essentially:
+
+\begin{itemize}
+\item
+  matrix and vector operations,
+\item
+  gradient descent,
+\item
+  regularization,
+\item
+  sigmoid (as activation functions, even if it is a bit outdated now)
+\end{itemize}
+
+Let's see what you can do now.
+
+\hypertarget{to-go-further}{%
+\subsection{To go further}\label{to-go-further}}
+
+To keep learning Machine Learning, here are several options you should
+consider:
+
+\begin{itemize}
+\item
+  To complete the entire
+  \href{https://www.coursera.org/learn/machine-learning/home/}{Stanford's
+  Machine Learning MOOC}. It is a great ressource, \textbf{a classic}
+  for those who want to study machine learning. This bootcamp followed
+  thigthly the architecture of its first three weeks. This course is
+  definitely worth your time! Also, someone did a great work to convert
+  all the Octave assignments into
+  \href{https://github.com/dibgerge/ml-coursera-python-assignments}{Python
+  notebooks}.
+\item
+  To take \href{https://course.fast.ai/}{fast.ai Deep Learning MOOC}.
+  It's a great way to learn Deep Learning following a top-down approach.
+  \clearpage
+\end{itemize}
+
+\end{document}

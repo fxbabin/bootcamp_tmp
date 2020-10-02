@@ -1,0 +1,2507 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8x]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=Blue,
+            urlcolor=blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{35,38,41}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.58,0.85,0.30}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.25,0.50,0.35}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.48,0.49,0.49}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.99,0.74,0.29}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.64,0.20,0.25}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.60,1.00}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.56,0.27,0.68}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.77,0.36,0.00}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.96,0.31,0.31}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{h}
+\makeatother
+
+
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{MaxMatrixCols}{20}
+\usepackage{cancel}
+\usepackage{calc}
+\usepackage{eso-pic}
+\newlength{\PageFrameTopMargin}
+\newlength{\PageFrameBottomMargin}
+\newlength{\PageFrameLeftMargin}
+\newlength{\PageFrameRightMargin}
+
+\setlength{\PageFrameTopMargin}{1.5cm}
+\setlength{\PageFrameBottomMargin}{1cm}
+\setlength{\PageFrameLeftMargin}{1cm}
+\setlength{\PageFrameRightMargin}{1cm}
+
+\makeatletter
+
+\newlength{\Page@FrameHeight}
+\newlength{\Page@FrameWidth}
+
+\AddToShipoutPicture{
+  \thinlines
+  \setlength{\Page@FrameHeight}{\paperheight-\PageFrameTopMargin-\PageFrameBottomMargin}
+  \setlength{\Page@FrameWidth}{\paperwidth-\PageFrameLeftMargin-\PageFrameRightMargin}
+  \put(\strip@pt\PageFrameLeftMargin,\strip@pt\PageFrameTopMargin){
+    \framebox(\strip@pt\Page@FrameWidth, \strip@pt\Page@FrameHeight){}}}
+
+\makeatother
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+
+\usepackage{graphicx}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\geometry{hmargin=2cm,vmargin=2cm}
+
+\usepackage{sectsty}
+
+\sectionfont{\centering\Huge}
+\subsectionfont{\Large}
+\subsubsectionfont{\large}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{40}{48} \bfseries Bootcamp}\\[0.6cm]
+    \textsc{\fontsize{39}{48} \bfseries { %bootcamp_title
+Machine Learning
+    }}\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\begin{center}
+\includegraphics[width=200pt]{assets/logo-42-ai.png}{\centering}
+\end{center}
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{32}{48} \bfseries %day_number
+Day02    
+    }\\[0.6cm]
+    \textsc{\fontsize{32}{48} \bfseries %day_title
+Multivariate Linear Regression    
+    }\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\pagenumbering{gobble}
+\newpage
+
+%%% >>>>> Page de garde
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\hypertarget{day02---multivariate-linear-regression}{%
+\section{Day02 - Multivariate Linear
+Regression}\label{day02---multivariate-linear-regression}}
+
+Building on what you did on the previous days you will extend the linear
+regression to handle more than one features. Then you will see how to
+build polynomial models and how to detect overfitting.
+
+\hypertarget{notions-of-the-day}{%
+\subsection{Notions of the Day}\label{notions-of-the-day}}
+
+Multivariate linear hypothesis, multivariate linear gradient descent,
+polynomial models. Training and test sets, overfitting.
+
+\hypertarget{useful-ressources}{%
+\subsection{Useful Ressources}\label{useful-ressources}}
+
+We strongly advise you to use the following resource:
+\href{https://www.coursera.org/learn/machine-learning/home/week/2}{Machine
+Learning MOOC - Stanford}\\
+Here are the sections of the MOOC that are relevant for today's
+exercises:
+
+\hypertarget{week-2}{%
+\subsubsection{Week 2:}\label{week-2}}
+
+\textbf{Multivariate Linear Regression:}
+
+\begin{itemize}
+\item
+  Multiple Features (Video + Reading)
+\item
+  Gradient Descent for Multiple Variables (Video + Reading)
+\item
+  Gradient Descent in Practice I- Feature Scaling (Video + Reading)
+\item
+  Gradient Descent in Practice II- Learning Rate (Video + Reading)
+\item
+  Features and Polynomial Regression (Video + Reading)
+\item
+  Review (Reading + Quiz)
+\end{itemize}
+
+\hypertarget{general-rules}{%
+\subsection{General rules}\label{general-rules}}
+
+\begin{itemize}
+\item
+  The Python version to use is 3.7, you can check with the following
+  command: \texttt{python\ -V}
+\item
+  The norm: during this bootcamp you will follow the
+  \href{https://www.python.org/dev/peps/pep-0008/}{Pep8 standards}
+\item
+  The function \texttt{eval} is never allowed.
+\item
+  The exercises are ordered from the easiest to the hardest.
+\item
+  Your exercises are going to be evaluated by someone else, so make sure
+  that your variable names and function names are appropriate and civil.
+\item
+  Your manual is the internet.
+\item
+  You can also ask questions in the \texttt{\#bootcamps} channel in
+  \href{https://42-ai.slack.com}{42AI's Slack workspace}.
+\item
+  If you find any issues or mistakes in this document, please create an
+  issue on our
+  \href{https://github.com/42-AI/bootcamp_machine-learning/issues}{dedicated
+  Github repository}.
+\end{itemize}
+
+\hypertarget{helper}{%
+\subsection{Helper}\label{helper}}
+
+Ensure that you have the right Python version.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{> which python}
+\NormalTok{/goinfre/miniconda/bin/python}
+\NormalTok{> python -V}
+\NormalTok{Python 3.7.*}
+\NormalTok{> which pip}
+\NormalTok{/goinfre/miniconda/bin/pip}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-00---linear-regression-with-class}{%
+\subsubsection{Exercise 00 - Linear Regression with
+Class}\label{exercise-00---linear-regression-with-class}}
+
+\hypertarget{exercise-01---ai-key-notions}{%
+\subsubsection{Exercise 01 - Ai Key
+Notions}\label{exercise-01---ai-key-notions}}
+
+\hypertarget{interlude---to-the-multivariate-universe-and-beyond}{%
+\subsubsection{Interlude - To the Multivariate Universe and
+Beyond!}\label{interlude---to-the-multivariate-universe-and-beyond}}
+
+\hypertarget{exercise-02---multivariate-hypothesis---iterative-version}{%
+\subsubsection{Exercise 02 - Multivariate Hypothesis - Iterative
+Version}\label{exercise-02---multivariate-hypothesis---iterative-version}}
+
+\hypertarget{interlude---even-more-linear-algebra-tricks}{%
+\subsubsection{Interlude - Even More Linear Algebra
+Tricks!}\label{interlude---even-more-linear-algebra-tricks}}
+
+\hypertarget{exercise-03---multivariate-hypothesis---vectorized-version}{%
+\subsubsection{Exercise 03 - Multivariate hypothesis - vectorized
+version}\label{exercise-03---multivariate-hypothesis---vectorized-version}}
+
+\hypertarget{interlude---evaluate}{%
+\subsubsection{Interlude - Evaluate}\label{interlude---evaluate}}
+
+\hypertarget{exercise-04---vectorized-cost-function}{%
+\subsubsection{Exercise 04 - Vectorized Cost
+Function}\label{exercise-04---vectorized-cost-function}}
+
+\hypertarget{interlude---improve-with-the-gradient}{%
+\subsubsection{Interlude - Improve with the
+Gradient}\label{interlude---improve-with-the-gradient}}
+
+\hypertarget{exercise-05---multivariate-linear-gradient}{%
+\subsubsection{Exercise 05 - Multivariate Linear
+Gradient}\label{exercise-05---multivariate-linear-gradient}}
+
+\hypertarget{interlude---gradient-descent}{%
+\subsubsection{Interlude - Gradient
+Descent}\label{interlude---gradient-descent}}
+
+\hypertarget{exercise-06---multivariate-gradient-descent}{%
+\subsubsection{Exercise 06 - Multivariate Gradient
+Descent}\label{exercise-06---multivariate-gradient-descent}}
+
+\hypertarget{exercise-07---multivariate-linear-regression-with-class}{%
+\subsubsection{Exercise 07 - Multivariate Linear Regression with
+Class}\label{exercise-07---multivariate-linear-regression-with-class}}
+
+\hypertarget{exercise-08---practicing-multivariate-linear-regression}{%
+\subsubsection{Exercise 08 - Practicing Multivariate Linear
+Regression}\label{exercise-08---practicing-multivariate-linear-regression}}
+
+\hypertarget{exercise-9---question-time}{%
+\subsubsection{Exercise 9 - Question
+Time!}\label{exercise-9---question-time}}
+
+\hypertarget{interlude---introducing-polynomial-models}{%
+\subsubsection{Interlude - Introducing Polynomial
+Models}\label{interlude---introducing-polynomial-models}}
+
+\hypertarget{exercise-10---polynomial-models}{%
+\subsubsection{Exercise 10 - Polynomial
+models}\label{exercise-10---polynomial-models}}
+
+\hypertarget{exercise-11---lets-train-polynomial-models}{%
+\subsubsection{Exercise 11 - Let's Train Polynomial
+Models!}\label{exercise-11---lets-train-polynomial-models}}
+
+\hypertarget{interlude---plotting-curves-with-matplotlib}{%
+\subsubsection{Interlude - Plotting Curves With
+Matplotlib}\label{interlude---plotting-curves-with-matplotlib}}
+
+\hypertarget{exercise-12---lets-plot-some-polynomial-models}{%
+\subsubsection{Exercise 12 - Let's PLOT some Polynomial
+Models!}\label{exercise-12---lets-plot-some-polynomial-models}}
+
+\hypertarget{interlude---lost-in-overfitting}{%
+\subsubsection{Interlude - Lost in
+Overfitting}\label{interlude---lost-in-overfitting}}
+
+\hypertarget{exercise-13---dataspliter}{%
+\subsubsection{Exercise 13 -
+DataSpliter}\label{exercise-13---dataspliter}}
+
+\hypertarget{exercise-14---machine-learning-for-grown-ups-training-and-test-sets}{%
+\subsubsection{Exercise 14 - Machine Learning for Grown-ups: Training
+and Test
+Sets}\label{exercise-14---machine-learning-for-grown-ups-training-and-test-sets}}
+
+\hypertarget{exercise-15---question-time}{%
+\subsubsection{Exercise 15 - Question
+Time!}\label{exercise-15---question-time}}
+
+\clearpage
+
+\hypertarget{exercise-00---linear-regression-with-class-1}{%
+\section{Exercise 00 - Linear Regression with
+Class}\label{exercise-00---linear-regression-with-class-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex00\tabularnewline
+Files to turn in : & mylinearregression.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{AI Classics:}\\
+\emph{These exercises are key assignments from the previous day. If you
+haven't completed them yet, you should finish them first before you
+continue with today's exercises.}
+
+\hypertarget{objectives}{%
+\subsection{Objectives:}\label{objectives}}
+
+\begin{itemize}
+\tightlist
+\item
+  Write a class that contains all methods necessary to perform Linear
+  Regression.
+\end{itemize}
+
+\hypertarget{instructions}{%
+\subsection{Instructions:}\label{instructions}}
+
+In this exercise, you will not learn anything new but don't worry, it's
+for your own good!\\
+You are expected to write your own \texttt{MyLinearRegression} class
+which looks similar to the
+\texttt{sklearn.linear\_model.LinearRegression} class:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ MyLinearRegression():}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        My personnal linear regression class to fit like a boss.}
+\CommentTok{    """}
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{, theta):}
+        \CommentTok{"""}
+\CommentTok{        Description:}
+\CommentTok{            generator of the class, initialize self.}
+\CommentTok{        Args:}
+\CommentTok{            theta: has to be a list or a numpy array, it is a vector of dimension (number of features + 1, 1).}
+\CommentTok{        Raises:}
+\CommentTok{            This method should noot raise any Exception.}
+\CommentTok{        """}
+\NormalTok{           ... your code here ...}
+\NormalTok{    ... other methods ...}
+\end{Highlighting}
+\end{Shaded}
+
+You will add the following methods:
+
+\begin{itemize}
+\item
+  \texttt{predict\_(self,\ x)}
+\item
+  \texttt{cost\_elem\_(self,\ x,\ y)}
+\item
+  \texttt{cost\_(self,\ x,\ y)}
+\item
+  \texttt{fit\_(self,\ x,\ y,\ alpha,\ n\_cycle)}
+\end{itemize}
+
+You have already implemented these functions, you just need a few
+adjustments so that they all work well within your
+\texttt{MyLinearRegression} class.
+
+\hypertarget{examples}{%
+\subsection{Examples:}\label{examples}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{from}\NormalTok{ mylinearregression }\ImportTok{import}\NormalTok{ MyLinearRegression }\ImportTok{as}\NormalTok{ MyLR}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{12.4956442}\NormalTok{], [}\FloatTok{21.5007972}\NormalTok{], [}\FloatTok{31.5527382}\NormalTok{], [}\FloatTok{48.9145838}\NormalTok{], [}\FloatTok{57.5088733}\NormalTok{]])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{37.4013816}\NormalTok{], [}\FloatTok{36.1473236}\NormalTok{], [}\FloatTok{45.7655287}\NormalTok{], [}\FloatTok{46.6793434}\NormalTok{], [}\FloatTok{59.5585554}\NormalTok{]])}
+
+\NormalTok{lr1 }\OperatorTok{=}\NormalTok{ MyLR([}\DecValTok{2}\NormalTok{, }\FloatTok{0.7}\NormalTok{])}
+
+\CommentTok{# Example 0.0:}
+\NormalTok{lr1.predict(x)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{10.74695094}\NormalTok{],}
+\NormalTok{       [}\FloatTok{17.05055804}\NormalTok{],}
+\NormalTok{       [}\FloatTok{24.08691674}\NormalTok{],}
+\NormalTok{       [}\FloatTok{36.24020866}\NormalTok{],}
+\NormalTok{       [}\FloatTok{42.25621131}\NormalTok{]])}
+
+\CommentTok{# Example 0.1:}
+\NormalTok{lr1.cost_elem_(lr1.predict(x),y)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{77.72116511}\NormalTok{],}
+\NormalTok{       [}\FloatTok{49.33699664}\NormalTok{],}
+\NormalTok{       [}\FloatTok{72.38621816}\NormalTok{],}
+\NormalTok{       [}\FloatTok{37.29223426}\NormalTok{],}
+\NormalTok{       [}\FloatTok{78.28360514}\NormalTok{]])}
+
+\CommentTok{# Example 0.2:}
+\NormalTok{lr1.cost_(lr1.predict(x),y)}
+\CommentTok{# Output:}
+\FloatTok{315.0202193084312}
+
+
+\CommentTok{# Example 1.0:}
+\NormalTok{lr2 }\OperatorTok{=}\NormalTok{ MyLR([}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{])}
+\NormalTok{lr2.fit(x, y, alpha}\OperatorTok{=}\FloatTok{5e-8}\NormalTok{, n_cycle }\OperatorTok{=} \DecValTok{1500000}\NormalTok{)}
+\NormalTok{lr2.theta}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{1.40709365}\NormalTok{],}
+\NormalTok{       [}\FloatTok{1.1150909}\NormalTok{ ]])}
+
+\CommentTok{# Example 1.1:}
+\NormalTok{lr2.predict(x)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{15.3408728}\NormalTok{ ],}
+\NormalTok{       [}\FloatTok{25.38243697}\NormalTok{],}
+\NormalTok{       [}\FloatTok{36.59126492}\NormalTok{],}
+\NormalTok{       [}\FloatTok{55.95130097}\NormalTok{],}
+\NormalTok{       [}\FloatTok{65.53471499}\NormalTok{]])}
+
+\CommentTok{# Example 1.2:}
+\NormalTok{lr2.cost_elem_(lr1.predict(x),y)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{35.6749755}\NormalTok{ ],}
+\NormalTok{       [ }\FloatTok{4.14286023}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{1.26440585}\NormalTok{],}
+\NormalTok{       [}\FloatTok{29.30443042}\NormalTok{],}
+\NormalTok{       [}\FloatTok{22.27765992}\NormalTok{]])}
+
+\CommentTok{# Example 1.3:}
+\NormalTok{lr2.cost_(lr1.predict(x),y)}
+\CommentTok{# Output:}
+\FloatTok{92.66433192085971}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-01---ai-key-notions-1}{%
+\section{Exercise 01 - AI Key
+Notions:}\label{exercise-01---ai-key-notions-1}}
+
+\emph{These questions highlight key notions from the previous days.
+Making sure you can formulate a clear answer to each of them is
+necessary before you keep going. Discuss them with a fellow student if
+you can.}
+
+\hypertarget{are-you-able-to-clearly-and-simply-explain}{%
+\subsection{Are you able to clearly and simply
+explain:}\label{are-you-able-to-clearly-and-simply-explain}}
+
+1 - What is a \emph{hypothesis} and what is its goal? (It's a second
+chance for you to say something intelligible, no need to thank us!)
+
+2 - What is a \emph{cost function} and what does it represent?
+
+3 - What is \emph{linear gradient descent} and what does it do? (hint:
+you have to talk about \(J\), its gradient, and \(\theta\))
+
+4 - What happens if you choose a \emph{learning rate} that is too large?
+
+5 - What happens if you choose a very small \emph{learning rate}, but
+still a sufficient \emph{number of cycles}?
+
+6 - Can you explain \emph{MSE} and what it measures?
+
+\clearpage
+
+\hypertarget{interlude---to-the-multivariate-universe-and-beyond-1}{%
+\section{Interlude - To the Multivariate Universe and
+Beyond!}\label{interlude---to-the-multivariate-universe-and-beyond-1}}
+
+Until now we've used a very simple hypothesis:
+\(h_{\theta}(x) = \theta_0 + \theta_1 x\)\\
+With this very simple hypothesis we found a way to evaluate and improve
+our predictions.
+
+That's all very neat, but we live in a world full of complex phenomena
+that a model using this hypothesis would fail miserably at predicting.
+If we take weather forecasting for example, how easy do you think it
+would be to predict tomorrow's temperature with just one variable (say,
+the current atmospheric pressure)? A model based on just one variable is
+too simple to account for the complexity of this phenomenon.
+
+Now what if, on top of the atmospheric pressure, we could take into
+account the current temperature, humidity, wind, sunlight, and any
+useful information we can get our hands on?
+
+We'd need a model where more than one variable (or even thousands of
+variables) are involved. That's what we call a \textbf{multivariate
+model}. And that's today's topic!
+
+\hypertarget{predict}{%
+\subsection{Predict}\label{predict}}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/Predict.png}
+\caption{The Learning Cycle - Predict}
+\end{figure}
+
+\hypertarget{representing-the-examples-as-an-m-n-matrix}{%
+\subsection{Representing the examples as an m * n
+matrix}\label{representing-the-examples-as-an-m-n-matrix}}
+
+First we need to reconsider how we represent the training examples. Now
+that we want to characterize each training example with not just one,
+but many variables, we need more than a vector. We need a
+\textbf{matrix}!
+
+So instead of an \(x\) vector of dimension \(m * 1\), we now have a
+matrix of dimension \(m * n\), where \(n\) is the number of
+\textbf{features} (or variables) that characterize each training
+example. We call it the \textbf{design matrix}, denoted by a capital
+\(X\).
+
+\large
+
+\[
+X = \begin{bmatrix} 
+x_{1}^{(1)} & \dots & x_{n}^{(1)}\\
+\vdots & \ddots & \vdots\\
+x_{1}^{(m)} & \dots & x_{n}^{(m)}\end{bmatrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(x^{(i)}\) is the feature vector of the \(i^{th}\) training example,
+  (\(i^{th}\) row of the \(X\) matrix)
+\item
+  \(x_{j}\) is the \(j^{th}\) column of the \(X\) matrix
+\item
+  \(x_{j}^{(i)}\) is the \(j^{th}\) feature of the \(i^{th}\) training
+  example (at the intersection of the \(i^{th}\) row and the \(j^{th}\)
+  column of the \(X\) matrix). It's a real number.
+\end{itemize}
+
+\hypertarget{the-multivariate-hypothesis}{%
+\subsection{The multivariate
+hypothesis}\label{the-multivariate-hypothesis}}
+
+Then, we must update our hypothesis to take more than one feature into
+account.
+
+\large
+
+\[
+\begin{matrix}\large
+\hat{y}^{(i)} = \theta_0 + \theta_1 x_{1}^{(i)} + \dots + \theta_n x_{n}^{(i)} & & \text{ for i = 1, ..., m}    
+\end{matrix}\normalsize
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\hat{y}^{(i)}\) is the model's prediction for the \(i^{th}\)
+  example,
+\item
+  \(x_{1}^{(i)}\) is the first feature of the \(i^{th}\) example,
+\item
+  \(x_{n}^{(i)}\) is the \(n^{th}\) feature of the \(i^{th}\)example
+\item
+  \(\theta\) is a vector of dimension \((n + 1) * 1\), the parameter
+  vector.
+\end{itemize}
+
+You will notice that we end up with two indices: \(i\) and \(j\). They
+should not be confused:
+
+\begin{itemize}
+\item
+  \(i\) refers to one of the \(m\) examples in the dataset (line number
+  in the \(X\) matrix)
+\item
+  \(j\) refers to one of the \(n\) features that describe each example
+  (column number in the \(X\) matrix)
+\end{itemize}
+
+\clearpage
+
+\hypertarget{exercise-02---multivariate-hypothesis---iterative-version-1}{%
+\section{Exercise 02 - Multivariate Hypothesis - Iterative
+Version}\label{exercise-02---multivariate-hypothesis---iterative-version-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex02\tabularnewline
+Files to turn in : & prediction.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-1}{%
+\subsection{Objectives:}\label{objectives-1}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\begin{matrix}
+  \hat{y}^{(i)} = \theta_0 + \theta_1 x_{1}^{(i)}  + \dots + \theta_n x_{n}^{(i)} && & \text{ for i = 1, ..., m}
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\hat{y}\) is a vector of dimension \(m * 1\): the vector of
+  predicted values
+\item
+  \(\hat{y}^{(i)}\) is the \(i^{th}\) component of the \(\hat{y}\)
+  vector: the predicted value for the \(i^{th}\) example
+\item
+  \(\theta\) is a vector of dimension \((n + 1) * 1\): the parameter
+  vector
+\item
+  \(\theta_j\) is the \(j^{th}\) component of the parameter vector
+\item
+  \(X\) is a matrix of dimension \(m * n\): the design matrix
+\item
+  \(x^{(i)}\) is the \(i^{th}\) row of the \(X\) matrix: the feature
+  vector of the \(i^{th}\) example
+\item
+  \(x_{j}\) is the \(j^{th}\) column of the \(X\) matrix
+\item
+  \(x_j^{(i)}\) is the element at the intersection of the \(i^{th}\) row
+  and the \(j^{th}\) column of the \(X\) matrix: the \(j^{th}\) feature
+  of the \(i^{th}\) example
+\end{itemize}
+
+\hypertarget{instructions-1}{%
+\subsection{Instructions:}\label{instructions-1}}
+
+In the \texttt{prediction.py} file, create the following function as per
+the instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ simple_predict(x, theta):}
+    \CommentTok{"""Computes the prediction vector y_hat from two non-empty numpy.ndarray.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a matrix of dimension m * n.}
+\CommentTok{      theta: has to be an numpy.ndarray, a vector of dimension (n + 1) * 1.}
+\CommentTok{    Returns:}
+\CommentTok{      y_hat as a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      None if x or theta are empty numpy.ndarray.}
+\CommentTok{      None if x or theta dimensions are not appropriate.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-1}{%
+\subsection{Examples:}\label{examples-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{13}\NormalTok{).reshape((}\DecValTok{4}\NormalTok{,))}
+
+\CommentTok{#Example 1:}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{])}
+\NormalTok{simple_predict(x, theta1)}
+\CommentTok{# Ouput:}
+\NormalTok{array([}\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{])}
+\CommentTok{# Do you understand why y_hat contains only 5's here?  }
+
+
+\CommentTok{#Example 2:}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{])}
+\NormalTok{simple_predict(x, theta2)}
+\CommentTok{# Output:}
+\NormalTok{array([ }\FloatTok{1.}\NormalTok{,  }\FloatTok{4.}\NormalTok{,  }\FloatTok{7.}\NormalTok{, }\FloatTok{10.}\NormalTok{])}
+\CommentTok{# Do you understand why y_hat == x[:,0] here?  }
+
+
+\CommentTok{#Example 3:}
+\NormalTok{theta3 }\OperatorTok{=}\NormalTok{ np.array([}\OperatorTok{-}\FloatTok{1.5}\NormalTok{, }\FloatTok{0.6}\NormalTok{, }\FloatTok{2.3}\NormalTok{, }\FloatTok{1.98}\NormalTok{])}
+\NormalTok{simple_predict(X, theta3)}
+\CommentTok{# Output:}
+\NormalTok{array([ }\FloatTok{9.64}\NormalTok{, }\FloatTok{24.28}\NormalTok{, }\FloatTok{38.92}\NormalTok{, }\FloatTok{53.56}\NormalTok{])}
+
+
+\CommentTok{#Example 4:}
+\NormalTok{theta4 }\OperatorTok{=}\NormalTok{ np.array([}\OperatorTok{-}\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\FloatTok{3.5}\NormalTok{])}
+\NormalTok{simple_predict(x, theta4)}
+\CommentTok{# Output:}
+\NormalTok{array([}\FloatTok{12.5}\NormalTok{, }\FloatTok{32.}\NormalTok{ , }\FloatTok{51.5}\NormalTok{, }\FloatTok{71.}\NormalTok{ ])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{interlude---even-more-linear-algebra-tricks-1}{%
+\section{Interlude - Even More Linear Algebra
+Tricks!}\label{interlude---even-more-linear-algebra-tricks-1}}
+
+As you already did before with the univariate hypothesis, the
+multivariate hypothesis can be vectorized as well.
+
+If you add a column of \(1\)'s as the first column of the \(X\) matrix,
+you get what we'll call the \(X'\) matrix.\\
+Then, you can calculate \(\hat{y}\) by multiplying \(X'\) and
+\(\theta\).
+
+\large
+
+\[
+X' \cdot \theta = 
+\begin{bmatrix} 
+1 & x_{1}^{(1)} & \dots & x_{n}^{(1)}\\
+\vdots & \vdots & \ddots & \vdots\\
+1 & x_{1}^{(m)} & \dots &  x_{n}^{(m)}\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\theta_0 \\ 
+\theta_1 \\
+\vdots \\
+\theta_n
+\end{bmatrix} 
+= 
+\begin{bmatrix} 
+\theta_0 + \theta_{1} x_{1}^{(1)} + \dots + \theta_{n} x_{n}^{(1)}\\ 
+\vdots \\ 
+\theta_0 + \theta_{1} x_{1}^{(m)} + \dots + \theta_{n} x_{n}^{(m)}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\hat{y}^{(1)} \\ 
+\vdots \\
+\hat{y}^{(m)}
+\end{bmatrix} 
+=
+\hat{y}
+\] \normalsize
+
+Another way of understanding this algebra trick is to pretend that each
+training example has an artificial \(x_0\) feature that is always equal
+to \(1\). This simplifies the equations because now, each \(x_j\)
+feature has its corresponding \(\theta_j\) parameter in the
+multiplication.
+
+\large
+
+\[
+\theta_0x_0^{(i)} + \theta_{1} x_{1}^{(i)} + \dots + \theta_{n} x_{n}^{(i)} = \theta \cdot x'^{(i)}
+\] \normalsize \clearpage
+
+\hypertarget{exercise-03---multivariate-hypothesis---vectorized-version-1}{%
+\section{Exercise 03 - Multivariate hypothesis - vectorized
+version}\label{exercise-03---multivariate-hypothesis---vectorized-version-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex03\tabularnewline
+Files to turn in : & prediction.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-2}{%
+\subsection{Objectives:}\label{objectives-2}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\hat{y} = X' \cdot \theta = 
+\begin{bmatrix} 
+1 & x_{1}^{(1)} & \dots & x_{n}^{(1)}\\
+\vdots & \vdots & \ddots & \vdots\\
+1 & x_{1}^{(m)} & \dots &  x_{n}^{(m)}\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\theta_0 \\ 
+\theta_1 \\
+\vdots \\
+\theta_n
+\end{bmatrix} 
+= 
+\begin{bmatrix} 
+\theta_0 + \theta_{1} x_{1}^{(1)} + \dots + \theta_{n} x_{n}^{(1)}\\ 
+\vdots \\ 
+\theta_0 + \theta_{1} x_{1}^{(m)} + \dots + \theta_{n} x_{n}^{(m)}
+\end{bmatrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\hat{y}\) is a vector of dimension \(m * 1\): the vector of
+  predicted values
+\item
+  \(X\) is a matrix of dimension \(m * n\): the design matrix
+\item
+  \(X'\) is a matrix of dimension \(m * (n + 1)\): the design matrix
+  onto which a column of \(1\)'s was added as a first column
+\item
+  \(\theta\) is a vector of dimension \((n + 1) * 1\),: the parameter
+  vector
+\item
+  \(x^{(i)}\) is the \(i^{th}\) row of the \(X\) matrix
+\item
+  \(x_{j}\) is the \(j^{th}\) column of the \(X\) matrix
+\item
+  \(x_j^{(i)}\) is the intersection of the \(i^{th}\) row and the
+  \(j^{th}\) column of the \(X\) matrix: the \(j^{th}\) feature of the
+  \(i^{th}\) training example
+\end{itemize}
+
+Be careful:
+
+\begin{itemize}
+\item
+  The \texttt{x} argument your function will receive as an input
+  corresponds to \(X\), the \(m * n\) matrix. Not \(X'\).
+\item
+  \texttt{theta} is an \((n + 1) * 1\) vector.
+\item
+  You have to transform \texttt{x} to fit \texttt{theta}'s dimension!
+\end{itemize}
+
+\hypertarget{instructions-2}{%
+\subsection{Instructions:}\label{instructions-2}}
+
+In the \texttt{prediction.py} file, write the \texttt{predict\_}
+function as per the instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ predict_(x, theta):}
+    \CommentTok{"""Computes the prediction vector y_hat from two non-empty numpy.ndarray.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a vector of dimension m * n.}
+\CommentTok{      theta: has to be an numpy.ndarray, a vector of dimension (n + 1) * 1.}
+\CommentTok{    Returns:}
+\CommentTok{      y_hat as a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      None if x or theta are empty numpy.ndarray.}
+\CommentTok{      None if x or theta dimensions are not appropriate.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-2}{%
+\subsection{Examples:}\label{examples-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{13}\NormalTok{).reshape((}\DecValTok{4}\NormalTok{,))}
+
+\CommentTok{#Example 1:}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{])}
+\NormalTok{predict_(x, theta1)}
+\CommentTok{# Ouput:}
+\NormalTok{array([}\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{])}
+\CommentTok{# Do you understand why y_hat contains only 5's here?  }
+
+\CommentTok{#Example 2:}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{])}
+\NormalTok{predict_(x, theta2)}
+\CommentTok{# Output:}
+\NormalTok{array([ }\FloatTok{1.}\NormalTok{,  }\FloatTok{4.}\NormalTok{,  }\FloatTok{7.}\NormalTok{, }\FloatTok{10.}\NormalTok{])}
+\CommentTok{# Do you understand why y_hat == x[:,0] here?  }
+
+
+\CommentTok{#Example 3:}
+\NormalTok{theta3 }\OperatorTok{=}\NormalTok{ np.array([}\OperatorTok{-}\FloatTok{1.5}\NormalTok{, }\FloatTok{0.6}\NormalTok{, }\FloatTok{2.3}\NormalTok{, }\FloatTok{1.98}\NormalTok{])}
+\NormalTok{predict_(X, theta3)}
+\CommentTok{# Output:}
+\NormalTok{array([ }\FloatTok{9.64}\NormalTok{, }\FloatTok{24.28}\NormalTok{, }\FloatTok{38.92}\NormalTok{, }\FloatTok{53.56}\NormalTok{])}
+
+
+\CommentTok{#Example 4:}
+\NormalTok{theta4 }\OperatorTok{=}\NormalTok{ np.array([}\OperatorTok{-}\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\FloatTok{3.5}\NormalTok{])}
+\NormalTok{predict_(x, theta4)}
+\CommentTok{# Output:}
+\NormalTok{array([}\FloatTok{12.5}\NormalTok{, }\FloatTok{32.}\NormalTok{ , }\FloatTok{51.5}\NormalTok{, }\FloatTok{71.}\NormalTok{ ])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{interlude---evaluate-1}{%
+\section{Interlude - Evaluate}\label{interlude---evaluate-1}}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/Evaluate.png}
+\caption{The Learning Cycle - Evaluate}
+\end{figure}
+
+\hypertarget{back-to-the-cost-function}{%
+\subsection{Back to the Cost Function}\label{back-to-the-cost-function}}
+
+How is our model doing?
+
+To evaluate our model, remember before we used a \textbf{metric} called
+the \textbf{cost function} (also known as \textbf{loss function}). The
+cost function is basically just a measure of how wrong the model is, in
+all of its predictions.
+
+Two days ago, we defined the cost function as the average of the squared
+distances between each prediction and its expected value (distances
+represented by the dotted lines in the figure below) :
+
+\begin{figure}
+\centering
+\includegraphics[width=6.25in,height=\textheight]{tmp/assets/bad_pred_with_distance.png}
+\caption{Distances between predicted and expected values}
+\end{figure}
+
+The formula was the following:
+
+\large
+
+\[
+J(\theta) = \cfrac{1}{2m}\sum_{i=1}^{m}(\hat{y}^{(i)} - y^{(i)})^2
+\] \normalsize
+
+And its vectorized form:
+
+\large
+
+\[
+\begin{matrix}
+J(\theta) = \cfrac{1}{2m}(\hat{y} - y)\cdot(\hat{y}- y)
+\end{matrix}
+\] \normalsize
+
+\hypertarget{so-now-that-we-moved-to-multivariate-linear-regression-what-needs-to-change}{%
+\paragraph{So, now that we moved to multivariate linear regression, what
+needs to
+change?}\label{so-now-that-we-moved-to-multivariate-linear-regression-what-needs-to-change}}
+
+You may have noticed that variables such as \(x_j\) and \(\theta_j\)
+don't intervene in the equation. Indeed, the cost function only uses the
+predictions ( \(\hat{y}\) ) and the expected values ( \(y\) ), so the
+inner workings of the model don't matter to its evaluation metric.
+
+This means we can use the exact same cost function as we did before!
+\clearpage
+
+\hypertarget{exercise-04---vectorized-cost-function-1}{%
+\section{Exercise 04 - Vectorized Cost
+Function}\label{exercise-04---vectorized-cost-function-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex04\tabularnewline
+Files to turn in : & cost.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objective}{%
+\subsection{Objective:}\label{objective}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\begin{matrix}
+J(\theta) &  = & \cfrac{1}{2m}(\hat{y} - y) \cdot(\hat{y}- y)
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\hat{y}\) is a vector of dimension \(m * 1\), the vector of
+  predicted values
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values
+\end{itemize}
+
+\hypertarget{instructions-3}{%
+\subsection{Instructions:}\label{instructions-3}}
+
+In the cost.py file create the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ cost_(y, y_hat):}
+    \CommentTok{"""Computes the mean squared error of two non-empty numpy.ndarray, without any for loop. The two arrays must have the same dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      y: has to be an numpy.ndarray, a vector.}
+\CommentTok{      y_hat: has to be an numpy.ndarray, a vector.}
+\CommentTok{    Returns:}
+\CommentTok{      The mean squared error of the two vectors as a float.}
+\CommentTok{      None if y or y_hat are empty numpy.ndarray.}
+\CommentTok{      None if y and y_hat does not share the same dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exceptions.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-3}{%
+\subsection{Examples:}\label{examples-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{-9}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{-21}\NormalTok{])}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{2}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{-13}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{-19}\NormalTok{])}
+
+\CommentTok{# Example 1:}
+\NormalTok{cost_(X, Y)}
+\CommentTok{# Output:}
+\FloatTok{4.285714285714286}
+
+\CommentTok{# Example 2:}
+\NormalTok{cost_(X, X)}
+\CommentTok{# Output:}
+\FloatTok{0.0}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{interlude---improve-with-the-gradient-1}{%
+\section{Interlude - Improve with the
+Gradient}\label{interlude---improve-with-the-gradient-1}}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/Improve.png}
+\caption{The Learning Cycle: Improve}
+\end{figure}
+
+\hypertarget{multivariate-gradient}{%
+\subsection{Multivariate Gradient}\label{multivariate-gradient}}
+
+From our multivariate linear hypothesis we can derive our multivariate
+gradient. It looks a lot like the one we saw yesterday, but instead of
+having just two components, the gradient now has as many as there are
+parameters. This means that now we need to calculate
+\(\nabla(J)_0,\nabla(J)_1,\dots,\nabla(J)_n\)
+
+If we take the univariate equations we used yesterday and replace the
+formula for \(\nabla(J)_1\) by a more general \(\nabla(J)_j\), we get
+the following:
+
+\large
+
+\[
+\begin{matrix}
+\nabla(J)_0 &  = &\cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)}) & \\
+\nabla(J)_j & = &\cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})x_{j}^{(i)} & \text{ for j = 1, ..., n}    
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)\) is a vector of size \((n + 1) * 1\), the gradient vector
+\item
+  \(\nabla(J)_j\) is the \(j^{th}\) component of \(\nabla(J)\), the
+  partial derivative of \(J\) with respect to \(\theta_j\)
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values
+\item
+  \(y^{(i)}\) is a scalar, the \(i^{th}\) component of vector \(y\)
+\item
+  \(x^{(i)}\) is the feature vector of the \(i^{th}\) example
+\item
+  \(x^{(i)}_j\) is a scalar, the \(j^{th}\) feature value of the
+  \(i^{th}\) example
+\item
+  \(h_{\theta}(x^{(i)})\) is a scalar, the model's estimation of
+  \(y^{(i)}\). (It can also be denoted \(\hat{y}^{(i)}\))
+\end{itemize}
+
+\hypertarget{vectorized-form}{%
+\subsubsection{Vectorized Form}\label{vectorized-form}}
+
+As usual, we can use some linear algebra magic to get a more compact
+(and computationally efficient) formula.
+
+First we can use our convention that each training example has an extra
+\(x_0 = 1\) feature, and replace the gradient formulas above by one
+single equation that is valid for all \(j\) components:
+
+\large
+
+\[
+\begin{matrix}
+\nabla(J)_j & = &\cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})x_{j}^{(i)} & \text{ for j = 0, ..., n}
+\end{matrix}
+\] \normalsize
+
+And this generic equation can then be rewritten in a vectorized form:
+
+\large
+
+\[
+\nabla(J) = \cfrac{1}{m} {X'}^T(X'\theta - y)
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)\) is the gradient vector of size \((n + 1) * 1\)
+\item
+  \(X'\) is a matrix of dimension \(m * (n + 1)\), the design matrix
+  onto which a column of \(1\)'s was added as the first column
+\item
+  \({X'}^T\) means the matrix has been transposed
+\item
+  \(\theta\) is a vector of size \((n + 1) * 1\), the parameter vector
+\item
+  \(y\) is a vector of size \(m * 1\), the vector of expected values
+\end{itemize}
+
+The vectorized equation can output the entire gradient vector all at
+once, in one calculation! So if you understand the linear algebra
+operations, you can forget about the equations we presented at the top
+of the page and simply use the vectorized one. \clearpage
+
+\hypertarget{exercise-05---multivariate-linear-gradient-1}{%
+\section{Exercise 05 - Multivariate Linear
+Gradient}\label{exercise-05---multivariate-linear-gradient-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex05\tabularnewline
+Files to turn in : & gradient.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-3}{%
+\subsection{Objectives:}\label{objectives-3}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\nabla(J) = \cfrac{1}{m} {X'}^T(X'\theta - y)
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)\) is a vector of dimension \((n + 1) * 1\), the gradient
+  vector
+\item
+  \(X\) is a matrix of dimension \(m * n\), the design matrix
+\item
+  \(X'\) is a matrix of dimension \(m * (n + 1)\), the design matrix
+  onto which a column of \(1\)'s was added as a first column
+\item
+  \(\theta\) is a vector of dimension (n + 1) * 1, the parameter vector
+\item
+  \(y\) is a vector of dimension m * 1, the vector of expected values
+\end{itemize}
+
+\hypertarget{instructions-4}{%
+\subsection{Instructions:}\label{instructions-4}}
+
+In the \texttt{gradient.py} file, create the following function as per
+the instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ gradient(x, y, theta):}
+    \CommentTok{"""Computes a gradient vector from three non-empty numpy.ndarray, without any for-loop. The three arrays must have the compatible dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a matrix of dimension m * n.}
+\CommentTok{      y: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      theta: has to be an numpy.ndarray, a vector (n +1) * 1.}
+\CommentTok{    Returns:}
+\CommentTok{      The gradient as a numpy.ndarray, a vector of dimensions n * 1, containg the result of the formula for all j.}
+\CommentTok{      None if x, y, or theta are empty numpy.ndarray.}
+\CommentTok{      None if x, y and theta do not have compatible dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-4}{%
+\subsection{Examples:}\label{examples-4}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array([}
+\NormalTok{          [ }\DecValTok{-6}\NormalTok{,  }\DecValTok{-7}\NormalTok{,  }\DecValTok{-9}\NormalTok{],}
+\NormalTok{        [ }\DecValTok{13}\NormalTok{,  }\DecValTok{-2}\NormalTok{,  }\DecValTok{14}\NormalTok{],}
+\NormalTok{        [ }\DecValTok{-7}\NormalTok{,  }\DecValTok{14}\NormalTok{,  }\DecValTok{-1}\NormalTok{],}
+\NormalTok{        [ }\DecValTok{-8}\NormalTok{,  }\DecValTok{-4}\NormalTok{,   }\DecValTok{6}\NormalTok{],}
+\NormalTok{        [ }\DecValTok{-5}\NormalTok{,  }\DecValTok{-9}\NormalTok{,   }\DecValTok{6}\NormalTok{],}
+\NormalTok{        [  }\DecValTok{1}\NormalTok{,  }\DecValTok{-5}\NormalTok{,  }\DecValTok{11}\NormalTok{],}
+\NormalTok{        [  }\DecValTok{9}\NormalTok{, }\DecValTok{-11}\NormalTok{,   }\DecValTok{8}\NormalTok{]])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{2}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{-13}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{-19}\NormalTok{])}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{3}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\OperatorTok{-}\DecValTok{6}\NormalTok{])}
+
+\CommentTok{# Example :}
+\NormalTok{gradient(x, y, theta1)}
+\CommentTok{# Output:}
+\NormalTok{array([ }\FloatTok{-37.35714286}\NormalTok{,  }\FloatTok{183.14285714}\NormalTok{, }\FloatTok{-393.}\NormalTok{        ])}
+
+\CommentTok{# Example :}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{])}
+\NormalTok{gradient(x, y, theta2)}
+\CommentTok{# Output:}
+\NormalTok{array([  }\FloatTok{0.85714286}\NormalTok{,  }\FloatTok{23.28571429}\NormalTok{, }\FloatTok{-26.42857143}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{interlude---gradient-descent-1}{%
+\section{Interlude - Gradient
+Descent}\label{interlude---gradient-descent-1}}
+
+Now comes the fun part: \emph{gradient descent}!
+
+The algorithm is not that different from the one used in univariate
+linear regression. As you might have guessed, what will change is that
+the \(j\) indice needs to run from \(0\) to \(n\) instead of \(0\) to
+\(1\). So all you need is a more generic algorithm, which can be
+expressed in pseudocode as the following:
+
+\large
+
+\[
+\begin{matrix}
+\text{repeat until convergence} \hspace{1cm}\{\\
+    \text{compute } \nabla{(J)}  \\
+    \theta_j := \theta_j - \alpha \nabla(J)_j  \\ 
+    \} \hspace{0.5cm} \text{ simultaneously update $\theta$ for $j=0,1,...,n$}  \\ 
+    \\
+\end{matrix}
+\] \normalsize
+
+If you started to like vectorized forms, you might have noticed that
+that the \(\theta_j\) notation is actually redundant here, since all
+components of \(\theta\) need to be updated simultaneously. \(\theta\)
+is a vector, \(\nabla{(J)}\) also, they both have dimension
+\((n+1) * 1\). So all we need to do is this:\\
+\large \[
+\begin{matrix}
+    &   \text{repeat until convergence} \hspace{1cm} &  \{  \\
+    &   \text{compute } \nabla{(J)}  \\
+    &   \theta := \theta - \alpha \nabla(J)                 \\ 
+\} 
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\theta\) is the entire parameter vector
+\item
+  \(\alpha\) (alpha) is the learning rate (a small number, usually
+  between 0 and 1)
+\item
+  \(\nabla{(J)}\) is the entire gradient vector
+\end{itemize}
+
+\hypertarget{note-do-you-still-wonder-why-there-is-a-subtraction-in-the-equation}{%
+\subsubsection{Note: Do you still wonder why there is a subtraction in
+the
+equation?}\label{note-do-you-still-wonder-why-there-is-a-subtraction-in-the-equation}}
+
+By definition, the gradient indicates the direction towards which we
+should adjust the \(\theta\) parameters if we wanted to \emph{increase}
+the cost. But since our optimization objective is to \emph{minimize} the
+cost, we move \(\theta\) in the opposite direction of the gradient
+(hence the name \emph{gradient descent}). \clearpage
+
+\hypertarget{exercise-06---multivariate-gradient-descent-1}{%
+\section{Exercise 06 - Multivariate Gradient
+Descent}\label{exercise-06---multivariate-gradient-descent-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex06\tabularnewline
+Files to turn in : & fit.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden functions : & any function that performs derivatives for
+you\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-4}{%
+\subsection{Objectives:}\label{objectives-4}}
+
+\begin{itemize}
+\tightlist
+\item
+  Implement a function to perform linear gradient descent (LGD) for
+  multivariate linear regression.
+\end{itemize}
+
+\hypertarget{instructions-5}{%
+\subsection{Instructions:}\label{instructions-5}}
+
+In this exercise, you will implement linear gradient descent to fit your
+multivariate model to the dataset.
+
+The pseudocode of the algorithm is the following:
+
+\large
+
+\[
+\begin{matrix}
+    &   \text{repeat until convergence} \hspace{1cm} &  \{  \\
+    &   \text{compute } \nabla{(J)}  \\
+    &   \theta := \theta - \alpha \nabla(J)                 \\ 
+\} 
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla{(J)}\) is the entire gradient vector
+\item
+  \(\theta\) is the entire parameter vector
+\item
+  \(\alpha\) (alpha) is the learning rate (a small number, usually
+  between 0 and 1)
+\end{itemize}
+
+You are expected to write a function named \textbf{fit\_} as per the
+instructions bellow:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ fit_(x, y, theta, alpha, n_cycles):}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        Fits the model to the training dataset contained in x and y.}
+\CommentTok{    Args:}
+\CommentTok{        x: has to be a numpy.ndarray, a matrix of dimension m * n: (number of training examples, number of features).}
+\CommentTok{        y: has to be a numpy.ndarray, a vector of dimension m * 1: (number of training examples, 1).}
+\CommentTok{        theta: has to be a numpy.ndarray, a vector of dimension (n + 1) * 1: (number of features + 1, 1).}
+\CommentTok{        alpha: has to be a float, the learning rate}
+\CommentTok{        n_cycles: has to be an int, the number of iterations done during the gradient descent}
+\CommentTok{    Returns:}
+\CommentTok{        new_theta: numpy.ndarray, a vector of dimension (number of features + 1, 1).}
+\CommentTok{        None if there is a matching dimension problem.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exception.}
+\CommentTok{    """}
+\NormalTok{        ... your code here ...}
+\end{Highlighting}
+\end{Shaded}
+
+Hopefully, you have already implemented a function to calculate the
+multivariate gradient.
+
+\hypertarget{examples-5}{%
+\subsection{Examples:}\label{examples-5}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{0.2}\NormalTok{, }\FloatTok{2.}\NormalTok{, }\FloatTok{20.}\NormalTok{], [}\FloatTok{0.4}\NormalTok{, }\FloatTok{4.}\NormalTok{, }\FloatTok{40.}\NormalTok{], [}\FloatTok{0.6}\NormalTok{, }\FloatTok{6.}\NormalTok{, }\FloatTok{60.}\NormalTok{], [}\FloatTok{0.8}\NormalTok{, }\FloatTok{8.}\NormalTok{, }\FloatTok{80.}\NormalTok{]])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{19.6}\NormalTok{], [}\OperatorTok{-}\FloatTok{2.8}\NormalTok{], [}\OperatorTok{-}\FloatTok{25.2}\NormalTok{], [}\OperatorTok{-}\FloatTok{47.6}\NormalTok{]])}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{42.}\NormalTok{], [}\FloatTok{1.}\NormalTok{], [}\FloatTok{1.}\NormalTok{], [}\FloatTok{1.}\NormalTok{]])}
+
+\CommentTok{# Example 0:}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ fit_(X2, Y2, theta2,  alpha }\OperatorTok{=} \FloatTok{0.0005}\NormalTok{, n_cycle}\OperatorTok{=}\DecValTok{42000}\NormalTok{)}
+\NormalTok{theta2}
+\CommentTok{# Output:}
+\NormalTok{array([[}\DecValTok{41}\NormalTok{.}\DecValTok{99}\NormalTok{..],[}\DecValTok{0}\NormalTok{.}\DecValTok{97}\NormalTok{..], [}\DecValTok{0}\NormalTok{.}\DecValTok{77}\NormalTok{..], [}\OperatorTok{-}\DecValTok{1}\NormalTok{.}\DecValTok{20}\NormalTok{..]])}
+
+\CommentTok{# Example 1:}
+\NormalTok{predict_(X2, theta2)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\DecValTok{19}\NormalTok{.}\DecValTok{5992}\NormalTok{..], [}\OperatorTok{-}\DecValTok{2}\NormalTok{.}\DecValTok{8003}\NormalTok{..], [}\OperatorTok{-}\DecValTok{25}\NormalTok{.}\DecValTok{1999}\NormalTok{..], [}\OperatorTok{-}\DecValTok{47}\NormalTok{.}\DecValTok{5996}\NormalTok{..]])}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{remarks}{%
+\subsection{Remarks:}\label{remarks}}
+
+\begin{itemize}
+\item
+  You can create more training data by generating an \(x\) array with
+  random values and computing the corresponding \(y\) vector as a linear
+  expression of \(x\). You can then fit a model on this artificial data
+  and find out if it comes out with the same \(\theta\) coefficients
+  that first you used.
+\item
+  It is possible that \(\theta_0\) and \(\theta_1\) become
+  ``{[}nan{]}''. In that case, it means you probably used a learning
+  rate that is too large.
+\end{itemize}
+
+\clearpage
+
+\hypertarget{exercise-07---multivariate-linear-regression-with-class-1}{%
+\section{Exercise 07 - Multivariate Linear Regression with
+Class}\label{exercise-07---multivariate-linear-regression-with-class-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex07\tabularnewline
+Files to turn in : & mylinearregression.py\tabularnewline
+Authorized modules : & Numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-5}{%
+\subsection{Objectives:}\label{objectives-5}}
+
+\begin{itemize}
+\tightlist
+\item
+  Upgrade your Linear Regression class so it can handle multivariate
+  hypotheses.
+\end{itemize}
+
+\hypertarget{instructions-6}{%
+\subsection{Instructions:}\label{instructions-6}}
+
+You are expected to upgrade your own \texttt{MyLinearRegression} class
+from \textbf{day01}. You will upgrade the following methods to support
+multivariate linear regression:
+
+\begin{itemize}
+\item
+  \texttt{predict\_(self,\ x)}
+\item
+  \texttt{fit\_(self,\ x,\ y)}
+\end{itemize}
+
+\hypertarget{examples-6}{%
+\subsection{Examples:}\label{examples-6}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{from}\NormalTok{ mylinearregression }\ImportTok{import}\NormalTok{ MyLinearRegression }\ImportTok{as}\NormalTok{ MyLR}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{1.}\NormalTok{, }\FloatTok{1.}\NormalTok{, }\FloatTok{2.}\NormalTok{, }\FloatTok{3.}\NormalTok{], [}\FloatTok{5.}\NormalTok{, }\FloatTok{8.}\NormalTok{, }\FloatTok{13.}\NormalTok{, }\FloatTok{21.}\NormalTok{], [}\FloatTok{34.}\NormalTok{, }\FloatTok{55.}\NormalTok{, }\FloatTok{89.}\NormalTok{, }\FloatTok{144.}\NormalTok{]])}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{23.}\NormalTok{], [}\FloatTok{48.}\NormalTok{], [}\FloatTok{218.}\NormalTok{]])}
+\NormalTok{mylr }\OperatorTok{=}\NormalTok{ MyLR([[}\FloatTok{1.}\NormalTok{], [}\FloatTok{1.}\NormalTok{], [}\FloatTok{1.}\NormalTok{], [}\FloatTok{1.}\NormalTok{], [}\DecValTok{1}\NormalTok{]])}
+
+\CommentTok{# Example 0:}
+\NormalTok{mylr.predict_(X)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{8.}\NormalTok{], [}\FloatTok{48.}\NormalTok{], [}\FloatTok{323.}\NormalTok{]])}
+
+\CommentTok{# Example 1:}
+\NormalTok{mylr.cost_elem_(X,Y)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{37.5}\NormalTok{], [}\FloatTok{0.}\NormalTok{], [}\FloatTok{1837.5}\NormalTok{]])}
+
+\CommentTok{# Example 2:}
+\NormalTok{mylr.cost_(X,Y)}
+\CommentTok{# Output:}
+\FloatTok{1875.0}
+
+\CommentTok{# Example 3:}
+\NormalTok{mylr.fit_(X, Y)}
+\NormalTok{mylr.thetas}
+\CommentTok{# Output:}
+\NormalTok{array([[}\DecValTok{18}\NormalTok{.}\DecValTok{023}\NormalTok{..], [}\DecValTok{3}\NormalTok{.}\DecValTok{323}\NormalTok{..], [}\OperatorTok{-}\DecValTok{0}\NormalTok{.}\DecValTok{711}\NormalTok{..], [}\DecValTok{1}\NormalTok{.}\DecValTok{605}\NormalTok{..], [}\OperatorTok{-}\DecValTok{0}\NormalTok{.}\DecValTok{1113}\NormalTok{..]])}
+
+\CommentTok{# Example 4:}
+\NormalTok{mylr.predict_(X)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\DecValTok{23}\NormalTok{.}\DecValTok{499}\NormalTok{..], [}\DecValTok{47}\NormalTok{.}\DecValTok{385}\NormalTok{..], [}\DecValTok{218}\NormalTok{.}\DecValTok{079}\NormalTok{...]])}
+
+\CommentTok{# Example 5:}
+\NormalTok{mylr.cost_elem_(X,Y)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\DecValTok{0}\NormalTok{.}\DecValTok{041}\NormalTok{..], [}\DecValTok{0}\NormalTok{.}\DecValTok{062}\NormalTok{..], [}\DecValTok{0}\NormalTok{.}\DecValTok{001}\NormalTok{..]])}
+
+\CommentTok{# Example 6:}
+\NormalTok{mylr.cost_(X,Y)}
+\CommentTok{# Output:}
+\DecValTok{0}\NormalTok{.}\DecValTok{1056}\NormalTok{..}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-08---practicing-multivariate-linear-regression-1}{%
+\section{Exercise 08 - Practicing Multivariate Linear
+Regression}\label{exercise-08---practicing-multivariate-linear-regression-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex08\tabularnewline
+Files to turn in : & multivariate\_linear\_model.py\tabularnewline
+Authorized modules : & numpy, matplotlib\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+Remarks : & Read the doc\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-6}{%
+\subsection{Objectives:}\label{objectives-6}}
+
+\begin{itemize}
+\item
+  Fit a linear regression model to a dataset with multiple features.
+\item
+  Plot the model's predictions and interpret the graphs.
+\end{itemize}
+
+\hypertarget{instructions-7}{%
+\subsection{Instructions:}\label{instructions-7}}
+
+Yesterday you performed a univariate linear regression on a dataset to
+make predictions based on ONE feature (well done!). Now, it's time to
+dream bigger. Lucky you are, we give you a new dataset with multiple
+features that you will find in the resources attached.\\
+The dataset is called \texttt{spacecraft\_data.csv} and it describes a
+set of spacecrafts with their price, as well as a few other features. A
+description of the dataset is provided in the file named
+\texttt{spacecraft\_data\_description.txt}.
+
+\hypertarget{part-one-univariate-linear-regression}{%
+\subsection{Part One: Univariate Linear
+Regression}\label{part-one-univariate-linear-regression}}
+
+To start, we'll build on yesterday's work and see how a univariate model
+can predict spaceship prices. As you know, univariate models can only
+process ONE feature at a time. So to train each model, you need to
+select a feature and ignore the other ones.
+
+\hypertarget{instructions-8}{%
+\subsubsection{Instructions:}\label{instructions-8}}
+
+In the first part of the exercise, you will train three different
+univariate models to predict spaceship prices. Each model will use a
+different feature of the spaceships.
+
+\hypertarget{a-age}{%
+\subsubsection{1a) Age}\label{a-age}}
+
+Select the \emph{Age} feature as your \(x\) vector, and
+\emph{Sell\_price} as your \(y\) vector. Train a first model,
+\texttt{myLR\_age}, and generate price predictions (\(\hat{y}\)).\\
+Output a scatter plot with both sets of data points on the same graph,
+as follows:
+
+\begin{itemize}
+\item
+  The actual prices, given by \((x_{age}^{(i)},y^{(i)})\) for
+  \(i=0....m\)
+\item
+  The predicted prices, represented by \((x_{age}^{(i)},\hat{y}^{(i)})\)
+  for \(i=0....m\) (see example below),
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/ex07_price_vs_age_part1.png}
+\caption{Plot of the selling prices of spacecrafts with respect to their
+age, as well as our first model's price predictions.}
+\end{figure}
+
+\hypertarget{b-thrust}{%
+\subsubsection{1b) Thrust}\label{b-thrust}}
+
+Select the \emph{Thrust\_power} feature as your \(x\) vector, and
+\emph{Sell\_price} as your \(y\) vector. Train a second model,
+\texttt{myLR\_thrust}, and generate price predictions (\(\hat{y}\)).\\
+Output a scatter plot with both sets of data points on the same graph,
+as follows:
+
+\begin{itemize}
+\item
+  The actual prices, given by \((x_{thrust}^{(i)},y^{(i)})\) for
+  \(i=0....m\)
+\item
+  The predicted prices, represented by
+  \((x_{thrust}^{(i)},\hat{y}^{(i)})\) for \(i=0....m\) (see example
+  below),
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/ex07_price_vs_thrust_part1.png}
+\caption{Plot of the selling prices of spacecrafts with respect to the
+thrust power of their engines, as well as our second model's price
+predictions.}
+\end{figure}
+
+\hypertarget{c-total-distance}{%
+\subsubsection{1c) Total distance}\label{c-total-distance}}
+
+Select the \emph{Terameters} feature as your \(x\) vector, and
+\emph{Sell\_price} as your \(y\) vector. Train a third model,
+\texttt{myLR\_distance}, and make price predictions (\(\hat{y}\)).\\
+Output a scatter plot with both sets of data points on the same graph,
+as follows:
+
+\begin{itemize}
+\item
+  The actual prices, given by \((x_{distance}^{(i)},y^{(i)})\) for
+  \(i=0....m\)
+\item
+  The predicted prices, represented by
+  \((x_{distance}^{(i)},\hat{y}^{(i)})\) for \(i=0....m\) (see example
+  below),
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/ex07_price_vs_Tmeters_part1.png}
+\caption{Plot of the selling prices of spacecrafts with respect to the
+terameters driven, as well as our third model's price predictions.}
+\end{figure}
+
+\hypertarget{reminder}{%
+\subsubsection{Reminder:}\label{reminder}}
+
+\begin{itemize}
+\item
+  After executing the \texttt{fit\_} method, you may obtain \(\theta\) =
+  array({[}{[}nan, nan{]}{]}).\\
+  If it happens, try reducing your learning rate.
+\item
+  Be aware that you also need to set the appropriate number of cycles
+  for the \texttt{fit\_} function. If it's too low, you might not be
+  leaving enough cycles for the gradient descent to carry out properly.
+  Try to find a value that gets you the best score, but that doesn't
+  make the training last forever.
+\end{itemize}
+
+\hypertarget{hint}{%
+\subsubsection{Hint:}\label{hint}}
+
+First, try plotting the data points \((x_{j},y)\). Then you can guess
+initial theta values that are not too far off. This will help your
+algorithm converge more easily.
+
+\hypertarget{examples-7}{%
+\subsubsection{Examples:}\label{examples-7}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{form mylinearregression }\ImportTok{import}\NormalTok{ MyLinearRegression }\ImportTok{as}\NormalTok{ MyLR}
+
+\NormalTok{data }\OperatorTok{=}\NormalTok{ pd.read_csv(}\StringTok{"spacecraft_data.csv"}\NormalTok{)}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array(data[[}\StringTok{'Age'}\NormalTok{]])}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.array(data[[}\StringTok{'Sell_price'}\NormalTok{]])}
+\NormalTok{myLR_age }\OperatorTok{=}\NormalTok{ MyLR([[}\FloatTok{1000.0}\NormalTok{], [}\OperatorTok{-}\FloatTok{1.0}\NormalTok{]])}
+\NormalTok{myLR_age.fit_(X[:,}\DecValTok{0}\NormalTok{].reshape(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), Y, alpha }\OperatorTok{=} \FloatTok{2.5e-5}\NormalTok{, n_cycle }\OperatorTok{=} \DecValTok{100000}\NormalTok{)}
+
+\NormalTok{RMSE_age }\OperatorTok{=}\NormalTok{ myLR_age.mse_(X[:,}\DecValTok{0}\NormalTok{].reshape(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{),Y)}
+ \BuiltInTok{print}\NormalTok{(RMSE_age)}
+\DecValTok{57636}\NormalTok{.}\DecValTok{77729}\NormalTok{...}
+\end{Highlighting}
+\end{Shaded}
+
+How accurate is your model when you only take one feature into account?
+
+\hypertarget{part-two-multivariate-linear-regression-a-new-hope}{%
+\subsection{Part Two: Multivariate Linear Regression (A New
+Hope)}\label{part-two-multivariate-linear-regression-a-new-hope}}
+
+Now, it's time for your first multivariate linear regression! Here, you
+will train a single model that will take all features into account.
+
+\hypertarget{instructions-9}{%
+\subsubsection{Instructions:}\label{instructions-9}}
+
+\hypertarget{a-training-the-model}{%
+\subsubsection{2a) Training the model}\label{a-training-the-model}}
+
+\begin{itemize}
+\item
+  Train a single multivariate linear regression model on all three
+  features.
+\item
+  Display and interpret the resulting theta parameters. What can you say
+  about the role that each feature plays in the price prediction?
+\item
+  Evaluate the model with the Mean Squared Error. How good is your model
+  doing, compared to the other three that you trained in Part One of
+  this exercise?
+\end{itemize}
+
+\hypertarget{remarks-1}{%
+\paragraph{Remarks:}\label{remarks-1}}
+
+You can obtain a better fit if you increase the number of cycles.
+
+\hypertarget{examples-8}{%
+\paragraph{Examples:}\label{examples-8}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{from}\NormalTok{ mylinearregression }\ImportTok{import}\NormalTok{ MyLinearRegression }\ImportTok{as}\NormalTok{ MyLR}
+
+\NormalTok{data }\OperatorTok{=}\NormalTok{ pd.read_csv(}\StringTok{"spacecraft_data.csv"}\NormalTok{)}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array(data[[}\StringTok{'Age'}\NormalTok{,}\StringTok{'Thrust_power'}\NormalTok{,}\StringTok{'Terameters'}\NormalTok{]])}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.array(data[[}\StringTok{'Sell_price'}\NormalTok{]])}
+\NormalTok{my_lreg }\OperatorTok{=}\NormalTok{ MyLR([}\FloatTok{1.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{, }\FloatTok{1.0}\NormalTok{])}
+
+\NormalTok{my_lreg.mse_(X,Y)}
+\CommentTok{# 144044.877...}
+
+\NormalTok{my_lreg.fit_(X,Y, alpha }\OperatorTok{=} \FloatTok{1e-4}\NormalTok{, n_cycle }\OperatorTok{=} \DecValTok{600000}\NormalTok{)}
+\NormalTok{my_lreg.theta}
+\CommentTok{# array([[334.994...],[-22.535...],[5.857...],[-2.586...]])}
+
+\NormalTok{my_lreg.mse_(X,Y)}
+\CommentTok{# 586.896999...}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{b-plotting-the-predictions}{%
+\subsubsection{2b) Plotting the
+predictions}\label{b-plotting-the-predictions}}
+
+Here we'll plot the model's predictions just like we did in Part One.
+We'll make three graphs, each one displaying the predictions and the
+actual prices as a function of ONE of the features.
+
+\begin{itemize}
+\tightlist
+\item
+  On the same graph, plot the actual and predicted prices on the \(y\)
+  axis , and the \(age\) feature on the \(x\) axis. (see figure below)
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/ex07_price_vs_age_part2.png}
+\caption{Spacecraft sell prices of and predicted sell prices with the
+multivariate hypothesis, with respect to the \emph{age} feature}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  On the same graph, plot the actual and predicted prices on the \(y\)
+  axis , and the \(thrust power\) feature on the \(x\) axis. (see figure
+  below)
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/ex07_price_vs_thrust_part2.png}
+\caption{Spacecraft sell prices predicted sell prices with the
+multivariate hypothesis, with respect to the thrust power of the
+engines}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  On the same graph, plot the actual and predicted prices on the \(y\)
+  axis , and the \(distance\) feature on the \(x\) axis. (see figure
+  below)
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/ex07_price_vs_Tmeters_part2.png}
+\caption{Spacecraft sell prices and predicted sell prices with the
+multivariage hypothesis, with respect to the driven distance (in
+terameters)}
+\end{figure}
+
+Can you see any improvement on these three graphs, compared to the three
+that you obtained in Part One? Can you relate your observations to the
+MSE value that you just calculated?
+
+\clearpage
+
+\hypertarget{exercise-9---question-time-1}{%
+\section{Exercise 9 - Question
+Time!}\label{exercise-9---question-time-1}}
+
+\hypertarget{are-you-able-to-clearly-and-simply-explain-1}{%
+\subsection{Are you able to clearly and simply
+explain:}\label{are-you-able-to-clearly-and-simply-explain-1}}
+
+1 - What is the main difference between univariate and multivariate
+linear regression, in terms of variables?
+
+2 - Is there a minimum number of variables needed to perform a
+multivariate linear regression? If yes, which one?
+
+3 - Is there a maximum number of variables needed to perform a
+multivariate linear regression? If yes, which one?
+
+4 - Is there a difference between univariate and multivariate linear
+regression in terms of performance evaluation?
+
+5 - What does it mean geometrically to perform a multivariate gradient
+descent with two variables?
+
+\clearpage
+
+\hypertarget{interlude---introducing-polynomial-models-1}{%
+\section{Interlude - Introducing Polynomial
+Models}\label{interlude---introducing-polynomial-models-1}}
+
+You probably noticed that the method we use is called \emph{linear
+regression} for a reason: the model generates all of its predictions on
+a straight line. However, we often encounter features that don't have a
+linear relationship with the predicted variable, like in the figure
+below:
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/polynomial_straight_line.png}
+\caption{Non-linear relationship}
+\end{figure}
+
+In that case, we are stuck with a straight line that can't fit the data
+points properly. In this example, what if we could express \(y\) not as
+a function of \(x\), but also of \(x^2\), and maybe even \(x^3\) and
+\(x^4\)? We could make a hypothesis that draws a nice \textbf{curve}
+that would better fit the data. That's where polynomial features can
+help!
+
+\hypertarget{polynomial-features}{%
+\subsection{Polynomial features}\label{polynomial-features}}
+
+First we get to do some \emph{feature engineering}. We create new
+features by raising our initial \(x\) feature to the power of 2, and
+then 3, 4\ldots{} as far as we want to go. For each new feature we need
+to create a new column in the dataset.
+
+\hypertarget{polynomial-hypothesis}{%
+\subsection{Polynomial Hypothesis}\label{polynomial-hypothesis}}
+
+Now that we created our new features, we can combine them in a linear
+hypothesis that looks just the same as what we're used to:
+
+\large
+
+\[
+\hat{y} = \theta_0 + \theta_1 x  +\theta_2 x^{2} + \dots + \theta_n x^{n}
+\] \normalsize
+
+It's a little strange because we are building a linear combination, not
+with different features but with different powers of the same feature.
+This is a first way of introducing non-linearity in a regression model!
+
+\clearpage
+
+\hypertarget{exercise-10---polynomial-models-1}{%
+\section{Exercise 10 - Polynomial
+models}\label{exercise-10---polynomial-models-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex10\tabularnewline
+Files to turn in : & polynomial\_model.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-7}{%
+\subsection{Objectives:}\label{objectives-7}}
+
+Create a function that takes a vector \(x\) of dimension \(m * 1\) and
+an integer \(n\) as input, and returns a matrix of dimension
+\(m * n\).\\
+Each column of the matrix contains \(x\) raised to the power of \(j\),
+for \(j = 1, 2, ..., n\):
+
+\large
+
+\[
+\begin{matrix}
+x &|& x^2 &|& x^3 &|& \ldots &|& x^n
+\end{matrix}
+\] \normalsize
+
+\hypertarget{instructions-10}{%
+\subsection{Instructions:}\label{instructions-10}}
+
+In the polynomial\_model.py file, create the following function as per
+the instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ add_polynomial_features(x, power):}
+    \CommentTok{"""Add polynomial features to vector x by raising its values up to the power given in argument.  }
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      power: has to be an int, the power up to which the components of vector x are going to be raised.}
+\CommentTok{    Returns:}
+\CommentTok{      The matrix of polynomial features as a numpy.ndarray, of dimension m * n, containg he polynomial feature values for all training examples.}
+\CommentTok{      None if x is an empty numpy.ndarray.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-9}{%
+\subsection{Examples:}\label{examples-9}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{).reshape(}\OperatorTok{-}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+
+\CommentTok{# Example 1:}
+\NormalTok{add_polynomial_features(x, }\DecValTok{3}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[  }\DecValTok{1}\NormalTok{,   }\DecValTok{1}\NormalTok{,   }\DecValTok{1}\NormalTok{],}
+\NormalTok{       [  }\DecValTok{2}\NormalTok{,   }\DecValTok{4}\NormalTok{,   }\DecValTok{8}\NormalTok{],}
+\NormalTok{       [  }\DecValTok{3}\NormalTok{,   }\DecValTok{9}\NormalTok{,  }\DecValTok{27}\NormalTok{],}
+\NormalTok{       [  }\DecValTok{4}\NormalTok{,  }\DecValTok{16}\NormalTok{,  }\DecValTok{64}\NormalTok{],}
+\NormalTok{       [  }\DecValTok{5}\NormalTok{,  }\DecValTok{25}\NormalTok{, }\DecValTok{125}\NormalTok{]])}
+
+
+\CommentTok{# Example 2:}
+\NormalTok{add_polynomial_features(x, }\DecValTok{6}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{array([[    }\DecValTok{1}\NormalTok{,     }\DecValTok{1}\NormalTok{,     }\DecValTok{1}\NormalTok{,     }\DecValTok{1}\NormalTok{,     }\DecValTok{1}\NormalTok{,     }\DecValTok{1}\NormalTok{],}
+\NormalTok{       [    }\DecValTok{2}\NormalTok{,     }\DecValTok{4}\NormalTok{,     }\DecValTok{8}\NormalTok{,    }\DecValTok{16}\NormalTok{,    }\DecValTok{32}\NormalTok{,    }\DecValTok{64}\NormalTok{],}
+\NormalTok{       [    }\DecValTok{3}\NormalTok{,     }\DecValTok{9}\NormalTok{,    }\DecValTok{27}\NormalTok{,    }\DecValTok{81}\NormalTok{,   }\DecValTok{243}\NormalTok{,   }\DecValTok{729}\NormalTok{],}
+\NormalTok{       [    }\DecValTok{4}\NormalTok{,    }\DecValTok{16}\NormalTok{,    }\DecValTok{64}\NormalTok{,   }\DecValTok{256}\NormalTok{,  }\DecValTok{1024}\NormalTok{,  }\DecValTok{4096}\NormalTok{],}
+\NormalTok{       [    }\DecValTok{5}\NormalTok{,    }\DecValTok{25}\NormalTok{,   }\DecValTok{125}\NormalTok{,   }\DecValTok{625}\NormalTok{,  }\DecValTok{3125}\NormalTok{, }\DecValTok{15625}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-11---lets-train-polynomial-models-1}{%
+\section{Exercise 11 - Let's Train Polynomial
+Models!}\label{exercise-11---lets-train-polynomial-models-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex11\tabularnewline
+Files to turn in : & polynomial\_train.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-8}{%
+\subsection{Objectives:}\label{objectives-8}}
+
+It's training time!\\
+Let's train some polynomial models, and see if those with higher
+polynomial degree perform better!
+
+\hypertarget{instructions-11}{%
+\subsection{Instructions:}\label{instructions-11}}
+
+\begin{itemize}
+\item
+  Take your \texttt{are\_blue\_pills\_magic.csv} dataset and train
+  \textbf{nine} separate Linear Regression models with polynomial
+  hypotheses with degrees ranging from 2 to 10.
+\item
+  Evaluate the cost of each of the nine models.
+\item
+  To properly visualize your results, make a bar plot showing the cost
+  of the models given their polynomial degree.
+\end{itemize}
+
+According to your evaluations, what is the best hypothesis (or model)
+you can get?
+
+\hypertarget{teminology-note}{%
+\paragraph{Teminology Note:}\label{teminology-note}}
+
+The \textbf{degree} of a polynomial expression is its highest
+exponent.\\
+E.g.: The polynomial degree of \(5x^3 - x^6 + 2 x^2\) is \(6\).
+
+Here in this equation, you don't see any terms with \(x\), \(x^4\) and
+\(x^5\), but we can still say they exist. It's just that their
+coefficient is \(0\). This means that a polynomial linear regression
+model can lower the impact of any term by bringing its corresponding
+\(\theta_j\) closer to \(0\).
+
+\clearpage
+
+\hypertarget{interlude---plotting-curves-with-matplotlib-1}{%
+\section{Interlude - Plotting Curves With
+Matplotlib}\label{interlude---plotting-curves-with-matplotlib-1}}
+
+We asked you to plot straight lines in the day00. Now you are working
+with polynomial models, the hypothesis functions are not straight lines,
+but curves.\\
+Plotting curves is a bit more tricky, because if you do not have enough
+data point, you will get an ugly broken line instead of a smooth
+curve.\\
+Here's a way to do it.
+
+Let's begin with a simple dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{11}\NormalTok{).reshape(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([[ }\FloatTok{1.39270298}\NormalTok{],}
+\NormalTok{           [ }\FloatTok{3.88237651}\NormalTok{],}
+\NormalTok{           [ }\FloatTok{4.37726357}\NormalTok{],}
+\NormalTok{           [ }\FloatTok{4.63389049}\NormalTok{],}
+\NormalTok{           [ }\FloatTok{7.79814439}\NormalTok{],}
+\NormalTok{           [ }\FloatTok{6.41717461}\NormalTok{],}
+\NormalTok{           [ }\FloatTok{8.63429886}\NormalTok{],}
+\NormalTok{           [ }\FloatTok{8.19939795}\NormalTok{],}
+\NormalTok{           [}\FloatTok{10.37567392}\NormalTok{],}
+\NormalTok{           [}\FloatTok{10.68238222}\NormalTok{]])}
+
+\NormalTok{plt.scatter(x,y)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/ex12_data.png}
+\caption{Scatter plot of a dataset}
+\end{figure}
+
+Now, we build a polynomial model of degree 3 and plot its hypothesis
+function \(h(\theta)\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ polynomial_model }\ImportTok{import}\NormalTok{ add_polynomial_features}
+\ImportTok{from}\NormalTok{ mylinearregression }\ImportTok{import}\NormalTok{ MyLinearRegression }\ImportTok{as}\NormalTok{ MyLR}
+
+\CommentTok{# Build the model:}
+\NormalTok{x_ }\OperatorTok{=}\NormalTok{ add_polynomial_features(x, }\DecValTok{3}\NormalTok{)}
+\NormalTok{my_lr }\OperatorTok{=}\NormalTok{ MyLR(np.ones(}\DecValTok{4}\NormalTok{).reshape(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)).fit_(x_, y)}
+
+\CommentTok{# Plot:}
+\CommentTok{## To get a smooth curve, we need a lot of data points}
+\NormalTok{continuous_x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\FloatTok{10.01}\NormalTok{, }\FloatTok{0.01}\NormalTok{).reshape(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{x_ }\OperatorTok{=}\NormalTok{ add_polynomial_features(continuous_x, }\DecValTok{3}\NormalTok{)}
+\NormalTok{y_hat }\OperatorTok{=}\NormalTok{ my_lr.predict_(continuous_x)}
+
+\NormalTok{plt.scatter(x,y)}
+\NormalTok{plt.plot(continuous_x, y_hat, color}\OperatorTok{=}\StringTok{'orange'}\NormalTok{)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/ex12_plot.png}
+\caption{Scatter plot of a dataset, and on top, a plot of the polynomial
+hypothesis function}
+\end{figure}
+
+\clearpage
+
+\hypertarget{exercise-12---lets-plot-some-polynomial-models-1}{%
+\section{Exercise 12 - Let's PLOT some Polynomial
+Models!}\label{exercise-12---lets-plot-some-polynomial-models-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex12\tabularnewline
+Files to turn in : & polynomial\_train.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-9}{%
+\subsection{Objectives:}\label{objectives-9}}
+
+It's plotting time!
+
+\hypertarget{instructions-12}{%
+\subsection{Instructions:}\label{instructions-12}}
+
+\begin{itemize}
+\item
+  For each model you built in the last exercise, plot its hypothesis
+  function \(h(\theta)\) on top of a scatter plot of the original data
+  points \((x,y)\).
+\item
+  Answer the following questions:
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \item
+    From a purely intuitive point of view, which hypothesis (i.e.~which
+    polynomial degree) seems to best represent the relationship between
+    \(y\) and \(x\)?
+  \item
+    Go back to your answer for the previous exercise. What polynomial
+    degree had you identified as the most accurate on the dataset? Is it
+    the same one as the curve you just picked as the most representative
+    of the relationship between \(y\) and \(x\)?
+  \item
+    Find the plot that illustrates that same hypothesis you had found
+    was the most accurate in the previous exercise. Take a closer look
+    at the curve. What do you think? Does it seem to properly represent
+    the relationship between \(y\) and \(x\)? \clearpage
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{interlude---lost-in-overfitting-1}{%
+\section{Interlude - Lost in
+Overfitting}\label{interlude---lost-in-overfitting-1}}
+
+The two previous exercises lead you, dear reader, to a very dangerous
+territory: the realm of \textbf{overfitting}. You did not see it coming
+but now, you are in a bad situation\ldots{}
+
+By increasing the polynomial degree of your model, you increased its
+\textbf{complexity}.\\
+Is it wrong?\\
+Not always.\\
+Some models are indeed very complex because the relationships they
+represent are very complex as well.
+
+But, if you look at the plots for the previous exercise's \emph{best
+model}, you should feel that something is wrong.
+
+\hypertarget{something-is-rotten-in-the-state-of-our-model}{%
+\subsection{Something is rotten in the state of our
+model\ldots{}}\label{something-is-rotten-in-the-state-of-our-model}}
+
+Take a look at the following plot.
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/overfitt.png}
+\caption{Overfitting hypothesis}
+\end{figure}
+
+You can see that the prediction line fits each data point perfectly, but
+completely misses out on capturing the relationship between \(x\) and
+\(y\) properly.\\
+And now, if we add some brand new data points to the dataset, we see
+that the predictions on those new examples are way off.
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/overfitt_with_dots.png}
+\caption{Generalization errors resulting from overfitting}
+\end{figure}
+
+This situation is called overfitting, because the model is doing an
+excessively good job at fitting the data. It is literally bending over
+backward to account for the data's minute details. But most the data's
+irregularities are just noise, and they should in fact be ignored. So
+because the model overfit, it can't generalize to new data.
+
+\hypertarget{the-training-set-the-test-set-and-the-happy-data-scientist}{%
+\subsection{The training set, the test set, and the happy data
+scientist}\label{the-training-set-the-test-set-and-the-happy-data-scientist}}
+
+To be able to detect overfitting, \textbf{you should always evaluate
+your model on new data}.
+
+New data means, data that your model hasen't seen during training. It's
+the only way to make sure your model isn't \emph{cheating}. To do so,
+now and forever, you must always divide your dataset in (at least) two
+parts: one for the training, and one for the evaluation of your model.
+\clearpage
+
+\hypertarget{exercise-13---dataspliter-1}{%
+\section{Exercise 13 - DataSpliter}\label{exercise-13---dataspliter-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex13\tabularnewline
+Files to turn in : & data\_spliter.py\tabularnewline
+Authorized modules : & Numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-10}{%
+\subsection{Objectives:}\label{objectives-10}}
+
+Learn how to split a dataset into a \textbf{training set} and a
+\textbf{test set}.
+
+\hypertarget{instructions-13}{%
+\subsection{Instructions:}\label{instructions-13}}
+
+You must implement a function that \textbf{shuffles} and \textbf{splits}
+a dataset it in two parts: a \textbf{training set} and a \textbf{test
+set}.
+
+\begin{itemize}
+\item
+  Your function will shuffle and split the \(X\) matrix while keeping a
+  certain \textbf{proportion} of the examples for training, and the rest
+  for testing.
+\item
+  Your function will also shuffle and split the \(y\) vector while
+  making sure that the order of the rows in the output match the order
+  of the rows in the split \(X\) output.
+\end{itemize}
+
+In the data\_spliter.py file create the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ data_spliter(x, y, proportion):}
+    \CommentTok{"""Shuffles and splits the dataset (given by x and y) into a training and a test set, while respecting the given proportion of examples to be kept in the traning set.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a matrix of dimension m * n.}
+\CommentTok{      y: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      proportion: has to be a float, the proportion of the dataset that will be assigned to the training set.}
+\CommentTok{    Returns:}
+\CommentTok{      (x_train, x_test, y_train, y_test) as a tuple of numpy.ndarray}
+\CommentTok{      None if x or y is an empty numpy.ndarray.}
+\CommentTok{      None if x and y do not share compatible dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{be-careful}{%
+\subsubsection{Be careful!}\label{be-careful}}
+
+\begin{itemize}
+\item
+  The dataset has to be randomly shuffled \emph{before} it is split into
+  training and test sets.
+\item
+  Unless you use the same seed in your randomization algorithm, you
+  won't get the same results twice.
+\end{itemize}
+
+\hypertarget{examples-10}{%
+\subsection{Examples:}\label{examples-10}}
+
+The following examples are just an indication of possible outputs. As
+long as you have shuffled datasets with their corresponding y values,
+your function is working correctly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{59}\NormalTok{])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{])}
+
+\CommentTok{# Example 1:}
+\NormalTok{data_spliter(x1, y, }\FloatTok{0.8}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{(array([  }\DecValTok{1}\NormalTok{,  }\DecValTok{59}\NormalTok{,  }\DecValTok{42}\NormalTok{, }\DecValTok{300}\NormalTok{]), array([}\DecValTok{10}\NormalTok{]), array([}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{]), array([}\DecValTok{1}\NormalTok{]))}
+
+\CommentTok{# Example 2:}
+\NormalTok{data_spliter(x1, y, }\FloatTok{0.5}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{(array([}\DecValTok{59}\NormalTok{, }\DecValTok{10}\NormalTok{]), array([  }\DecValTok{1}\NormalTok{, }\DecValTok{300}\NormalTok{,  }\DecValTok{42}\NormalTok{]), array([}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{]), array([}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{]))}
+
+\NormalTok{x2 }\OperatorTok{=}\NormalTok{ np.array([ [  }\DecValTok{1}\NormalTok{,  }\DecValTok{42}\NormalTok{],}
+\NormalTok{                [}\DecValTok{300}\NormalTok{,  }\DecValTok{10}\NormalTok{],}
+\NormalTok{                [ }\DecValTok{59}\NormalTok{,   }\DecValTok{1}\NormalTok{],}
+\NormalTok{                [}\DecValTok{300}\NormalTok{,  }\DecValTok{59}\NormalTok{],}
+\NormalTok{                [ }\DecValTok{10}\NormalTok{,  }\DecValTok{42}\NormalTok{]])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{])}
+
+\CommentTok{# Example 3:}
+\NormalTok{data_spliter(x2, y, }\FloatTok{0.8}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{(array([[ }\DecValTok{10}\NormalTok{,  }\DecValTok{42}\NormalTok{],}
+\NormalTok{        [}\DecValTok{300}\NormalTok{,  }\DecValTok{59}\NormalTok{],}
+\NormalTok{        [ }\DecValTok{59}\NormalTok{,   }\DecValTok{1}\NormalTok{],}
+\NormalTok{        [}\DecValTok{300}\NormalTok{,  }\DecValTok{10}\NormalTok{]]), array([[ }\DecValTok{1}\NormalTok{, }\DecValTok{42}\NormalTok{]]), array([}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{]), array([}\DecValTok{0}\NormalTok{]))}
+
+\CommentTok{# Example 4:}
+\NormalTok{data_spliter(x2, y, }\FloatTok{0.5}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{(array([[}\DecValTok{59}\NormalTok{,  }\DecValTok{1}\NormalTok{],}
+\NormalTok{        [}\DecValTok{10}\NormalTok{, }\DecValTok{42}\NormalTok{]]), array([[}\DecValTok{300}\NormalTok{,  }\DecValTok{10}\NormalTok{],}
+\NormalTok{        [}\DecValTok{300}\NormalTok{,  }\DecValTok{59}\NormalTok{],}
+\NormalTok{        [  }\DecValTok{1}\NormalTok{,  }\DecValTok{42}\NormalTok{]]), array([}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{]), array([}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{]))}
+
+\CommentTok{# Be careful! The way tuples of arrays are displayed could be a bit confusing... }
+\CommentTok{# }
+\CommentTok{# In the last example, the tuple returned contains the following arrays: }
+\CommentTok{# array([[59,  1],}
+\CommentTok{# [10, 42]])}
+\CommentTok{#}
+\CommentTok{# array([[300,  10],}
+\CommentTok{# [300,  59]}
+\CommentTok{#}
+\CommentTok{# array([0, 0])}
+\CommentTok{#}
+\CommentTok{# array([1, 1, 0]))}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-14---machine-learning-for-grown-ups-training-and-test-sets-1}{%
+\section{Exercise 14 - Machine Learning for Grown-ups: Training and Test
+Sets}\label{exercise-14---machine-learning-for-grown-ups-training-and-test-sets-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex14\tabularnewline
+Files to turn in : & data\_spliter.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-11}{%
+\subsection{Objectives:}\label{objectives-11}}
+
+Let's do Machine Learning for real!
+
+\hypertarget{instructions-14}{%
+\subsection{Instructions:}\label{instructions-14}}
+
+\begin{itemize}
+\item
+  Split your \texttt{are\_blue\_pills\_magic.csv} dataset into a
+  training and a test set.
+\item
+  Use your \texttt{polynomial\_features} method on your training set
+\item
+  Train nine Linear Regression models with polynomial hypotheses with
+  degrees ranging from 2 to 10.
+\item
+  Evaluate your models on the test set.
+\end{itemize}
+
+According to your model evaluations, what is the best hypothesis you can
+get? \clearpage
+
+\hypertarget{exercise-15---question-time-1}{%
+\section{Exercise 15 - Question
+Time!}\label{exercise-15---question-time-1}}
+
+\hypertarget{are-you-able-to-clearly-and-simply-explain-2}{%
+\subsection{Are you able to clearly and simply
+explain:}\label{are-you-able-to-clearly-and-simply-explain-2}}
+
+1 - What is overfitting?
+
+2 - What do you think underfitting might be?
+
+3 - Why is it important to split the data set in a training and a test
+set?
+
+4 - If a model overfits, what will happen when you compare its
+performance on the training set and the test set?
+
+5 - If a model underfits, what do you think will happen when you compare
+its performance on the training set and the test set? \clearpage
+
+\end{document}

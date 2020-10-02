@@ -1,0 +1,1735 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8x]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=Blue,
+            urlcolor=blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{35,38,41}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.58,0.85,0.30}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.25,0.50,0.35}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.48,0.49,0.49}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.99,0.74,0.29}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.64,0.20,0.25}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.60,1.00}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.56,0.27,0.68}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.77,0.36,0.00}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.96,0.31,0.31}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{h}
+\makeatother
+
+
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{MaxMatrixCols}{20}
+\usepackage{cancel}
+\usepackage{calc}
+\usepackage{eso-pic}
+\newlength{\PageFrameTopMargin}
+\newlength{\PageFrameBottomMargin}
+\newlength{\PageFrameLeftMargin}
+\newlength{\PageFrameRightMargin}
+
+\setlength{\PageFrameTopMargin}{1.5cm}
+\setlength{\PageFrameBottomMargin}{1cm}
+\setlength{\PageFrameLeftMargin}{1cm}
+\setlength{\PageFrameRightMargin}{1cm}
+
+\makeatletter
+
+\newlength{\Page@FrameHeight}
+\newlength{\Page@FrameWidth}
+
+\AddToShipoutPicture{
+  \thinlines
+  \setlength{\Page@FrameHeight}{\paperheight-\PageFrameTopMargin-\PageFrameBottomMargin}
+  \setlength{\Page@FrameWidth}{\paperwidth-\PageFrameLeftMargin-\PageFrameRightMargin}
+  \put(\strip@pt\PageFrameLeftMargin,\strip@pt\PageFrameTopMargin){
+    \framebox(\strip@pt\Page@FrameWidth, \strip@pt\Page@FrameHeight){}}}
+
+\makeatother
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+
+\usepackage{graphicx}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\geometry{hmargin=2cm,vmargin=2cm}
+
+\usepackage{sectsty}
+
+\sectionfont{\centering\Huge}
+\subsectionfont{\Large}
+\subsubsectionfont{\large}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{40}{48} \bfseries Bootcamp}\\[0.6cm]
+    \textsc{\fontsize{39}{48} \bfseries { %bootcamp_title
+Machine Learning
+    }}\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\begin{center}
+\includegraphics[width=200pt]{assets/logo-42-ai.png}{\centering}
+\end{center}
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{32}{48} \bfseries %day_number
+Day01    
+    }\\[0.6cm]
+    \textsc{\fontsize{32}{48} \bfseries %day_title
+Univariate Linear Regression    
+    }\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\pagenumbering{gobble}
+\newpage
+
+%%% >>>>> Page de garde
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\hypertarget{day01---univariate-linear-regression}{%
+\section{Day01 - Univariate Linear
+Regression}\label{day01---univariate-linear-regression}}
+
+Today you will implement a method to improve your model's performance:
+\textbf{gradient descent}. Then you will discover the notion of
+normalization.
+
+\hypertarget{notions-of-the-day}{%
+\subsection{Notions of the Day}\label{notions-of-the-day}}
+
+Gradient descent, linear regression, normalization.
+
+\hypertarget{useful-resources}{%
+\subsection{Useful Resources}\label{useful-resources}}
+
+We strongly advise you to use the following resources:
+\href{https://www.coursera.org/learn/machine-learning/home/week/1}{Machine
+Learning MOOC - Stanford}
+
+\hypertarget{week-1}{%
+\subsubsection{Week 1:}\label{week-1}}
+
+\textbf{Linear Regression with One Variable:}
+
+\begin{itemize}
+\item
+  Gradient Descent (Video + Reading)
+\item
+  Gradient Descent Intuition (Video + Reading)
+\item
+  Gradient Descent For Linear Regression (Video + Reading)
+\item
+  Review (Reading + Quiz)
+\end{itemize}
+
+\hypertarget{week-2}{%
+\subsubsection{Week 2:}\label{week-2}}
+
+\textbf{Multivariate Linear Regression}
+
+\begin{itemize}
+\tightlist
+\item
+  Gradient Descent in Practice 1 - Feature Scaling (Video + Reading)
+\end{itemize}
+
+\hypertarget{general-rules}{%
+\subsection{General Rules}\label{general-rules}}
+
+\begin{itemize}
+\item
+  The version of Python to use is 3.7, you can check the version of
+  Python with the following command: \texttt{python\ -V}
+\item
+  The norm: during this bootcamp you will follow the
+  \href{https://www.python.org/dev/peps/pep-0008/}{Pep8 standards}
+\item
+  The function \texttt{eval} is never allowed.
+\item
+  The exercises are ordered from the easiest to the hardest.
+\item
+  Your exercises are going to be evaluated by someone else, so make sure
+  that your variable names and function names are appropriate and civil.
+\item
+  Your manual is the internet.
+\item
+  You can also ask questions in the \texttt{\#bootcamps} channel in
+  \href{https://42-ai.slack.com}{42AI's Slack Workspace}.
+\item
+  If you find any issues or mistakes in this document, please create an
+  issue on our dedicated
+  \href{https://github.com/42-AI/bootcamp_machine-learning/issues}{Github
+  repository}.
+\end{itemize}
+
+\hypertarget{helper}{%
+\subsection{Helper}\label{helper}}
+
+Ensure that you have the right Python version.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{> which python}
+\NormalTok{/goinfre/miniconda/bin/python}
+\NormalTok{> python -V}
+\NormalTok{Python 3.7.*}
+\NormalTok{> which pip}
+\NormalTok{/goinfre/miniconda/bin/pip}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-00---prediction}{%
+\subsubsection{Exercise 00 -
+Prediction}\label{exercise-00---prediction}}
+
+\hypertarget{exercise-01---vectorized-cost-function}{%
+\subsubsection{Exercise 01 - Vectorized cost
+function}\label{exercise-01---vectorized-cost-function}}
+
+\hypertarget{exercise-02---ai-key-notions}{%
+\subsubsection{Exercise 02 - AI Key
+Notions}\label{exercise-02---ai-key-notions}}
+
+\hypertarget{interlude---improve}{%
+\subsubsection{Interlude - Improve}\label{interlude---improve}}
+
+\hypertarget{exercise-03---linear-gradient---iterative-version}{%
+\subsubsection{Exercise 03 - Linear Gradient - iterative
+version}\label{exercise-03---linear-gradient---iterative-version}}
+
+\hypertarget{interlude---linear-algebra-tricks-ii}{%
+\subsubsection{Interlude - Linear algebra tricks
+II}\label{interlude---linear-algebra-tricks-ii}}
+
+\hypertarget{exercise-04---linear-gradient---vectorized-version}{%
+\subsubsection{Exercise 04 - Linear Gradient - Vectorized
+Version}\label{exercise-04---linear-gradient---vectorized-version}}
+
+\hypertarget{interlude---gradient-descent}{%
+\subsubsection{Interlude - Gradient
+Descent}\label{interlude---gradient-descent}}
+
+\hypertarget{exercise-05---gradient-descent}{%
+\subsubsection{Exercise 05 - Gradient
+Descent}\label{exercise-05---gradient-descent}}
+
+\hypertarget{exercise-06---linear-regression-with-class}{%
+\subsubsection{Exercise 06 - Linear Regression with
+Class}\label{exercise-06---linear-regression-with-class}}
+
+\hypertarget{exercise-07---practicing-linear-regression}{%
+\subsubsection{Exercise 07 - Practicing Linear
+Regression}\label{exercise-07---practicing-linear-regression}}
+
+\hypertarget{exercise-08---question-time}{%
+\subsubsection{Exercise 08 - Question
+time!}\label{exercise-08---question-time}}
+
+\hypertarget{interlude---normalization}{%
+\subsubsection{Interlude -
+Normalization}\label{interlude---normalization}}
+
+\hypertarget{exercise-09---normalization-i-z-score-standardization}{%
+\subsubsection{Exercise 09 - Normalization I: Z-score
+Standardization}\label{exercise-09---normalization-i-z-score-standardization}}
+
+\hypertarget{exercise-10---normalization-ii-min-max-standardization}{%
+\subsubsection{Exercise 10 - Normalization II: min-max
+Standardization}\label{exercise-10---normalization-ii-min-max-standardization}}
+
+\clearpage
+
+\hypertarget{exercise-00---prediction-1}{%
+\section{Exercise 00 - Prediction}\label{exercise-00---prediction-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex00\tabularnewline
+Files to turn in : & prediction.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{AI Classics:}\\
+\emph{These exercises are key assignments from the previous day. If you
+haven't completed them yet, you should finish them first before you
+continue with today's exercises.}
+
+\hypertarget{objectives}{%
+\subsection{Objectives:}\label{objectives}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\begin{matrix}
+\hat{y}^{(i)} = \theta_0 + \theta_1 x^{(i)} & &\text{ for $i = 1, ..., m$}
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\hat{y}^{(i)}\) is the \(i^{th}\) component of vector \(\hat{y}\)
+\item
+  \(x^{(i)}\) is the \(i^{th}\) component of vector \(x\)
+\end{itemize}
+
+But this time, you have to do it with the linear algebra trick!
+
+\large
+
+\[
+\hat{y} = X' \cdot \theta = \begin{bmatrix} 1 & x^{(1)} \\ \vdots & \vdots \\ 1 & x^{(m)}\end{bmatrix}\cdot\begin{bmatrix}\theta_0 \\ \theta_1 \end{bmatrix} = \begin{bmatrix} \theta_0 + \theta_1 x^{(1)} \\ \vdots \\ \theta_0 + \theta_1 x^{(m)} \end{bmatrix}
+\] \normalsize
+
+Be careful:
+
+\begin{itemize}
+\item
+  the \(x\) you will get as an input is an \(m * 1\) vector
+\item
+  \(\theta\) is a \(2 * 1\) vector.
+\end{itemize}
+
+You have to transform \(x\) to fit the dimension of \(\theta\) !
+
+\hypertarget{instructions}{%
+\subsection{Instructions:}\label{instructions}}
+
+In the prediction.py file, create the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ predict_(x, theta):}
+    \CommentTok{"""Computes the prediction vector y_hat from two non-empty numpy.ndarray.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a vector of dimensions m * 1.}
+\CommentTok{      theta: has to be an numpy.ndarray, a vector of dimension 2 * 1.}
+\CommentTok{    Returns:}
+\CommentTok{      y_hat as a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      None if x or theta are empty numpy.ndarray.}
+\CommentTok{      None if x or theta dimensions are not appropriate.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples}{%
+\subsection{Examples:}\label{examples}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+
+\CommentTok{#Example 1:}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{])}
+\NormalTok{predict_(x, theta1)}
+\CommentTok{# Ouput:}
+\NormalTok{array([}\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{5.}\NormalTok{])}
+\CommentTok{# Do you remember why y_hat contains only 5's here?  }
+
+
+\CommentTok{#Example 2:}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\NormalTok{predict_(x, theta2)}
+\CommentTok{# Output:}
+\NormalTok{array([}\FloatTok{1.}\NormalTok{, }\FloatTok{2.}\NormalTok{, }\FloatTok{3.}\NormalTok{, }\FloatTok{4.}\NormalTok{, }\FloatTok{5.}\NormalTok{])}
+\CommentTok{# Do you remember why y_hat == x here?  }
+
+
+\CommentTok{#Example 3:}
+\NormalTok{theta3 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\NormalTok{predict_(X, theta3)}
+\CommentTok{# Output:}
+\NormalTok{array([ }\FloatTok{8.}\NormalTok{, }\FloatTok{11.}\NormalTok{, }\FloatTok{14.}\NormalTok{, }\FloatTok{17.}\NormalTok{, }\FloatTok{20.}\NormalTok{])}
+
+
+\CommentTok{#Example 4:}
+\NormalTok{theta4 }\OperatorTok{=}\NormalTok{ np.array([}\OperatorTok{-}\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\NormalTok{predict_(x, theta4)}
+\CommentTok{# Output:}
+\NormalTok{array([}\OperatorTok{-}\FloatTok{2.}\NormalTok{, }\FloatTok{-1.}\NormalTok{,  }\FloatTok{0.}\NormalTok{,  }\FloatTok{1.}\NormalTok{,  }\FloatTok{2.}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-01---vectorized-cost-function-1}{%
+\section{Exercise 01 - Vectorized Cost
+Function}\label{exercise-01---vectorized-cost-function-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex01\tabularnewline
+Files to turn in : & cost.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{AI Classics:}\\
+\emph{These exercises are key assignments from the previous day. If you
+haven't completed them yet, you should finish them first before you
+continue with today's exercises.}
+
+\hypertarget{objectives-1}{%
+\subsection{Objectives:}\label{objectives-1}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\begin{matrix}
+J(\theta) & = & \cfrac{1}{2m}(\hat{y} - y)\cdot(\hat{y}- y) 
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(y\) is a vector of dimension m * 1,
+\item
+  \(\hat{y}\) is a vector of dimension m * 1.
+\end{itemize}
+
+\hypertarget{instructions-1}{%
+\subsection{Instructions:}\label{instructions-1}}
+
+In the cost.py file create the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ cost_(y, y_hat):}
+    \CommentTok{"""Computes the mean squared error of two non-empty numpy.ndarray, without any for loop. The two arrays must have the same dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      y: has to be an numpy.ndarray, a vector.}
+\CommentTok{      y_hat: has to be an numpy.ndarray, a vector.}
+\CommentTok{    Returns:}
+\CommentTok{      The mean squared error of the two vectors as a float.}
+\CommentTok{      None if y or y_hat are empty numpy.ndarray.}
+\CommentTok{      None if y and y_hat does not share the same dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-1}{%
+\subsection{Examples:}\label{examples-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{-9}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{-21}\NormalTok{])}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{2}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{-13}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{-19}\NormalTok{])}
+
+\CommentTok{# Example 1:}
+\NormalTok{cost_(X, Y)}
+\CommentTok{# Output:}
+\FloatTok{4.285714285714286}
+
+\CommentTok{# Example 2:}
+\NormalTok{cost_(X, X)}
+\CommentTok{# Output:}
+\FloatTok{0.0}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-02---ai-key-notions-1}{%
+\section{Exercise 02 - AI Key
+Notions}\label{exercise-02---ai-key-notions-1}}
+
+\emph{These questions highlight key notions from the previous day.
+Making sure you can formulate a clear answer to each of them is
+necessary before you keep going. Discuss them with a fellow student if
+you can.}
+
+\hypertarget{are-you-able-to-clearly-and-simply-explain}{%
+\subsection{Are you able to clearly and simply
+explain:}\label{are-you-able-to-clearly-and-simply-explain}}
+
+1 - When we pre-process the training examples, why are we adding a
+column of \emph{ones} to the left of the \(x\) vector (or \(X\) matrix)
+when we use the linear algebra trick?
+
+2 - Why does the cost function square the distance between the data
+points and their predicted values?
+
+3 - What does the cost function value represent?
+
+4 - Toward which value would you like the cost function to tend to? What
+would it mean?
+
+\clearpage
+
+\hypertarget{interlude---improve-1}{%
+\section{Interlude - Improve}\label{interlude---improve-1}}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/Improve.png}
+\caption{The Learning Cycle - Improve}
+\end{figure}
+
+Yesterday, you discovered the first two steps of the learning process:
+starting with a model that makes naive predictions and evaluating it.
+Now we are going to tackle the third part: improving it!
+
+Lets take a new dataset:
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/ex03_interlude_plot.png}
+\caption{Scatter plot of a given dataset}
+\end{figure}
+
+Given our measure of performance, improvement entails \textbf{reducing
+the cost (or loss)} measured by the cost function. If we plot the cost
+of a model's predictions as a function of its \(\theta_1\) parameter
+(with a fixed value for \(\theta_0\)), we obtain a curve like this one:
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/ex03_interlude_cost.png}
+\caption{Cost function given theta\_1}
+\end{figure}
+
+On the graphs below, you can see the we can see that extreme
+\(\theta_1\) values (which modifies the slope of the hypothesis curve -
+in orange) correspond to a very high cost. On the other hand, as we get
+closer to the bottom of the curve, the cost is reduced.
+
+\begin{figure}
+\centering
+\includegraphics[width=6.25in,height=\textheight]{tmp/assets/ex03_cost_1.png}
+\caption{A quite bad model}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=6.25in,height=\textheight]{tmp/assets/ex03_cost_2.png}
+\caption{A better (but still bad) model}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=6.25in,height=\textheight]{tmp/assets/ex03_cost_3.png}
+\caption{A good model}
+\end{figure}
+
+The cost function's minimum corresponds to the bottom of the curve. We
+want \(\theta_1\) to get to this sweet spot. It means that wherever
+\(\theta_1\) starts at, as the training goes on, it needs to get closer
+to the value that matches \(J(\theta)\)'s minimum.
+
+\hypertarget{but-how-to-get-closer-to-the-minimum}{%
+\paragraph{But how to get closer to the
+minimum?}\label{but-how-to-get-closer-to-the-minimum}}
+
+Excellent question dear reader. We're glad you asked!\\
+First, the algorithm needs to figure out in what direction \(\theta_1\)
+should be moved (i.e.~increased or decreased). It does so by calculating
+the \textbf{\emph{slope}} of the \(J(\theta)\) curve at the current
+position of \(\theta_1\). If the slope is positive, \(\theta_1\) must be
+decreased. If the slope is negative, it must be increased. If you have
+studied calculus, you probably sense that all of this involves
+calculating the derivative of the cost function.
+
+The story gets a little more complicated, however, because we have two
+parameters to adjust: \(\theta_0\) and \(\theta_1\). Not just
+\(\theta_1\) (as we showed in our example to simplify). This means the
+\(J(\theta)\) function doesn't have one derivative, but two
+\textbf{\emph{partial derivatives}}. One that computes the slope of
+\(J\) with respect to \(\theta_0\), and a second one for the slope of
+\(J\) with respect to \(\theta_1\). Finally, we package those partial
+derivatives in a vector of dimension \(2 * 1\), which is called
+\textbf{\emph{gradient}} (noted \(\nabla\)).
+
+Don't worry if you don't master multivariate calculus yet, we have
+calculated the partial derivatives for you, all you will need to do is
+write them in Python.\\
+\clearpage
+
+\hypertarget{exercise-03---linear-gradient---iterative-version-1}{%
+\section{Exercise 03 - Linear Gradient - Iterative
+Version}\label{exercise-03---linear-gradient---iterative-version-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex03\tabularnewline
+Files to turn in : & gradient.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-2}{%
+\subsection{Objectives:}\label{objectives-2}}
+
+You must write a function that computes the \emph{\textbf{gradient}} of
+the cost function.\\
+It must compute a partial derivative with respect to each theta
+parameter separately, and return the vector gradient.\\
+The partial derivatives can be calculated with the following formulas:
+
+\large
+
+\[
+\nabla(J)_0 = \cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})
+\] \normalsize
+
+\large
+
+\[
+\nabla(J)_1 = \cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})x^{(i)}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)\) is the gradient vector of size 2 * 1, (this strange
+  symbol : \(\nabla\) is called nabla)
+\item
+  \(x\) is a vector of dimension m * 1
+\item
+  \(y\) is a vector of dimension m * 1
+\item
+  \(x^{(i)}\) is the \(i^{th}\) component of vector \(x\)
+\item
+  \(y^{(i)}\) is the \(i^{th}\) component of vector \(y\)
+\item
+  \(\nabla(J)_j\) is the \(j^{th}\) component of \(\nabla(J)\)
+\item
+  \(h_{\theta}(x^{(i)})\) corresponds to the model's prediction of
+  \(y^{(i)}\)
+\end{itemize}
+
+\hypertarget{hypothesis-notation}{%
+\subsection{Hypothesis Notation:}\label{hypothesis-notation}}
+
+\(h_{\theta}(x^{(i)})\) is the same as what we previously noted
+\(\hat{y}^{(i)}\).\\
+The two notations are equivalent. They represent the model's prediction
+(or estimation) of the \({y}^{(i)}\) value. If you follow Andrew Ng's
+course material on Coursera, you will see him using the former notation.
+
+As a reminder : \(h_{\theta}(x^{(i)}) = \theta_0 + \theta_1x^{(i)}\)
+
+\hypertarget{instructions-2}{%
+\subsection{Instructions:}\label{instructions-2}}
+
+In the gradient.py file create the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ simple_gradient(x, y, theta):}
+    \CommentTok{"""Computes a gradient vector from three non-empty numpy.ndarray, without any for-loop. The three arrays must have compatible dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      y: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      theta: has to be an numpy.ndarray, a 2 * 1 vector.}
+\CommentTok{    Returns:}
+\CommentTok{      The gradient as a numpy.ndarray, a vector of dimension 2 * 1.}
+\CommentTok{      None if x, y, or theta are empty numpy.ndarray.}
+\CommentTok{      None if x, y and theta do not have compatible dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-2}{%
+\subsection{Examples:}\label{examples-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array([}\FloatTok{12.4956442}\NormalTok{, }\FloatTok{21.5007972}\NormalTok{, }\FloatTok{31.5527382}\NormalTok{, }\FloatTok{48.9145838}\NormalTok{, }\FloatTok{57.5088733}\NormalTok{])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\FloatTok{37.4013816}\NormalTok{, }\FloatTok{36.1473236}\NormalTok{, }\FloatTok{45.7655287}\NormalTok{, }\FloatTok{46.6793434}\NormalTok{, }\FloatTok{59.5585554}\NormalTok{])}
+
+\CommentTok{# Example 0:}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{2}\NormalTok{, }\FloatTok{0.7}\NormalTok{])}
+\NormalTok{simple_gradient(x, y, theta1)}
+\CommentTok{# Output:}
+\NormalTok{array([}\FloatTok{21.0342574}\NormalTok{, }\FloatTok{587.36875564}\NormalTok{])}
+
+\CommentTok{# Example 1:}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\FloatTok{-0.4}\NormalTok{])}
+\NormalTok{simple_gradient(x, y, theta2)}
+\CommentTok{# Output:}
+\NormalTok{array([}\FloatTok{58.86823748}\NormalTok{, }\FloatTok{2229.72297889}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{interlude---linear-algebra-tricks-ii-1}{%
+\section{Interlude - Linear Algebra Tricks
+II}\label{interlude---linear-algebra-tricks-ii-1}}
+
+If you tried to run your code on a very large dataset, you'd find that
+it takes a long time to execute! That's because it doesn't use the power
+of Python libraries that are optimized for matrix operations.
+
+Remember the linear algebra trick of yesterday? Let's use it again!\\
+If you concatenate a column of \(1\)'s to the left of the \(x\) vector,
+you get what we called matrix \(X'\).
+
+\large
+
+\[
+X' = \begin{bmatrix} 1 & x^{(1)} \\ \vdots & \vdots \\ 1 & x^{(m)}\end{bmatrix}
+\] \normalsize
+
+This transformation is very convenient because we can rewrite each \(1\)
+as \(x_0^{(i)}\), and each \(x^{(i)}\) as \(x_1^{(i)}\). So now the
+\(X'\) matrix looks like this:
+
+\large
+
+\[
+X' = \begin{bmatrix} x_0^{(1)} & x_1^{(1)} \\ \vdots & \vdots \\ x_0^{(m)} & x_1^{(m)}\end{bmatrix}
+\] \normalsize
+
+Notice that each \(x^{(i)}\) example becomes e vector made of
+\((x^{(i)}_0, x^{(i)}_1)\).\\
+The \(0\) and \(1\) indices on the \(x\) features correspond to the
+indices of the \(\theta\) parameters with which they will be multiplied.
+
+Why does this matter? Well, if we take the equation from the previous
+exercise:
+
+\large
+
+\[
+\nabla(J)_0 = \cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})
+\] \normalsize
+
+We can multiply it by \(1\) without changing its value:
+
+\large
+
+\[
+\nabla(J)_0 = \cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)}) \cdot 1
+\] \normalsize
+
+And rewrite \(1\) as \(x_0^{(i)}\):
+
+\large
+
+\[
+\nabla(J)_0 = \cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})x_{0}^{(i)}
+\] \normalsize
+
+This means that now the equation for \(\nabla(J)_0\) is no different
+from the equation we had for \(\nabla(J)_1\), so they can both be
+captured by ONE \textbf{generic equation}:
+
+\large
+
+\[
+\begin{matrix}
+\nabla(J)_j = \cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})x_{j}^{(i)} & & \text{ for j = 0, 1}    
+\end{matrix}
+\] \normalsize
+
+And as you probably suspected, a generic equation opens the door to
+vectorization\ldots{}
+
+\hypertarget{vectorizing-the-gradient-calculation}{%
+\subsection{Vectorizing the Gradient
+Calculation}\label{vectorizing-the-gradient-calculation}}
+
+Now it's time to learn how to calculate the entire gradient in one
+short, pretty, linear algebra equation!
+
+\begin{itemize}
+\tightlist
+\item
+  First, we'll use the \(X'\) matrix and our vectorized hypothesis
+  equation: \(h_{\theta}(x)=X'\theta\)
+\end{itemize}
+
+\large
+
+\[
+\begin{matrix}
+\nabla(J)_j = \cfrac{1}{m} (X'\theta - y)X'_{j} & & \text{ for j = 0, 1}
+\end{matrix}
+\] \normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  Second, we need to tweak the equation a bit so that it directly
+  returns a \(\nabla(J)\) vector containing both \(\nabla(J)_0\) and
+  \(\nabla(J)_1\).
+\end{itemize}
+
+\large
+
+\[
+\nabla(J) = \cfrac{1}{m} {X'}^T(X'\theta - y)    
+\] \normalsize
+
+If the equation does not seems obvious, play a bit with your vectors, on
+paper and in your code, until you get it.
+
+\hypertarget{notation-remark}{%
+\subsubsection{Notation Remark:}\label{notation-remark}}
+
+\({X'}^T\) : You might wonder what the \(^T\) is for. It means the
+\(X'\) matrix must be \textbf{transposed}. Transposing a matrix flips it
+on its diagonal so that its rows become its columns and vice versa. Here
+we need to do it so that matrix dimensions are appropriate
+multiplication and to multiply the right elements together.
+
+\clearpage
+
+\hypertarget{exercise-04---linear-gradient---vectorized-version-1}{%
+\section{Exercise 04 - Linear Gradient - Vectorized
+Version}\label{exercise-04---linear-gradient---vectorized-version-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex04\tabularnewline
+Files to turn in : & vec\_gradient.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-3}{%
+\subsection{Objectives:}\label{objectives-3}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\nabla(J) = \cfrac{1}{m} {X'}^T(X'\theta - y)
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)\) is a vector of dimension \(2 * 1\)
+\item
+  \(X'\) is a \textbf{matrix} of dimension \(m * 2\)
+\item
+  \({X'}^T\) is the traspose of \(X'\). Its dimensions are \(2 * m\).
+\item
+  \(y\) is a vector of dimension \(m * 1\)
+\item
+  \(\theta\) is a vector of dimension \(2 * 1\)
+\end{itemize}
+
+Be careful:
+
+\begin{itemize}
+\item
+  the \(x\) you will get as an input is an \(m * 1\) vector
+\item
+  \(\theta\) is a \(2 * 1\) vector. You have to transform \(x\) to fit
+  the dimension of \(\theta\)!
+\end{itemize}
+
+\hypertarget{instructions-3}{%
+\subsection{Instructions:}\label{instructions-3}}
+
+In the gradient.py file create the following function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ gradient(x, y, theta):}
+    \CommentTok{"""Computes a gradient vector from three non-empty numpy.ndarray, without any for loop. The three arrays must have compatible dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be a numpy.ndarray, a matrix of dimension m * 1.}
+\CommentTok{      y: has to be a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      theta: has to be a numpy.ndarray, a 2 * 1 vector.}
+\CommentTok{    Returns:}
+\CommentTok{      The gradient as a numpy.ndarray, a vector of dimension 2 * 1.}
+\CommentTok{      None if x, y, or theta is an empty numpy.ndarray.}
+\CommentTok{      None if x, y and theta do not have compatible dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-3}{%
+\subsection{Examples:}\label{examples-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array([}\FloatTok{12.4956442}\NormalTok{, }\FloatTok{21.5007972}\NormalTok{, }\FloatTok{31.5527382}\NormalTok{, }\FloatTok{48.9145838}\NormalTok{, }\FloatTok{57.5088733}\NormalTok{])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\FloatTok{37.4013816}\NormalTok{, }\FloatTok{36.1473236}\NormalTok{, }\FloatTok{45.7655287}\NormalTok{, }\FloatTok{46.6793434}\NormalTok{, }\FloatTok{59.5585554}\NormalTok{])}
+
+\CommentTok{# Example 0:}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{2}\NormalTok{, }\FloatTok{0.7}\NormalTok{])}
+\NormalTok{gradient(x, y, theta1)}
+\CommentTok{# Output:}
+\NormalTok{array([}\FloatTok{21.0342574}\NormalTok{, }\FloatTok{587.36875564}\NormalTok{])}
+
+\CommentTok{# Example 1:}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\FloatTok{-0.4}\NormalTok{])}
+\NormalTok{gradient(x, y, theta2)}
+\CommentTok{# Output:}
+\NormalTok{array([}\FloatTok{58.86823748}\NormalTok{, }\FloatTok{2229.72297889}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{interlude---gradient-descent-1}{%
+\section{Interlude - Gradient
+Descent}\label{interlude---gradient-descent-1}}
+
+So far we've calculated the \emph{gradient}, which indicates whether and
+by how much we should increase or decrease \(\theta_0\) and \(\theta_1\)
+in order to reduce the cost.\\
+What we have to do next is update the theta parameters accordingly, step
+by step, until we reach the minimum. This iterative process, called
+\textbf{Gradient Descent}, will progressively improve the performance of
+your regression model on the training data.
+
+The gradient descent \textbf{algorithm} can be summarized like this: for
+a certain number of cycles, at each step, both \(\theta\) parameters are
+slightly moved in the opposite directions than what the gradient
+indicates.
+
+The algorithm can be expressed in pseudocode as the following:
+
+\large
+
+\[
+\begin{matrix}
+&\text{repeat until convergence:} & \{\\
+&    \text{compute } \nabla{(J)}  \\
+&   \theta_0 := \theta_0 - \alpha \nabla(J)_0  \\ 
+&   \theta_1 := \theta_1 - \alpha \nabla(J)_1\\
+    \} \hspace{0.5cm} 
+\end{matrix}
+\] \normalsize
+
+A few remarks on this algorithm:
+
+\begin{itemize}
+\item
+  If you directly subtracted the gradient from \(\theta\), your steps
+  would be too big and you would quickly overshoot past the minimum.
+  That's why we use \(\alpha\) (alpha), called the \emph{learning rate}.
+  It's a small float number (usually between 0 and 1) that decreases the
+  magnitude of each update.
+\item
+  The pseudocode says ``repeat until convergence'', but in your
+  implementation, you will not actually check for convergence at each
+  iteration. You will instead set a number of cycles that is sufficient
+  for your gradient descent to converge.
+\item
+  When training a linear regression model on a new dataset, you will
+  have to choose appropriate alpha and the number of cycles through
+  trial and error.
+\end{itemize}
+
+\clearpage
+
+\hypertarget{exercise-05---gradient-descent-1}{%
+\section{Exercise 05 - Gradient
+Descent}\label{exercise-05---gradient-descent-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex05\tabularnewline
+Files to turn in : & fit.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden functions : & any function that calculates derivatives for
+you\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-4}{%
+\subsection{Objectives:}\label{objectives-4}}
+
+\begin{itemize}
+\item
+  Be able to explain what it means to \textbf{\emph{fit}} a Machine
+  Learning model to a dataset
+\item
+  Implement a function that performs \textbf{Linear Gradient Descent}
+  (LGD).
+\end{itemize}
+
+\hypertarget{instructions-4}{%
+\subsection{Instructions:}\label{instructions-4}}
+
+In this exercise, you will implement linear gradient descent to fit your
+model to the dataset.
+
+The pseudocode for the algorithm is the following:
+
+\large
+
+\[
+\begin{matrix}
+&\text{repeat until convergence:} & \{ \\
+&   \text{compute } \nabla{(J)}  \\
+&   \theta_0 := \theta_0 - \alpha \nabla(J)_0  \\ 
+&   \theta_1 := \theta_1 - \alpha \nabla(J)_1\\
+    \} 
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\alpha\) (alpha) is the \emph{learning rate}. It's a small float
+  number (usually between 0 and 1)
+\item
+  For now, ``reapeat until convergence'' will mean to simply repeat for
+  n\_cycles (a number that you will choose wisely)
+\end{itemize}
+
+You are expected to write a function named \texttt{fit\_} as per the
+instructions below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ fit_(x, y, theta, alpha, max_iter):}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        Fits the model to the training dataset contained in x and y.}
+\CommentTok{    Args:}
+\CommentTok{        x: has to be a numpy.ndarray, a vector of dimension m * 1: (number of training examples, 1).}
+\CommentTok{        y: has to be a numpy.ndarray, a vector of dimension m * 1: (number of training examples, 1).}
+\CommentTok{        theta: has to be a numpy.ndarray, a vector of dimension 2 * 1.}
+\CommentTok{        alpha: has to be a float, the learning rate}
+\CommentTok{        max_iter: has to be an int, the number of iterations done during the gradient descent}
+\CommentTok{    Returns:}
+\CommentTok{        new_theta: numpy.ndarray, a vector of dimension 2 * 1.}
+\CommentTok{        None if there is a matching dimension problem.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exception.}
+\CommentTok{    """}
+\NormalTok{        ... your code here ...}
+\end{Highlighting}
+\end{Shaded}
+
+Hopefully, you have already written a function to calculate the linear
+gradient.
+
+\hypertarget{examples-4}{%
+\subsection{Examples:}\label{examples-4}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{12.4956442}\NormalTok{], [}\FloatTok{21.5007972}\NormalTok{], [}\FloatTok{31.5527382}\NormalTok{], [}\FloatTok{48.9145838}\NormalTok{], [}\FloatTok{57.5088733}\NormalTok{]])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{37.4013816}\NormalTok{], [}\FloatTok{36.1473236}\NormalTok{], [}\FloatTok{45.7655287}\NormalTok{], [}\FloatTok{46.6793434}\NormalTok{], [}\FloatTok{59.5585554}\NormalTok{]])}
+\NormalTok{theta}\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+
+\CommentTok{# Example 0:}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ fit_(x, y, alpha}\OperatorTok{=}\FloatTok{5e-8}\NormalTok{, max_iter }\OperatorTok{=} \DecValTok{1500000}\NormalTok{)}
+\NormalTok{theta1}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{1.40709365}\NormalTok{],}
+\NormalTok{       [}\FloatTok{1.1150909}\NormalTok{ ]])}
+
+\CommentTok{# Example 1:}
+\NormalTok{predict(x, theta1)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{15.3408728}\NormalTok{ ],}
+\NormalTok{       [}\FloatTok{25.38243697}\NormalTok{],}
+\NormalTok{       [}\FloatTok{36.59126492}\NormalTok{],}
+\NormalTok{       [}\FloatTok{55.95130097}\NormalTok{],}
+\NormalTok{       [}\FloatTok{65.53471499}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{remarks}{%
+\subsection{Remarks:}\label{remarks}}
+
+\begin{itemize}
+\item
+  You can create more training data by generating an \(x\) array with
+  random values and computing the corresponding \(y\) vector as a linear
+  expression of \(x\). You can then fit a model on this artificial data
+  and find out if it comes out with the same \(\theta\) coefficients
+  that first you used.
+\item
+  It is possible that \(\theta_0\) and \(\theta_1\) become
+  ``{[}nan{]}''. In that case, it means you probably used a learning
+  rate that is too large.
+\end{itemize}
+
+\clearpage
+
+\hypertarget{exercise-06---linear-regression-with-class-1}{%
+\section{Exercise 06 - Linear Regression with
+Class}\label{exercise-06---linear-regression-with-class-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex06\tabularnewline
+Files to turn in : & my\_linear\_regression.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-5}{%
+\subsection{Objectives:}\label{objectives-5}}
+
+\begin{itemize}
+\tightlist
+\item
+  Write a class that contains all methods necessary to perform linear
+  regression.
+\end{itemize}
+
+\hypertarget{instructions-5}{%
+\subsection{Instructions:}\label{instructions-5}}
+
+In this exercise, you will not learn anything new but don't worry, it's
+for your own good.\\
+You are expected to write your own \texttt{MyLinearRegression} class
+which looks similar to the class available in Scikit-learn:\\
+\texttt{sklearn.linear\_model.LinearRegression}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ MyLinearRegression():}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        My personnal linear regression class to fit like a boss.}
+\CommentTok{    """}
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{,  thetas, alpha}\OperatorTok{=}\FloatTok{0.001}\NormalTok{, n_cycle}\OperatorTok{=}\DecValTok{1000}\NormalTok{):}
+              \VariableTok{self}\NormalTok{.alpha }\OperatorTok{=}\NormalTok{ alpha}
+              \VariableTok{self}\NormalTok{.max_iter }\OperatorTok{=}\NormalTok{ max_iter}
+              \VariableTok{self}\NormalTok{.thetas }\OperatorTok{=}\NormalTok{ thetas}
+              \CommentTok{# Your code here}
+
+    \CommentTok{#... other methods ...}
+\end{Highlighting}
+\end{Shaded}
+
+You will add the following methods:
+
+\begin{itemize}
+\item
+  \texttt{fit\_(self,\ x,\ y)}
+\item
+  \texttt{predict\_(self,\ x)}
+\item
+  \texttt{cost\_elem\_(self,\ x,\ y)}
+\item
+  \texttt{cost\_(self,\ x,\ y)}.
+\end{itemize}
+
+You have already implemented these functions, you just need a few
+adjustments so that they all work well within your
+\texttt{MyLinearRegression} class.
+
+\hypertarget{examples-5}{%
+\subsection{Examples:}\label{examples-5}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{from}\NormalTok{ mylinearregression }\ImportTok{import}\NormalTok{ MyLinearRegression }\ImportTok{as}\NormalTok{ MyLR}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{12.4956442}\NormalTok{], [}\FloatTok{21.5007972}\NormalTok{], [}\FloatTok{31.5527382}\NormalTok{], [}\FloatTok{48.9145838}\NormalTok{], [}\FloatTok{57.5088733}\NormalTok{]])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{37.4013816}\NormalTok{], [}\FloatTok{36.1473236}\NormalTok{], [}\FloatTok{45.7655287}\NormalTok{], [}\FloatTok{46.6793434}\NormalTok{], [}\FloatTok{59.5585554}\NormalTok{]])}
+
+\NormalTok{lr1 }\OperatorTok{=}\NormalTok{ MyLR([}\DecValTok{2}\NormalTok{, }\FloatTok{0.7}\NormalTok{])}
+
+\CommentTok{# Example 0.0:}
+\NormalTok{lr1.predict_(x)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{10.74695094}\NormalTok{],}
+\NormalTok{       [}\FloatTok{17.05055804}\NormalTok{],}
+\NormalTok{       [}\FloatTok{24.08691674}\NormalTok{],}
+\NormalTok{       [}\FloatTok{36.24020866}\NormalTok{],}
+\NormalTok{       [}\FloatTok{42.25621131}\NormalTok{]])}
+
+\CommentTok{# Example 0.1:}
+\NormalTok{lr1.cost_elem_(lr1.predict(x),y)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{77.72116511}\NormalTok{],}
+\NormalTok{       [}\FloatTok{49.33699664}\NormalTok{],}
+\NormalTok{       [}\FloatTok{72.38621816}\NormalTok{],}
+\NormalTok{       [}\FloatTok{37.29223426}\NormalTok{],}
+\NormalTok{       [}\FloatTok{78.28360514}\NormalTok{]])}
+
+\CommentTok{# Example 0.2:}
+\NormalTok{lr1.cost_(lr1.predict(x),y)}
+\CommentTok{# Output:}
+\FloatTok{315.0202193084312}
+
+
+\CommentTok{# Example 1.0:}
+\NormalTok{lr2 }\OperatorTok{=}\NormalTok{ MyLR([}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{])}
+\NormalTok{lr2.fit_(x, y)}
+\NormalTok{lr2.thetas}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{1.40709365}\NormalTok{],}
+\NormalTok{       [}\FloatTok{1.1150909}\NormalTok{ ]])}
+
+\CommentTok{# Example 1.1:}
+\NormalTok{lr2.predict_(x)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{15.3408728}\NormalTok{ ],}
+\NormalTok{       [}\FloatTok{25.38243697}\NormalTok{],}
+\NormalTok{       [}\FloatTok{36.59126492}\NormalTok{],}
+\NormalTok{       [}\FloatTok{55.95130097}\NormalTok{],}
+\NormalTok{       [}\FloatTok{65.53471499}\NormalTok{]])}
+
+\CommentTok{# Example 1.2:}
+\NormalTok{lr2.cost_elem_(lr1.predict(x),y)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{35.6749755}\NormalTok{ ],}
+\NormalTok{       [ }\FloatTok{4.14286023}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{1.26440585}\NormalTok{],}
+\NormalTok{       [}\FloatTok{29.30443042}\NormalTok{],}
+\NormalTok{       [}\FloatTok{22.27765992}\NormalTok{]])}
+
+\CommentTok{# Example 1.3:}
+\NormalTok{lr2.cost_(lr1.predict(x),y)}
+\CommentTok{# Output:}
+\FloatTok{92.66433192085971}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-07---practicing-linear-regression-1}{%
+\section{Exercise 07 - Practicing Linear
+Regression}\label{exercise-07---practicing-linear-regression-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex07\tabularnewline
+Files to turn in : & linear\_model.py\tabularnewline
+Authorized modules : & numpy, matplotlib\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+Remarks : & Read the doc\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-6}{%
+\subsection{Objectives:}\label{objectives-6}}
+
+\begin{itemize}
+\item
+  Evaluate a linear regression model on a very small dataset, with a
+  given hypothesis function \(h\).
+\item
+  Manipulate the cost function \(J\), plot it, and briefly analyze the
+  plot.
+\end{itemize}
+
+\hypertarget{instructions-6}{%
+\subsection{Instructions:}\label{instructions-6}}
+
+You can find in the \texttt{resources} folder a tiny dataset called
+\texttt{are\_blue\_pills\_magics.csv} which gives you the driving
+performance of space pilots as a function of the quantity of the ``blue
+pills'' they took before the test. You have a description of the data in
+the file named \texttt{are\_blue\_pills\_magics.txt}.\\
+As your hypothesis function \(h\), you will choose:
+
+\large
+
+\[
+h_{\theta}(x) = \theta_0 + \theta_1x
+\] \normalsize
+
+Where \(x\) is the variable, and \(\theta_0\) and \(\theta_1\) are the
+coefficients of the hypothesis. The hypothesis is a function of \(x\).
+
+\textbf{You are strongly encouraged to use the vectorized version of the
+hypothesis.} Do you remember the linear algebra tricks we are annoying
+you with? Use it.
+
+You will model the data and plot 2 different graphs:
+
+\begin{itemize}
+\tightlist
+\item
+  A graph with the data and the best hypothesis you find for the
+  spacecraft piloting score versus the quantity of ``blue pills'' (see
+  example below)
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/ex04_score_vs_bluepills.png}
+\caption{Space driving score as a function of the quantity of blue pill
+(in micrograms). In blue the real values and in green the predicted
+values.}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  The cost function \(J(\theta)\) in function of the \(\theta\) values
+  (see example below),
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.16667in,height=\textheight]{tmp/assets/ex04_J_vs_t1.png}
+\caption{Evolution of the cost function \(J\) as a function of
+\(\theta_1\) for different values of \(\theta_0\).}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  You will calculate the MSE of the hypothesis you chose (you know how
+  to do it already).
+\end{itemize}
+
+\hypertarget{examples-6}{%
+\subsection{Examples:}\label{examples-6}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{from}\NormalTok{ sklearn.metrics }\ImportTok{import}\NormalTok{ mean_squared_error}
+\ImportTok{from}\NormalTok{ mylinearregression }\ImportTok{import}\NormalTok{ MyLinearRegression }\ImportTok{as}\NormalTok{ MyLR}
+
+\NormalTok{data }\OperatorTok{=}\NormalTok{ pd.read_csv(}\StringTok{"are_blue_pills_magics.csv"}\NormalTok{)}
+\NormalTok{Xpill }\OperatorTok{=}\NormalTok{ np.array(data[Micrograms]).reshape(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{Yscore }\OperatorTok{=}\NormalTok{ np.array(data[Score]).reshape(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+
+\NormalTok{linear_model1 }\OperatorTok{=}\NormalTok{ MyLR(np.array([[}\FloatTok{89.0}\NormalTok{], [}\OperatorTok{-}\DecValTok{8}\NormalTok{]]))}
+\NormalTok{linear_model2 }\OperatorTok{=}\NormalTok{ MyLR(np.array([[}\FloatTok{89.0}\NormalTok{], [}\OperatorTok{-}\DecValTok{6}\NormalTok{]]))}
+\NormalTok{Y_model1 }\OperatorTok{=}\NormalTok{ linear_model1.predict_(Xpill)}
+\NormalTok{Y_model2 }\OperatorTok{=}\NormalTok{ linear_model2.predict_(Xpill)}
+
+\OperatorTok{>>>}\BuiltInTok{print}\NormalTok{(linear_model1.mse_(Xpill, Yscore))}
+\CommentTok{# 57.60304285714282}
+\OperatorTok{>>>}\BuiltInTok{print}\NormalTok{(mean_squared_error(Yscore, Y_model1))}
+\CommentTok{# 57.603042857142825}
+\OperatorTok{>>>}\BuiltInTok{print}\NormalTok{(linear_model2.mse_(Xpill, Yscore))}
+\CommentTok{# 232.16344285714285}
+\OperatorTok{>>>}\BuiltInTok{print}\NormalTok{(mean_squared_error(Yscore, Y_model1))}
+\CommentTok{# 232.16344285714285}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{clarification-and-hints}{%
+\subsection{Clarification and Hints:}\label{clarification-and-hints}}
+
+There is no method named \texttt{.mse\_} in sklearn's LinearRegression
+class, but there is a method named \texttt{.score}. The \texttt{.score}
+method corresponds to the \(R^2\) score. The metric MSE is available in
+the \texttt{sklearn.metrics} module.
+
+\clearpage
+
+\hypertarget{exercise-8---question-time}{%
+\section{Exercise 8 - Question Time!}\label{exercise-8---question-time}}
+
+\hypertarget{are-you-able-to-clearly-and-simply-explain-1}{%
+\subsection{Are you able to clearly and simply
+explain:}\label{are-you-able-to-clearly-and-simply-explain-1}}
+
+1 - What is a hypothesis and what is its goal?\\
+(It's a second chance for you to say something intelligible, no need to
+thank us!)
+
+2 - What is the cost function and what does it represent?
+
+3 - What is Linear Gradient Descent and what does it do?\\
+(hint: you have to talk about J, its gradient and the theta
+parameters\ldots{})
+
+4 - What happens if you choose a learning rate that is too large?
+
+5 - What happens if you choose a very small learning rate, but still a
+sufficient number of cycles?
+
+6 - Can you explain MSE and what it measures? \clearpage
+
+\hypertarget{interlude---normalization-1}{%
+\section{Interlude - Normalization}\label{interlude---normalization-1}}
+
+The values inside the \(x\) vector can vary quite a lot in magnitude,
+depending on the type of data you are working with. For example, if your
+dataset contains distances between planets in km, the numbers will be
+huge. On the other hand, if you are working with planet masses expressed
+as a fraction of the solar system's total mass, the numbers will be very
+small (between 0 and 1)\\
+Both cases may slow down convergence in Gradient Descent (or even
+sometimes prevent convergence at all). To avoid that kind of situation,
+normalization is a very effective way to proceed.
+
+The idea behind this technique is straightforward: \textbf{scaling the
+data}.
+
+With normalization, you can transform your \(x\) vector into a new
+\(x'\) vector whose values range between \([-1, 1]\) more or less. Doing
+this allows you to see much more easily how a training example compares
+to the other ones:
+
+\begin{itemize}
+\item
+  If an \(x'\) value is close to \(1\), you know it's among the largest
+  in the dataset
+\item
+  If an \(x'\) value is close to \(0\), you know it's average
+\item
+  If an \(x'\) value is close to \(-1\), you know it's among the
+  smallest.
+\end{itemize}
+
+So with the upcoming normalization techniques, you'll be able to map
+your data to two different value ranges: \([0, 1]\) or \([-1, 1]\). Your
+algorithm will like it and thank you for it.\\
+\clearpage
+
+\hypertarget{exercise-09---normalization-i-z-score-standardization-1}{%
+\section{Exercise 09 - Normalization I: Z-score
+Standardization}\label{exercise-09---normalization-i-z-score-standardization-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex09\tabularnewline
+Files to turn in : & z-score.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-7}{%
+\subsection{Objectives:}\label{objectives-7}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\begin{matrix}
+ x'^{(i)} = \cfrac{x^{(i)} - \cfrac{1}{m} \sum_{i = 1}^{m} x^{(i)}}{\sqrt{\cfrac{1}{m - 1} \sum_{i = 1}^{m} (x^{(i)} - \cfrac{1}{m} \sum_{i = 1}^{m} x^{(i)})^{2}}} & &\text{ for $i$ in $1, ..., m$} 
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(x\) is a vector of dimension m * 1
+\item
+  \(x^{(i)}\) is the \(i^{th}\) component of the \(x\) vector
+\item
+  \(x'\) is the normalized version of the \(x\) vector
+\end{itemize}
+
+The equation is much easier to understand in the following form:
+
+\large
+
+\[
+\begin{matrix}
+x'^{(i)} = \cfrac{x^{(i)} - \mu}{\sigma} & &\text{ for $i$ in $1, ..., m$}
+\end{matrix}
+\] \normalsize
+
+This should remind you something from \textbf{TinyStatistician}\ldots{}
+
+Nope?
+
+Ok let's do a quick recap:
+
+\begin{itemize}
+\item
+  \(\mu\) is the mean of \(x\)
+\item
+  \(\sigma\) is the standard deviation of \(x\)
+\end{itemize}
+
+\hypertarget{instructions-7}{%
+\subsection{Instructions:}\label{instructions-7}}
+
+In the zscore.py file, write the \texttt{zscore} function as per the
+instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ zscore(x):}
+    \CommentTok{"""Computes the normalized version of a non-empty numpy.ndarray using the z-score standardization.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a vector.}
+\CommentTok{    Returns:}
+\CommentTok{      x' as a numpy.ndarray. }
+\CommentTok{      None if x is a non-empty numpy.ndarray.}
+\CommentTok{    Raises:}
+\CommentTok{      This function shouldn't raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-7}{%
+\subsection{Examples:}\label{examples-7}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>>}\NormalTok{ X }\OperatorTok{=}\NormalTok{ numpy.array([}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{-9}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{-21}\NormalTok{])}
+\OperatorTok{>>>}\NormalTok{ zscore(X)}
+\NormalTok{array([}\OperatorTok{-}\FloatTok{0.08620324}\NormalTok{,  }\FloatTok{1.2068453}\NormalTok{ , }\FloatTok{-0.86203236}\NormalTok{,  }\FloatTok{0.51721942}\NormalTok{,  }\FloatTok{0.94823559}\NormalTok{,}
+        \FloatTok{0.17240647}\NormalTok{, }\FloatTok{-1.89647119}\NormalTok{])}
+\OperatorTok{>>>}
+\OperatorTok{>>>}\NormalTok{ Y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{2}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{-13}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{-19}\NormalTok{])}
+\OperatorTok{>>>}\NormalTok{ zscore(Y)}
+\NormalTok{array([ }\FloatTok{0.11267619}\NormalTok{,  }\FloatTok{1.16432067}\NormalTok{, }\FloatTok{-1.20187941}\NormalTok{,  }\FloatTok{0.37558731}\NormalTok{,  }\FloatTok{0.98904659}\NormalTok{,}
+        \FloatTok{0.28795027}\NormalTok{, }\FloatTok{-1.72770165}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-10---normalization-ii-min-max-standardization-1}{%
+\section{Exercise 10 - Normalization II: Min-max
+Standardization}\label{exercise-10---normalization-ii-min-max-standardization-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex10\tabularnewline
+Files to turn in : & minmax.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-8}{%
+\subsection{Objectives:}\label{objectives-8}}
+
+\begin{itemize}
+\tightlist
+\item
+  Implement another normalization method.
+\end{itemize}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\begin{matrix}
+x'^{(i)} = \cfrac{x^{(i)} - min(x)}{max(x) - min(x)} & & \text{ for $i = 1, ..., m$}
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(x\) is a vector of dimension m * 1
+\item
+  \(x^{(i)}\) is the \(i^{th}\) component of vector \(x\)
+\item
+  \(min(x)\) is the minimum value found among the components of vector
+  \(x\)
+\item
+  \(max(x)\) is the maximum value found among the components of vector
+  \(x\)
+\end{itemize}
+
+You will notice that this min-max standardization doesn't scale the
+values to the \([-1,1]\) range. What do you think the final range will
+be?
+
+\hypertarget{instructions-8}{%
+\subsection{Instructions:}\label{instructions-8}}
+
+In the \texttt{zscore.py} file, create the \texttt{minmax} function as
+per the instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ minmax(x):}
+    \CommentTok{"""Computes the normalized version of a non-empty numpy.ndarray using the min-max standardization.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a vector.}
+\CommentTok{    Returns:}
+\CommentTok{      x' as a numpy.ndarray. }
+\CommentTok{      None if x is a non-empty numpy.ndarray.}
+\CommentTok{    Raises:}
+\CommentTok{      This function shouldn't raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-8}{%
+\subsection{Examples:}\label{examples-8}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>>}\NormalTok{ X }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{-9}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{-21}\NormalTok{])}
+\OperatorTok{>>>}\NormalTok{ minmax(X)}
+\NormalTok{array([}\FloatTok{0.58333333}\NormalTok{, }\FloatTok{1.}\NormalTok{        , }\FloatTok{0.33333333}\NormalTok{, }\FloatTok{0.77777778}\NormalTok{, }\FloatTok{0.91666667}\NormalTok{,}
+       \FloatTok{0.66666667}\NormalTok{, }\FloatTok{0.}\NormalTok{        ])}
+\OperatorTok{>>>}
+\OperatorTok{>>>}\NormalTok{ Y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{2}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{-13}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{-19}\NormalTok{])}
+\OperatorTok{>>>}\NormalTok{ minmax(Y)}
+\NormalTok{array([}\FloatTok{0.63636364}\NormalTok{, }\FloatTok{1.}\NormalTok{        , }\FloatTok{0.18181818}\NormalTok{, }\FloatTok{0.72727273}\NormalTok{, }\FloatTok{0.93939394}\NormalTok{,}
+       \FloatTok{0.6969697}\NormalTok{ , }\FloatTok{0.}\NormalTok{        ])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\end{document}

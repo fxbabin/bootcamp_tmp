@@ -1,0 +1,2757 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8x]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=Blue,
+            urlcolor=blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{35,38,41}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.58,0.85,0.30}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.25,0.50,0.35}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.48,0.49,0.49}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.99,0.74,0.29}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.64,0.20,0.25}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.60,1.00}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.56,0.27,0.68}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.77,0.36,0.00}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.96,0.31,0.31}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{h}
+\makeatother
+
+
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{MaxMatrixCols}{20}
+\usepackage{cancel}
+\usepackage{calc}
+\usepackage{eso-pic}
+\newlength{\PageFrameTopMargin}
+\newlength{\PageFrameBottomMargin}
+\newlength{\PageFrameLeftMargin}
+\newlength{\PageFrameRightMargin}
+
+\setlength{\PageFrameTopMargin}{1.5cm}
+\setlength{\PageFrameBottomMargin}{1cm}
+\setlength{\PageFrameLeftMargin}{1cm}
+\setlength{\PageFrameRightMargin}{1cm}
+
+\makeatletter
+
+\newlength{\Page@FrameHeight}
+\newlength{\Page@FrameWidth}
+
+\AddToShipoutPicture{
+  \thinlines
+  \setlength{\Page@FrameHeight}{\paperheight-\PageFrameTopMargin-\PageFrameBottomMargin}
+  \setlength{\Page@FrameWidth}{\paperwidth-\PageFrameLeftMargin-\PageFrameRightMargin}
+  \put(\strip@pt\PageFrameLeftMargin,\strip@pt\PageFrameTopMargin){
+    \framebox(\strip@pt\Page@FrameWidth, \strip@pt\Page@FrameHeight){}}}
+
+\makeatother
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+
+\usepackage{graphicx}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\geometry{hmargin=2cm,vmargin=2cm}
+
+\usepackage{sectsty}
+
+\sectionfont{\centering\Huge}
+\subsectionfont{\Large}
+\subsubsectionfont{\large}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Added lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{40}{48} \bfseries Bootcamp}\\[0.6cm]
+    \textsc{\fontsize{39}{48} \bfseries { %bootcamp_title
+Machine Learning
+    }}\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\begin{center}
+\includegraphics[width=200pt]{assets/logo-42-ai.png}{\centering}
+\end{center}
+
+\vspace*{2cm}
+\begin{center}
+    \textsc{\fontsize{32}{48} \bfseries %day_number
+Day03    
+    }\\[0.6cm]
+    \textsc{\fontsize{32}{48} \bfseries %day_title
+Logistic Regression    
+    }\\[0.3cm]
+\end{center}
+\vspace{3cm}
+
+\pagenumbering{gobble}
+\newpage
+
+%%% >>>>> Page de garde
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\hypertarget{day03---logistic-regression}{%
+\section{Day03 - Logistic
+Regression}\label{day03---logistic-regression}}
+
+Today, you will discover your first classification algorithm: logistic
+regression. You will learn its cost function, gradient descent and some
+metrics to evaluate its performance.
+
+\hypertarget{notions-of-the-day}{%
+\subsection{Notions of the Day}\label{notions-of-the-day}}
+
+Logistic hypothesis, logistic gradient descent, logistic regression,
+multiclass classification. Accuracy, precision, recall, F1-score,
+confusion matrix.
+
+\hypertarget{useful-resources}{%
+\subsection{Useful Resources}\label{useful-resources}}
+
+We strongly advise that you use the following resource:
+\href{https://www.coursera.org/learn/machine-learning/home/week/3}{Machine
+Learning MOOC - Stanford}\\
+Here are the sections of the MOOC that are relevant for today's
+exercises:
+
+\hypertarget{week-3}{%
+\subsubsection{Week 3:}\label{week-3}}
+
+\textbf{Classification and representation:}
+
+\begin{itemize}
+\item
+  Classification (Video + Reading)
+\item
+  Hypothesis Representation (Video + Reading)
+\item
+  Decision Boundary (Video + Reading)
+\end{itemize}
+
+\textbf{Logistic Regression Model:}
+
+\begin{itemize}
+\item
+  Cost Function (Video + Reading)
+\item
+  Simplified Cost Function and Gradient Descent (Video + Reading)
+\end{itemize}
+
+\textbf{Multiclass Classification:}
+
+\begin{itemize}
+\item
+  Mutliclass Classification: One-vs-all (Video + Reading)
+\item
+  Review (Reading + Quiz)
+\end{itemize}
+
+\hypertarget{general-rules}{%
+\subsection{General rules}\label{general-rules}}
+
+\begin{itemize}
+\item
+  The Python version to use is 3.7, you can check with the following
+  command: \texttt{python\ -V}
+\item
+  The norm: during this bootcamp you will follow the
+  \href{https://www.python.org/dev/peps/pep-0008/}{Pep8 standards}
+\item
+  The function \texttt{eval} is never allowed.
+\item
+  The exercises are ordered from the easiest to the hardest.
+\item
+  Your exercises are going to be evaluated by someone else, so make sure
+  that your variable names and function names are appropriate and civil.
+\item
+  Your manual is the internet.
+\item
+  You can also ask questions in the \texttt{\#bootcamps} channel in
+  \href{https://42-ai.slack.com}{42AI's Slack workspace}.
+\item
+  If you find any issues or mistakes in this document, please create an
+  issue on our
+  \href{https://github.com/42-AI/bootcamp_machine-learning/issues}{dedicated
+  Github repository}.
+\end{itemize}
+
+\hypertarget{helper}{%
+\subsection{Helper}\label{helper}}
+
+Ensure that you have the right Python version.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{> which python}
+\NormalTok{/goinfre/miniconda/bin/python}
+\NormalTok{> python -V}
+\NormalTok{Python 3.7.*}
+\NormalTok{> which pip}
+\NormalTok{/goinfre/miniconda/bin/pip}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-00---multivariate-linear-regression-with-class}{%
+\subsubsection{Exercise 00 - Multivariate Linear Regression with
+Class}\label{exercise-00---multivariate-linear-regression-with-class}}
+
+\hypertarget{exercise-01---datasplitter}{%
+\subsubsection{Exercise 01 -
+DataSplitter}\label{exercise-01---datasplitter}}
+
+\hypertarget{exercise-02---ai-key-notions}{%
+\subsubsection{Exercise 02 - Ai Key
+Notions}\label{exercise-02---ai-key-notions}}
+
+\hypertarget{interlude---classification-the-art-of-labelling-things}{%
+\subsubsection{Interlude - Classification: The Art of Labelling
+Things}\label{interlude---classification-the-art-of-labelling-things}}
+
+\hypertarget{interlude---predict-i-introducing-the-sigmoid-function}{%
+\subsubsection{Interlude - Predict I: Introducing the Sigmoid
+Function}\label{interlude---predict-i-introducing-the-sigmoid-function}}
+
+\hypertarget{exercise-03---sigmoid}{%
+\subsubsection{Exercise 03 - Sigmoid}\label{exercise-03---sigmoid}}
+
+\hypertarget{interlude---predict-ii-hypothesis}{%
+\subsubsection{Interlude - Predict II:
+Hypothesis}\label{interlude---predict-ii-hypothesis}}
+
+\hypertarget{exercise-04---logistic-hypothesis}{%
+\subsubsection{Exercise 04 - Logistic
+Hypothesis}\label{exercise-04---logistic-hypothesis}}
+
+\hypertarget{interlude---evaluate}{%
+\subsubsection{Interlude - Evaluate}\label{interlude---evaluate}}
+
+\hypertarget{exercise-05---logistic-loss-function}{%
+\subsubsection{Exercise 05 - Logistic Loss
+Function}\label{exercise-05---logistic-loss-function}}
+
+\hypertarget{interlude---linear-algebra-strikes-again}{%
+\subsubsection{Interlude - Linear Algebra Strikes
+again!}\label{interlude---linear-algebra-strikes-again}}
+
+\hypertarget{exercise-06---vectorized-logistic-loss-function}{%
+\subsubsection{Exercise 06 - Vectorized Logistic Loss
+Function}\label{exercise-06---vectorized-logistic-loss-function}}
+
+\hypertarget{interlude---improve}{%
+\subsubsection{Interlude - Improve}\label{interlude---improve}}
+
+\hypertarget{exercise-07---logistic-gradient}{%
+\subsubsection{Exercise 07 - Logistic
+Gradient}\label{exercise-07---logistic-gradient}}
+
+\hypertarget{interlude---vectorized-logistic-gradient}{%
+\subsubsection{Interlude - Vectorized Logistic
+Gradient}\label{interlude---vectorized-logistic-gradient}}
+
+\hypertarget{exercise-08---vectorized-logistic-gradient}{%
+\subsubsection{Exercise 08 - Vectorized Logistic
+Gradient}\label{exercise-08---vectorized-logistic-gradient}}
+
+\hypertarget{exercise-09---logistic-regression}{%
+\subsubsection{Exercise 09 - Logistic
+Regression}\label{exercise-09---logistic-regression}}
+
+\hypertarget{exercise-10---practicing-logistic-regression}{%
+\subsubsection{Exercise 10 - Practicing Logistic
+Regression}\label{exercise-10---practicing-logistic-regression}}
+
+\hypertarget{interlude---more-evaluation-metrics}{%
+\subsubsection{Interlude - More Evaluation
+Metrics!}\label{interlude---more-evaluation-metrics}}
+
+\hypertarget{exercise-11---other-metrics}{%
+\subsubsection{Exercise 11 - Other
+metrics}\label{exercise-11---other-metrics}}
+
+\hypertarget{exercise-12---confusion-matrix}{%
+\subsubsection{Exercise 12 - Confusion
+Matrix}\label{exercise-12---confusion-matrix}}
+
+\clearpage
+
+\hypertarget{exercise-00---multivariate-linear-regression-with-class-1}{%
+\section{Exercise 00 - Multivariate Linear Regression with
+Class}\label{exercise-00---multivariate-linear-regression-with-class-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex00\tabularnewline
+Files to turn in : & mylinearregression.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{AI Classics:}\\
+\emph{These exercises are key assignments from the previous day. If you
+haven't completed them yet, you should finish them first before you
+continue with today's exercises.}
+
+\hypertarget{objectives}{%
+\subsection{Objectives:}\label{objectives}}
+
+\begin{itemize}
+\tightlist
+\item
+  Upgrade your Linear Regression class so it can handle multivariate
+  hypotheses.
+\end{itemize}
+
+\hypertarget{instructions}{%
+\subsection{Instructions:}\label{instructions}}
+
+You are expected to upgrade your own \textbf{MyLinearRegression} class
+from \textbf{day01}. You will upgrade the following methods to support
+multivariate linear regression:
+
+\begin{itemize}
+\item
+  \texttt{predict\_(self,\ x)}
+\item
+  \texttt{fit\_(self,\ x,\ y,\ alpha,\ n\_cycle)}
+\end{itemize}
+
+\hypertarget{examples}{%
+\subsection{Examples:}\label{examples}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{from}\NormalTok{ mylinearregression }\ImportTok{import}\NormalTok{ MyLinearRegression }\ImportTok{as}\NormalTok{ MyLR}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{1.}\NormalTok{, }\FloatTok{1.}\NormalTok{, }\FloatTok{2.}\NormalTok{, }\FloatTok{3.}\NormalTok{], [}\FloatTok{5.}\NormalTok{, }\FloatTok{8.}\NormalTok{, }\FloatTok{13.}\NormalTok{, }\FloatTok{21.}\NormalTok{], [}\FloatTok{34.}\NormalTok{, }\FloatTok{55.}\NormalTok{, }\FloatTok{89.}\NormalTok{, }\FloatTok{144.}\NormalTok{]])}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{23.}\NormalTok{], [}\FloatTok{48.}\NormalTok{], [}\FloatTok{218.}\NormalTok{]])}
+\NormalTok{mylr }\OperatorTok{=}\NormalTok{ MyLR([[}\FloatTok{1.}\NormalTok{], [}\FloatTok{1.}\NormalTok{], [}\FloatTok{1.}\NormalTok{], [}\FloatTok{1.}\NormalTok{], [}\DecValTok{1}\NormalTok{]])}
+
+\CommentTok{# Example 0:}
+\NormalTok{mylr.predict_(X)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{8.}\NormalTok{], [}\FloatTok{48.}\NormalTok{], [}\FloatTok{323.}\NormalTok{]])}
+
+\CommentTok{# Example 1:}
+\NormalTok{mylr.cost_elem_(X,Y)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{37.5}\NormalTok{], [}\FloatTok{0.}\NormalTok{], [}\FloatTok{1837.5}\NormalTok{]])}
+
+\CommentTok{# Example 2:}
+\NormalTok{mylr.cost_(X,Y)}
+\CommentTok{# Output:}
+\FloatTok{1875.0}
+
+\CommentTok{# Example 3:}
+\NormalTok{mylr.fit_(X, Y, alpha }\OperatorTok{=} \FloatTok{1.6e-4}\NormalTok{, n_cycle}\OperatorTok{=}\DecValTok{200000}\NormalTok{)}
+\NormalTok{mylr.theta}
+\CommentTok{# Output:}
+\NormalTok{array([[}\DecValTok{18}\NormalTok{.}\DecValTok{023}\NormalTok{..], [}\DecValTok{3}\NormalTok{.}\DecValTok{323}\NormalTok{..], [}\OperatorTok{-}\DecValTok{0}\NormalTok{.}\DecValTok{711}\NormalTok{..], [}\DecValTok{1}\NormalTok{.}\DecValTok{605}\NormalTok{..], [}\OperatorTok{-}\DecValTok{0}\NormalTok{.}\DecValTok{1113}\NormalTok{..]])}
+
+\CommentTok{# Example 4:}
+\NormalTok{mylr.predict_(X)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\DecValTok{23}\NormalTok{.}\DecValTok{499}\NormalTok{..], [}\DecValTok{47}\NormalTok{.}\DecValTok{385}\NormalTok{..], [}\DecValTok{218}\NormalTok{.}\DecValTok{079}\NormalTok{...]])}
+
+\CommentTok{# Example 5:}
+\NormalTok{mylr.cost_elem_(X,Y)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\DecValTok{0}\NormalTok{.}\DecValTok{041}\NormalTok{..], [}\DecValTok{0}\NormalTok{.}\DecValTok{062}\NormalTok{..], [}\DecValTok{0}\NormalTok{.}\DecValTok{001}\NormalTok{..]])}
+
+\CommentTok{# Example 6:}
+\NormalTok{mylr.cost_(X,Y)}
+\CommentTok{# Output:}
+\DecValTok{0}\NormalTok{.}\DecValTok{1056}\NormalTok{..}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-01---dataspliter}{%
+\section{Exercise 01 - DataSpliter}\label{exercise-01---dataspliter}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex01\tabularnewline
+Files to turn in : & data\_splitter.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{AI Classics:}\\
+\emph{These exercises are key assignments from the previous day. If you
+haven't completed them yet, you should finish them first before you
+continue with today's exercises.}
+
+\hypertarget{objectives-1}{%
+\subsection{Objectives:}\label{objectives-1}}
+
+You must implement a function that shuffles a dataset and splits it in
+two parts: a \textbf{training set} and a \textbf{test set}.\\
+Your function will also shuffle and split the \(y\) vector while making
+sure that the order of its rows matches perfectly how the features were
+shuffled and split.
+
+\hypertarget{instructions-1}{%
+\subsection{Instructions:}\label{instructions-1}}
+
+In the \texttt{data\_spliter.py} file, write the following function as
+per the instructions given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ data_spliter(x, y, proportion):}
+    \CommentTok{"""Shuffles and splits the dataset (given by x and y) into a training and a test set, while respecting the indicated proportion.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a matrix of dimension m * n.}
+\CommentTok{      y: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      proportion: has to be a float, the proportion of the dataset that will be assigned to the training set.}
+\CommentTok{    Returns:}
+\CommentTok{      (train_set, test_set, y_train, y_test) as a tuple of numpy.ndarray}
+\CommentTok{      y_hat as a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      None if x or y are empty numpy.ndarray.}
+\CommentTok{      None if x and y do not share compatible dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-1}{%
+\subsection{Examples:}\label{examples-1}}
+
+Be careful! The dataset has to be randomly shuffled before it is split
+into training and test sets. Unless you use the same seed in your
+randomization algorithm, you won't get the same results twice. The
+following examples are just an indication of possible outputs. As long
+as you have shuffled datasets with their corresponding y values, your
+function is working correctly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{x1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{59}\NormalTok{])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{])}
+
+\CommentTok{# Example 1:}
+\NormalTok{data_spliter(x1, y, }\FloatTok{0.8}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{(array([  }\DecValTok{1}\NormalTok{,  }\DecValTok{59}\NormalTok{,  }\DecValTok{42}\NormalTok{, }\DecValTok{300}\NormalTok{]), array([}\DecValTok{10}\NormalTok{]), array([}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{]), array([}\DecValTok{1}\NormalTok{]))}
+
+\CommentTok{# Example 2:}
+\NormalTok{data_spliter(x1, y, }\FloatTok{0.5}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{(array([}\DecValTok{59}\NormalTok{, }\DecValTok{10}\NormalTok{]), array([  }\DecValTok{1}\NormalTok{, }\DecValTok{300}\NormalTok{,  }\DecValTok{42}\NormalTok{]), array([}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{]), array([}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{]))}
+
+\NormalTok{x2 }\OperatorTok{=}\NormalTok{ np.array([ [  }\DecValTok{1}\NormalTok{,  }\DecValTok{42}\NormalTok{],}
+\NormalTok{                [}\DecValTok{300}\NormalTok{,  }\DecValTok{10}\NormalTok{],}
+\NormalTok{                [ }\DecValTok{59}\NormalTok{,   }\DecValTok{1}\NormalTok{],}
+\NormalTok{                [}\DecValTok{300}\NormalTok{,  }\DecValTok{59}\NormalTok{],}
+\NormalTok{                [ }\DecValTok{10}\NormalTok{,  }\DecValTok{42}\NormalTok{]])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{])}
+
+\CommentTok{# Example 3:}
+\NormalTok{data_spliter(x2, y, }\FloatTok{0.8}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{(array([[ }\DecValTok{10}\NormalTok{,  }\DecValTok{42}\NormalTok{],}
+\NormalTok{        [}\DecValTok{300}\NormalTok{,  }\DecValTok{59}\NormalTok{],}
+\NormalTok{        [ }\DecValTok{59}\NormalTok{,   }\DecValTok{1}\NormalTok{],}
+\NormalTok{        [}\DecValTok{300}\NormalTok{,  }\DecValTok{10}\NormalTok{]]), array([[ }\DecValTok{1}\NormalTok{, }\DecValTok{42}\NormalTok{]]), array([}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{]), array([}\DecValTok{0}\NormalTok{]))}
+
+\CommentTok{# Example 4:}
+\NormalTok{data_spliter(x2, y, }\FloatTok{0.5}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{(array([[}\DecValTok{59}\NormalTok{,  }\DecValTok{1}\NormalTok{],}
+\NormalTok{        [}\DecValTok{10}\NormalTok{, }\DecValTok{42}\NormalTok{]]), array([[}\DecValTok{300}\NormalTok{,  }\DecValTok{10}\NormalTok{],}
+\NormalTok{        [}\DecValTok{300}\NormalTok{,  }\DecValTok{59}\NormalTok{],}
+\NormalTok{        [  }\DecValTok{1}\NormalTok{,  }\DecValTok{42}\NormalTok{]]), array([}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{]), array([}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{]))}
+
+\CommentTok{# Be careful! The way tuples of arrays are displayed could be a bit confusing... }
+\CommentTok{# }
+\CommentTok{# Here the tuple returned contains the following arrays: }
+\CommentTok{# array([[59,  1],}
+\CommentTok{# [10, 42]])}
+\CommentTok{#}
+\CommentTok{# array([[300,  10],}
+\CommentTok{# [300,  59]}
+\CommentTok{#}
+\CommentTok{# array([0, 0])}
+\CommentTok{#}
+\CommentTok{# array([1, 1, 0]))}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-02---ai-key-notions-1}{%
+\section{Exercise 02 - AI Key
+Notions:}\label{exercise-02---ai-key-notions-1}}
+
+\emph{These questions are about key notions from the previous days.
+Making sure you can formulate a clear answer to each of them is
+necessary before you keep going. Discuss them with a fellow student if
+you can.}
+
+\hypertarget{are-you-able-to-clearly-and-simply-explain}{%
+\subsection{Are you able to clearly and simply
+explain:}\label{are-you-able-to-clearly-and-simply-explain}}
+
+1 - What is the main difference between univariate and multivariate
+linear regression, in terms of variables?
+
+2 - Is there a minimum number of variables needed to perform a
+multivariate linear regression? If so, what is it?
+
+3 - Is there a maximum number of variables needed to perform a
+multivariate linear regression? If so, what is it?
+
+4 - Is there a difference between univariate and multivariate linear
+regression in terms of performance evaluation?
+
+5 - What does it mean geometrically to perform multivariate gradient
+descent with two variables?
+
+\clearpage
+
+\hypertarget{interlude---classification-the-art-of-labelling-things-1}{%
+\section{Interlude - Classification: The Art of Labelling
+Things}\label{interlude---classification-the-art-of-labelling-things-1}}
+
+Over the last three days you have implemented your first machine
+learning algorithm. You also discovered the three main steps we follow
+when we build \textbf{learning algorithms}:
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/Default.png}
+\caption{The Learning Cycle}
+\end{figure}
+
+The first algorithm you discovered, \textbf{Multivariate Linear
+Regression}, can now be used to predict a numerical value, based on
+several features. This algorithm uses gradient descent to optimize its
+cost function.
+
+Now let's introduce you to your first \textbf{classification algorithm}:
+it is named \textbf{Logistic Regression}. It peforms a
+\emph{classification task}, which means that you are not predicting a
+numerical value (like price, age, grades\ldots{}) but
+\textbf{categories}, or \textbf{labels} (like dog, cat,
+sick/healty\ldots{}).
+
+\hypertarget{be-careful}{%
+\paragraph{\texorpdfstring{\textbf{Be
+careful!}}{Be careful!}}\label{be-careful}}
+
+Don't be confused by the word \emph{`regression'} in \textbf{Logistic
+Regression}. It really is a \emph{classification task}! The name is a
+bit tricky but you will quickly get used to it.
+
+Once again: \textbf{Logistic Regression is a classification algorithm}
+which assigns a given example to a category.
+
+\hypertarget{terminolgy}{%
+\subsubsection{\texorpdfstring{\textbf{Terminolgy:}}{Terminolgy:}}\label{terminolgy}}
+
+In this bootcamp we will use the following terms interchangeably:
+\textbf{class, category,} and \textbf{label}. They all refer to the
+\emph{groups} to which each training example can be assigned to, in a
+classification task. \clearpage
+
+\hypertarget{interlude---predict-i-introducing-the-sigmoid-function-1}{%
+\section{Interlude - Predict I: Introducing the Sigmoid
+Function}\label{interlude---predict-i-introducing-the-sigmoid-function-1}}
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/Predict.png}
+\caption{The Learning Cycle - Predict}
+\end{figure}
+
+\hypertarget{formulating-a-hypothesis}{%
+\subsection{Formulating a Hypothesis}\label{formulating-a-hypothesis}}
+
+Remember that a hypothesis, denoted \(h(\theta)\), is an equation that
+combines a set of \textbf{features} (that characterize an example) with
+\textbf{parameters} in order to output a \textbf{prediction}. Remember
+the hypothesis we used in linear regression?
+
+\large
+
+\[
+h(\theta) = \theta_0 + \theta_{1} x_{1}^{(i)} + \dots + \theta_{n} x_{n}^{(i)} = \theta \cdot x'^{(i)}
+\] \normalsize
+
+It worked fine to predict continuous values, but could we also use it to
+tell, for example, if a patient is sick or not?\\
+That's a yes-or-no question, so the output from the hypothesis function
+should reflect that.
+
+To get started, we'll assign each class a numerical value: sick patients
+will be assigned a value of 1, and healthy patients will be assigned a
+value of 0. The goal will be to build a hypothesis that outputs a
+probability that a patient is sick, as a float number within the range
+of 0 and 1.
+
+The good news is that we can keep the linear equation we already worked
+with! All we need to do is sqash its output through another function
+that is bounded between 0 and 1. That's the \textbf{Sigmoid function}
+and your next exercise is to implement it! \clearpage
+
+\hypertarget{exercise-03---sigmoid-1}{%
+\section{Exercise 03 - Sigmoid}\label{exercise-03---sigmoid-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex03\tabularnewline
+Files to turn in : & sigmoid.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-2}{%
+\subsection{Objectives:}\label{objectives-2}}
+
+You must implement the sigmoid function, given by the following formula:
+
+\large
+
+\[
+\text{sigmoid}(x) = \cfrac{1} {1 + e^{-x}}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(x\) is a scalar or a vector
+\item
+  \(e\) is a mathematical constant, named Euler's number
+\end{itemize}
+
+This function is also known as \textbf{Standard logistic sigmoid
+function}. This explains the name \emph{logistic regression}.
+
+The sigmoid function transforms an input into a probability value,
+i.e.~a value between 0 and 1.\\
+This probability value will then be used to classify the inputs.
+
+\hypertarget{instructions-2}{%
+\subsection{Instructions:}\label{instructions-2}}
+
+In the \texttt{sigmoid.py} file, write the following function as per the
+instructions below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ sigmoid_(x):}
+    \CommentTok{"""}
+\CommentTok{    Compute the sigmoid of a vector.}
+\CommentTok{    Args:}
+\CommentTok{        x: has to be an numpy.ndarray, a vector}
+\CommentTok{    Returns: }
+\CommentTok{        The sigmoid value as a numpy.ndarray.}
+\CommentTok{        None if x is an empty numpy.ndarray.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Nota Bene:} if your argument is a list, the function would be
+applied element-wise to this list and a list of the same shape would be
+returned.
+
+\hypertarget{examples-2}{%
+\subsection{Examples:}\label{examples-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Example 1:}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array(}\OperatorTok{-}\DecValTok{4}\NormalTok{)}
+\NormalTok{sigmoid_(x)}
+\CommentTok{# Output:}
+\NormalTok{array([}\FloatTok{0.01798620996209156}\NormalTok{])}
+
+\CommentTok{# Example 2:}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array(}\DecValTok{2}\NormalTok{)}
+\NormalTok{sigmoid_(x)}
+\CommentTok{# Output:}
+\NormalTok{array([}\FloatTok{0.8807970779778823}\NormalTok{])}
+
+\CommentTok{# Example 3:}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array([[}\OperatorTok{-}\DecValTok{4}\NormalTok{], [}\DecValTok{2}\NormalTok{], [}\DecValTok{0}\NormalTok{]])}
+\NormalTok{sigmoid_(x)}
+\CommentTok{# Output:}
+\CommentTok{# array([[0.01798620996209156], [0.8807970779778823], [0.5]])}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{to-go-further}{%
+\subsection{To go further}\label{to-go-further}}
+
+\emph{Our sigmoid formula is a special case of the logistic function
+below, with \(L = 1\), \(k = 1\) and \(x_0 = 0\):}
+
+\large
+
+\[
+f(x) = \cfrac{L}{1 + e^{-k(x-x_0)}}
+\] \normalsize
+
+\clearpage
+
+\hypertarget{interlude---predict-ii-hypothesis-1}{%
+\section{Interlude - Predict II :
+Hypothesis}\label{interlude---predict-ii-hypothesis-1}}
+
+We hope your curiosity led you to plot your sigmoid function. If you
+didn't, well here is what it looks like:
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/sigmoid.png}
+\caption{Sigmoid}
+\end{figure}
+
+As you can see, \textbf{the sigmoid's output values range from \(0\) to
+\(1\)}.\\
+You can input real numbers as big as you want (positive or negative),
+the output will always land within this range. This will be very helpful
+for the next part.
+
+\hypertarget{logistic-hypothesis}{%
+\section{Logistic Hypothesis}\label{logistic-hypothesis}}
+
+Now you've written your sigmoid function, let's look at \textbf{the
+logistic regression hypothesis}.
+
+\large
+
+\[
+\begin{matrix}
+\hat{y}^{(i)} & = & h_\theta(x^{(i)}) & = & \text{sigmoid}(\theta \cdot x'^{(i)}) 
+& =  &\cfrac{1} {1 + e^{-\theta \cdot x'^{(i)}}} & &\text{ for i = 1, \dots, m}    
+\end{matrix}
+\] \normalsize
+
+\textbf{This is simply the sigmoid function applied on top of the linear
+regression hypothesis!!}
+
+It can be vectorized as:
+
+\large
+
+\[
+\begin{matrix}
+\hat{y} & = & h_\theta(X) & = & \text{sigmoid}(X'\theta) & =  &\cfrac{1} {1 + e^{-X'\theta}}    
+\end{matrix}
+\] \normalsize
+
+As we said before: the \textbf{sigmoid function} is just a way to
+\textbf{map the result of a linear equation onto a {[}0,1{]} value
+range}.
+
+This transformation allows us to interpret the result as a
+\textbf{probability that an individual is a member of a given class}.
+\clearpage
+
+\hypertarget{exercise-04---logistic-hypothesis-1}{%
+\section{Exercise 04 - Logistic
+Hypothesis}\label{exercise-04---logistic-hypothesis-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex04\tabularnewline
+Files to turn in : & log\_pred.py\tabularnewline
+Forbidden libraries : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-3}{%
+\subsection{Objectives:}\label{objectives-3}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\begin{matrix}
+\hat{y} & = & \text{sigmoid}(X' \cdot \theta) & = & \cfrac{1} {1 + e^{-X' \cdot \theta}}    
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(X\) is a matrix of dimension \(m * n\), the design matrix
+\item
+  \(X'\) is a matrix of dimension \(m * (n + 1)\), the design matrix
+  onto which a column of \(1\)'s is added as a first column
+\item
+  \(\hat{y}\) is a vector of dimension \(m * 1\), the vector of
+  predicted values
+\item
+  \(\theta\) is a vector of dimension \((n + 1) * 1\), the vector of
+  parameters
+\end{itemize}
+
+Be careful:
+
+\begin{itemize}
+\item
+  the \emph{x} your function will get as an input corresponds to \(X\),
+  the \(m * n\) matrix. Not \(X'\).
+\item
+  \(\theta\) is an \((n + 1) * 1\) vector.
+\end{itemize}
+
+You have to transform \emph{x} to fit theta's dimension!
+
+\hypertarget{instructions-3}{%
+\subsection{Instructions:}\label{instructions-3}}
+
+In the \texttt{log\_pred.py} file, write the following function as per
+the instructions below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ logistic_predict_(x, theta):}
+     \CommentTok{"""Computes the vector of prediction y_hat from two non-empty numpy.ndarray.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a vector of dimension m * n.}
+\CommentTok{      theta: has to be an numpy.ndarray, a vector of dimension (n + 1) * 1.}
+\CommentTok{    Returns:}
+\CommentTok{      y_hat as a numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      None if x or theta are empty numpy.ndarray.}
+\CommentTok{      None if x or theta dimensions are not appropriate.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-3}{%
+\subsection{Examples:}\label{examples-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Example 1}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{4}\NormalTok{])}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{2}\NormalTok{], [}\FloatTok{0.5}\NormalTok{]])}
+\NormalTok{logistic_predict(x, theta)}
+\CommentTok{# Output: }
+\NormalTok{array([[}\FloatTok{0.98201379}\NormalTok{]])}
+
+\CommentTok{# Example 1}
+\NormalTok{x2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{4}\NormalTok{], [}\FloatTok{7.16}\NormalTok{], [}\FloatTok{3.2}\NormalTok{], [}\FloatTok{9.37}\NormalTok{], [}\FloatTok{0.56}\NormalTok{]])}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{2}\NormalTok{], [}\FloatTok{0.5}\NormalTok{]]) }
+\NormalTok{logistic_predict(x2, theta2)}
+\CommentTok{# Output: }
+\NormalTok{array([[}\FloatTok{0.98201379}\NormalTok{],}
+\NormalTok{       [}\FloatTok{0.99624161}\NormalTok{],}
+\NormalTok{       [}\FloatTok{0.97340301}\NormalTok{],}
+\NormalTok{       [}\FloatTok{0.99875204}\NormalTok{],}
+\NormalTok{       [}\FloatTok{0.90720705}\NormalTok{]])}
+
+\CommentTok{# Example 3}
+\NormalTok{x3 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{], [}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{], [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{]])}
+\NormalTok{theta3 }\OperatorTok{=}\NormalTok{ np.array([[}\OperatorTok{-}\FloatTok{2.4}\NormalTok{], [}\OperatorTok{-}\FloatTok{1.5}\NormalTok{], [}\FloatTok{0.3}\NormalTok{], [}\OperatorTok{-}\FloatTok{1.4}\NormalTok{], [}\FloatTok{0.7}\NormalTok{]])}
+\NormalTok{logistic_predict(x3, theta3)}
+\CommentTok{# Output: }
+\NormalTok{array([[}\FloatTok{0.03916572}\NormalTok{],}
+\NormalTok{       [}\FloatTok{0.00045262}\NormalTok{],}
+\NormalTok{       [}\FloatTok{0.2890505}\NormalTok{ ]])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{interlude---evaluate-1}{%
+\section{Interlude - Evaluate}\label{interlude---evaluate-1}}
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/Evaluate.png}
+\caption{The Learning Cycle - Evaluate}
+\end{figure}
+
+Our \textbf{model} can \textbf{predict the probability} for a given
+example \textbf{to be part of the class labeled as 1}.\\
+Now it's time to evaluate how good it is.
+
+The previous cost function, used to evaluate linear regression, is not
+appropriate in a classification case.
+
+Given the fact that classification tasks imply only two possible values:
+
+\begin{itemize}
+\item
+  \textbf{zero}, if the element is not a member of the predicted class,
+\item
+  \textbf{one}, if the element is a member of the predicted class,
+\end{itemize}
+
+measuring the `distance' between the prediction and the label is not
+going to be the best way to evaluate the performance of a classification
+model. We'll prefer the \textbf{logarithmic} function because it can
+penalize the wrong predictions even more harshly. But let's separate the
+two possible cases.
+
+\hypertarget{case-1-the-expected-output-is-1}{%
+\subsection{Case 1: The expected output is
+1}\label{case-1-the-expected-output-is-1}}
+
+In mathematical terms, we write:
+
+\large
+
+\[
+y^{(i)} = 1
+\] \normalsize
+
+Here we need a function that will penalize the classifier with a high
+cost if its prediction ( \(\hat{y}\) ) gets close to \(0\). What do you
+think of this function? (Have a look at its plot)
+
+\large
+
+\[
+cost_1 = -\log(\hat{y})
+\] \normalsize
+
+\newpage
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/-log_x.png}
+\caption{Cost function when y = 1}
+\end{figure}
+
+You can see from the plot that:
+
+\begin{itemize}
+\item
+  if the prediction ( \(\hat{y}\) ) is close to \(0\), the cost will be
+  great,
+\item
+  if the prediction ( \(\hat{y}\) ) is close to \(1\), the cost will be
+  small.
+\end{itemize}
+
+So we got our function that can harshly penalize predictions that get
+close to \(0\). But sometimes, \(y^{(i)}\) is NOT equal to \(1\). What
+if we \emph{want} \(\hat{y}\) to be closer to \(0\) instead?
+
+\hypertarget{case-2-the-expected-output-is-0}{%
+\subsection{Case 2: The expected output is
+0}\label{case-2-the-expected-output-is-0}}
+
+In this case we have: \large \[
+y^{(i)} = 0
+\] \normalsize
+
+We just need to manipulate the last equation slightly in order to flip
+the curve the way we need:
+
+\large
+
+\[
+cost_0 = -\log(1 - \hat{y}^{(i)})
+\] \normalsize
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/-log_1-x.png}
+\caption{Cost function when y = 0}
+\end{figure}
+
+You can see from the plot that:
+
+\begin{itemize}
+\item
+  if the prediction is close to \(1\), the cost will be great,
+\item
+  if the prediction is close to \(0\), the cost will be small.
+\end{itemize}
+
+So this second equation works like the first one, but penalizes the
+other way: this time \(\hat{y}^{(i)}\) gets penalized harder when it
+gets close to 1.
+
+Now, all we need is a smart way to automatically choose which cost
+function to use, depending on the value of \(y^{(i)}\).
+
+\hypertarget{putting-it-all-together}{%
+\subsection{Putting it all together}\label{putting-it-all-together}}
+
+Let's recap. We need a cost function that can alternate between these:
+
+\begin{itemize}
+\tightlist
+\item
+  If \(y^{(i)} = 1\)
+\end{itemize}
+
+\large
+
+\[
+cost = cost_1 = -\log(\hat{y}^{(i)})
+\] \normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  If \(y^{(i)} = 0\)
+\end{itemize}
+
+\large
+
+\[
+cost = cost_0 = -\log(1- \hat{y}^{(i)})
+\] \normalsize
+
+And we can represent it like this:
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/log_loss.png}
+\caption{cost\_0 and cost\_1}
+\end{figure}
+
+How do you switch between \(cost_0\) and \(cost_1\) depending on the
+value of \(y^{(i)}\)? We could use an if-else statement in the code, but
+that's not very pretty and it doesn't provide a cost function that can
+be expressed as a single mathematical expression. It turns out there is
+a little mathematical trick we can use to make everything stand in one
+equation.
+
+\hypertarget{building-the-equation-for-a-single-training-example}{%
+\subsection{Building the equation for a single training
+example}\label{building-the-equation-for-a-single-training-example}}
+
+For this part let's go step by step. The strategy is to sum both
+expressions:
+
+\large
+
+\[
+cost = cost_1 + cost_0
+\] \normalsize
+
+And then we need some kind of switch to ``turn off'' the term that
+shouldnt be use for the example \(i\). It turns out we can use the
+\(y^{(i)}\) value itself as a switch!
+
+\begin{itemize}
+\tightlist
+\item
+  When \(y^{(i)} = 0\), we just multiply it with the term we don't want
+  and we'll cancel it out:
+\end{itemize}
+
+\large
+
+\[
+\begin{matrix}
+cost & = & y^{(i)} \cdot cost_1 + cost_0 \\
+cost & = & 0 \cdot cost_1 + cost_0 \\
+cost & = & cost_0
+\end{matrix}
+\] \normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  When \(y^{(i)} = 1\), it's a little trickier. We have to multiply the
+  term we want to cancel out by \((1 - y^{(i)})\)
+\end{itemize}
+
+\large
+
+\[
+\begin{matrix}
+cost & = & cost_1 + (1 - y^{(i)}) \cdot cost_0 \\
+cost & = & cost_1 + (1 - 1) \cdot cost_0 \\
+cost & = & cost_1 + 0 \cdot cost_0  \\
+cost & = & cost_1
+\end{matrix}
+\] \normalsize
+
+Now, to make a generic equation that works without knowing in advance
+the value of \(y^{(i)}\), all we need is to sum the two cost functions
+along with their ``switches'':
+
+\large
+
+\[
+\begin{matrix}
+cost & = & y^{(i)} \cdot cost_1 & + & (1 - y^{(i)}) \cdot cost_0
+\end{matrix}
+\] \normalsize And then, if we develop \(cost_0\) and \(cost_1\): \large
+\[
+\begin{matrix}
+cost & = & y^{(i)} \cdot (-\log(\hat{y}^{(i)})) & + & (1 - y^{(i)}) \cdot (-\log(1 - \hat{y}^{(i)}))
+\end{matrix}
+\] \normalsize Finally, if we simplify the sign notation just a bit:
+\large \[
+\begin{matrix}
+cost & = & -[y^{(i)}\cdot\log(\hat{y}^{(i)}) & + & (1 - y^{(i)})\cdot\log(1 - \hat{y}^{(i)})]
+\end{matrix}
+\] \normalsize
+
+\hypertarget{cross-entropy}{%
+\subsection{Cross-entropy}\label{cross-entropy}}
+
+We are reaching the goal! All we need to do is and average across all
+training examples and we end up with our final cost function. It has a
+name: \textbf{cross-entropy}. The equation is the following:
+
+\large
+
+\[
+J( \theta) = -\cfrac{1} {m} \lbrack \sum_{i = 1}^{m} y^{(i)}\log(\hat{y}^{(i)}) + (1 - y^{(i)})\log(1 - \hat{y}^{(i)})\rbrack
+\] \normalsize
+
+This formula allows you to calculate the overall cost of a complete set
+of predictions. If you have enough, you can stop here and move on to the
+exercise. If you'd like to better understand how it works and have
+``automatic switch'' process broken down for you, you here we go:
+
+\hypertarget{if-the-given-example-xi-is-not-part-of-the-predicted-class-yi-0}{%
+\paragraph{\texorpdfstring{If the given example \(x^{(i)}\) is not part
+of the predicted class, \(y^{(i)} = 0\)
+:}{If the given example x\^{}\{(i)\} is not part of the predicted class, y\^{}\{(i)\} = 0 :}}\label{if-the-given-example-xi-is-not-part-of-the-predicted-class-yi-0}}
+
+\large
+
+\[
+\begin{matrix}
+y^{(i)} & = & 0 \\
+y^{(i)}\log(\hat{y}^{(i)})) & = & 0   \\
+1 - y^{(i)} & = & 1 \\
+(1 - y^{(i)})\log(1 - \hat{y}^{(i)}) & = & \log(1 - \hat{y}^{(i)})
+\end{matrix}
+\] \normalsize
+
+Therefore \large \[
+J( \theta) = -\cfrac{1} {m} \lbrack \sum_{i = 1}^{m} \overbrace{\cancel{y^{(i)}\log(\hat{y}^{(i)})}}^{0} + \overbrace{\cancel{(1 - y^{(i)})}}^{1}\log(1 - \hat{y}^{(i)})\rbrack
+\] \normalsize \large \[
+J( \theta) = -\cfrac{1} {m} \sum_{i = 1}^{m} \log(1 - \hat{y}^{(i)})
+\] \normalsize \large \[
+J( \theta) = \cfrac{1} {m} \sum_{i = 1}^{m} -\log(1 - \hat{y}^{(i)})
+\] \normalsize
+
+\hypertarget{if-the-given-example-xi-is-part-of-the-predicted-class-yi-1}{%
+\paragraph{\texorpdfstring{If the given example \(x^{(i)}\) is part of
+the predicted class, \(y^{(i)} = 1\)
+:}{If the given example x\^{}\{(i)\} is part of the predicted class, y\^{}\{(i)\} = 1 :}}\label{if-the-given-example-xi-is-part-of-the-predicted-class-yi-1}}
+
+\large
+
+\[
+\begin{matrix}
+y^{(i)} & = & 1 \\
+y^{(i)}\log(\hat{y}^{(i)}) & = & \log(\hat{y}^{(i)})\\
+1 - y^{(i)} & = & 0 \\ 
+(1 - y^{(i)})\log(1 - \hat{y}^{(i)}) & = & 0  
+\end{matrix}
+\] \normalsize Therefore \large \[
+J( \theta) = -\cfrac{1} {m} \lbrack \sum_{i = 1}^{m} \overbrace{\cancel{y^{(i)}}}^{1}\log(\hat{y}^{(i)}) + \overbrace{\cancel{(1 - y^{(i)})\log(1 - \hat{y}^{(i)})}}^{0}\rbrack
+\] \normalsize \large \[
+J( \theta) = -\cfrac{1} {m} \sum_{i = 1}^{m} \log(\hat{y}^{(i)})
+\] \normalsize \large \[
+J( \theta) = \cfrac{1} {m} \sum_{i = 1}^{m} -\log(\hat{y}^{(i)})
+\] \normalsize
+
+\clearpage
+
+\hypertarget{exercise-05---logistic-loss-function-1}{%
+\section{Exercise 05 - Logistic Loss
+Function}\label{exercise-05---logistic-loss-function-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex05\tabularnewline
+Files to turn in : & log\_loss.py\tabularnewline
+Forbidden libraries : & Numpy\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-4}{%
+\subsection{Objectives:}\label{objectives-4}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+J( \theta) = -\cfrac{1} {m} \lbrack \sum_{i = 1}^{m} y^{(i)}\log(\hat{y}^{(i)})) + (1 - y^{(i)})\log(1 - \hat{y}^{(i)})\rbrack
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\hat{y}\) is a vector of dimension \(m * 1\), the vector of
+  predicted values
+\item
+  \(\hat{y}^{(i)}\) is the \(i^{th}\) component of the \(\hat{y}\)
+  vector ,
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values
+\item
+  \(y^{(i)}\) is the \(i^{th}\) component of the \(y\) vector,
+\end{itemize}
+
+\hypertarget{instructions-4}{%
+\subsection{Instructions:}\label{instructions-4}}
+
+In the \texttt{log\_loss.py} file, write the following function as per
+the instructions below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ log_loss_(y, y_hat, eps}\OperatorTok{=}\FloatTok{1e-15}\NormalTok{):}
+    \CommentTok{"""}
+\CommentTok{    Computes the logistic loss value.}
+\CommentTok{    Args:}
+\CommentTok{        y: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{        y_hat: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{        eps: has to be a float, epsilon (default=1e-15)}
+\CommentTok{    Returns:}
+\CommentTok{        The logistic loss value as a float.}
+\CommentTok{        None on any error.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{hint}{%
+\subsubsection{\texorpdfstring{\textbf{Hint:}}{Hint:}}\label{hint}}
+
+The logarithmic function isn't defined in 0.\\
+This means that if \(y^{(i)} = 0\) you will get an error when you try to
+compute \(log(y^{(i)})\).\\
+The purpose of the \texttt{eps} argument is to avoid log(0) errors. It
+is a very small residual value we add to \texttt{y}.
+
+\hypertarget{examples-4}{%
+\subsection{Examples:}\label{examples-4}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Example 1:}
+\NormalTok{y1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{])}
+\NormalTok{x1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{4}\NormalTok{])}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{2}\NormalTok{], [}\FloatTok{0.5}\NormalTok{]])}
+\NormalTok{y_hat1 }\OperatorTok{=}\NormalTok{ logistic_predict(x1, theta1)}
+\NormalTok{log_loss_(y1, y_hat1)}
+\CommentTok{# Output:}
+\FloatTok{0.01814992791780973}
+
+\CommentTok{# Example 2:}
+\NormalTok{y2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{1}\NormalTok{], [}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{], [}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{]])}
+\NormalTok{x2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{4}\NormalTok{], [}\FloatTok{7.16}\NormalTok{], [}\FloatTok{3.2}\NormalTok{], [}\FloatTok{9.37}\NormalTok{], [}\FloatTok{0.56}\NormalTok{]])}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{2}\NormalTok{], [}\FloatTok{0.5}\NormalTok{]])}
+\NormalTok{y_hat2 }\OperatorTok{=}\NormalTok{ logistic_predict(x2, theta2)}
+\NormalTok{log_loss_(y2, y_hat2)}
+\CommentTok{# Output:}
+\FloatTok{2.4825011602474483}
+
+\CommentTok{# Example 3:}
+\NormalTok{y3 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{], [}\DecValTok{1}\NormalTok{]])}
+\NormalTok{x3 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{], [}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{], [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{]])}
+\NormalTok{theta3 }\OperatorTok{=}\NormalTok{ np.array([[}\OperatorTok{-}\FloatTok{2.4}\NormalTok{], [}\OperatorTok{-}\FloatTok{1.5}\NormalTok{], [}\FloatTok{0.3}\NormalTok{], [}\OperatorTok{-}\FloatTok{1.4}\NormalTok{], [}\FloatTok{0.7}\NormalTok{]])}
+\NormalTok{y_hat3 }\OperatorTok{=}\NormalTok{ logistic_predict(x3, theta3)}
+\NormalTok{log_loss_(y3, y_hat3)}
+\CommentTok{# Output:}
+\FloatTok{2.9938533108607053}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{to-go-further-1}{%
+\subsection{To go further:}\label{to-go-further-1}}
+
+This function is called \textbf{Cross-Entropy loss}, or \textbf{logistic
+loss}.\\
+For more information you can look at
+\href{https://en.wikipedia.org/wiki/Cross_entropy\#Cross-entropy_error_function_and_logistic_regression}{\textbf{this
+section}} of the Cross entropy Wikipedia.
+
+\clearpage
+
+\hypertarget{interlude---linear-algebra-strikes-again-1}{%
+\section{Interlude - Linear Algebra Strikes
+Again!}\label{interlude---linear-algebra-strikes-again-1}}
+
+You've become quite used to vectorization by now. You may have already
+tried to vectorize the logistic cost function by yourself. Let's look
+one last time at the former equation:
+
+\large
+
+\[
+J( \theta) = -\cfrac{1} {m} \lbrack \sum_{i = 1}^{m} y^{(i)}\log(\hat{y}^{(i)})) + (1 - y^{(i)})\log(1 - \hat{y}^{(i)})\rbrack
+\] \normalsize
+
+\hypertarget{vectorized-logistic-cost-function}{%
+\subsection{Vectorized Logistic Cost
+Function}\label{vectorized-logistic-cost-function}}
+
+In the \textbf{vectorized version}, we remove the sum ( \(\sum\)
+)because it is captured by the dot products: \large \[
+J( \theta) = -\cfrac{1} {m} \lbrack y \cdot \log(\hat{y}) + (\vec{1} - y) \cdot \log(\vec{1} - \hat{y})\rbrack
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\vec{1}\) is a vector full of \(1\)'s with the same dimensions as
+  \(y\) : \((m * 1)\)
+\end{itemize}
+
+\large
+
+\[
+\vec{1} = \begin{bmatrix}
+    1 \\
+    \vdots \\
+    1
+\end{bmatrix}
+\] \normalsize
+
+\hypertarget{note-operations-between-vectors-and-scalars}{%
+\subsection{Note: Operations Between Vectors and
+Scalars}\label{note-operations-between-vectors-and-scalars}}
+
+We use the \(\vec{1}\) notation to be rigorous, because \textbf{addition
+(or subtraction) between a vector and a scalar is not defined}. In other
+words, mathematically, you cannot write this: \(1 - y\)\\
+The only operation defined between a scalar and a vector is
+multiplication, remember?
+
+\hypertarget{however}{%
+\subsubsection{However\ldots{}}\label{however}}
+
+\texttt{NumPy} is a bit permissive on vectors and matrix
+operations\ldots{}\\
+The following instructions will get you the same results:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Proper mathematical notation}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{4}\NormalTok{], [}\FloatTok{7.16}\NormalTok{], [}\FloatTok{3.2}\NormalTok{], [}\FloatTok{9.37}\NormalTok{], [}\FloatTok{0.56}\NormalTok{]])}
+\NormalTok{ones }\OperatorTok{=}\NormalTok{ np.ones(y.shape[}\DecValTok{0}\NormalTok{]).reshape((}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\NormalTok{ones }\OperatorTok{-}\NormalTok{ y}
+\CommentTok{# Output}
+\NormalTok{array([[}\OperatorTok{-}\FloatTok{3.}\NormalTok{  ],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{6.16}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.2}\NormalTok{ ],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{8.37}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{0.44}\NormalTok{]])}
+
+\CommentTok{# Incorrect mathematical notation}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{4}\NormalTok{], [}\FloatTok{7.16}\NormalTok{], [}\FloatTok{3.2}\NormalTok{], [}\FloatTok{9.37}\NormalTok{], [}\FloatTok{0.56}\NormalTok{]])}
+\DecValTok{1} \OperatorTok{-}\NormalTok{ y}
+\CommentTok{# Output}
+\NormalTok{array([[}\OperatorTok{-}\FloatTok{3.}\NormalTok{  ],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{6.16}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.2}\NormalTok{ ],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{8.37}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{0.44}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+Strange, isn't it?\\
+It happens because of one of \texttt{NumPy}'s loose operations called
+\textbf{Broadcasting}. Broadcasting is a powerful feature whereby
+\texttt{NumPy} is able to figure out that you actually wanted to perform
+a subtraction on each element in the vector, so it does it for you
+automatically. It's very handy to write concise lines of code, but it
+can insert very sneaky bugs if you aren't 100\% confident in what you're
+doing.
+
+Many of the bugs you will encounter while working on Machine Learning
+problems will come from \texttt{NumPy}'s permissiveness. Such bugs
+generaly don't throw any errors, but mess they up the content of your
+vectors and matrices and you'll spend an awful lot of time looking for
+why your model doesn't learn. This is why we \textbf{strongly} suggest
+that you pay attention to your vector (and matrix) dimensions and
+\textbf{stick as much as possible to the actual mathematical
+operations}.
+
+For more information, you can watch
+\href{https://www.youtube.com/watch?v=V2QlTmh6P2Y\&t=213s}{this video on
+dealing with Broadcasting}. \clearpage
+
+\hypertarget{exercise-06---vectorized-logistic-loss-function-1}{%
+\section{Exercise 06 - Vectorized Logistic Loss
+Function}\label{exercise-06---vectorized-logistic-loss-function-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex06\tabularnewline
+Files to turn in : & vec\_log\_loss.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-5}{%
+\subsection{Objectives:}\label{objectives-5}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+J( \theta) = -\cfrac{1} {m} \lbrack y \cdot \log(\hat{y}) + (\vec{1} - y) \cdot \log(\vec{1} - \hat{y})\rbrack
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\hat{y}\) is a vector of dimension \(m * 1\), the vector of
+  predicted values
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values
+\item
+  \(\vec{1}\) is a vector of dimension \(m * 1\), a vector full of ones.
+\end{itemize}
+
+\hypertarget{instructions-5}{%
+\subsection{Instructions:}\label{instructions-5}}
+
+In the \texttt{vec\_log\_loss.py} file, write the following function as
+per the instructions below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ vec_log_loss_(y, y_hat, eps}\OperatorTok{=}\FloatTok{1e-15}\NormalTok{):}
+    \CommentTok{"""}
+\CommentTok{    Compute the logistic loss value.}
+\CommentTok{    Args:}
+\CommentTok{        y: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{        y_hat: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{        eps: epsilon (default=1e-15)}
+\CommentTok{    Returns:}
+\CommentTok{        The logistic loss value as a float.}
+\CommentTok{        None on any error.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Hint:} the purpose of epsilon (eps) is to avoid log(0) errors,
+it is a very small residual value we add to y.
+
+\hypertarget{examples-5}{%
+\subsection{Examples:}\label{examples-5}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Example 1:}
+\NormalTok{y1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{])}
+\NormalTok{x1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{4}\NormalTok{])}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{2}\NormalTok{], [}\FloatTok{0.5}\NormalTok{]])}
+\NormalTok{y_hat1 }\OperatorTok{=}\NormalTok{ logistic_predict(x1, theta1)}
+\NormalTok{vec_log_loss_(y1, y_hat1)}
+\CommentTok{# Output:}
+\FloatTok{0.01814992791780973}
+
+\CommentTok{# Example 2:}
+\NormalTok{y2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{1}\NormalTok{], [}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{], [}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{]])}
+\NormalTok{x2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{4}\NormalTok{], [}\FloatTok{7.16}\NormalTok{], [}\FloatTok{3.2}\NormalTok{], [}\FloatTok{9.37}\NormalTok{], [}\FloatTok{0.56}\NormalTok{]])}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{2}\NormalTok{], [}\FloatTok{0.5}\NormalTok{]])}
+\NormalTok{y_hat2 }\OperatorTok{=}\NormalTok{ logistic_predict(x2, theta2)}
+\NormalTok{vec_log_loss_(y2, y_hat2)}
+\CommentTok{# Output:}
+\FloatTok{2.4825011602474483}
+
+\CommentTok{# Example 3:}
+\NormalTok{y3 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{], [}\DecValTok{1}\NormalTok{]])}
+\NormalTok{x3 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{], [}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{], [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{]])}
+\NormalTok{theta3 }\OperatorTok{=}\NormalTok{ np.array([[}\OperatorTok{-}\FloatTok{2.4}\NormalTok{], [}\OperatorTok{-}\FloatTok{1.5}\NormalTok{], [}\FloatTok{0.3}\NormalTok{], [}\OperatorTok{-}\FloatTok{1.4}\NormalTok{], [}\FloatTok{0.7}\NormalTok{]])}
+\NormalTok{y_hat3 }\OperatorTok{=}\NormalTok{ logistic_predict(x3, theta3)}
+\NormalTok{vec_log_loss_(y3, y_hat3)}
+\CommentTok{# Output:}
+\FloatTok{2.9938533108607053}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{improve}{%
+\section{Improve}\label{improve}}
+
+\begin{figure}
+\centering
+\includegraphics[width=3.125in,height=\textheight]{tmp/assets/Improve.png}
+\caption{The Learning Cycle: Improve}
+\end{figure}
+
+Now we want to improve the algorithm's performance, or in other words,
+reduce the cost of its predictions. This brings us (again) to
+calculating the gradient, which will tells us how much and in what
+direction we should adjust each of the \(\theta\) parameters that belong
+to the model.
+
+\hypertarget{the-logistic-gradient}{%
+\subsection{The logistic gradient}\label{the-logistic-gradient}}
+
+If you remember, to calculate the gradient, we start with the cost
+function and we derive it with respect to each of the theta parameters.
+If you know multivariate calculus you can try it for yourself, otherwise
+we've done it for you:
+
+\large
+
+\[
+\begin{matrix}
+\nabla(J)_0 &  = &\cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)}) & \\
+\nabla(J)_j & = &\cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})x_{j}^{(i)} & \text{ for j = 1, ..., n}    
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)\) is a vector of size \((n + 1) * 1\), the gradient vector
+\item
+  \(\nabla(J)_j\) is the \(j^{th}\) component of \(\nabla(J)\), the
+  partial derivative of \(J\) with respect to \(\theta_j\)
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values
+\item
+  \(y^{(i)}\) is a scalar, the \(i^{th}\) component of vector \(y\)
+\item
+  \(x^{(i)}\) is the feature vector of the \(i^{th}\) example
+\item
+  \(x^{(i)}_j\) is a scalar, the \(j^{th}\) feature value of the
+  \(i^{th}\) example
+\item
+  \(h_{\theta}(x^{(i)})\) is a scalar, the model's estimation of
+  \(y^{(i)}\)
+\end{itemize}
+
+This formula should be very familiar to you, as it's the same as the
+linear regression gradient!\\
+The only difference is that \(h_{\theta}(x^{(i)})\) corresponds to
+\textbf{the logistic regression hypothesis instead of the linear
+regression hypothesis}.
+
+In other words:
+
+\large
+
+\[
+h_{\theta}(x^{(i)}) = \text{sigmoid}( \theta \cdot x'^{(i)}) = \cfrac{1} {1 + e^{-\theta \cdot x'^{(i)}}}
+\] \normalsize
+
+Instead of:
+
+\large
+
+\[
+\cancel{h_{\theta}(x^{(i)}) = \theta \cdot x'^{(i)}}
+\] \normalsize \clearpage
+
+\hypertarget{exercise-07---logistic-gradient-1}{%
+\section{Exercise 07 - Logistic
+Gradient}\label{exercise-07---logistic-gradient-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex07\tabularnewline
+Files to turn in : & log\_gradient.py\tabularnewline
+Forbidden libraries : & numpy\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-6}{%
+\subsection{Objectives:}\label{objectives-6}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\begin{matrix}
+\nabla(J)_0 &  = &\cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)}) & \\
+\nabla(J)_j & = &\cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})x_{j}^{(i)} & \text{ for j = 1, ..., n}    
+\end{matrix}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)\) is a vector of size \((n + 1) * 1\), the gradient vector
+\item
+  \(\nabla(J)_j\) is the \(j^{th}\) component of \(\nabla(J)\), the
+  partial derivative of \(J\) with respect to \(\theta_j\)
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values
+\item
+  \(y^{(i)}\) is a scalar, the \(i^{th}\) component of vector \(y\)
+\item
+  \(x^{(i)}\) is the feature vector of the \(i^{th}\) example
+\item
+  \(x^{(i)}_j\) is a scalar, the \(j^{th}\) feature value of the
+  \(i^{th}\) example
+\item
+  \(h_{\theta}(x^{(i)})\) is a scalar, the model's estimation of
+  \(y^{(i)}\)
+\end{itemize}
+
+Remember that with logistic regression, the hypothesis is slightly
+different:
+
+\large
+
+\[
+h_{\theta}(x^{(i)}) = sigmoid( \theta \cdot x'^{(i)})
+\] \normalsize
+
+\hypertarget{instructions-6}{%
+\subsection{Instructions:}\label{instructions-6}}
+
+In the \texttt{log\_gradient.py} file, write the following function as
+per the instructions below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ log_gradient(x, y, theta):}
+    \CommentTok{"""Computes a gradient vector from three non-empty numpy.ndarray, with a for-loop. The three arrays must have compatible dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a matrix of dimension m * n.}
+\CommentTok{      y: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      theta: has to be an numpy.ndarray, a vector (n +1) * 1.}
+\CommentTok{    Returns:}
+\CommentTok{      The gradient as a numpy.ndarray, a vector of dimensions n * 1, containing the result of the formula for all j.}
+\CommentTok{      None if x, y, or theta are empty numpy.ndarray.}
+\CommentTok{      None if x, y and theta do not have compatible dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-6}{%
+\subsection{Examples:}\label{examples-6}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Example 1:}
+\NormalTok{y1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{])}
+\NormalTok{x1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{4}\NormalTok{])}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{2}\NormalTok{], [}\FloatTok{0.5}\NormalTok{]])}
+
+\NormalTok{log_gradient(x1, y1, theta1)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\OperatorTok{-}\FloatTok{0.01798621}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{0.07194484}\NormalTok{]])}
+
+\CommentTok{# Example 2: }
+\NormalTok{y2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{1}\NormalTok{], [}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{], [}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{]])}
+\NormalTok{x2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{4}\NormalTok{], [}\FloatTok{7.16}\NormalTok{], [}\FloatTok{3.2}\NormalTok{], [}\FloatTok{9.37}\NormalTok{], [}\FloatTok{0.56}\NormalTok{]])}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{2}\NormalTok{], [}\FloatTok{0.5}\NormalTok{]])}
+
+\NormalTok{log_gradient(x2, y2, theta2)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{0.3715235}\NormalTok{ ],}
+\NormalTok{       [}\FloatTok{3.25647547}\NormalTok{]])}
+
+\CommentTok{# Example 3: }
+\NormalTok{y3 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{], [}\DecValTok{1}\NormalTok{]])}
+\NormalTok{x3 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{], [}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{], [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{]])}
+\NormalTok{theta3 }\OperatorTok{=}\NormalTok{ np.array([[}\OperatorTok{-}\FloatTok{2.4}\NormalTok{], [}\OperatorTok{-}\FloatTok{1.5}\NormalTok{], [}\FloatTok{0.3}\NormalTok{], [}\OperatorTok{-}\FloatTok{1.4}\NormalTok{], [}\FloatTok{0.7}\NormalTok{]])}
+
+\NormalTok{log_gradient(x3, y3, theta3)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\OperatorTok{-}\FloatTok{0.55711039}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{0.90334809}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.01756886}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.10071291}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{3.27257351}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{interlude---vectorized-logistic-gradient-1}{%
+\section{Interlude - Vectorized Logistic
+Gradient}\label{interlude---vectorized-logistic-gradient-1}}
+
+Given the previous logistic gradient formula, it's quite easy to produce
+a vectorized version.
+
+Actually, you almost already implemented it on day02!
+
+As with the previous exercice, \textbf{the only thing you have to change
+is your hypothesis} in order to calculate your logistic gradient.
+
+\large
+
+\[
+\begin{matrix}
+\nabla(J)_0 &  = &\cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)}) & \\
+\nabla(J)_j & = &\cfrac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})x_{j}^{(i)} & \text{ for j = 1, ..., n}    
+\end{matrix}
+\] \normalsize
+
+\hypertarget{vectorized-version}{%
+\subsection{Vectorized Version}\label{vectorized-version}}
+
+Can be vectorized the same way as you did before:
+
+\large
+
+\[
+\nabla(J) = \cfrac{1}{m} X'^T(h_\theta(X) - y)
+\] \normalsize
+
+\clearpage
+
+\hypertarget{exercise-08---vectorized-logistic-gradient-1}{%
+\section{Exercise 08 - Vectorized Logistic
+Gradient}\label{exercise-08---vectorized-logistic-gradient-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex08\tabularnewline
+Files to turn in : & vec\_log\_gradient.py\tabularnewline
+Forbidden libraries : & Numpy\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-7}{%
+\subsection{Objectives:}\label{objectives-7}}
+
+You must implement the following formula as a function:
+
+\large
+
+\[
+\nabla(J) = \cfrac{1}{m} X'^T(h_\theta(X) - y)
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\nabla(J)\) is the gradient vector of size \((n + 1) * 1\)
+\item
+  \(X'\) is a matrix of dimension \(m * (n + 1)\), the design matrix
+  onto which a column of ones was added as the first column
+\item
+  \(X'^T\) means the matrix has been transposed
+\item
+  \(h_\theta(X)\) is a vector of dimension \(m * 1\), the vector of
+  predicted values
+\item
+  \(y\) is a vector of dimension \(m * 1\), the vector of expected
+  values
+\end{itemize}
+
+\hypertarget{instructions-7}{%
+\subsection{Instructions:}\label{instructions-7}}
+
+In the \texttt{vec\_log\_gradient.py} file, write the following function
+as per the instructions below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ vec_log_gradient(x, y, theta):}
+    \CommentTok{"""Computes a gradient vector from three non-empty numpy.ndarray, without any for-loop. The three arrays must have compatible dimensions.}
+\CommentTok{    Args:}
+\CommentTok{      x: has to be an numpy.ndarray, a matrix of dimension m * n.}
+\CommentTok{      y: has to be an numpy.ndarray, a vector of dimension m * 1.}
+\CommentTok{      theta: has to be an numpy.ndarray, a vector (n +1) * 1.}
+\CommentTok{    Returns:}
+\CommentTok{      The gradient as a numpy.ndarray, a vector of dimension n * 1, containg the result of the formula for all j.}
+\CommentTok{      None if x, y, or theta are empty numpy.ndarray.}
+\CommentTok{      None if x, y and theta do not have compatible dimensions.}
+\CommentTok{    Raises:}
+\CommentTok{      This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-7}{%
+\subsection{Examples:}\label{examples-7}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Example 1:}
+\NormalTok{y1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{])}
+\NormalTok{x1 }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{4}\NormalTok{])}
+\NormalTok{theta1 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{2}\NormalTok{], [}\FloatTok{0.5}\NormalTok{]])}
+
+\NormalTok{vec_log_gradient(x1, y1, theta1)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\OperatorTok{-}\FloatTok{0.01798621}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{0.07194484}\NormalTok{]])}
+
+\CommentTok{# Example 2: }
+\NormalTok{y2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{1}\NormalTok{], [}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{], [}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{]])}
+\NormalTok{x2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{4}\NormalTok{], [}\FloatTok{7.16}\NormalTok{], [}\FloatTok{3.2}\NormalTok{], [}\FloatTok{9.37}\NormalTok{], [}\FloatTok{0.56}\NormalTok{]])}
+\NormalTok{theta2 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{2}\NormalTok{], [}\FloatTok{0.5}\NormalTok{]])}
+
+\NormalTok{vec_log_gradient(x2, y2, theta2)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{0.3715235}\NormalTok{ ],}
+\NormalTok{       [}\FloatTok{3.25647547}\NormalTok{]])}
+
+\CommentTok{# Example 3: }
+\NormalTok{y3 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{], [}\DecValTok{1}\NormalTok{]])}
+\NormalTok{x3 }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{], [}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{], [}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{]])}
+\NormalTok{theta3 }\OperatorTok{=}\NormalTok{ np.array([[}\OperatorTok{-}\FloatTok{2.4}\NormalTok{], [}\OperatorTok{-}\FloatTok{1.5}\NormalTok{], [}\FloatTok{0.3}\NormalTok{], [}\OperatorTok{-}\FloatTok{1.4}\NormalTok{], [}\FloatTok{0.7}\NormalTok{]])}
+
+\NormalTok{vec_log_gradient(x3, y3, theta3)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\OperatorTok{-}\FloatTok{0.55711039}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{0.90334809}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.01756886}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{2.10071291}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{3.27257351}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-09---logistic-regression-1}{%
+\section{Exercise 09 - Logistic
+Regression}\label{exercise-09---logistic-regression-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex09\tabularnewline
+Files to turn in : & my\_logistic\_regression.py\tabularnewline
+Authorized modules : & numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-8}{%
+\subsection{Objectives:}\label{objectives-8}}
+
+The time to use everything you built so far has come! Demonstrate your
+knowledge by implementing a logistic regression classifier using the
+gradient descent algorithm. You must have seen the power of
+\texttt{NumPy} for vectorized operations. Well let's make something more
+concrete with that.
+
+You may have had a look at Scikit-Learn's implementation of logistic
+regression and noticed that the
+\textbf{sklearn.linear\_model.LogisticRegression} class offers a lot of
+options.
+
+The goal of this exercise is to make a simplified but nonetheless useful
+and powerful version, with fewer options.
+
+\hypertarget{instructions-8}{%
+\subsection{Instructions:}\label{instructions-8}}
+
+In the \texttt{my\_logistic\_regression.py} file, write a
+\texttt{MyLogisticRegression} class as in the instructions below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ MyLogisticRegression():}
+    \CommentTok{"""}
+\CommentTok{    Description:}
+\CommentTok{        My personnal logistic regression to classify things.}
+\CommentTok{    """}
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{, theta, alpha}\OperatorTok{=}\FloatTok{0.001}\NormalTok{, n_cycle}\OperatorTok{=}\DecValTok{1000}\NormalTok{):}
+        \VariableTok{self}\NormalTok{.alpha }\OperatorTok{=}\NormalTok{ alpha}
+        \VariableTok{self}\NormalTok{.max_iter }\OperatorTok{=}\NormalTok{ max_iter}
+        \VariableTok{self}\NormalTok{.theta }\OperatorTok{=}\NormalTok{ theta}
+        \CommentTok{# Your code here}
+
+    \CommentTok{#... other methods ...}
+\end{Highlighting}
+\end{Shaded}
+
+You will add the following methods:
+
+\begin{itemize}
+\item
+  \texttt{fit\_(self,\ x,\ y)}
+\item
+  \texttt{predict\_(self,\ x)}
+\item
+  \texttt{cost\_(self,\ x,\ y)}
+\end{itemize}
+
+You have already written these functions, you will just need a few
+adjustments so that they all work well within your
+\texttt{MyLogisticRegression} class.
+
+\hypertarget{examples-8}{%
+\subsection{Examples:}\label{examples-8}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{from}\NormalTok{ my_logistic_regression }\ImportTok{import}\NormalTok{ MyLogisticRegression }\ImportTok{as}\NormalTok{ MyLR}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array([[}\FloatTok{1.}\NormalTok{, }\FloatTok{1.}\NormalTok{, }\FloatTok{2.}\NormalTok{, }\FloatTok{3.}\NormalTok{], [}\FloatTok{5.}\NormalTok{, }\FloatTok{8.}\NormalTok{, }\FloatTok{13.}\NormalTok{, }\FloatTok{21.}\NormalTok{], [}\FloatTok{3.}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{9.}\NormalTok{, }\FloatTok{14.}\NormalTok{]])}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{1}\NormalTok{], [}\DecValTok{0}\NormalTok{], [}\DecValTok{1}\NormalTok{]])}
+\NormalTok{mylr }\OperatorTok{=}\NormalTok{ MyLR([}\DecValTok{2}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{7.1}\NormalTok{, }\FloatTok{-4.3}\NormalTok{, }\FloatTok{2.09}\NormalTok{])}
+
+\CommentTok{# Example 0:}
+\NormalTok{mylr.predict_(X)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{0.99930437}\NormalTok{],}
+\NormalTok{       [}\FloatTok{1.}\NormalTok{        ],}
+\NormalTok{       [}\FloatTok{1.}\NormalTok{        ]])}
+
+\CommentTok{# Example 1:}
+\NormalTok{mylr.cost_(X,Y)}
+\CommentTok{# Output:}
+\FloatTok{11.513157421577004}
+
+\CommentTok{# Example 2:}
+\NormalTok{mylr.fit_(X, Y)}
+\NormalTok{mylr.theta}
+\CommentTok{# Output:}
+\NormalTok{array([[ }\FloatTok{1.04565272}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{0.62555148}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{0.38387466}\NormalTok{],}
+\NormalTok{       [ }\FloatTok{0.15622435}\NormalTok{],}
+\NormalTok{       [}\OperatorTok{-}\FloatTok{0.45990099}\NormalTok{]])}
+
+\CommentTok{# Example 3:}
+\NormalTok{mylr.predict_(X)}
+\CommentTok{# Output:}
+\NormalTok{array([[}\FloatTok{0.72865802}\NormalTok{],}
+\NormalTok{       [}\FloatTok{0.40550072}\NormalTok{],}
+\NormalTok{       [}\FloatTok{0.45241588}\NormalTok{]])}
+
+\CommentTok{# Example 4:}
+\NormalTok{mylr.cost_(X,Y)}
+\CommentTok{# Output:}
+\FloatTok{0.5432466580663214}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-10---practicing-logistic-regression-1}{%
+\section{Exercise 10 - Practicing Logistic
+Regression}\label{exercise-10---practicing-logistic-regression-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex10\tabularnewline
+Files to turn in : & log\_reg\_model.py\tabularnewline
+Authorized modules : & Numpy\tabularnewline
+Forbidden modules : & sklearn\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-9}{%
+\subsection{Objectives:}\label{objectives-9}}
+
+Now it's time to test your Logistic Regression Classifier on real
+data!\\
+You will use the \textbf{solar\_system\_census\_dataset}.
+
+\hypertarget{instructions-9}{%
+\subsection{Instructions:}\label{instructions-9}}
+
+\textbf{Some words about the dataset:}
+
+\begin{itemize}
+\item
+  You will work with data from the last Solar System Census.
+\item
+  The dataset is divided in two files which can be found in the
+  \texttt{resources} folder: \texttt{solar\_system\_census.csv} and
+  \texttt{solar\_system\_census\_planets.csv}.
+\item
+  The first file contains biometric information such as the height,
+  weight, and bone density of several Solar System citizens.
+\item
+  The second file contains the homeland of each citizen, indicated by
+  its Space Zipcode representation (i.e.~one number for each
+  planet\ldots{} :)).
+\end{itemize}
+
+As you should know, Solar citizens come from four registered areas
+(zipcodes):
+
+\begin{verbatim}
+- The flying cities of Venus (0), 
+
+- United Nations of Earth (1), 
+
+- Mars Republic (2), 
+
+- The Asteroids' Belt colonies (3).
+\end{verbatim}
+
+\textbf{Your Task:}
+
+You will use Logistic Regression to predict what planet each citizen
+comes from, based on the other variables found in the census dataset.
+
+But wait\ldots{} what? There are four different planets! How do you make
+a classifier discriminate between 4 categories? Let's go step by
+step\ldots{}
+
+\hypertarget{part-1---one-label-to-discriminate-them-all}{%
+\subsection{Part 1 - One Label to Discriminate Them
+All}\label{part-1---one-label-to-discriminate-them-all}}
+
+You already wrote a Logistic Regression Classifier that can discriminate
+between two classes. We can use it to solve the problem! Let's start by
+having it discriminate between citizens who come from your favorite
+planet and everybody else!
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Split your dataset into a training and a test set.
+\item
+  Select your favorite Space Zipcode and generate a new
+  \texttt{numpy.ndarray} to label each citizen according to your new
+  selection criterion:
+
+  \begin{itemize}
+  \item
+    \(1\) if the citizen's zipcode corresponds to your favorite planet
+  \item
+    \(0\) if the citizen has another zipcode
+  \end{itemize}
+\item
+  Train your logistic regression to predict if a citizen come from your
+  favorite planet or not, using your brand new label.\\
+  \textbf{You can use normalization on your dataset. The question is
+  should you?}
+\end{enumerate}
+
+You now have a model that can discriminate between citizens that come
+from one specific planet and everyone else. It's a first step, a good
+one, but we still have work to do before we can classify citizens among
+four planets!
+
+So how does \textbf{Multiclass Logistic Regression} work?
+
+\hypertarget{part-2---one-versus-all}{%
+\subsection{Part 2 - One Versus All}\label{part-2---one-versus-all}}
+
+The idea now is to apply what is called \textbf{one-versus-all
+classification}.\\
+It's quite straightforward:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Train a separate Logistic Regression Classifier to discriminate
+  between each class and the others (the way you did in part one).
+\item
+  For each example, ask ALL classifiers to predict the class and select
+  the one with the highest output probability.
+\end{enumerate}
+
+\hypertarget{example}{%
+\subsection{Example:}\label{example}}
+
+If a cititzen got the following classification probabilities:
+
+\begin{itemize}
+\item
+  Planet 0 vs all: 0.38
+\item
+  Planet 1 vs all: 0.51
+\item
+  Planet 2 vs all: 0.12
+\item
+  Planet 3 vs all: 0.89
+\end{itemize}
+
+Then the citizen should be classified as coming from \emph{Planet 3}.
+
+\clearpage
+
+\hypertarget{interlude---more-evaluation-metrics-1}{%
+\section{Interlude - More Evaluation
+Metrics!}\label{interlude---more-evaluation-metrics-1}}
+
+Once your classifier is trained, you want to evaluate its performance.
+You already know about \emph{cross-entropy}, as you implemented it as
+your \emph{cost function}. But when it comes to classification, there
+are more informative metrics we can use besides the loss function. Each
+metric focuses on different error types.\\
+But what is an error type?
+
+A single classification prediction is either right or wrong, nothing in
+between. Either an object is assigned to the right class, or to the
+wrong class. When calculating performance scores for a multiclass
+classifier, we like to compute a separate score for each class that your
+classifier learned to discriminate (in a one-vs-all manner). In other
+words, for a given \emph{Class A}, we want a score that can answer the
+question: ``how good is the model at assigning \emph{A} objects to
+\emph{Class A}, and at NOT assigning \emph{non-A} objects to \emph{Class
+A}?''
+
+You may not realize it yet, but this question involves measuring two
+very different error types, and the distinction is crucial.
+
+\hypertarget{error-types}{%
+\subsection{Error Types}\label{error-types}}
+
+With respect to a given \emph{Class A}, classification errors fall in
+two categories:
+
+\hypertarget{false-positive-when-a-non-a-object-is-assigned-to-class-a.}{%
+\subsubsection{\texorpdfstring{\textbf{False positive:} when a
+\emph{non-A} object is assigned to \emph{Class
+A}.}{False positive: when a non-A object is assigned to Class A.}}\label{false-positive-when-a-non-a-object-is-assigned-to-class-a.}}
+
+For example:
+
+\begin{verbatim}
+- Pulling the fire alarm when there is no fire.
+
+- Considering that someone is sick when she isn't.
+
+- Identifying a face in an image when in fact it was a Teddy Bear.
+\end{verbatim}
+
+\hypertarget{false-negative-when-an-a-object-is-assigned-to-another-class-than-class-a.}{%
+\subsubsection{\texorpdfstring{\textbf{False negative:} when an \emph{A}
+object is assigned to another class than \emph{Class
+A}.}{False negative: when an A object is assigned to another class than Class A.}}\label{false-negative-when-an-a-object-is-assigned-to-another-class-than-class-a.}}
+
+For example:
+
+\begin{verbatim}
+- Not pulling the fire alarm when there is a fire.
+
+- Considering that someone is not sick when she isn't.
+
+- Failing to recognize a face in an image that does contain one.
+\end{verbatim}
+
+It turns out that it's really hard to minimize both error types at the
+same time. At some point you'll need to decide which one is the most
+critical, depending on your use case. For example, if you want to detect
+cancer, of course it's not good if your model erroneously diagnoses
+cancer on a few healthy patients (\textbf{false positives}), but you
+absolutely want to avoid failing at diagnosing cancer on affected
+patients (\textbf{false negatives}) and let them go on with their lives
+while developing a potentially dangerous cancer.
+
+\hypertarget{metrics}{%
+\subsection{Metrics}\label{metrics}}
+
+A metric is computed on a set of predictions along with the
+corresponding set of actual categories. The metric you choose will focus
+more or less on those two error types. If we come back to the
+\textbf{Class A} classifier:
+
+\begin{itemize}
+\item
+  \textbf{Accuracy}: tells you the percentage of predictions that are
+  accurate (i.e.~the correct class was predicted). Accuracy doesn't give
+  information about either error type.
+\item
+  \textbf{Precision}: tells you how much you can trust your model when
+  it says that an object belongs to \emph{Class A}. More precisely, it
+  is the percentage of the objects assigned to \emph{Class A} that
+  really were \emph{A} objects. You use precision when you want to
+  control for \textbf{False positives}.
+\item
+  \textbf{Recall}: tells you how much you can trust that your model is
+  able to recognize ALL \emph{Class A} objects. It is the percentage of
+  all \textbf{A} objects that were properly classified by the model as
+  \emph{Class A}. You use recall when you want to control for
+  \textbf{False negatives}.
+\item
+  \textbf{F1 score}: combines precision and recall in one single
+  measure. You use the F1 score when want to control both \textbf{False
+  positives} and \textbf{False negatives}.
+\end{itemize}
+
+\clearpage
+
+\hypertarget{exercise-11---other-metrics-1}{%
+\section{Exercise 11 - Other
+metrics}\label{exercise-11---other-metrics-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex11\tabularnewline
+Files to turn in : & other\_metrics.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-10}{%
+\subsection{Objectives:}\label{objectives-10}}
+
+The goal of this exercise is to write four metric functions (which are
+also available in \textbf{sklearn.metrics}) and to understand what they
+measure and how they are constructed.
+
+You must implement the following fomulas:
+
+\large
+
+\[
+\text{accuracy} = \cfrac{\text{tp} + \text{fn}}{\text{tp} + \text{fp} + \text{tn} + \text{fn}}
+\] \normalsize \large \[
+\text{precision} = \cfrac{\text{\text{tp}}}{\text{tp} + \text{fp}}
+\] \normalsize \large \[
+\text{recall} = \cfrac{\text{tp}}{\text{tp} + \text{fn}}
+\] \normalsize \large \[
+\text{F1score} = \cfrac{2 \times \text{precision} \times \text{recall}}{\text{precision} + \text{recall}}
+\] \normalsize
+
+Where:
+
+\begin{itemize}
+\item
+  \(\text{tp}\) is the number of \textbf{true positives}
+\item
+  \(\text{fp}\) is the number of \textbf{false positives}
+\item
+  \(\text{tn}\) is the number of \textbf{true negatives}
+\item
+  \(\text{fn}\) is the number of \textbf{false negatives}
+\end{itemize}
+
+\hypertarget{instructions-10}{%
+\subsection{Instructions:}\label{instructions-10}}
+
+For the sake of simplicity, we will only ask you to use two parameters.
+
+In the \texttt{other\_metrics.py} file, write the following functions as
+per the instructions below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ accuracy_score_(y, y_hat):}
+    \CommentTok{"""}
+\CommentTok{    Compute the accuracy score.}
+\CommentTok{    Args:}
+\CommentTok{        y:a numpy.ndarray for the correct labels}
+\CommentTok{        y_hat:a numpy.ndarray for the predicted labels}
+\CommentTok{    Returns: }
+\CommentTok{        The accuracy score as a float.}
+\CommentTok{        None on any error.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exception.}
+\CommentTok{    """}
+
+\KeywordTok{def}\NormalTok{ precision_score_(y, y_hat, pos_label}\OperatorTok{=}\DecValTok{1}\NormalTok{):}
+    \CommentTok{"""}
+\CommentTok{    Compute the precision score.}
+\CommentTok{    Args:}
+\CommentTok{        y:a numpy.ndarray for the correct labels}
+\CommentTok{        y_hat:a numpy.ndarray for the predicted labels}
+\CommentTok{        pos_label: str or int, the class on which to report the precision_score (default=1)}
+\CommentTok{    Returns: }
+\CommentTok{        The precision score as a float.}
+\CommentTok{        None on any error.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exception.}
+\CommentTok{    """}
+
+\KeywordTok{def}\NormalTok{ recall_score_(y, y_hat, pos_label}\OperatorTok{=}\DecValTok{1}\NormalTok{):}
+    \CommentTok{"""}
+\CommentTok{    Compute the recall score.}
+\CommentTok{    Args:}
+\CommentTok{        y:a numpy.ndarray for the correct labels}
+\CommentTok{        y_hat:a numpy.ndarray for the predicted labels}
+\CommentTok{        pos_label: str or int, the class on which to report the precision_score (default=1)}
+\CommentTok{    Returns: }
+\CommentTok{        The recall score as a float.}
+\CommentTok{        None on any error.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exception.}
+\CommentTok{    """}
+
+\KeywordTok{def}\NormalTok{ f1_score_(y, y_hat, pos_label}\OperatorTok{=}\DecValTok{1}\NormalTok{):}
+    \CommentTok{"""}
+\CommentTok{    Compute the f1 score.}
+\CommentTok{    Args:}
+\CommentTok{        y:a numpy.ndarray for the correct labels}
+\CommentTok{        y_hat:a numpy.ndarray for the predicted labels}
+\CommentTok{        pos_label: str or int, the class on which to report the precision_score (default=1)}
+\CommentTok{    Returns: }
+\CommentTok{        The f1 score as a float.}
+\CommentTok{        None on any error.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-9}{%
+\subsection{Examples:}\label{examples-9}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{from}\NormalTok{ sklearn.metrics }\ImportTok{import}\NormalTok{ accuracy_score, precision_score, recall_score, f1_score   }
+
+\CommentTok{# Example 1:}
+\NormalTok{y_hat }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{])}
+
+\CommentTok{# Accuracy}
+\CommentTok{## your implementation}
+\NormalTok{accuracy_score_(y, y_hat)}
+\CommentTok{## Output:}
+\FloatTok{0.5}
+\CommentTok{## sklearn implementation}
+\NormalTok{accuracy_score(y, y_hat)}
+\CommentTok{## Output:}
+\FloatTok{0.5}
+
+\CommentTok{# Precision}
+\CommentTok{## your implementation}
+\NormalTok{precision_score_(y, y_hat)}
+\CommentTok{## Output:}
+\FloatTok{0.4}
+\CommentTok{## sklearn implementation}
+\NormalTok{precision_score(y, y_hat)}
+\CommentTok{## Output:}
+\FloatTok{0.4}
+
+\CommentTok{# Recall}
+\CommentTok{## your implementation}
+\NormalTok{recall_score_(y, y_hat)}
+\CommentTok{## Output:}
+\FloatTok{0.6666666666666666}
+\CommentTok{## sklearn implementation}
+\NormalTok{recall_score(y, y_hat)}
+\CommentTok{## Output:}
+\FloatTok{0.6666666666666666}
+
+\CommentTok{# F1-score}
+\CommentTok{## your implementation}
+\NormalTok{f1_score_(y, y_hat)}
+\CommentTok{## Output:}
+\FloatTok{0.5}
+\CommentTok{## sklearn implementation}
+\NormalTok{f1_score(y, y_hat)}
+\CommentTok{## Output:}
+\FloatTok{0.5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Example 2:}
+\NormalTok{y_hat }\OperatorTok{=}\NormalTok{ np.array([}\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'dog'}\NormalTok{])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\StringTok{'dog'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{])}
+
+\CommentTok{# Accuracy}
+\CommentTok{## your implementation}
+\NormalTok{accuracy_score_(y, y_hat)}
+\CommentTok{## Output:}
+\FloatTok{0.625}
+\CommentTok{## sklearn implementation}
+\NormalTok{accuracy_score(y, y_hat)}
+\CommentTok{## Output:}
+\FloatTok{0.625}
+
+\CommentTok{# Precision}
+\CommentTok{## your implementation}
+\NormalTok{precision_score_(y, y_hat, pos_label}\OperatorTok{=}\StringTok{'dog'}\NormalTok{)}
+\CommentTok{## Output:}
+\FloatTok{0.6}
+\CommentTok{## sklearn implementation}
+\NormalTok{precision_score(y, y_hat, pos_label}\OperatorTok{=}\StringTok{'dog'}\NormalTok{)}
+\CommentTok{## Output:}
+\FloatTok{0.6}
+
+\CommentTok{# Recall}
+\CommentTok{## your implementation}
+\NormalTok{recall_score_(y, y_hat, pos_label}\OperatorTok{=}\StringTok{'dog'}\NormalTok{)}
+\CommentTok{## Output:}
+\FloatTok{0.75}
+\CommentTok{## sklearn implementation}
+\NormalTok{recall_score(y, y_hat, pos_label}\OperatorTok{=}\StringTok{'dog'}\NormalTok{)}
+\CommentTok{## Output:}
+\FloatTok{0.75}
+
+\CommentTok{# F1-score}
+\CommentTok{## your implementation}
+\NormalTok{f1_score_(y, y_hat, pos_label}\OperatorTok{=}\StringTok{'dog'}\NormalTok{)}
+\CommentTok{## Output:}
+\FloatTok{0.6666666666666665}
+\CommentTok{## sklearn implementation}
+\NormalTok{f1_score(y, y_hat, pos_label}\OperatorTok{=}\StringTok{'dog'}\NormalTok{)}
+\CommentTok{## Output:}
+\FloatTok{0.6666666666666665}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Example 3:}
+\NormalTok{y_hat }\OperatorTok{=}\NormalTok{ np.array([}\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'dog'}\NormalTok{])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\StringTok{'dog'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{])}
+
+\CommentTok{# Accuracy}
+\CommentTok{## your implementation}
+\NormalTok{accuracy_score_(y, y_hat)}
+\CommentTok{## Output:}
+\FloatTok{0.625}
+\CommentTok{## sklearn implementation}
+\NormalTok{accuracy_score(y, y_hat)}
+\CommentTok{## Output:}
+\FloatTok{0.625}
+
+\CommentTok{# Precision}
+\CommentTok{## your implementation}
+\NormalTok{precision_score_(y, y_hat, pos_label}\OperatorTok{=}\StringTok{'norminet'}\NormalTok{)}
+\CommentTok{## Output:}
+\FloatTok{0.6666666666666666}
+\CommentTok{## sklearn implementation}
+\NormalTok{precision_score(y, y_hat, pos_label}\OperatorTok{=}\StringTok{'norminet'}\NormalTok{)}
+\CommentTok{## Output:}
+\FloatTok{0.6666666666666666}
+
+\CommentTok{# Recall}
+\CommentTok{## your implementation}
+\NormalTok{recall_score_(y, y_hat, pos_label}\OperatorTok{=}\StringTok{'norminet'}\NormalTok{)}
+\CommentTok{## Output:}
+\FloatTok{0.5}
+\CommentTok{## sklearn implementation}
+\NormalTok{recall_score(y, y_hat, pos_label}\OperatorTok{=}\StringTok{'norminet'}\NormalTok{)}
+\CommentTok{## Output:}
+\FloatTok{0.5}
+
+\CommentTok{# F1-score}
+\CommentTok{## your implementation}
+\NormalTok{f1_score_(y, y_hat, pos_label}\OperatorTok{=}\StringTok{'norminet'}\NormalTok{)}
+\CommentTok{## Output:}
+\FloatTok{0.5714285714285715}
+\CommentTok{## sklearn implementation}
+\NormalTok{f1_score(y, y_hat, pos_label}\OperatorTok{=}\StringTok{'norminet'}\NormalTok{)}
+\CommentTok{## Output:}
+\FloatTok{0.5714285714285715}
+\end{Highlighting}
+\end{Shaded}
+
+\clearpage
+
+\hypertarget{exercise-12---confusion-matrix-1}{%
+\section{Exercise 12 - Confusion
+Matrix}\label{exercise-12---confusion-matrix-1}}
+
+\begin{longtable}[]{@{}rl@{}}
+\toprule
+\endhead
+Turn-in directory : & ex12\tabularnewline
+Files to turn in : & confusion\_matrix.py\tabularnewline
+Forbidden functions : & None\tabularnewline
+Remarks : & n/a\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{objectives-11}{%
+\subsection{Objectives:}\label{objectives-11}}
+
+The goal of this exercise is to reimplement the function
+\texttt{confusion\_matrix} available in \textbf{sklearn.metrics} and to
+learn what does the confusion matrix represent.
+
+\hypertarget{instructions-11}{%
+\subsection{Instructions:}\label{instructions-11}}
+
+For the sake of simplicity, we will only ask you to use three
+parameters. Be careful to respect the order, true labels are rows and
+predicted labels are columns:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{# [predicted labels]    }
+\NormalTok{# label_1  label_2}
+\NormalTok{# [ true ]  label_1         .        .}
+\NormalTok{# [labels]  label_2         .        .}
+\end{Highlighting}
+\end{Shaded}
+
+In the \texttt{confusion\_matrix.py} file, write the following function
+as per the instructions below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ confusion_matrix_(y_true, y_hat, labels}\OperatorTok{=}\VariableTok{None}\NormalTok{):}
+    \CommentTok{"""}
+\CommentTok{    Compute confusion matrix to evaluate the accuracy of a classification.}
+\CommentTok{    Args:}
+\CommentTok{        y_true:a numpy.ndarray for the correct labels}
+\CommentTok{        y_hat:a numpy.ndarray for the predicted labels}
+\CommentTok{        labels: optional, a list of labels to index the matrix. This may be used to reorder or select a subset of labels. (default=None)}
+\CommentTok{    Returns: }
+\CommentTok{        The confusion matrix as a numpy ndarray.}
+\CommentTok{        None on any error.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-10}{%
+\subsection{Examples:}\label{examples-10}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{from}\NormalTok{ sklearn.metrics }\ImportTok{import}\NormalTok{ confusion_matrix}
+
+\NormalTok{y_hat }\OperatorTok{=}\NormalTok{ np.array([}\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'bird'}\NormalTok{])}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([}\StringTok{'dog'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{])}
+
+\CommentTok{# Example 1: }
+\CommentTok{## your implementation}
+\NormalTok{confusion_matrix_(y, y_hat)}
+\CommentTok{## Output:}
+\NormalTok{array([[}\DecValTok{0} \DecValTok{0} \DecValTok{0}\NormalTok{]}
+\NormalTok{       [}\DecValTok{0} \DecValTok{2} \DecValTok{1}\NormalTok{]}
+\NormalTok{       [}\DecValTok{1} \DecValTok{0} \DecValTok{2}\NormalTok{]])}
+\CommentTok{## sklearn implementation}
+\NormalTok{confusion_matrix(y, y_hat)}
+\CommentTok{## Output:}
+\NormalTok{array([[}\DecValTok{0} \DecValTok{0} \DecValTok{0}\NormalTok{]}
+\NormalTok{       [}\DecValTok{0} \DecValTok{2} \DecValTok{1}\NormalTok{]}
+\NormalTok{       [}\DecValTok{1} \DecValTok{0} \DecValTok{2}\NormalTok{]])}
+
+\CommentTok{# Example 2:}
+\CommentTok{## your implementation}
+\NormalTok{confusion_matrix_(y, y_hat, labels}\OperatorTok{=}\NormalTok{[}\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{])}
+\CommentTok{## Output:}
+\NormalTok{array([[}\DecValTok{2} \DecValTok{1}\NormalTok{]}
+\NormalTok{       [}\DecValTok{0} \DecValTok{2}\NormalTok{]])}
+\CommentTok{## sklearn implementation}
+\NormalTok{confusion_matrix(y, y_hat, labels}\OperatorTok{=}\NormalTok{[}\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{])}
+\CommentTok{## Output:}
+\NormalTok{array([[}\DecValTok{2} \DecValTok{1}\NormalTok{]}
+\NormalTok{       [}\DecValTok{0} \DecValTok{2}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{optional-part}{%
+\subsection{Optional part}\label{optional-part}}
+
+\textbf{Objective(s):}
+
+For a more visual version, you can add an option to your previous
+confusion\_matrix\_ function to return a \texttt{pandas.DataFrame}
+instead of a numpy array.
+
+\hypertarget{instructions-12}{%
+\subsection{Instructions:}\label{instructions-12}}
+
+In the \texttt{confusion\_matrix.py} file, write the following function
+as per the instructions below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ confusion_matrix_(y, y_hat, labels}\OperatorTok{=}\VariableTok{None}\NormalTok{, df_option}\OperatorTok{=}\VariableTok{False}\NormalTok{):}
+    \CommentTok{"""}
+\CommentTok{    Compute confusion matrix to evaluate the accuracy of a classification.}
+\CommentTok{    Args:}
+\CommentTok{        y:a numpy.ndarray for the correct labels}
+\CommentTok{        y_hat:a numpy.ndarray for the predicted labels}
+\CommentTok{        labels: optional, a list of labels to index the matrix. This may be used to reorder or select a subset of labels. (default=None)}
+\CommentTok{        df_option: optional, if set to True the function will return a pandas DataFrame instead of a numpy array. (default=False)}
+\CommentTok{    Returns: }
+\CommentTok{        The confusion matrix as a numpy ndarray or a pandas DataFrame according to df_option value.}
+\CommentTok{        None on any error.}
+\CommentTok{    Raises:}
+\CommentTok{        This function should not raise any Exception.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{examples-11}{%
+\subsection{Examples:}\label{examples-11}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{y_hat }\OperatorTok{=}\NormalTok{ np.array([}\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'bird'}\NormalTok{])}
+\NormalTok{y_true }\OperatorTok{=}\NormalTok{ np.array([}\StringTok{'dog'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{, }\StringTok{'dog'}\NormalTok{, }\StringTok{'norminet'}\NormalTok{])}
+
+\CommentTok{# Example 1: }
+\NormalTok{confusion_matrix_(y_true, y_hat, df_option}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{           bird  dog  norminet}
+\NormalTok{ bird         }\DecValTok{0}    \DecValTok{0}         \DecValTok{0}
+\NormalTok{ dog          }\DecValTok{0}    \DecValTok{2}         \DecValTok{1}
+\NormalTok{ norminet     }\DecValTok{1}    \DecValTok{0}         \DecValTok{2}
+
+\CommentTok{# Example 2:}
+\NormalTok{confusion_matrix_(y_true, y_hat, labels}\OperatorTok{=}\NormalTok{[}\StringTok{'bird'}\NormalTok{, }\StringTok{'dog'}\NormalTok{], df_option}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\CommentTok{# Output:}
+\NormalTok{           bird  dog}
+\NormalTok{ bird         }\DecValTok{0}    \DecValTok{0}
+\NormalTok{ dog          }\DecValTok{0}    \DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{N.B:} If you fail this exercise on your first attempt, Norminet
+will curse you forever. Yeah, you'd better do it right or you are in
+trouble my friend, big trouble !
+
+\clearpage
+
+\end{document}
