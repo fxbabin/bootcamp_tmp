@@ -177,9 +177,9 @@
 
 \vspace*{2cm}
 \begin{center}
-    \textsc{\fontsize{40}{48} \bfseries Bootcamp}\\[0.6cm]
+    \textsc{\fontsize{40}{48} \bfseries }\\[0.6cm]
     \textsc{\fontsize{39}{48} \bfseries { %bootcamp_title
-Python
+Python Machine-Learning
     }}\\[0.3cm]
 \end{center}
 \vspace{3cm}
@@ -191,7 +191,7 @@ Python
 \vspace*{2cm}
 \begin{center}
     \textsc{\fontsize{32}{48} \bfseries %day_number
-Day04    
+Module 04    
     }\\[0.6cm]
     \textsc{\fontsize{32}{48} \bfseries %day_title
 Pandas    
@@ -210,11 +210,8 @@ Pandas
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\hypertarget{bootcamp-python}{%
-\section{Bootcamp Python}\label{bootcamp-python}}
-
-\hypertarget{day04---pandas}{%
-\section{Day04 - Pandas}\label{day04---pandas}}
+\hypertarget{module-04---pandas}{%
+\section{Module 04 - Pandas}\label{module-04---pandas}}
 
 Today you will learn how to use a Python library that will allow you to
 manipulate dataframes.
@@ -234,7 +231,7 @@ Pandas! And Bamboos!
   The version of Python to use is 3.7, you can check the version of
   Python with the following command: \texttt{python\ -V}
 \item
-  The norm: during this bootcamp you will follow the
+  The norm: during this module you will follow the
   \href{https://www.python.org/dev/peps/pep-0008/}{PEP 8 standards}. You
   can install \href{https://pypi.org/project/pycodestyle}{pycodestyle}
   which is a tool to check your Python code.
@@ -321,10 +318,10 @@ Komparator}\label{exercise-07---komparator}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex00\tabularnewline
-Files to turn in : & FileLoader.py\tabularnewline
-Allowed libraries : & Pandas\tabularnewline
-Remarks : & Be as lazy as possible\ldots{}\tabularnewline
+Turn-in directory: & ex00\tabularnewline
+Files to turn in: & FileLoader.py\tabularnewline
+Allowed libraries: & Pandas\tabularnewline
+Remarks: & Be as lazy as possible\ldots{}\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -368,7 +365,7 @@ methods:
 \end{Highlighting}
 \end{Shaded}
 
-Note: Your terminal may display more columns if the window is wider.
+NB: Your terminal may display more columns if the window is wider.
 
 \clearpage
 
@@ -379,27 +376,29 @@ YoungestFellah}\label{exercise-01---youngestfellah-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex01\tabularnewline
-Files to turn in : & FileLoader.py, YoungestFellah.py\tabularnewline
-Allowed libraries : & Pandas\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex01\tabularnewline
+Files to turn in: & FileLoader.py, YoungestFellah.py\tabularnewline
+Allowed libraries: & Pandas\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
 This exercise uses the following dataset: \texttt{athlete\_events.csv}
 
-Write a function \texttt{youngestFellah} which takes two arguments:
+Write a function \texttt{youngestFellah} that takes two arguments:
 
 \begin{itemize}
 \item
   a pandas.DataFrame which contains the dataset
 \item
-  an Olympic year
+  an Olympic year.
 \end{itemize}
 
 The function returns a dictionary containing the age of the youngest
 woman and man who took part in the Olympics on that year. The name of
 the dictionary's keys is up to you, but it must be self-explanatory.
+
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -422,16 +421,16 @@ ProportionBySport}\label{exercise-02---proportionbysport-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex02\tabularnewline
-Files to turn in : & FileLoader.py, ProportionBySport.py\tabularnewline
-Allowed libraries : & Pandas\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex02\tabularnewline
+Files to turn in: & FileLoader.py, ProportionBySport.py\tabularnewline
+Allowed libraries: & Pandas\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
 This exercise uses the dataset \texttt{athlete\_events.csv}
 
-Write a function \textbf{proportionBySport} which takes four arguments:
+Write a function \textbf{proportionBySport} that takes four arguments:
 
 \begin{itemize}
 \item
@@ -441,7 +440,7 @@ Write a function \textbf{proportionBySport} which takes four arguments:
 \item
   a sport
 \item
-  a gender
+  a gender.
 \end{itemize}
 
 The function returns a float corresponding to the proportion
@@ -456,6 +455,8 @@ Hint: here and further, if needed, drop duplicated sportspeople to count
 only unique ones. Beware to call the dropping function at the right
 moment and with the right parameters, in order not to omit any
 individuals.
+
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -480,22 +481,22 @@ thus do not need to handle input errors.
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex03\tabularnewline
-Files to turn in : & FileLoader.py, HowManyMedals.py\tabularnewline
-Allowed libraries : & Pandas\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex03\tabularnewline
+Files to turn in: & FileLoader.py, HowManyMedals.py\tabularnewline
+Allowed libraries: & Pandas\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
 This exercise uses the following dataset: \texttt{athlete\_events.csv}
 
-Write a function \texttt{howManyMedals} which takes two arguments:
+Write a function \texttt{howManyMedals} that takes two arguments:
 
 \begin{itemize}
 \item
   a pandas.DataFrame which contains the dataset
 \item
-  a participant name
+  a participant name.
 \end{itemize}
 
 The function returns a dictionary of dictionaries giving the number and
@@ -504,6 +505,8 @@ The keys of the main dictionary are the Olympic games years. In each
 year's dictionary, the keys are `G', `S', `B' corresponding to the type
 of medals won (gold, silver, bronze). The innermost values correspond to
 the number of medals of a given type won for a given year.
+
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -526,17 +529,17 @@ SpatioTemporalData}\label{exercise-04---spatiotemporaldata-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex04\tabularnewline
-Files to turn in : & FileLoader.py, SpatioTemporalData.py\tabularnewline
-Allowed libraries : & Pandas\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex04\tabularnewline
+Files to turn in: & FileLoader.py, SpatioTemporalData.py\tabularnewline
+Allowed libraries: & Pandas\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
 This exercise uses the dataset \texttt{athlete\_events.csv}
 
-Write a class called \texttt{SpatioTemporalData} which takes a dataset
-(pandas DataFrame) as argument in its constructor and implements the
+Write a class called \texttt{SpatioTemporalData} that takes a dataset
+(pandas.DataFrame) as argument in its constructor and implements the
 following methods:
 
 \begin{itemize}
@@ -548,6 +551,8 @@ following methods:
   \texttt{where(date)} : takes a date as an argument and returns the
   location where the Olympics took place in the given year.
 \end{itemize}
+
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -577,24 +582,24 @@ HowManyMedalsByCountry}\label{exercise-05---howmanymedalsbycountry-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex05\tabularnewline
-Files to turn in : & FileLoader.py,
+Turn-in directory: & ex05\tabularnewline
+Files to turn in: & FileLoader.py,
 HowManyMedalsByCountry.py\tabularnewline
-Allowed libraries : & Pandas\tabularnewline
-Remarks : & n/a\tabularnewline
+Allowed libraries: & Pandas\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
 This exercise uses the following dataset: \texttt{athlete\_events.csv}
 
-Write a function \texttt{howManyMedalsByCountry} which takes two
+Write a function \texttt{howManyMedalsByCountry} that takes two
 arguments:
 
 \begin{itemize}
 \item
   a pandas.DataFrame which contains the dataset
 \item
-  a country name
+  a country name.
 \end{itemize}
 
 The function returns a dictionary of dictionaries giving the number and
@@ -606,6 +611,8 @@ of medals won.
 
 Duplicated medals per team games should be handled and not counted
 twice.
+
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -637,22 +644,22 @@ take these posterior changes into account.
 \toprule
 \endhead
 \begin{minipage}[t]{0.54\columnwidth}\raggedleft
-Turn-in directory :\strut
+Turn-in directory:\strut
 \end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
 ex06\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.54\columnwidth}\raggedleft
-Files to turn in :\strut
+Files to turn in:\strut
 \end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
 MyPlotLib.py\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.54\columnwidth}\raggedleft
-Allowed libraries :\strut
+Allowed libraries:\strut
 \end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
 Pandas, Matplotlib, Seaborn, Scipy\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.54\columnwidth}\raggedleft
-Remarks :\strut
+Remarks:\strut
 \end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
 The less work you do, the better! You don't necessarily need all those
 libraries to complete the exercise.\strut
@@ -669,7 +676,7 @@ plotting methods, each of which take two arguments:
 \item
   a pandas.DataFrame which contains the dataset
 \item
-  a list of feature names
+  a list of feature names.
 \end{itemize}
 
 Hint: What is a feature?
@@ -727,22 +734,22 @@ https://towardsdatascience.com/feature-engineering-for-machine-learning-3a5e293a
 \toprule
 \endhead
 \begin{minipage}[t]{0.54\columnwidth}\raggedleft
-Turn-in directory :\strut
+Turn-in directory:\strut
 \end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
 ex07\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.54\columnwidth}\raggedleft
-Files to turn in :\strut
+Files to turn in:\strut
 \end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
 Komparator.py, MyPlotLib.py (optional)\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.54\columnwidth}\raggedleft
-Allowed libraries :\strut
+Allowed libraries:\strut
 \end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
 Pandas, Matplotlib, Seaborn, Scipy\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.54\columnwidth}\raggedleft
-Remarks :\strut
+Remarks:\strut
 \end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
 The less work you do, the better! You don't necessarily need all those
 libraries to complete the exercise.\strut
@@ -775,9 +782,9 @@ implement the following methods, which take as input two variable names:
   code.
 \end{itemize}
 
-\texttt{BONUS}: Your functions can also accept a list of numerical
-variables (instead of just one), and output a comparison plot for each
-variable in the list.
+BONUS: Your functions can also accept a list of numerical variables
+(instead of just one), and output a comparison plot for each variable in
+the list.
 
 \clearpage
 

@@ -177,9 +177,9 @@
 
 \vspace*{2cm}
 \begin{center}
-    \textsc{\fontsize{40}{48} \bfseries Bootcamp}\\[0.6cm]
+    \textsc{\fontsize{40}{48} \bfseries }\\[0.6cm]
     \textsc{\fontsize{39}{48} \bfseries { %bootcamp_title
-Python
+Python Machine-Learning
     }}\\[0.3cm]
 \end{center}
 \vspace{3cm}
@@ -191,10 +191,10 @@ Python
 \vspace*{2cm}
 \begin{center}
     \textsc{\fontsize{32}{48} \bfseries %day_number
-Day03    
+Module 03    
     }\\[0.6cm]
     \textsc{\fontsize{32}{48} \bfseries %day_title
-NumPy    
+Numpy    
     }\\[0.3cm]
 \end{center}
 \vspace{3cm}
@@ -210,11 +210,8 @@ NumPy
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\hypertarget{bootcamp-python}{%
-\section{Bootcamp Python}\label{bootcamp-python}}
-
-\hypertarget{day03---numpy}{%
-\section{Day03 - NumPy}\label{day03---numpy}}
+\hypertarget{module-03---numpy}{%
+\section{Module 03 - NumPy}\label{module-03---numpy}}
 
 Today you will learn how to use the Python library that will allow you
 to manipulate multidimensional arrays (vectors, matrices,
@@ -237,7 +234,7 @@ etc\ldots{}
   The version of Python to use is 3.7, you can check the version of
   Python with the following command: \texttt{python\ -V}
 \item
-  The norm: during this bootcamp you will follow the
+  The norm: during this module you will follow the
   \href{https://www.python.org/dev/peps/pep-0008/}{PEP 8 standards}. You
   can install \href{https://pypi.org/project/pycodestyle}{pycodestyle}
   which is a tool to check your Python code.
@@ -308,14 +305,14 @@ NumPyCreator}\label{exercise-00---numpycreator-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex00\tabularnewline
-Files to turn in : & NumPyCreator.py\tabularnewline
-Allowed libraries : & NumPy\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex00\tabularnewline
+Files to turn in: & NumPyCreator.py\tabularnewline
+Allowed libraries: & NumPy\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
-Write a class named NumPyCreator, which will implement all of the
+Write a class named \texttt{NumPyCreator}, that implements all of the
 following methods.\\
 Each method receives as an argument a different type of data structure
 and transforms it into a NumPy array:
@@ -345,12 +342,12 @@ and transforms it into a NumPy array:
   matrix of size n.
 \end{itemize}
 
-\texttt{BONUS} : Add to those methods an optional argument which
-specifies the datatype (dtype) of the array (e.g.~if you want its
-elements to be represented as integers, floats, \ldots{})
+BONUS: Add to those methods an optional argument which specifies the
+datatype (dtype) of the array (e.g.~to represent its elements as
+integers, floats, \ldots{})
 
-\texttt{NOTE} : All those methods can be implemented in one line. You
-only need to find the right NumPy functions.
+NB: All those methods can be implemented in one line. You only need to
+find the right NumPy functions.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -395,10 +392,10 @@ ImageProcessor}\label{exercise-01---imageprocessor-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex01\tabularnewline
-Files to turn in : & ImageProcessor.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Helpful libraries : & Matplotlib\tabularnewline
+Turn-in directory: & ex01\tabularnewline
+Files to turn in: & ImageProcessor.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Helpful libraries: & Matplotlib\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -412,19 +409,18 @@ following methods:
 \item
   \texttt{load(path)} : opens the .png file specified by the
   \texttt{path} argument and returns an array with the RGB values of the
-  image pixels.\\
-  It must display a message specifying the dimensions of the image
-  (e.g.~340 x 500).
+  image pixels It must display a message specifying the dimensions of
+  the image (e.g.~340 x 500).
 \item
   \texttt{display(array)} : takes a NumPy array as an argument and
   displays the corresponding RGB image.
 \end{itemize}
 
-\texttt{NOTE} : You can use the library of your choice for this
-exercise, but converting the image to a NumPy array is mandatory. The
-goal of this exercise is to dispense with the technicality of loading
-and displaying images, so that you can focus on array manipulation in
-the upcoming exercises.
+NB: You can use the library of your choice for this exercise, but
+converting the image to a NumPy array is mandatory. The goal of this
+exercise is to dispense with the technicality of loading and displaying
+images, so that you can focus on array manipulation in the upcoming
+exercises.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -494,14 +490,14 @@ the upcoming exercises.
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex02\tabularnewline
-Files to turn in : & ScrapBooker.py\tabularnewline
-Allowed libraries : & NumPy\tabularnewline
-Notions : & Slicing\tabularnewline
+Turn-in directory: & ex02\tabularnewline
+Files to turn in: & ScrapBooker.py\tabularnewline
+Allowed libraries: & NumPy\tabularnewline
+Notions: & Slicing\tabularnewline
 \bottomrule
 \end{longtable}
 
-Write a class named \texttt{ScrapBooker} which implements the following
+Write a class named \texttt{ScrapBooker} that implements the following
 methods.\\
 All methods take in a NumPy array and return a new modified one.\\
 We are assuming that all inputs are correct, i.e.~you don't have to
@@ -527,11 +523,10 @@ protect your functions against input errors.
   dimensions (meaning the height and width) of the grid (e.g.~2x3).
 \end{itemize}
 
-\texttt{NOTE} : In this exercise, when specifying positions or
-dimensions, we will assume that the first coordinate is counted along
-the vertical axis starting from the TOP, and that the second coordinate
-is counted along the horizontal axis starting from the left. Indexing
-starts from 0.
+NB: In this exercise, when specifying positions or dimensions, we will
+assume that the first coordinate is counted along the vertical axis
+starting from the TOP, and that the second coordinate is counted along
+the horizontal axis starting from the left. Indexing starts from 0.
 
 e.g.:\\
 (1,3)\\
@@ -580,10 +575,10 @@ example for thin:
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex03\tabularnewline
-Files to turn in : & ColorFilter.py\tabularnewline
-Forbidden functions : & See each method\tabularnewline
-Notions : & Broadcasting\tabularnewline
+Turn-in directory: & ex03\tabularnewline
+Files to turn in: & ColorFilter.py\tabularnewline
+Forbidden functions: & See each method\tabularnewline
+Notions: & Broadcasting\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -613,10 +608,10 @@ methods:
 \item
   \texttt{to\_red(array)} : Takes a NumPy array of an image as an
   argument and returns an array with a red filter.\\
-  Authorized functions : green, blue\\
+  Authorized functions : to\_green, to\_blue\\
   Authorized operator: -, +
 \item
-  \texttt{celluloid(array)} : Takes a NumPy array of an image as an
+  \texttt{to\_celluloid(array)} : Takes a NumPy array of an image as an
   argument, and returns an array with a celluloid shade filter. The
   celluloid filter must display at least four thresholds of shades. Be
   careful! You are not asked to apply black contour on the object here
@@ -676,7 +671,7 @@ Authorized operator: None
 \OperatorTok{>>>}
 \OperatorTok{>>>}\NormalTok{ cf.to_grayscale(arr, }\StringTok{'m'}\NormalTok{)}
 \OperatorTok{>>>}
-\OperatorTok{>>>}\NormalTok{ cf.to_grayscale(arr, }\StringTok{'weigthed'}\NormalTok{)}
+\OperatorTok{>>>}\NormalTok{ cf.to_grayscale(arr, }\StringTok{'weighted'}\NormalTok{)}
 \OperatorTok{>>>}
 \end{Highlighting}
 \end{Shaded}
@@ -730,10 +725,10 @@ Clustering}\label{exercise-04---k-means-clustering-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex04\tabularnewline
-Files to turn in : & Kmeans.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex04\tabularnewline
+Files to turn in: & Kmeans.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 

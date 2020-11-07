@@ -168,9 +168,9 @@
 
 \vspace*{2cm}
 \begin{center}
-    \textsc{\fontsize{40}{48} \bfseries Bootcamp}\\[0.6cm]
+    \textsc{\fontsize{40}{48} \bfseries }\\[0.6cm]
     \textsc{\fontsize{39}{48} \bfseries { %bootcamp_title
-Python
+Python Machine-Learning
     }}\\[0.3cm]
 \end{center}
 \vspace{3cm}
@@ -182,7 +182,7 @@ Python
 \vspace*{2cm}
 \begin{center}
     \textsc{\fontsize{32}{48} \bfseries %day_number
-Day02    
+Module 02    
     }\\[0.6cm]
     \textsc{\fontsize{32}{48} \bfseries %day_title
 Basics 3    
@@ -201,11 +201,8 @@ Basics 3
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\hypertarget{bootcamp-python}{%
-\section{Bootcamp Python}\label{bootcamp-python}}
-
-\hypertarget{day02---basics-3}{%
-\section{Day02 - Basics 3}\label{day02---basics-3}}
+\hypertarget{module-02---basics-3}{%
+\section{Module 02 - Basics 3}\label{module-02---basics-3}}
 
 Let's continue practicing with more advanced Python programming
 exercises.
@@ -223,7 +220,7 @@ Decorators, multiprocessing, lambda, build package, \ldots{}
   The version of Python to use is 3.7, you can check the version of
   Python with the following command: \texttt{python\ -V}
 \item
-  The norm: during this bootcamp you will follow the
+  The norm: during this module you will follow the
   \href{https://www.python.org/dev/peps/pep-0008/}{PEP 8 standards}. You
   can install \href{https://pypi.org/project/pycodestyle}{pycodestyle}
   which is a tool to check your Python code.
@@ -294,11 +291,11 @@ reduce}\label{exercise-00---map-filter-reduce-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex00\tabularnewline
-Files to turn in : & ft\_map.py, ft\_filter.py,
+Turn-in directory: & ex00\tabularnewline
+Files to turn in: & ft\_map.py, ft\_filter.py,
 ft\_reduce.py\tabularnewline
-Forbidden functions : & map, filter, reduce\tabularnewline
-Remarks : & n/a\tabularnewline
+Forbidden functions: & map, filter, reduce\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -330,17 +327,17 @@ kwargs?}\label{exercise-01---args-and-kwargs-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex01\tabularnewline
-Files to turn in : & main.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex01\tabularnewline
+Files to turn in: & main.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
 Implement the \texttt{what\_are\_the\_vars} function that returns an
 object with the right attributes.\\
-You will have to modify the ``instance'' \texttt{ObjectC}, NOT THE
-CLASS.\\
+You will have to modify the `instance' \texttt{ObjectC}, NOT the
+class.\\
 Have a look to \texttt{getattr}, \texttt{setattr}.
 
 \begin{Shaded}
@@ -378,7 +375,7 @@ Have a look to \texttt{getattr}, \texttt{setattr}.
 \end{Highlighting}
 \end{Shaded}
 
-output
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -408,10 +405,10 @@ output
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex02\tabularnewline
-Files to turn in : & logger.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex02\tabularnewline
+Files to turn in: & logger.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -469,7 +466,7 @@ The \texttt{@log} will write info about the decorated function in a
 \end{Highlighting}
 \end{Shaded}
 
-Terminal
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -519,10 +516,10 @@ Terminal
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex03\tabularnewline
-Files to turn in : & csvreader.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & Context Manager\tabularnewline
+Turn-in directory: & ex03\tabularnewline
+Files to turn in: & csvreader.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & Context Manager\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -552,8 +549,8 @@ and also keep the first line as a header if \texttt{header} is
 \texttt{True}.
 
 The file shouldn't be corrupted (either a line with too many values or a
-line with too few values), otherwise return None. You have to handle the
-case \texttt{file\ not\ found}.
+line with too few values), otherwise return \texttt{None}. You have to
+handle the case \texttt{file\ not\ found}.
 
 You will have to also implement two methods: \texttt{getdata()} and
 \texttt{getheader()}
@@ -588,25 +585,27 @@ You will have to also implement two methods: \texttt{getdata()} and
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex04\tabularnewline
-Files to turn in : & build.sh, *.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex04\tabularnewline
+Files to turn in: & build.sh, *.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
-You have to create a package called \texttt{ai42}.\\
+You have to create a package called \texttt{ai42}.
+
 It will have 2 functionalities:
 
 \begin{itemize}
 \item
   the progress bar (day00 ex10), that can be imported via
-  \texttt{import\ ai42.progressbar},
+  \texttt{import\ ai42.progressbar}
 \item
-  the logger (day02 ex02) \texttt{import\ ai42.logging.log},\\
-  You may have to rename the functions and change the architecture of
-  the package.
+  the logger (day02 ex02) \texttt{import\ ai42.logging.log}.
 \end{itemize}
+
+You may have to rename the functions and change the architecture of the
+package.
 
 The package will be installed via pip using the following command:
 
@@ -618,7 +617,7 @@ The package will be installed via pip using the following command:
 
 The build.sh script has to create the \texttt{ai42-1.0.0.tar.gz} file.
 
-You can verify whether the package was properly installed by running the
+You can ensure whether the package was properly installed by running the
 command \texttt{pip\ list} that displays the list of installed packages.
 
 \clearpage
@@ -631,35 +630,35 @@ TinyStatistician}\label{exercise-05---tinystatistician-1}}
 \toprule
 \endhead
 \begin{minipage}[t]{0.54\columnwidth}\raggedleft
-Turn-in directory :\strut
+Turn-in directory:\strut
 \end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
 ex05\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.54\columnwidth}\raggedleft
-Files to turn in :\strut
+Files to turn in:\strut
 \end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
 TinyStatistician.py\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.54\columnwidth}\raggedleft
-Forbidden functions :\strut
+Forbidden functions:\strut
 \end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
 Any function that calculates mean, median, quartiles, variance or
 standard deviation for you\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.54\columnwidth}\raggedleft
-Forbidden libraries :\strut
+Forbidden libraries:\strut
 \end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
 NumPy\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.54\columnwidth}\raggedleft
-Remarks :\strut
+Remarks:\strut
 \end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
 n/a\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
-Create a class named \texttt{TinyStatistician} which implements the
+Create a class named \texttt{TinyStatistician} that implements the
 following methods.\\
 All methods take in an array and return a new modified one.\\
 We are assuming that all inputs are correct, i.e.~you don't have to

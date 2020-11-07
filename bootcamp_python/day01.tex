@@ -168,9 +168,9 @@
 
 \vspace*{2cm}
 \begin{center}
-    \textsc{\fontsize{40}{48} \bfseries Bootcamp}\\[0.6cm]
+    \textsc{\fontsize{40}{48} \bfseries }\\[0.6cm]
     \textsc{\fontsize{39}{48} \bfseries { %bootcamp_title
-Python
+Python Machine-Learning
     }}\\[0.3cm]
 \end{center}
 \vspace{3cm}
@@ -182,7 +182,7 @@ Python
 \vspace*{2cm}
 \begin{center}
     \textsc{\fontsize{32}{48} \bfseries %day_number
-Day01    
+Module 01    
     }\\[0.6cm]
     \textsc{\fontsize{32}{48} \bfseries %day_title
 Basics 2    
@@ -201,11 +201,8 @@ Basics 2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\hypertarget{bootcamp-python}{%
-\section{Bootcamp Python}\label{bootcamp-python}}
-
-\hypertarget{day01---basics-2}{%
-\section{Day01 - Basics 2}\label{day01---basics-2}}
+\hypertarget{module-01---basics-2}{%
+\section{Module 01 - Basics 2}\label{module-01---basics-2}}
 
 The goal of the day is to get familiar with object-oriented programming
 and much more.
@@ -224,7 +221,7 @@ generator, constructor, iterator, \ldots{}
   The version of Python to use is 3.7, you can check the version of
   Python with the following command: \texttt{python\ -V}
 \item
-  The norm: during this bootcamp you will follow the
+  The norm: during this module you will follow the
   \href{https://www.python.org/dev/peps/pep-0008/}{PEP 8 standards}. You
   can install \href{https://pypi.org/project/pycodestyle}{pycodestyle}
   which is a tool to check your Python code.
@@ -297,17 +294,17 @@ account}\label{exercise-06---bank-account}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex00\tabularnewline
-Files to turn in : & book.py, recipe.py, test.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex00\tabularnewline
+Files to turn in: & book.py, recipe.py, test.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
-You will provide a test.py file to test your classes and prove that they
-are working the right way.\\
+You will provide a \texttt{test.py} file to test your classes and prove
+that they are working the right way.\\
 You can import all the classes into your test.py file by adding these
-lines at the top of the test.py file:
+lines at the top of the \texttt{test.py} file:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -410,10 +407,10 @@ not a \texttt{Recipe}.
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex01\tabularnewline
-Files to turn in : & game.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex01\tabularnewline
+Files to turn in: & game.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -441,7 +438,7 @@ attributes:
   ``Winter is Coming'')
 \end{itemize}
 
-Example:
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -502,11 +499,11 @@ Feel free to create other children of \texttt{GotCharacter}.
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex02\tabularnewline
-Files to turn in : & vector.pytest.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Forbidden libraries : & NumPy\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex02\tabularnewline
+Files to turn in: & vector.py, test.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Forbidden libraries: & NumPy\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -532,23 +529,26 @@ It has 2 attributes:
 
 \begin{itemize}
 \item
-  \texttt{values} : list of float
+  \texttt{values} : a list of floats
 \item
-  \texttt{size} : size of the vector -\textgreater{}
+  \texttt{size} : the size of the vector -\textgreater{}
   \texttt{Vector({[}0.0,\ 1.0,\ 2.0,\ 3.0{]}).size\ ==\ 4}
 \end{itemize}
 
-You should be able to initialize the object with:
+You should be able to initialize the object with either:
 
 \begin{itemize}
 \item
   a list of floats: \texttt{Vector({[}0.0,\ 1.0,\ 2.0,\ 3.0{]})}
+  -\textgreater{} then the size of the vector will be \texttt{4}
 \item
-  a size \texttt{Vector(3)} -\textgreater{} the vector will have
-  \texttt{values\ =\ {[}0.0,\ 1.0,\ 2.0{]}}
+  a size: \texttt{Vector(3)} -\textgreater{} the vector will be created
+  with default values starting from \texttt{0.0}:
+  \texttt{{[}0.0,\ 1.0,\ 2.0{]}}
 \item
-  a range or \texttt{Vector((10,15))} -\textgreater{} the vector will
-  have \texttt{values\ =\ {[}10.0,\ 11.0,\ 12.0,\ 13.0,\ 14.0{]}}
+  a range (min, max): \texttt{Vector((10,16))} -\textgreater{} the
+  vector will be created with values in the given range:
+  \texttt{{[}10.0,\ 11.0,\ 12.0,\ 13.0,\ 14.0,\ 15.0{]}}
 \end{itemize}
 
 You will implement all the following built-in functions (called `magic
@@ -558,25 +558,72 @@ methods') for your \texttt{Vector} class:
 \begin{Highlighting}[]
     \FunctionTok{__add__}
     \FunctionTok{__radd__}
-    \CommentTok{# add : scalars and vectors, can have errors with vectors.}
+    \CommentTok{# add : vectors and scalars, can have errors with vectors.}
     \FunctionTok{__sub__}
     \FunctionTok{__rsub__}
-    \CommentTok{# sub : scalars and vectors, can have errors with vectors.}
+    \CommentTok{# sub : vectors and scalars, can have errors with vectors.}
     \FunctionTok{__truediv__}
     \FunctionTok{__rtruediv__}
-    \CommentTok{# div : only scalars.}
+    \CommentTok{# div : scalars only.}
     \FunctionTok{__mul__}
     \FunctionTok{__rmul__}
-    \CommentTok{# mul : scalars and vectors, can have errors with vectors, }
-    \CommentTok{# return a scalar if we perform Vector * Vector (dot product)}
+    \CommentTok{# mul : vectors and scalars, can have errors with vectors.}
+    \CommentTok{# two vectors can be multiplied using the Dot product, return a scalar.}
     \FunctionTok{__str__}
     \FunctionTok{__repr__}
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{vectors-authorized-operations-are}{%
-\subsection{Vectors authorized operations
-are:}\label{vectors-authorized-operations-are}}
+\hypertarget{vector---scalar-authorized-operations-are}{%
+\subsection{Vector - Scalar authorized operations
+are:}\label{vector---scalar-authorized-operations-are}}
+
+\begin{itemize}
+\tightlist
+\item
+  Addition between one vector (m * 1) and one scalar (1 * 1)
+\end{itemize}
+
+\large
+
+\[
+x + a = \begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} 
++ a = 
+\begin{bmatrix} x_1 + a \\ \vdots \\ x_m + a \end{bmatrix}
+\] \normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  Subtraction between one vector (m * 1) and one scalar (1 * 1)
+\end{itemize}
+
+\large
+
+\[
+x - a = \begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} 
+- a = 
+\begin{bmatrix} x_1 - a \\ \vdots \\ x_m - a \end{bmatrix}
+\] \normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  Multiplication and division between one vector (m * 1) and one scalar
+  (1 * 1)
+\end{itemize}
+
+\large
+
+\[
+x \cdot a = \begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} 
+\cdot a = 
+\begin{bmatrix} x_1 \cdot a \\ \vdots \\ x_m \cdot a \end{bmatrix}
+\] \normalsize
+
+\hypertarget{vector---vector-authorized-operations-are}{%
+\subsection{Vector - Vector authorized operations
+are:}\label{vector---vector-authorized-operations-are}}
 
 ​
 
@@ -598,7 +645,7 @@ x + y =
 \begin{itemize}
 \tightlist
 \item
-  Substraction between two vectors of same dimension (m * 1)
+  Subtraction between two vectors of same dimension (m * 1)
 \end{itemize}
 
 \large
@@ -613,22 +660,7 @@ x - y =
 \begin{itemize}
 \tightlist
 \item
-  Multiplication and division between one vector (m * 1) and one scalar
-  (1 * 1)
-\end{itemize}
-
-\large
-
-\[
-x \cdot a = \begin{bmatrix} x_1 \\ \vdots \\ x_m\end{bmatrix} 
-\cdot a = 
-\begin{bmatrix} x_1 \cdot a \\ \vdots \\ x_m \cdot a \end{bmatrix}
-\] \normalsize ​
-
-\begin{itemize}
-\tightlist
-\item
-  Mutiplication between two vectors of same dimensons (m * 1)
+  Compute the dot product between two vectors of same dimensons (m * 1)
 \end{itemize}
 
 \large
@@ -650,11 +682,11 @@ Don't forget to handle all kind of errors properly!
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex03\tabularnewline
-Files to turn in : & matrix.py, test.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Forbidden libraries : & NumPy\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex03\tabularnewline
+Files to turn in: & matrix.py, test.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Forbidden libraries: & NumPy\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -688,12 +720,12 @@ It has 2 attributes:
   \texttt{data} : list of lists -\textgreater{} the elements stored in
   the matrix
 \item
-  \texttt{shape} : by shape we means the dimensions of the matrix as a
+  \texttt{shape} : by shape we mean the dimensions of the matrix as a
   tuple (rows, columns) -\textgreater{}
   \texttt{Matrix({[}{[}0.0,\ 1.0{]},\ {[}2.0,\ 3.0{]},\ {[}4.0,\ 5.0{]}{]}).shape\ ==\ (3,\ 2)}
 \end{itemize}
 
-You should be able to initialize the object with:
+You should be able to initialize the object with either:
 
 \begin{itemize}
 \item
@@ -701,10 +733,10 @@ You should be able to initialize the object with:
   \texttt{Matrix({[}{[}0.0,\ 1.0,\ 2.0,\ 3.0{]},\ {[}4.0,\ 5.0,\ 6.0,\ 7.0{]}{]})}
   -\textgreater{} the dimensions of this matrix are then (2, 4)
 \item
-  a shape \texttt{Matrix((3,\ 3))} -\textgreater{} the matrix will be
-  filled by default with zeroes
+  a shape (rows, columns): \texttt{Matrix((3,\ 3))} -\textgreater{} by
+  default the matrix will be filled with zeroes
 \item
-  the expected elements and shape
+  the expected elements and shape:
   \texttt{Matrix({[}{[}0.0,\ 1.0,\ 2.0{]},\ {[}3.0,\ 4.0,\ 5.0{]},\ {[}6.0,\ 7.0,\ 8.0{]}{]},\ (3,\ 3))}
 \end{itemize}
 
@@ -724,15 +756,15 @@ methods') for your \texttt{Matrix} class:
     \CommentTok{# div : only scalars.}
     \FunctionTok{__mul__}
     \FunctionTok{__rmul__}
-    \CommentTok{# mul : scalars, vectors and matrices , can have errors with vectors and matrices, }
-    \CommentTok{# return a Vector if we perform Matrix * Vector (dot product)}
+    \CommentTok{# mul : scalars, vectors and matrices , can have errors with vectors and matrices.}
+    \CommentTok{# if we perform Matrix * Vector (dot product), return a Vector.}
     \FunctionTok{__str__}
     \FunctionTok{__repr__}
 \end{Highlighting}
 \end{Shaded}
 
 \hypertarget{matrix---vector-authorized-operations-are}{%
-\subsection{Matrix - vector authorized operations
+\subsection{Matrix - Vector authorized operations
 are:}\label{matrix---vector-authorized-operations-are}}
 
 ​
@@ -768,7 +800,7 @@ X \cdot y = \begin{bmatrix} \sum_{i = 1}^{n} x_{i}^{(1)} \cdot y_i \\ \vdots \\ 
 \] \normalsize ​
 
 \hypertarget{matrix---matrix-authorized-operations-are}{%
-\subsection{Matrix - matrix authorized operations
+\subsection{Matrix - Matrix authorized operations
 are:}\label{matrix---matrix-authorized-operations-are}}
 
 ​
@@ -803,7 +835,7 @@ x_{1}^{(m)} + y_{1}^{(m)} & \dots & x_{n}^{(m)} + y_{n}^{(m)}
 \begin{itemize}
 \tightlist
 \item
-  Substraction between two matrices of same dimension (m * n)
+  Subtraction between two matrices of same dimension (m * n)
 \end{itemize}
 
 \large
@@ -895,6 +927,9 @@ X \cdot Y =
 
 Don't forget to handle all kind of errors properly!
 
+\hypertarget{section}{%
+\section{}\label{section}}
+
 \clearpage
 
 \hypertarget{exercise-04---generator-1}{%
@@ -903,10 +938,11 @@ Don't forget to handle all kind of errors properly!
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex04\tabularnewline
-Files to turn in : & generator.py\tabularnewline
-Forbidden functions : & random\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex04\tabularnewline
+Files to turn in: & generator.py\tabularnewline
+Forbidden functions: & random.shuffle\tabularnewline
+Authorized functions: & random.randint\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -919,11 +955,11 @@ The options are:
 
 \begin{itemize}
 \item
-  ``shuffle'': shuffle the list of words.
+  \texttt{shuffle}: shuffles the list of words.
 \item
-  ``unique'': return a list where each word appears only once.
+  \texttt{unique}: returns a list where each word appears only once.
 \item
-  ``ordered'': alphabetically sort the words.
+  \texttt{ordered}: alphabetically sorts the words.
 \end{itemize}
 
 \begin{Shaded}
@@ -935,6 +971,8 @@ The options are:
 \end{Shaded}
 
 You can only call one option at a time.
+
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -975,9 +1013,33 @@ You can only call one option at a time.
 \end{Highlighting}
 \end{Shaded}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>}\NormalTok{ text }\OperatorTok{=} \StringTok{"Lorem Ipsum Lorem Ipsum"}
+\OperatorTok{>>} \ControlFlowTok{for}\NormalTok{ word }\KeywordTok{in}\NormalTok{ generator(text, sep}\OperatorTok{=}\StringTok{" "}\NormalTok{, option}\OperatorTok{=}\StringTok{"unique"}\NormalTok{):}
+\NormalTok{...     }\BuiltInTok{print}\NormalTok{(word)}
+\NormalTok{...}
+\NormalTok{Lorem}
+\NormalTok{Ipsum}
+\end{Highlighting}
+\end{Shaded}
+
 The function should return ``ERROR'' one time if the \texttt{text}
 argument is not a string, or if the \texttt{option} argument is not
 valid.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>}\NormalTok{ text }\OperatorTok{=} \FloatTok{1.0}
+\OperatorTok{>>} \ControlFlowTok{for}\NormalTok{ word }\KeywordTok{in}\NormalTok{ generator(text, sep}\OperatorTok{=}\StringTok{"."}\NormalTok{):}
+\NormalTok{...     }\BuiltInTok{print}\NormalTok{(word)}
+\NormalTok{...}
+\NormalTok{ERROR}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{section-1}{%
+\section{}\label{section-1}}
 
 \clearpage
 
@@ -988,14 +1050,14 @@ lists}\label{exercise-05---working-with-lists-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex05\tabularnewline
-Files to turn in : & eval.py\tabularnewline
-Forbidden functions : & while\tabularnewline
-Remarks : & use zip \& enumerate\tabularnewline
+Turn-in directory: & ex05\tabularnewline
+Files to turn in: & eval.py\tabularnewline
+Forbidden functions & while\tabularnewline
+Remarks: & use zip \& enumerate\tabularnewline
 \bottomrule
 \end{longtable}
 
-Code a class \texttt{Evaluator}, that has two static functions named:
+Code a class \texttt{Evaluator}, that has two static functions named
 \texttt{zip\_evaluate} and \texttt{enumerate\_evaluate}.
 
 The goal of these 2 functions is to compute the sum of the lengths of
@@ -1008,6 +1070,8 @@ If this is not the case, the function should return -1.
 You have to obtain the desired result using \texttt{zip} in the
 \texttt{zip\_evaluate} function, and with \texttt{enumerate} in the
 \texttt{enumerate\_evaluate} function.
+
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1033,10 +1097,10 @@ Account}\label{exercise-06---bank-account-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex06\tabularnewline
-Files to turn in : & the\_bank.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex06\tabularnewline
+Files to turn in: & the\_bank.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -1066,34 +1130,35 @@ below.
 
 Now, it is your turn to code a class named \texttt{Bank}!\\
 Its purpose will be to handle the security part of each transfer
-attempt.\\
+attempt.
+
 Security means checking if the \texttt{Account} is:
 
 \begin{itemize}
 \item
   the right object
 \item
-  that it is not corrupted
+  not corrupted
 \item
-  and that it has enough money
+  and stores enough money to complete the transfer.
 \end{itemize}
 
-How do we define if a bank account is corrupted?
+How do we define if a bank account is corrupted? A corrupted bank
+account has:
 
 \begin{itemize}
 \item
-  It has an even number of attributes.
+  an even number of attributes
 \item
-  It has an attribute starting with \texttt{b}.
+  an attribute starting with \texttt{b}
 \item
-  It has no attribute starting with \texttt{zip} or \texttt{addr}.
+  no attribute starting with \texttt{zip} or \texttt{addr}
 \item
-  It has no attribute \texttt{name}, \texttt{id} and \texttt{value}.
+  no attribute \texttt{name}, \texttt{id} and \texttt{value}
 \end{itemize}
 
 A transaction is invalid if \texttt{amount\ \textless{}\ 0} or if the
-amount is larger than the funds the first account has available for
-transfer.
+amount is larger than the available funds of the sending account.
 
 \begin{Shaded}
 \begin{Highlighting}[]

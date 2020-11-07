@@ -168,9 +168,9 @@
 
 \vspace*{2cm}
 \begin{center}
-    \textsc{\fontsize{40}{48} \bfseries Bootcamp}\\[0.6cm]
+    \textsc{\fontsize{40}{48} \bfseries }\\[0.6cm]
     \textsc{\fontsize{39}{48} \bfseries { %bootcamp_title
-Python
+Python Machine-Learning
     }}\\[0.3cm]
 \end{center}
 \vspace{3cm}
@@ -182,7 +182,7 @@ Python
 \vspace*{2cm}
 \begin{center}
     \textsc{\fontsize{32}{48} \bfseries %day_number
-Day00    
+Module 00    
     }\\[0.6cm]
     \textsc{\fontsize{32}{48} \bfseries %day_title
 Basic Stuff    
@@ -201,12 +201,9 @@ Basic Stuff
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\hypertarget{bootcamp-python}{%
-\section{Bootcamp Python}\label{bootcamp-python}}
-
-\hypertarget{day00---basic-stuff---eleven-commandments}{%
-\section{Day00 - Basic stuff - Eleven
-Commandments}\label{day00---basic-stuff---eleven-commandments}}
+\hypertarget{module-00---basic-stuff---eleven-commandments}{%
+\section{Module 00 - Basic stuff - Eleven
+Commandments}\label{module-00---basic-stuff---eleven-commandments}}
 
 The goal of the day is to get started with the Python language.
 
@@ -223,7 +220,7 @@ Basic setup, variables, types, functions, \ldots{}
   The version of Python to use is 3.7, you can check the version of
   Python with the following command: \texttt{python\ -V}
 \item
-  The norm: during this bootcamp you will follow the
+  The norm: during this module you will follow the
   \href{https://www.python.org/dev/peps/pep-0008/}{PEP 8 standards}. You
   can install \href{https://pypi.org/project/pycodestyle}{pycodestyle}
   which is a tool to check your Python code.
@@ -313,14 +310,14 @@ bar!}\label{exercise-10---loading-bar}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex00\tabularnewline
-Files to turn in : & answers.txt, requirements.txt\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex00\tabularnewline
+Files to turn in: & answers.txt, requirements.txt\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
-The first thing we need to do is install Python.
+The first thing you need to do is install Python.
 
 \hypertarget{conda-manual-install}{%
 \subsection{Conda manual install}\label{conda-manual-install}}
@@ -365,20 +362,6 @@ so you will need to reinstall everything.
 \setcounter{enumi}{2}
 \tightlist
 \item
-  Install needed requirements.
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{conda install -y "jupyter" "numpy" "pandas"}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
-\tightlist
-\item
   Add export to your \texttt{.zshrc} file.
 \end{enumerate}
 
@@ -390,7 +373,7 @@ so you will need to reinstall everything.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
+\setcounter{enumi}{3}
 \tightlist
 \item
   Source your \texttt{.zshrc} file.
@@ -404,7 +387,7 @@ so you will need to reinstall everything.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{5}
+\setcounter{enumi}{4}
 \tightlist
 \item
   Check your Python environment.
@@ -413,6 +396,20 @@ so you will need to reinstall everything.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{which python}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Install needed requirements.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{conda install -y "jupyter" "numpy" "pandas"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -559,10 +556,10 @@ Find the commands to:
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex01\tabularnewline
-Files to turn in : & exec.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex01\tabularnewline
+Files to turn in: & exec.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -571,9 +568,11 @@ the case of its words.\\
 If we have more than one argument we have to merge them into a single
 string and separate each arg by a ' ' (space char).
 
+\textbf{Example:}
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{> python exec.py "Hello World!" | cat -e}
+\NormalTok{> python exec.py "Hello World\textbackslash{}!" | cat -e}
 \NormalTok{!DLROw OLLEh$}
 \NormalTok{> python exec.py "Hello" "my Friend" | cat -e}
 \NormalTok{DNEIRf YM OLLEh$}
@@ -591,16 +590,18 @@ Zero}\label{exercise-02---the-odd-the-even-and-the-zero-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex02\tabularnewline
-Files to turn in : & whois.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex02\tabularnewline
+Files to turn in: & whois.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
 You will have to make a program that checks if a number is odd, even or
 zero.\\
 The program will accept only one parameter, an integer.
+
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -627,10 +628,10 @@ file}\label{exercise-03---functional-file-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex03\tabularnewline
-Files to turn in : & count.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex03\tabularnewline
+Files to turn in: & count.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -643,7 +644,9 @@ analyze. You have to handle the case where the text is empty (maybe by
 setting a default value). If there is no text passed to the function,
 the user is prompted to give one.
 
-Test it in the Python console:
+Test it in the Python console.
+
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -711,10 +714,10 @@ You're free to write your docstring and format it the way you want.
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex04\tabularnewline
-Files to turn in : & operations.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex04\tabularnewline
+Files to turn in: & operations.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -723,6 +726,8 @@ elementary mathematical operations of arithmetic (addition, subtraction,
 multiplication, division) and the modulo operation. This should be
 accomplished by writing a function that takes 2 numbers as parameters
 and returns 5 values, as formatted in the console output below.
+
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -784,11 +789,11 @@ format}\label{exercise-05---the-right-format-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex05\tabularnewline
-Files to turn in : & kata00.py, kata01.py, kata02.py, kata03.py,
+Turn-in directory: & ex05\tabularnewline
+Files to turn in: & kata00.py, kata01.py, kata02.py, kata03.py,
 kata04.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -905,16 +910,17 @@ Given the tuple above, return the following result:
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex06\tabularnewline
-Files to turn in : & recipe.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex06\tabularnewline
+Files to turn in: & recipe.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
 It is time to discover Python dictionaries. Dictionaries are collections
-that contain mappings of unique keys to values.\\
-\emph{Hint: check what is a nested dictionary in Python.}
+that contain mappings of unique keys to values.
+
+\textbf{\emph{Hints:}} check what is a nested dictionary in Python.
 
 First, you will have to create a cookbook dictionary called
 \texttt{cookbook}.
@@ -1046,10 +1052,10 @@ pythonest}\label{exercise-07---shorter-faster-pythonest-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex07\tabularnewline
-Files to turn in : & filterwords.py\tabularnewline
-Forbidden functions : & filter\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex07\tabularnewline
+Files to turn in: & filterwords.py\tabularnewline
+Forbidden functions: & filter\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -1057,6 +1063,8 @@ Using list comprehensions, you will have to make a program that removes
 all the words in a string that are shorter than or equal to n letters,
 and returns the filtered list with no punctuation.\\
 The program will accept only two parameters: a string, and an integer n.
+
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1079,16 +1087,18 @@ The program will accept only two parameters: a string, and an integer n.
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex08\tabularnewline
-Files to turn in : & sos.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex08\tabularnewline
+Files to turn in: & sos.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
 You will have to make a function which encodes strings into Morse
 code.\\
 The input will accept all alphanumeric characters.
+
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1113,10 +1123,10 @@ number}\label{exercise-09---secret-number-1}}
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex09\tabularnewline
-Files to turn in : & guess.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex09\tabularnewline
+Files to turn in: & guess.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -1128,6 +1138,8 @@ game ends when the user finds out the secret number or types
 You will have to import the \texttt{random} module with the
 \texttt{randint} function to get a random number. You have to count the
 number of trials and print that number when the user wins.
+
+\textbf{Example:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1193,10 +1205,10 @@ Other example:
 \begin{longtable}[]{@{}rl@{}}
 \toprule
 \endhead
-Turn-in directory : & ex10\tabularnewline
-Files to turn in : & loading.py\tabularnewline
-Forbidden functions : & None\tabularnewline
-Remarks : & n/a\tabularnewline
+Turn-in directory: & ex10\tabularnewline
+Files to turn in: & loading.py\tabularnewline
+Forbidden functions: & None\tabularnewline
+Remarks: & n/a\tabularnewline
 \bottomrule
 \end{longtable}
 
